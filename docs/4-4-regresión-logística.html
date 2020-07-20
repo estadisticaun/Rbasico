@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.4 Regresión logística | Un Primer Curso de R</title>
+  <meta name="description" content="4.4 Regresión logística | Un Primer Curso de R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.4 Regresión logística | Un Primer Curso de R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.4 Regresión logística | Un Primer Curso de R" />
+  
+  
+  
+
+<meta name="author" content="Alberto Rodríguez Rodríguez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="4-3-regresión-lineal.html"/>
+<link rel="next" href="5-Pub.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/unal/css/style.css" rel="stylesheet" />
+<link href="libs/unal/css/bootstrap-buttons.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="https://ih0.redbubble.net/image.522698608.2413/flat,550x550,075,f.u4.jpg"  height=50 width="50"> <a href="./">Primer Curso de R</a></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Portada</a></li>
+<li class="chapter" data-level="" data-path="Presenta.html"><a href="Presenta.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="1-Fund.html"><a href="1-Fund.html"><i class="fa fa-check"></i><b>1</b> Fundamentos del lenguaje R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1-1-primeros-pasos.html"><a href="1-1-primeros-pasos.html"><i class="fa fa-check"></i><b>1.1</b> Primeros pasos</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-tipos-de-datos.html"><a href="1-2-tipos-de-datos.html"><i class="fa fa-check"></i><b>1.2</b> Tipos de datos</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="1-2-tipos-de-datos.html"><a href="1-2-tipos-de-datos.html#vectores"><i class="fa fa-check"></i><b>1.2.1</b> Vectores</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-2-tipos-de-datos.html"><a href="1-2-tipos-de-datos.html#matrices"><i class="fa fa-check"></i><b>1.2.2</b> Matrices</a></li>
+<li class="chapter" data-level="1.2.3" data-path="1-2-tipos-de-datos.html"><a href="1-2-tipos-de-datos.html#arreglos"><i class="fa fa-check"></i><b>1.2.3</b> Arreglos</a></li>
+<li class="chapter" data-level="1.2.4" data-path="1-2-tipos-de-datos.html"><a href="1-2-tipos-de-datos.html#data-frames"><i class="fa fa-check"></i><b>1.2.4</b> Data frames</a></li>
+<li class="chapter" data-level="1.2.5" data-path="1-2-tipos-de-datos.html"><a href="1-2-tipos-de-datos.html#listas"><i class="fa fa-check"></i><b>1.2.5</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1-3-operadores-y-selección.html"><a href="1-3-operadores-y-selección.html"><i class="fa fa-check"></i><b>1.3</b> Operadores y selección</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="1-3-operadores-y-selección.html"><a href="1-3-operadores-y-selección.html#operadores-lógicos"><i class="fa fa-check"></i><b>1.3.1</b> Operadores lógicos</a></li>
+<li class="chapter" data-level="1.3.2" data-path="1-3-operadores-y-selección.html"><a href="1-3-operadores-y-selección.html#selección-de-elementos"><i class="fa fa-check"></i><b>1.3.2</b> Selección de elementos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="1-4-programación-con-r.html"><a href="1-4-programación-con-r.html"><i class="fa fa-check"></i><b>1.4</b> Programación con R</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-Trans.html"><a href="2-Trans.html"><i class="fa fa-check"></i><b>2</b> Transformación de datos con R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-1-importarexportar-datos.html"><a href="2-1-importarexportar-datos.html"><i class="fa fa-check"></i><b>2.1</b> Importar/exportar datos</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-limpiar-datos.html"><a href="2-2-limpiar-datos.html"><i class="fa fa-check"></i><b>2.2</b> Limpiar datos</a></li>
+<li class="chapter" data-level="2.3" data-path="2-3-verbos-seleccionar-reubicar-mutar-y-filtrar.html"><a href="2-3-verbos-seleccionar-reubicar-mutar-y-filtrar.html"><i class="fa fa-check"></i><b>2.3</b> Verbos: seleccionar, reubicar, mutar y filtrar</a></li>
+<li class="chapter" data-level="2.4" data-path="2-4-verbos-agrupar-ordenar-y-cruzar-.html"><a href="2-4-verbos-agrupar-ordenar-y-cruzar-.html"><i class="fa fa-check"></i><b>2.4</b> Verbos: agrupar, ordenar y cruzar.</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-Vis.html"><a href="3-Vis.html"><i class="fa fa-check"></i><b>3</b> Visualización con R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-1-visualización-r-base.html"><a href="3-1-visualización-r-base.html"><i class="fa fa-check"></i><b>3.1</b> Visualización - R base</a></li>
+<li class="chapter" data-level="3.2" data-path="3-2-visualización-ggplot-1.html"><a href="3-2-visualización-ggplot-1.html"><i class="fa fa-check"></i><b>3.2</b> Visualización - Ggplot 1</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-visualización-ggplot-2.html"><a href="3-3-visualización-ggplot-2.html"><i class="fa fa-check"></i><b>3.3</b> Visualización - Ggplot 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-Est.html"><a href="4-Est.html"><i class="fa fa-check"></i><b>4</b> Estadística con R</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4-1-estadística-descriptiva.html"><a href="4-1-estadística-descriptiva.html"><i class="fa fa-check"></i><b>4.1</b> Estadística descriptiva</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-estadística-bivariada.html"><a href="4-2-estadística-bivariada.html"><i class="fa fa-check"></i><b>4.2</b> Estadística bivariada</a></li>
+<li class="chapter" data-level="4.3" data-path="4-3-regresión-lineal.html"><a href="4-3-regresión-lineal.html"><i class="fa fa-check"></i><b>4.3</b> Regresión lineal</a></li>
+<li class="chapter" data-level="4.4" data-path="4-4-regresión-logística.html"><a href="4-4-regresión-logística.html"><i class="fa fa-check"></i><b>4.4</b> Regresión logística</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-Pub.html"><a href="5-Pub.html"><i class="fa fa-check"></i><b>5</b> Publicación de resultados con R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5-1-rmarkdown-1.html"><a href="5-1-rmarkdown-1.html"><i class="fa fa-check"></i><b>5.1</b> Rmarkdown 1</a></li>
+<li class="chapter" data-level="5.2" data-path="5-2-rmarkdown-1-1.html"><a href="5-2-rmarkdown-1-1.html"><i class="fa fa-check"></i><b>5.2</b> Rmarkdown 1</a></li>
+<li class="chapter" data-level="5.3" data-path="5-3-pdf-word-y-powerpoint.html"><a href="5-3-pdf-word-y-powerpoint.html"><i class="fa fa-check"></i><b>5.3</b> Pdf, Word y PowerPoint</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-Ava.html"><a href="6-Ava.html"><i class="fa fa-check"></i><b>6</b> Tópicos avanzados con R</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Un Primer Curso de R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regresión-logística" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Regresión logística</h2>
+
+</div>
+<!-- </div> -->
+<script src="libs/unal/js/widgets.js"></script>
+<script src="libs/unal/js/full-screen-helper.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="4-3-regresiÃ³n-lineal.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="5-Pub.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

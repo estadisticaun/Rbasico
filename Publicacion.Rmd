@@ -1,0 +1,8 @@
+# Publicación de resultados con R {#Pub}
+
+## Rmarkdown 1
+
+## Rmarkdown 1
+
+## Pdf, Word y PowerPoint
+

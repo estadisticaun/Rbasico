@@ -1,0 +1,8 @@
+# Transformación de datos con R{#Trans}
+
+## Importar/exportar datos
+## Limpiar datos
+## Verbos: seleccionar, reubicar, mutar y filtrar
+## Verbos: agrupar, ordenar y cruzar.
+
+

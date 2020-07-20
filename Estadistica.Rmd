@@ -1,0 +1,6 @@
+# Estadística con R {#Est}
+
+## Estadística descriptiva
+## Estadística bivariada
+## Regresión lineal
+## Regresión logística

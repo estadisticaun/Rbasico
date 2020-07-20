@@ -1,0 +1,20 @@
+# Fundamentos del lenguaje R {#Fund}
+
+## Primeros pasos
+
+## Tipos de datos
+
+### Vectores
+### Matrices
+### Arreglos
+### Data frames
+### Listas
+
+## Operadores y selección
+
+### Operadores lógicos
+### Selección de elementos
+
+## Programación con R
+
+
