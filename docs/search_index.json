@@ -4,7 +4,7 @@
 ["intro.html", "Introducción", " Introducción "],
 ["1-Fund.html", "Capítulo 1 Fundamentos del lenguaje R ", " Capítulo 1 Fundamentos del lenguaje R "],
 ["1-1-primeros-pasos.html", "1.1 Primeros pasos", " 1.1 Primeros pasos "],
-["1-2-tipos-de-datos.html", "1.2 Tipos de datos", " 1.2 Tipos de datos Principales tipos de datos en R 1.2.1 Vectores Mi primer vector. # Mi primer vector con 5 elementos c(1, 2, 3, 4, 5) ## [1] 1 2 3 4 5 # Matriz con tres filas y cuatro columnas matrix(1:12, nrow = 3, ncol = 4) ## [,1] [,2] [,3] [,4] ## [1,] 1 4 7 10 ## [2,] 2 5 8 11 ## [3,] 3 6 9 12 1.2.2 Matrices 1.2.3 Arreglos 1.2.4 Data frames 1.2.5 Listas "],
+["1-2-tipos-de-datos.html", "1.2 Tipos de datos", " 1.2 Tipos de datos Principales tipos de datos en R. Extraída de https://medium.com/@tiwarigaurav2512/r-data-types-847fffb01d5b 1.2.1 Vectores Representación gráfica de un vector Mi primer vector. # Mi primer vector con 5 elementos c(1, 2, 3, 4, 5) ## [1] 1 2 3 4 5 # Matriz con tres filas y cuatro columnas matrix(1:12, nrow = 3, ncol = 4) ## [,1] [,2] [,3] [,4] ## [1,] 1 4 7 10 ## [2,] 2 5 8 11 ## [3,] 3 6 9 12 1.2.2 Matrices Representación gráfica de un vector 1.2.3 Arreglos Representación gráfica de un Array (arreglo) 1.2.4 Data frames Representación gráfica de un Data Frame (marco de datos) 1.2.5 Listas Representación gráfica de una lista "],
 ["1-3-operadores-y-selección.html", "1.3 Operadores y selección", " 1.3 Operadores y selección 1.3.1 Operadores lógicos 1.3.2 Selección de elementos "],
 ["1-4-programación-con-r.html", "1.4 Programación con R", " 1.4 Programación con R "],
 ["2-Trans.html", "Capítulo 2 Transformación de datos con R ", " Capítulo 2 Transformación de datos con R "],

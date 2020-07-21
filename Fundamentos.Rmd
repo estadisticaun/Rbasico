@@ -4,9 +4,11 @@
 
 ## Tipos de datos
 
-![Principales tipos de datos en R](Imagenes/TiposDatos.png)
+![Principales tipos de datos en R. <br> Extraída de https://medium.com/@tiwarigaurav2512/r-data-types-847fffb01d5b](Imagenes/TiposDatos.png)
 
 ### Vectores
+
+![Representación gráfica de un vector](Imagenes/Vector.png)
 
 Mi primer vector.
 
@@ -19,9 +21,20 @@ matrix(1:12, nrow = 3, ncol = 4)
 ```
 
 ### Matrices
+
+![Representación gráfica de un vector](Imagenes/Matriz.png)
+
 ### Arreglos
+
+![Representación gráfica de un Array (arreglo)](Imagenes/Arreglo.png)
+
 ### Data frames
+
+![Representación gráfica de un Data Frame (marco de datos)](Imagenes/DataFrame.png)
+
 ### Listas
+
+![Representación gráfica de una lista](Imagenes/Lista.png)
 
 ## Operadores y selección
 
