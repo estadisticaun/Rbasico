@@ -2,14 +2,31 @@
 
 <!-- https://www.youtube.com/watch?v=SWxoJqTqo08 -->
 
-## Primeros pasos
+## Introducción a R
 
 1. **Importancia del case sensitive en R (mayúsculas vs minúsculas)**
 2. **Operador de asignación = vs <- vs ->**
 
-## Tipos de datos
+### Tipos de datos en R
 
-![Principales tipos de datos en R. <br> Extraída de https://medium.com/@tiwarigaurav2512/r-data-types-847fffb01d5b](Imagenes/TiposDatos.png)
+En R existen 5 tipos de datos básicos
+
+1. **Lógicos**
+2. **Enteros**
+3. **Numéricos/reales**
+4. **Cadena o caracter**
+5. **Complejos**
+
+### Operaciones aritméticas y variables en R
+
+### Expresiones lógicas en R
+
+
+
+
+## Estructuras de datos
+
+![Principales estructuras de datos en R. <br> Extraída de https://medium.com/@tiwarigaurav2512/r-data-types-847fffb01d5b](Imagenes/TiposDatos.png)
 
 ### Vectores
 
@@ -75,6 +92,8 @@ c("Lunes", "Martes", "Miércoles","Jueves", "Viernes", "Sábado","Domingo")
 Funciones (seq() y rep())
 
 #### _Indexación de vectores_
+
+Fuente: [Manual R Base Indexación](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Indexing)
 
 Cómo extraer elementos de un vector - R es un lenguaje de programación indexado en 1; es decir, al primer elemento de un vector se le asigna la posición 1. Para extraer elementos de un vector usamos corchetes []
 
@@ -185,9 +204,204 @@ suma
 
 ![Filosofia nombre vectores](Imagenes/Nombres_vectores.svg)
 
+```{r, eval=TRUE, warning=FALSE}
+# Alternativa 1
+vector = c(a = 1, b = 2, c = 3, d = 4, e = 5)
+vector
+# Alternativa 2
+vector1 <- c(1L:5L)
+Nombres <- c('a', 'b', 'c', 'd', 'e') # letters[c(1:5)] # letters[seq(1,5)] 
+names(vector1) <- Nombres
+vector1
+# Indexación
+vector1[c('a', 'e')]
+# Reemplazar valores
+vector1[c('a', 'e')] <- 6L
+vector1
+# Revisar los nombres de un vector
+names(vector1)
+```
+
+
+
+
 ### Matrices
 
+Las matrices,  como los vectores, son estructuras bidimensionales de datos con la totalidad de elementos del mismo tipo. Es decir, los elementos de las matrices pueden ser de tipo numérico (enteros y dobles), lógico y de tipo caractér (cadena). 
+
 ![Representación gráfica de una matriz](Imagenes/Matriz.png)
+
+![Relación entre vectores y matrices](Imagenes/VecYMat.svg)
+
+#### _Creando matrices_
+
+Las matrices se crean a través de la función **matrix()**
+
+1. _**Modificando vectores**_
+
+Una foma de crear matrices es reestructurando un vector en matrices, como se observa en la siguiente figura.
+
+![Ilustración matrices](Imagenes/Matrices.svg)
+
+```{r, eval=TRUE, warning=FALSE}
+# Ejemplo 1 - Por defecto - columnas
+matrix(c(1:5))
+# Ejemplo 2 - Indicando filas y columnas
+matrix(1:12, nrow = 4, ncol = 3)
+# Ejemplo 3 - Por filas
+matrix(1:12, nrow = 4, ncol = 3, byrow = TRUE)
+# Ejemplo 4 - Sin definir columnas
+matrix(1:12, nrow = 4)
+# Ejemplo 5 - Sin definir filas
+matrix(1:12, ncol = 4)
+# Ejemplo 6 - Con secuencias
+matrix(seq(from = 2, to = 8, by = 2), nrow = 2, ncol = 2)
+# Ejemplo 7 - Con repeticiones
+matrix(rep(1,4), nrow = 2, ncol = 2)
+# Ejemplo 8 - Reciclando elementos
+matrix(1:7, ncol = 3)
+# Ejemplo 9 - Con elementos lógicos
+matrix(c(TRUE, FALSE, FALSE, TRUE), nrow = 2, ncol = 2)
+# Ejemplo 10 - Con elementos tipo caractér - cadena
+matrix(c('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'), nrow = 3, ncol = 2)
+```
+
+2. _**Combinando vectores**_
+
+A través de las funciones **rbind()** y **cbind()**
+
+```{r, eval=TRUE, warning=FALSE}
+v1 <- c(1, 2, 3)
+v2 <- c(3, 2, 1)
+v3 <- c(1, 2, 3)
+# creación de matrices con vectores- por filas
+fil_matriz <- rbind(v1, v2, v3)
+fil_matriz
+# creación de matrices con vectores- por columnas
+col_matriz <- cbind(v1, v2, v3)
+col_matriz
+```
+
+#### _Nombrando las dimensiones de una matriz_
+
+Una matriz está conformada por dos dimensiones (filas y columnas). El nombre de las filas y de las columnas se da a través de las funciones **rownames()** y **colnames()**.
+
+```{r, eval=TRUE, warning=FALSE}
+# matriz básica
+matriz <- matrix(c(1:4), nrow = 2, ncol = 2, byrow = TRUE)
+matriz
+# Matriz con nombres de filas y columnas
+rownames(matriz) <- c('f_1', 'f_2')
+colnames(matriz) <- c('c_1', 'c_2')
+matriz
+# Consultar los nombres de filas y columnas en una matriz
+# Nombre de las filas
+rownames(matriz)
+# Nombre de las columnas
+colnames(matriz)  
+```
+
+
+#### _Indexación en matrices_
+![Ilustración idexación en matrices](Imagenes/Indexacion_Matrices.svg)
+
+A partir de una matriz podemos extraer/indexar con tres propósitos. 
+
+* *Extraer un elemento [fila, columna]*
+* *Extraer una fila o filas [fila, ]*
+* *Extraer una columna o columnas [, columna]*
+
+1. **Indexación básica**
+
+```{r, eval=TRUE, warning=FALSE}
+matriz <- matrix(c(1:4), nrow = 2, ncol = 2, byrow = TRUE)
+rownames(matriz) <- c('f_1', 'f_2')
+colnames(matriz) <- c('c_1', 'c_2')
+matriz
+# Extraer el elemento ubicado en la fila 2 y la columna 1
+matriz[2,1]
+# Extraer la fila 1
+matriz[1, ]
+# Extraer la columna 2
+matriz[, 2]
+```
+
+2. **Indexación a través de vectores**
+
+* *vectores numéricos (enteros)*
+* *vectores lógicos*
+* *vectores de caractéres (nombres de filas o columnas)*
+
+```{r, eval=TRUE, warning=FALSE}
+matriz <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = FALSE)
+rownames(matriz) <- c('f_1', 'f_2', 'f_3')
+colnames(matriz) <- c('c_1', 'c_2', 'c_3')
+# Con vectores numéricos - filas 1 y 2
+matriz[c(1:2), ]
+# Con vectores lógicos - columnas 1 y 3
+# Igual a matriz[, c(TRUE, FALSE, TRUE, FALSE)]
+matriz[, c(TRUE, FALSE)]
+# Con vectores de caractéres - columnas 2 y 3 - filas 1 y 3
+matriz[c(1,3), c('c_2', 'c_3')]
+```
+
+#### _Modificando elementos en matrices_
+
+Se puede modificar un único elemento dentro de una matriz o bloques de elementos (más de un elementos). Veámos estas ídeas gráficamente
+
+![Ilustración modificación de un elemento dentro de una matriz](Imagenes/Modificar_Matriz1.svg)
+
+```{r, eval=TRUE, warning=FALSE}
+# Ejemplo
+matriz <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = FALSE)
+rownames(matriz) <- c('f_1', 'f_2', 'f_3')
+colnames(matriz) <- c('c_1', 'c_2', 'c_3')
+# Modificar elemento (3,3) por 20
+matriz[3, 3] <- 30
+matriz
+```
+
+![Ilustración modificación de un bloque de elementos dentro de una matriz](Imagenes/Modificar_Matriz2.svg)
+
+```{r, eval=TRUE, warning=FALSE}
+# Ejemplo
+matriz <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = FALSE)
+rownames(matriz) <- c('f_1', 'f_2', 'f_3')
+colnames(matriz) <- c('c_1', 'c_2', 'c_3')
+# Modificar filas 1,2 y columnas 2 y 3
+matriz[c(1,2), c('c_2', 'c_3')] <- 0
+matriz
+```
+
+#### _Adicionando elementos en matrices_
+
+En las matrices se pueden adicionar filas o columnas. A continuación se presenta una ilustración gráfica de estas dos ideas.
+
+![Ilustración adicionar filas o culmnas en una matriz](Imagenes/Adicionar_Matriz.svg)
+
+Para adicionar filas en una matriz se hace uso de la función **rbind()**; para adicionar columnas, se hace uso de la función **cbind**.
+
+```{r, eval=TRUE, warning=FALSE}
+matriz1 <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = FALSE)
+rownames(matriz1) <- c('f_1', 'f_2', 'f_3')
+colnames(matriz1) <- c('c_1', 'c_2', 'c_3')
+# Adicionar una fila
+matriz1 <- rbind(matriz, 'c_4' = c(4, 7, 10))
+matriz1
+# Adicionar dos columnas
+matriz2 <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = FALSE)
+rownames(matriz2) <- c('f_1', 'f_2', 'f_3')
+colnames(matriz2) <- c('c_1', 'c_2', 'c_3')
+# Adicionar una fila
+matriz2 <- cbind(matriz2, matrix(c(7:12), nrow = 3, ncol = 2))
+colnames(matriz2) <- c('c_1', 'c_2', 'c_3', 'c_4', 'c_5')
+matriz2
+
+```
+
+#### _Removiendo elementos en matrices_
+#### _Operaciones con matrices_
+
 
 ### Arreglos
 
