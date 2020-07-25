@@ -6,7 +6,7 @@ Ciclo de vida de la ciencia de los datos
 
 ![Ilustración ciclo de vida Ciencia de Datos](Imagenes/Ciencia_Datos.png)
 
-## Introducción a R
+## Introducción a R {#introR}
 
 
 En R, como en los demás lenguajes de programación un programa se le llama códico o scrip y cada línea de dicho código se conoce como linea de código. Para que un scrip o código de un lenguaje de programación sea entendido por nuestras computadoras, estos imponene algunas reglas básicas. A continuación se presentan las primeras dos reglas básica del lenguaje de programación R.
@@ -351,7 +351,7 @@ Revisar los operadores (&& y ||), como se presenta en la siguiente ilustración.
 
 #### Combinando operadores
 
-**Regla 5. Priorización general**
+**Regla 5. Priorización o precedencia general**
 
 Teniendo en cuenta todos los operadores vistos hasta ahora, la regla de priorización general es:
 
@@ -361,6 +361,20 @@ Teniendo en cuenta todos los operadores vistos hasta ahora, la regla de prioriza
  * _Adición y sustracción_
  * _Operadores relacionales_
  * _Operadores logicos_
+
+
+_**Estudiarr el siguiente caso con vectores**_
+
+a <- 3
+b <- 15
+
+a:b
+a+1:b
+a+(1:b)
+(a+1):b
+
+[Caso tomado de](https://twitter.com/necronet/status/1286129628718018560)
+
 
 <p style="color:#FF0000";><i>Ejemplo. Combinando operadores</i></p>
  
@@ -749,12 +763,63 @@ matriz2
 ```
 
 #### _Removiendo elementos en matrices_
+
+Se eliminan columnas o elementos de columnas haciendo uso del simbolo (-) entre corchetes. [-() , -c()]
+
+<p style="color:#FF0000";><i>Ejemplo. Removiendo elementos de matrices</i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+#Creando una matriz
+matriz <- matrix(1:12, nrow = 4, ncol = 3)
+rownames(matriz) <- c('f_1', 'f_2', 'f_3', 'f_4')
+colnames(matriz) <- c('c_1', 'c_2', 'c_3')
+matriz
+# Eliminando primera fila
+matriz[-1, ]
+# Eliminando segunda columna
+matriz[ ,-2]
+# Eliminando haciendo uso de vectores - enteros
+matriz[-c(1,4), -3]
+# Eliminando haciendo uso de vectores lógicas - reciclando
+matriz[c(TRUE, FALSE), c(-1)]
+# Eliminando haciendo uso de vectores lógicas - sin reciclar
+matriz[c(TRUE, FALSE, TRUE, FALSE), c(-1)]
+# Eliminando haciendo uso de vectores lógicas - derivados de expresiones lógicas 
+expl <- matriz[, 3] > 10
+expl
+matriz[expl, c(-1)]
+```
+
+#### _Marginales en matrices_
+
+Ver las funciones **rowSums(), colSums(), rowMeans(), colMeans()*
+
+![Ilustración sumar filas y columnas](Imagenes/Matriz_Suma.svg)
+
+<p style="color:#FF0000";><i>Ejemplo. Marginales en matrices</i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+#Creando una matriz - haciendo uso de la función dimnames
+matriz1 <- matrix(1:9, nrow = 3, ncol = 3, dimnames = list(c('f_1', 'f_2', 'f_3'), c('c_1', 'c_2', 'c_3')))
+matriz1
+# Suma de filas
+rowSums(matriz1)
+# Suma de columnas
+colSums(matriz1)
+# Promedio de filas
+rowMeans(matriz1)
+# Promedio de columnas
+colMeans(matriz1)
+```
+
 #### _Operaciones con matrices_
 
+Las operaciones con matrices son la suma, la resta, la multiplicación y la división.
 
 ### Arreglos
 
 ![Representación gráfica de un Array (arreglo)](Imagenes/Arreglo.png)
+
 
 ### Data frames
 
@@ -762,13 +827,64 @@ matriz2
 
 ### Listas
 
+Una lista es una estructura de datos multidimensional que permite, en su interior, la disposición de estructuras de datos y objetos de diversas tipologías.
+
 ![Representación gráfica de una lista](Imagenes/Lista.png)
 
-## Operadores y selección
+¿Por qué querríamos crear listas de objetos en R? La respuesta es que almacenar objetos en listas nos permite utilizar algunas funciones R muy poderosas para realizar la misma operación en cada objeto de nuestra lista, lo que nos permite evitar escribir repetidamente la misma función.
 
-### Operadores lógicos
-### Selección de elementos
+#### Creando listas
 
-## Programación con R
+Las listas se crean a través de la función **list()**. Los elementos que hacen parte de una lista se separan, como en el caso de los vectores, a través de comas **(,)** y pueden ser de cualquier tipo.
+
+<p style="color:#FF0000";><i>Ejemplos. Diferentes listas</i></p>
+
+```{r}
+#Lista 1
+list(1:3, "a", c(TRUE, FALSE, TRUE), c(2.3, 5.9))
+#Lista 2
+list("Hola mundo", 1, 1, 3, TRUE)
+#Lista 3
+list(país = "Colombia", matriz = matrix(c(1:9), ncol =3), vector = c(TRUE, FALSE))
+```
+
+Revisar las posiciones, en el output, en las que aparece cada uno de los elementos de una lista a través del numero contenidoen [[]]
+
+#### Nombrando listas
+
+La asignación de nombres a los elementos que conforman una lista,  al igual que en el caso de los vectores, se logra haciendo uso de la función **names()**.
+
+```{r}
+#Lista
+mi_lista <- list(1, 2, 3, 4)
+mi_lista
+#Nombrando los elementos de la lista
+names(mi_lista) <- c('a', "b", 'c', "d")
+# El resultado
+mi_lista
+```
+
+#### Indexación en listas
+
+En las listas existen dos alternativas de indexación.
+
+1. _**Paréntesis individuales**_: Retorna una _lista_ de elementos.
+2. _**Doble paréntesis**_: Retorna un único elemento.
+
+<p style="color:#FF0000";><i>Ejemplos. Indexación con listas</i></p>
+
+```{r}
+recurre <- list(1,list(2,3, list(4,5)))
+#Extraer el número 5 - tres alternativas
+recurre[[c(2, 3)]][[2]]
+recurre[[2]][[3]][[2]]
+recurre[2][[1]][[3]][[2]]
+```
+
+
+#### Modificar, adicionar y remover elementos de una lista
+#### Combinando listas
+
+## Programación con R {#Prog}
 
 

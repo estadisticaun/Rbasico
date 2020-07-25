@@ -1,7 +1,8 @@
 # Transformación de datos con R{#Trans}
 
 ## Importar/exportar datos
-## Limpiar datos
+## Tibbles vs Data Frames
+## Datos ordenados - Tidy Data
 ## Verbos: seleccionar, reubicar, mutar y filtrar
 ## Verbos: agrupar, ordenar y cruzar.
 
