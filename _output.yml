@@ -7,7 +7,7 @@ bookdown::gitbook:
         <li><center><img src="https://ih0.redbubble.net/image.522698608.2413/flat,550x550,075,f.u4.jpg"  height=50 width="50"> <a href="./">Primer Curso de R</a></center></li>
     # download: ["pdf", "epub"]
   includes:
-    after_body: docs/libs/unal/html/scripts.html
+    after_body: [Disqus/disqus.html, docs/libs/unal/html/scripts.html]
     in_header: docs/libs/unal/html/style.html
 #bookdown::pdf_book:
   #includes:
