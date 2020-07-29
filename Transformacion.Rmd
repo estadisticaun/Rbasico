@@ -1,6 +1,19 @@
 # Transformación de datos con R{#Trans}
 
 ## Importar/exportar datos
+
+### Paquetes en R
+
+<html>
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Yg3PEllMlyw" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+</center>
+</html>
+
+<br/>
+<br/>
+
+
 ## Tibbles vs Data Frames
 ## Datos ordenados - Tidy Data
 ## Verbos: seleccionar, reubicar, mutar y filtrar
