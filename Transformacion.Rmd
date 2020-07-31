@@ -4,6 +4,10 @@
 
 ### Paquetes en R
 
+```{r}
+library(knitr)
+```
+
 <html>
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Yg3PEllMlyw" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
@@ -13,6 +17,30 @@
 <br/>
 <br/>
 
+**Personajes**
+
+ * _Trinity_
+ * _Neo_
+ * _Tank (operador)_
+* _Nave “Nabucodonosor"_
+
+"Necesito un curso para pilotar un helicoptero B-212"
+
+
+````markdown
+install.packages('') # Función para instalar paquetes desde CRAN
+````
+
+**library(devtools)** devtools para instalar desde GithHub
+
+
+```{block, type='FOO'}
+Some text for this block.
+```
+
+```{block2, type='rmdnote'}
+If you are planning on printing your book to PDF, you will need a LaTeX distribution. We recommend that you install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
+```
 
 ## Tibbles vs Data Frames
 ## Datos ordenados - Tidy Data
