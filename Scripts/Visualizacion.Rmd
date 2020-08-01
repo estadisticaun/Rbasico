@@ -1,3 +1,5 @@
+# (PART) Visualización {-} 
+
 # Visualización con R{#Vis}
 
 ## Visualización - R base

@@ -1,8 +1,10 @@
+# (PART) Comunicación {-} 
+
 # Publicación de resultados con R {#Pub}
 
 ## Rmarkdown 1
 
-## Rmarkdown 1
+## Rmarkdown 2
 
 ## Pdf, Word y PowerPoint
 

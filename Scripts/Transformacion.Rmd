@@ -1,3 +1,5 @@
+# (PART) Limpieza y Transformación {-} 
+
 # Transformación de datos con R{#Trans}
 
 ## Importar/exportar datos
@@ -22,10 +24,16 @@ library(knitr)
 
 "Necesito un curso para pilotar un helicoptero B-212"
 
+Para instalar paquetes desde CRAN.
 
-````markdown
+```r
 install.packages('') # Función para instalar paquetes desde CRAN
-````
+```
+Para instalar paquetes desde GitHub. Previamente se debe de haber instalado el paquete **devtools**.
+
+```r
+devtools::install_github("tylermorganwall/rayshader") # Función para instalar paquetes desde GitHub
+```
 
 **library(devtools)** devtools para instalar desde GithHub
 

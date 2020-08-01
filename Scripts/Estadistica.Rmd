@@ -1,3 +1,5 @@
+# (PART) Modelamiento {-} 
+
 # Estadística con R {#Est}
 
 ## Estadística descriptiva
