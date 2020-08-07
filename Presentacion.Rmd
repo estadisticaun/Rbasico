@@ -1,0 +1,16 @@
+# Presentación {-#Presenta}
+
+Este libro, de naturaleza web, presenta los contenidos que pueden ser abordados en un primer curso orientado al aprendizaje de R. Este lenguaje, como muchos softwares estadísticos o de otra naturaleza, está conformado por una inmensa cantidad de funcionalidades que complejiza su aprendizaje y, desde luego, su enseñanza. Es tal el crecimiento que ha alcanzado R durante los últimos años que hoy el reto, para quienes trabajamos con él, no es estar actualizados sino lo menos desactualizados posibles; nunca, así nos lo propongamos, alcanzaremos a conocer y dominar todas las posibilidades y funcionalidades que R ofrece en la actualidad.
+
+El contenido del libro se divide en 5 grandes componentes derivados de un enfóque de aprendizaje desde lo que hoy se conoce, en el contexto de la gestión moderna de datos, como _**Ciencia de Datos**_: fundamentos del lenguaje R, limpieza y transformación de datos en R, visualización en R, modelamiento en R y comunicación de resultados en R. Sin importar si se labora en una empresa o se trabaja en el ámbito académico, estos 5 pasos, con mayor o menor medida, deben ser empleados en el proceso de generación de conocimiento a partir de los datos disponibles. Los datos se deben capturar y los mismos son de diversa naturaleza; una vez capturados deben ser importados y trasformados según nuestros intereses; una vez trasformados, para prósitos descriptivos o análiticos, estos deben ser representados de manera gráfica o tabular; agotadas las fases de transformación y visualización, se deben implementar los métodos estadísticos de interés que nos permitan dar respuesta a las preguntas de negocio o de investigación; finalmente, los resultados obtenidos deben ser comunicados a través de diversos medios. Este curso es un intento por crear competencias en los estudiantes que les permita a los mismos enfrentarse a un proceso de gestión de datos con el apoyo de R el cual, como se acaba de ilustrar, va desde la importación de datos hasta la entrega de resultados.
+
+Uno de las cosas más interesantes de R y, a su vez, de las más complejas de asimilar en su proceso de aprendizaje es que existen varios caminos -posibilidades- para obtener el mismo resultado. Dos estudiantes pueden llegar al mismo resultado por dos vías diferentes y, entre ellos, presentar dificultad para entender lo que el otro hizo. No obstante, existen unos fundamentos, reglas o bases del lenguaje que son universales y de las cuales se vale el lenguaje para construir el andamiaje hasta hoy existente. Estos fundamentos, desconocidos por buena parte de los usuarios de R, son centrales para un aprendizaje sostenible a lo largo del tiempo.
+
+Por lo anterior, este primer curso de R es un intento por enseñar a los estudiantes los principales pasos y fundamentos requeridos para adelantar un análisis de manera independiente a través del uso de este lenguaje. A lo largo del curso, además de su sentido orientado a la práctica y de un intento pedagógico en la presentación e ilustración de los diferentes componentes y conceptos, se irán presentando los fundamentos y las reglas que gobiernan este lenguaje de programación. 
+
+**¡Bienvenidos!**
+
+
+
+
+

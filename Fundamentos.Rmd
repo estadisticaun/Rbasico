@@ -4,7 +4,7 @@
 
 <!-- https://www.youtube.com/watch?v=SWxoJqTqo08 -->
 
-Ciclo de vida de la ciencia de los datos
+Ilustración ciclo de vida de la ciencia de los datos
 
 ![Ilustración ciclo de vida Ciencia de Datos](Imagenes/Ciencia_Datos.png)
 
@@ -905,6 +905,11 @@ Revisar [R para principiantes](https://bookdown.org/jboscomendoza/r-principiante
 
 ### if y else
 ### for
+
+![Ilustración de un for](Imagenes/Bucle.jpg)
+
+Tomado de: https://twitter.com/allison_horst/status/1290774616038809600/photo/1
+
 ### while
 ### break y next
 ### repeat
