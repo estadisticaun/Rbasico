@@ -8,47 +8,142 @@ Ilustración ciclo de vida de la ciencia de los datos
 
 ![Ilustración ciclo de vida Ciencia de Datos](Imagenes/Ciencia_Datos.png)
 
-## Introducción a R {#introR}
+## Primeros pasos en R {#introR}
 
+R, como los demás lenguajes de programación, se ejecuta a través de un conjunto de instrucciones que se alojan dentro de un documento llamado programa, script o código conformado por líneas de código y comentarios. Para que un scrip o código pueda ser entendido por nuestras computadoras, estos imponenen algunas reglas básicas. A lo largo de este libro se presentarán, con títulos en color rojo, las reglas básicas del lenguaje de programación R; estas, como toda regla, nunca deben ser violadas ^[A lo largo de los capítulos que conforman este documento se presentarán algunos casos en los cuales estas reglas pueden ser obviadas o ajustadas. Las reglas que permiten estas acciones pueden ser consideradas como *reglas débiles*.].
 
-En R, como en los demás lenguajes de programación un programa se le llama códico o scrip y cada línea de dicho código se conoce como linea de código. Para que un scrip o código de un lenguaje de programación sea entendido por nuestras computadoras, estos imponene algunas reglas básicas. A continuación se presentan las primeras dos reglas básica del lenguaje de programación R.
+La primera regla de R está relacionada con los comentarios. Es decir, la forma como se documenta un código o programa y que el contenido de estos no sean tenidos en cuenta a la hora de la ejecución/compilación de los mismos. Los comentarios son de suma importancia para entender/explicar el contenido o las acciones adelantadas dentro de un programa. Estos son de suma utilidad para nosotros mismos, al momento de olvidar  los porqués del contenido que construimos en un código en el pasado o, para otra u otras personas,  al momento de intendar comprender/entender el contenido de nuestros programas.
 
 <br>
 <blockquote>
-<p><strong><p style="color:red;">Regla: Mayúsculas y Minúsculas - (Case Sensitive)</p></strong><br>
-R, a diferencia de otros lenguajes de programación, distingue/diferencia entre mayúsculas y minúsculas (Case Sensitive). Es decir, una letrá mayúscula es diferente a su contraparte en minúscula.
+<p><strong><p style="color:red;">Regla: Comentarios </p></strong><br>
+En R, los comentarios; es decir, las partes que nos permiten documentar un código se anteceden de la letra numeral **#**. Los comentarios, en el momento de ejecutar un código, no son tenidos en cuenta por nuestras computadoras.
 </p>
 </blockquote>
 <br>
 
-2. **Regla 2. R sólo permite una instrucción por línea de código**
+A continuación, se presenta un ejemplo de un comentario en R.
+```r
+# Este es un comentario en R 
+```
+
+R, como se mencionó al inicio de esta sección, se ejecuta a través de un programa o script el cual está confomado por un conjunto de instrucciones y comentarios que nos permiten obtener los resultados deseados. A continuación, se presenta un ejemplo de un script, programa o código en R.^[En adelante, haremos uso de la palabra **programa ** para hacer referencia a un script o código de R.] 
+
+<p style="color:#e6550d";><i>Ejemplo. Script, programa o código en R</i></p>
+
+```r
+# Ejemplo de un script, programa o código en R.
+x <- 1  # Esta es una línea de código
+y <- 2 
+x + y # Esta es otra línea de código
+```
+El programa de R que se acaba de presentar está conformado por tres líneas de código: la primera, conformada por una variable x, a la que se le asigna el valor 1; la segunda, conformada por una variable y, a la que se le asigna el valor 2 y, finalmente, la tercera línea de código, arroja el resultado de sumar los valores contenidos en la variables x e y.
+
+Cada una de las líneas de un programa, como se mencionó previamente se conoce como _línea de código_ y solo puede existir _una_ instrucción por línea de código. Esta condición deriva en la siguiente regla en R.
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Instrucciones por línea </p></strong><br>
+R solo permite una instrucción por cada una de las líneas que conforman un código o script. En consecuencia, si se ingresan dos o más instrucciones en una misma línea de un código, este genera un error.
+</p>
+</blockquote>
+<br>
+
+A continuación, se presentan dos ejemplos de programas en R. El primero con una instrucción por línea de código (*programa correcto*) y el segundo con más de una instrucción po línea de código (*programa incorrecto*). Al ejecutar el programa incorrecto, el que viola la regla de más de una instrucción por línea de código (*el segundo*), el programa retornará un error.
+
+<p style="color:#e6550d";><i>Ejemplos. Programas correctos e incorrectos en R</i></p>
+
+```r
+# Ejemplo 1. Código o script correcto (una instrucción por línea)
+x <- 1  
+y <- 2 
+x + y 
+
+# Ejemplo 2. Código o script incorrecto (más de una instrucción por línea)
+x <- 1 y <- 2  
+x + y 
+```
+
+El lenguaje de programación R, a diferencia de otros lenguajes, diferencia entre letras mayúsculas y minúsculas (*Case Sensitive*). Este hecho, implica la siguiente regla en este lenguaje.
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Mayúsculas y Minúsculas - (Case Sensitive)</p></strong><br>
+R, a diferencia de otros lenguajes de programación, distingue/diferencia entre letras mayúsculas y minúsculas (Case Sensitive). Es decir, una letrá mayúscula es diferente a su contraparte en minúscula.
+</p>
+</blockquote>
+<br>
+
+<p style="color:#e6550d";><i>Ejemplos. Letras mayúsculas y minúsculas</i></p>
+
+A continuación, se presentan cuatro ejemplos en el que se refleja la importancia de diferenciar las letras mayúsculas y minúsculas en R. En el primero de ellos, el mismo programa expuesto con anterioridad, se presenta un programa con el uso de letras minúsculas. El segundo, el mismo programa con el uso de letras mayúsculas. El tercero, el mismo programa con una combinación correcta de letras mayúsculas y minúsculas. Finalmente, el ejemplo cuatro, presenta el mismo programa con una combinación/uso inorrecto de letras mayúsculas y minúsculas que implica un error en el mismo. En este último ejemplo, el valor 1 se asigna a la letra mayúscula X, el valor 2 a la letra mayúscula Y pero, la suma de los mismos -**tercera línea de código**-, se representa mediante las letras minúsculas x e y cuando se espera que allí se ubiquen sus contrapartes mayúsculas.
+
+```r
+# Ejemplo 1. Script con letras minúsculas.
+x <- 1  
+y <- 2 
+x + y 
+
+# Ejemplo 2. Script con letras mayúsculas.
+x <- 1  
+Y <- 2 
+x + Y 
+
+# Ejemplo 3. Scrip con letras mayúsculas y minúsculas.
+X <- 1  
+y <- 2 
+X + y 
+
+# Ejemplo 4. Error. Mal uso de letras mayúsculas y minúsculas.
+X <- 1  
+Y <- 2 
+x + y 
+```
 
 ## Tipos de datos en R {#Tdatos}
 
-En R existen 5 tipos de datos básicos: lógicos, reales - numéricos, enteros - numéricos, cadena/caracter y complejos
+Esta sección contiene los principales tipos de datos utilizados en R. Aunque existen otros tipos de datos los cuales no serán objeto del presente documento, estos se caracterizan por conformar la base del lenguaje.
+
+### Tipos de datos en R {#Tdatos1}
+
+En R existen 5 tipos de datos básicos: *lógicos*, *numéricos*, *numéricos - enteros*, *cadena/caracter* y *complejos*^[En este documento no haremos referencia a los números complejos. Estos, de amplio uso y estudio en el contexto de las matemáticas, se caracterízan por tener una parte entera y una imaginaria]. A continuación se presenta una breve descripción y se ejemplifican cada uno de estos tipos de datos.
+
 
 1. _**Lógicos**_
 
-Los tipos de datos lógicos, también conocidos como booleanos, representan en R _falso_ o _verdadero_ y se representan mediante las letras o palabras mayúsculas **F** o **FALSE** para el caso de _falso_ y __T__ o  __TRUE__ para el caso de _verdadero_.
+Los tipos de datos *lógicos*, también conocidos como *booleanos*, representan en R _falso_ o _verdadero_ y se representan mediante las letras o palabras mayúsculas **F** o **FALSE** para el caso de _falso_ y __T__ o  __TRUE__ para el caso de _verdadero_. 
 
-<p style="color:#FF0000";><i>Ejemplo. Datos lógicos</i></p>
+_**NOTA**: En los ejemplos que se presentan a continuación y en muchos de los que se presentarán en adelante, el contenido de los mismos tiene dos componentes: el texto del programa el cual está acompañado de colores en su texto y el resultado u output que arroja R al ejecutar/compilar el programa el cual, además de presentarse en letras de color negro, está precedido de un doble numeral (**##**)._
 
-```{r, eval=TRUE, warning=FALSE}
+A continuación se ejemplifican los resultados de compilar tipos de datos lógicos o booleanos en R.
+
+<p style="color:#e6550d";><i>Ejemplo. Datos lógicos</i></p>
+
+```{r, eval=TRUE, warning=FALSE, message=FALSE}
 # Opciones para verdadero (T o TRUE)
+# Con T
 T
+# Con TRUE
 TRUE
+
 # Opciones para falso (F o FALSE)
+# Con F
 F
+# Con FALSE
 FALSE
 ```
 
-Los tipos de datos **numéricos** em R se representan mediante dos tipos de datos (**reales o enteros**). A continuación, se representa el detalle de cada uno de ellos.
+Auque es correcto y más corto el uso de las letras T o F para representar las condiciones de falso o verdadero en R, se recomienda siempre usar las versiones TRUE o FALSE por ser estas más consistentes.
 
-2. _**Reales - numéricos **_
+2. _**Numéricos **_
 
-También conocidos como numéros/datos _decimales_ o _dobles_... En R, el punto **(.)** se utiliza para separar, en un número real, la parte entera de la parte decimal. Por ejemplo, 3.14, 30.48, 2.05, son representaciones de números reales en R. cuando el número es muy grande o muy pequeño R, por defecto, los representa mediante notación científica haciendo uso de la letra (**e**). Por ejemplo, _1e-11_ es la representación científica/notación del número real _0.00000000001_.
+Los tipos de datos *numéricos*, también conocidos como numéros, datos _decimales_ o _dobles_, hacen referencia a aquellos números (positivos o negativos) que se caracterizan por estar conformados por una parte entera y una decimal.En R, el punto **(.)** es el encargado de separar la parte entera de la parte decimal de un número. Por ejemplo, 3.14, 30.48, 2.05, son representaciones de números en R.
 
-<p style="color:#FF0000";><i>Ejemplo. Datos reales/decimales</i></p>
+Cuando un número es muy grande o muy pequeño, por defecto, el programa los representa mediante notación científica haciendo uso de la letra (**e**). Por ejemplo, _1e-11_ es la representación notación/científica^[El número de decimales a partir del cual R representa a los números reales en notación científica se da por defecto y el mismo, si se considera necesario, puede ser modificado] del número real _0.00000000001_.
+
+A continuación, se presentan algunos ejemplos en R de datos numéricos o decimales.
+
+<p style="color:#e6550d";><i>Ejemplo. Datos numéricos/decimales</i></p>
 
 ```{r}
 # numéros reales convencionales
@@ -56,106 +151,161 @@ También conocidos como numéros/datos _decimales_ o _dobles_... En R, el punto 
 3.14
 30.48
 2.05
-# numéros reales pequeños - notación científica
+# numéros reales grandes - notación científica
 1234567891011
-# número reales grandes - notación científica
+# número reales pequeños - notación científica
 0.00000000001
 ```
 
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Números por defecto en R </p></strong><br>
+En R, a menos que se diga lo contrario, todo número, por defecto, es considerado numérico.
+</p>
+</blockquote>
+<br>
+
 3. _**Enteros - numéricos**_
 
-En R, a menos que se le diga lo contrario, todo número, por defecto, es considerado real. Para representar números/datos de tipo entero en R; es decir, aquellos que carecen de parte decimal, estos deben estar acompañados de la letra mayúscula __(L)__. Por ejemplo, 3L representa el número entero 3. 
+Los tipos de datos enteros en R, también conocidos como números enteros, son aquellos que a diferencia de los numéricos, carecen de una parte decimal. Los número enteros en R están acompañados de la letra mayúscula __(L)__. Por ejemplo, 3L representa el número entero _3_ y -10L el número entero _-10_. 
 
-<p style="color:#FF0000";><i>Ejemplo. Datos enteros</i></p>
+<p style="color:#2ca25f";><i>Ejemplo. Datos enteros</i></p>
+
+A continuación, se presentan algunos ejemplos de números enteros en R.
 
 ```{r}
+# Enteros positivos
 5L
 3L
+# Enteros negativos
 -20L
+-1L
 ```
 
 4. _**Cadena o caracter**_
 
-En R, cuando se desea represnetar palabras o caracteres especiales  se  hace a través de los tipos de datos llamados _cadena o  caracter_. Un tipo  de dato caracter o texto en R se representa/encierra mediante comillas dobles "  o sencillas ' pero no a través de una mezcla entre comillas dobles y sencillas. "Hola", "Este es un dato de tipo texto", 'dato con comillas sencillas', son algunos ejemplos de datos de tipo cadena, texto o caracter.
+En R, los datos de tipo *cadena* o *caracter* hacen referencia a aquellos datos que contienen texto en su contenido. Los tipos de dato *caracter* o de *texto* en R se representan/encierran mediante comillas dobles " o sencillas ' pero **núnca** a través de una mezcla o combinación entre los dos tipos de comillas. "Hola mundo", "Este es un dato de tipo texto", 'dato entre comillas sencillas', "dato entre comillas dobles" son algunos ejemplos de datos de tipo *cadena*, *texto* o *caracter* en R.
 
-<p style="color:#FF0000";><i>Ejemplo. Datos cadena/caracter</i></p>
+<p style="color:#2ca25f";><i>Ejemplo. Datos cadena/caracter</i></p>
+
+A continuación, se presentan algunos ejemplos de datos de tipo *cadena* o *caracter* en R. Así mismo, el segundo de los ejemplos, presenta dos ejemplos que combinan comillas dobles y simples hecho que, como ya se mencionó, conducen a un error en R.
 
 ```{r}
-# Con comillas sencillas y dobles
+# Ejemplo 1
+# Con comillas dobles
 "Hola"
 "Este es otro dato de tipo texto"
 "TRUE"
-'dato con comillas sencillas'
-'Tres'
+# Con comillas sencillas
+'dato entre comillas sencillas'
+'FALSE'
 '2.35'
-# Con comillas mezcladas
-# "Cinco' - Retorna un error
 ```
 
-5. _**Complejos**_
+```r
+# Ejemplo 2
+# Con comillas mezcladas (dobles y simples)
 
-<p style="color:#FF0000";><i>Ejemplo. Datos complejos/imaginarios</i></p>
+"Hola' 
+'Hola mundo" 
+
+# Las anteriores dos líneas de código producen errores en R
+```
+
+### Constantes integradas en R {#Constantes}
+
+R, por defecto y de manera especial trae incluido un pequeño número de variables/palabras (5) que permiten la visualización de ciertos datos de tipo *numérico* o *caracter* de alto uso entre los usuarios, en especial, los de habla inglesa. A continuación, se presentan los cinco nombres especiales que trae incluido este software así como sus correspondientes significados. 
+
+* **LETTERS**: las 26 letras mayúsculas del alfabeto romano
+* **letters**: las 26 letras minúsculas del alfabeto romano
+* **month.abb**: abreviaturas de tres letras para los nombres de los meses en inglés
+* **month.name**: los nombres en inglés de los meses del año
+* **pi**: la relación entre la circunferencia de un círculo y su diámetro. También conocido como número _pi_.
+
+<p style="color:#2ca25f";><i>Ejemplo. Constantes integradas en R</i></p>
+
+A continuación, se presenta el resultado de las constantes o palabras integradas y utilizadas por R.
 
 ```{r}
-
+# Letras del abecedario en mayúsculas.
+LETTERS
+# Letras del abecedario en minúsculas.
+letters
+# Primeras tres letras de los nombres de los meses - en inglés.
+month.abb
+# Nombre de los meses - en inglés.
+month.name
+# Número pi
+pi
 ```
 
 ## Operaciones aritméticas y variables en R {#Aritmet}
 
+En esta sección se presentan las principales operaciones aritméticas empleadas en R así como la forma de crear variables en este lenguaje de programación.
+
 ### Operaciones aritméticas en R
 
- 1. **Básicas**: suma (+), resta (-), multiplicación (*) y división (/)-
+R, en sentido estricto, puede ser considerado como una calculadora avanzada. A través de él es posible implementar las operaciones simples de la aritmética (básicas y complementarias) así como algunas operaciones avanzadas que van desde la combinación de las operaciones simples (compuestas) hasta su uso para otro tipo de operaciones (funciones trigonométricas, operaciones logarítmicas, potenciación, uso de radicales, etc.). En este texto, dado su caracter introductorio, se presentan las operaciones aritméticas simples (básicas o complementarias) así como algunas operaciones compuestas derivadas de la aplicación/combinación de dos o más operaciones simples.
 
-<p style="color:#FF0000";><i>Ejemplos. Operaciones aritméticas básicas</i></p>
+ 1. **Operaciones aritméticas simples**: Las operaciones aritméticas básicas o simples empleadas por R son *la suma* (+), *la resta* (-), _la multiplicación_ (*) y _la división_ (/).
+
+<p style="color:#2ca25f";><i>Ejemplos. Operaciones aritméticas básicas</i></p>
+
+A continuación, se presentan algunos ejemplos con las principales operaciones simples empleadas por R.
 
 ```{r}
-#Suma
-3.5 + 7.7
-3L + 10L
+# Suma
+3.5 + 7.7 
+3L + 10L 
 1 + 8
 ```
 
 
 ```{r}
-#Resta
+# Resta
 
 7.7 - 3.7
 3L - 10L
-8 - 6
+8 - pi
 ```
 
 ```{r}
-#Multiplicación
+# Multiplicación
 7.71 * 3.73
 -3L * 10L
 1 * 8
 ```
 
 ```{r}
-#División
+# División
 7.7 / 3.7
 12L / 4L
 -1 / 4
 
 ```
  
- 2. **Complementarias**: -Exponenciales (^), división entera (%/%) y módulos (%%)
+2. **Operaciones aritméticas simples complementarias**: Las operaciones aritméticas simples y complementarias empleadas por R son los *exponentes* (^), *la división entera* (%/%) y *los módulos* (%%). A continuación, se presenta una breve descripción de estos tres subtipos de operaciones simples complementarias.
  
- * _Exponenciales_: Consiste, como se muestra en la fórmula en elevar un número x a una potencia n. Es decir, multiplicar x por sí mismo tantas veces como se defina en n.
+ * _Exponentes_: Consiste en elevar un número x a una potencia n. Es decir, multiplicar x por sí mismo tantas veces como se defina en n (ver siguiente fórmula).
  
- \begin{equation}  x^n \end{equation} 
+ **\begin{equation}  x^n \end{equation}**
  
-  * _Divisón entera_: La división entera de x%/%n devuelve el número máximo de veces que se encuentra n en x.
+Por ejemplo, **\begin{equation}  2^3 \end{equation}** consiste en multiplicar el número 2 por sí mismo 3 veces; es decir, _2x2x2_ cuyo resultado es igual a 8.
  
- * _Módulos_: El módulo x%%n devuelve el residuo o resto de la división entera de x por n.
  
-<p style="color:#FF0000";><i>Ejemplos. Operaciones complementarias</i></p>
+ * _Divisón Entera_: La *división entera* de x%/%n devuelve el número máximo de veces que se encuentra un núemro *n* contenido dentro de un número *x*.
  
+ * _Módulo_: El *módulo* de una división x%%n devuelve el *residuo* o *resto* de la división entera de un número x por un número n.
+ 
+<p style="color:#2ca25f";><i>Ejemplos. Operaciones aritméticas complementarias</i></p>
+
+A continuación, se presentan algunos ejemplos de operaciones aritméticas simples y complementarias en R.
  
 ```{r}
 # Exponenciales
 2^3
 3^2
+5^3
 ```
 
 ```{r}
@@ -172,28 +322,38 @@ En R, cuando se desea represnetar palabras o caracteres especiales  se  hace a t
 9%%4
 ``` 
  
- 
-3. **Operaciones complejas**
+3. **Operaciones compuestas**
 
-Una operación aritmética "compleja" consiste en la combinación de varias operaciones simples.
+Una operación aritmética *compuesta* está conformada por la combinación de varias operaciones simples (sumas, restas, multiplicaciones, divisiones, exponentes, etc.).
 
-<p style="color:#FF0000";><i>Ejemplos. Operaciones complejas</i></p>
+<p style="color:#2ca25f";><i>Ejemplos. Operaciones complejas</i></p>
+
+A continuación, se presentan algunos ejemplos de operaciones aritméticas compuestas.
  
 ```{r}
 2 + 2 + 3*2
 2*5 - 6/2
 6/2*10/2 + 3
-6/2*(2+1)
+6/2*(2+1 + 2^3)
 ```
  
- 4. **Reglas de priorización en operaciones aritméticas en R**
+Al observar detenidamente Los ejemplos de las operaciones aritméticas compuestas que se acaban de ilustrar, nos podemos dar cuenta que estas contienen sumas, restas, multiplicaciones y hacen uso de exponentes y paréntesis. Una pregunta que podría surgir de este hecho es ¿cuál es el orden en el que R calcula estas operaciones?. La respuesta a esta pregunta está contenida en una regla llamada de priorización o precedencia.
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Precedencia o priorización en operaciones aritméticas compuestas</p></strong><br>
+En una operación aritmética compuesta de R, los paréntesis se calculan primero, luego los exponentes, luego la división y multiplicación y, finalmente, la suma y la resta. Esta regla se conoce popularmente como PEMDAS^[La sigla PEMDAS se derivada del inglés para Parentheses (Paréntesis), Exponents (Exponentes), Multiplication-Division (Multiplicación-División), Addition-Subtraction (Suma y resta).]
+</p>
+</blockquote>
+<br> 
  
-**Regla 3.** _"Los paréntesis se calculan primero, luego los exponentes, luego la división y multiplicación, y finalmente, la suma y la resta."_
+En la siguiente ilustración se presenta un ejemplo de la importancia del conocimiento de la regla de priorización o precedencia en R. En esta ilustración las dos operaciones están compuestas de los mismos números, no obstante, los resultados obtenidos son diferentes (17 y 25). En la operación de la parte izquierda (Order by default), la regla PEMDAS indica que primero debemos realizar la multiplicación y luego la suma; en contraste, en la operación de la parte derecha (Using parentheses), la regla de precedencia nos dice que primero dedemos realizar las operaciones contenidas dentro de los paréntesis -la suma- y luego la multiplicación. 
 
-![Ilustración prioridad aritmética en R](Imagenes/Prioridad.svg)
+![Ilustración. Prioridad aritmética en R](Imagenes/Prioridad.svg)
+ 
+ En el siguiente ejemplo se presentan los resultados obtenidos en R al desarrollar las dos operaciones contenidas en la anterior ilustración.
 
-
-<p style="color:#FF0000";><i>Ejemplo. Operaciones con prioridad aritmética</i></p>
+<p style="color:#2ca25f";><i>Ejemplo. Ilustración de aplicación de regla de precedencia o priorización en operaciones aritméticas compuestas</i></p>
 
 ```{r}
 # por defecto
@@ -203,7 +363,9 @@ Una operación aritmética "compleja" consiste en la combinación de varias oper
 (2 + 3)*5
 ```
 
-Ver el siguiente artículo, publicado en el diario el Espectador, sobre la importancia del tema publicado por el profesor Ignación Mantilla, Exrector de la Universidad Nacional de Colombia.
+El conocimiento y uso de la regla de priorización o precencia PEMDAS tiene importantes implicaciones prácticas y técnicas las cuales han generado debate en la comunidad científica y se han convertido en una de las principales fuentes de  error a la hora de enfrentarnos al desarrollo de operaciones artitméticas compuestas. 
+
+El siguiente artículo, publicado en el diario el Espectador por el profesor Ignacio Mantilla, exrector de la Universidad Nacional de Colombia, muestra la importancia del tema el cual, como puede allí leerse, tiene implicaciones de alcance a nivel tecnológico. Invitamos al lector a explorar y analizar detenidamente el contenido de este artículo.
 
 <br>
 
@@ -895,9 +1057,11 @@ recurre[[2]][[3]][[2]]
 recurre[2][[1]][[3]][[2]]
 ```
 
-
 #### Modificar, adicionar y remover elementos de una lista
+
 #### Combinando listas
+
+## Indexación en R {#Indexa}
 
 ## Programación con R {#Progra}
 

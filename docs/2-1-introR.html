@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.1 Introducción a R | Un Primer Curso de R</title>
-  <meta name="description" content="2.1 Introducción a R | Un Primer Curso de R" />
+  <title>2.1 Primeros pasos en R | Un Primer Curso de R</title>
+  <meta name="description" content="2.1 Primeros pasos en R | Un Primer Curso de R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.1 Introducción a R | Un Primer Curso de R" />
+  <meta property="og:title" content="2.1 Primeros pasos en R | Un Primer Curso de R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.1 Introducción a R | Un Primer Curso de R" />
+  <meta name="twitter:title" content="2.1 Primeros pasos en R | Un Primer Curso de R" />
   
   
   
@@ -146,8 +146,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>I Fundamentos</b></span></li>
 <li class="chapter" data-level="2" data-path="2-Fund.html"><a href="2-Fund.html"><i class="fa fa-check"></i><b>2</b> Fundamentos del lenguaje R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="2-1-introR.html"><a href="2-1-introR.html"><i class="fa fa-check"></i><b>2.1</b> Introducción a R</a></li>
-<li class="chapter" data-level="2.2" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html"><i class="fa fa-check"></i><b>2.2</b> Tipos de datos en R</a></li>
+<li class="chapter" data-level="2.1" data-path="2-1-introR.html"><a href="2-1-introR.html"><i class="fa fa-check"></i><b>2.1</b> Primeros pasos en R</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html"><i class="fa fa-check"></i><b>2.2</b> Tipos de datos en R</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html#Tdatos1"><i class="fa fa-check"></i><b>2.2.1</b> Tipos de datos en R</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html#Constantes"><i class="fa fa-check"></i><b>2.2.2</b> Constantes integradas en R</a></li>
+</ul></li>
 <li class="chapter" data-level="2.3" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html"><i class="fa fa-check"></i><b>2.3</b> Operaciones aritméticas y variables en R</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html#operaciones-aritméticas-en-r"><i class="fa fa-check"></i><b>2.3.1</b> Operaciones aritméticas en R</a></li>
@@ -168,53 +172,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.4" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#data-frames"><i class="fa fa-check"></i><b>2.5.4</b> Data frames</a></li>
 <li class="chapter" data-level="2.5.5" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#listas"><i class="fa fa-check"></i><b>2.5.5</b> Listas</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="2-6-Progra.html"><a href="2-6-Progra.html"><i class="fa fa-check"></i><b>2.6</b> Programación con R</a>
+<li class="chapter" data-level="2.6" data-path="2-6-Indexa.html"><a href="2-6-Indexa.html"><i class="fa fa-check"></i><b>2.6</b> Indexación en R</a></li>
+<li class="chapter" data-level="2.7" data-path="2-7-Progra.html"><a href="2-7-Progra.html"><i class="fa fa-check"></i><b>2.7</b> Programación con R</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="2-6-Progra.html"><a href="2-6-Progra.html#if-y-else"><i class="fa fa-check"></i><b>2.6.1</b> if y else</a></li>
-<li class="chapter" data-level="2.6.2" data-path="2-6-Progra.html"><a href="2-6-Progra.html#for"><i class="fa fa-check"></i><b>2.6.2</b> for</a></li>
-<li class="chapter" data-level="2.6.3" data-path="2-6-Progra.html"><a href="2-6-Progra.html#while"><i class="fa fa-check"></i><b>2.6.3</b> while</a></li>
-<li class="chapter" data-level="2.6.4" data-path="2-6-Progra.html"><a href="2-6-Progra.html#break-y-next"><i class="fa fa-check"></i><b>2.6.4</b> break y next</a></li>
-<li class="chapter" data-level="2.6.5" data-path="2-6-Progra.html"><a href="2-6-Progra.html#repeat"><i class="fa fa-check"></i><b>2.6.5</b> repeat</a></li>
-<li class="chapter" data-level="2.6.6" data-path="2-6-Progra.html"><a href="2-6-Progra.html#la-familia-apply"><i class="fa fa-check"></i><b>2.6.6</b> La familia apply</a></li>
+<li class="chapter" data-level="2.7.1" data-path="2-7-Progra.html"><a href="2-7-Progra.html#if-y-else"><i class="fa fa-check"></i><b>2.7.1</b> if y else</a></li>
+<li class="chapter" data-level="2.7.2" data-path="2-7-Progra.html"><a href="2-7-Progra.html#for"><i class="fa fa-check"></i><b>2.7.2</b> for</a></li>
+<li class="chapter" data-level="2.7.3" data-path="2-7-Progra.html"><a href="2-7-Progra.html#while"><i class="fa fa-check"></i><b>2.7.3</b> while</a></li>
+<li class="chapter" data-level="2.7.4" data-path="2-7-Progra.html"><a href="2-7-Progra.html#break-y-next"><i class="fa fa-check"></i><b>2.7.4</b> break y next</a></li>
+<li class="chapter" data-level="2.7.5" data-path="2-7-Progra.html"><a href="2-7-Progra.html#repeat"><i class="fa fa-check"></i><b>2.7.5</b> repeat</a></li>
+<li class="chapter" data-level="2.7.6" data-path="2-7-Progra.html"><a href="2-7-Progra.html#la-familia-apply"><i class="fa fa-check"></i><b>2.7.6</b> La familia apply</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="2-7-Mpracticas.html"><a href="2-7-Mpracticas.html"><i class="fa fa-check"></i><b>2.7</b> Mejores prácticas en R</a></li>
+<li class="chapter" data-level="2.8" data-path="2-8-Mpracticas.html"><a href="2-8-Mpracticas.html"><i class="fa fa-check"></i><b>2.8</b> Mejores prácticas en R</a></li>
 </ul></li>
-<li class="part"><span><b>II Limpieza y Transformación</b></span></li>
-<li class="chapter" data-level="3" data-path="3-Trans.html"><a href="3-Trans.html"><i class="fa fa-check"></i><b>3</b> Transformación de datos con R</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="3-1-importarexportar-datos.html"><a href="3-1-importarexportar-datos.html"><i class="fa fa-check"></i><b>3.1</b> Importar/exportar datos</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="3-1-importarexportar-datos.html"><a href="3-1-importarexportar-datos.html#paquetes-en-r"><i class="fa fa-check"></i><b>3.1.1</b> Paquetes en R</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="3-2-tibbles-vs-data-frames.html"><a href="3-2-tibbles-vs-data-frames.html"><i class="fa fa-check"></i><b>3.2</b> Tibbles vs Data Frames</a></li>
-<li class="chapter" data-level="3.3" data-path="3-3-datos-ordenados-tidy-data.html"><a href="3-3-datos-ordenados-tidy-data.html"><i class="fa fa-check"></i><b>3.3</b> Datos ordenados - Tidy Data</a></li>
-<li class="chapter" data-level="3.4" data-path="3-4-verbos-seleccionar-reubicar-mutar-y-filtrar.html"><a href="3-4-verbos-seleccionar-reubicar-mutar-y-filtrar.html"><i class="fa fa-check"></i><b>3.4</b> Verbos: seleccionar, reubicar, mutar y filtrar</a></li>
-<li class="chapter" data-level="3.5" data-path="3-5-verbos-agrupar-ordenar-y-cruzar-.html"><a href="3-5-verbos-agrupar-ordenar-y-cruzar-.html"><i class="fa fa-check"></i><b>3.5</b> Verbos: agrupar, ordenar y cruzar.</a></li>
-</ul></li>
-<li class="part"><span><b>III Visualización</b></span></li>
-<li class="chapter" data-level="4" data-path="4-Vis.html"><a href="4-Vis.html"><i class="fa fa-check"></i><b>4</b> Visualización con R</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="4-1-visualización-r-base.html"><a href="4-1-visualización-r-base.html"><i class="fa fa-check"></i><b>4.1</b> Visualización - R base</a></li>
-<li class="chapter" data-level="4.2" data-path="4-2-visualización-ggplot-1.html"><a href="4-2-visualización-ggplot-1.html"><i class="fa fa-check"></i><b>4.2</b> Visualización - Ggplot 1</a></li>
-<li class="chapter" data-level="4.3" data-path="4-3-visualización-ggplot-2.html"><a href="4-3-visualización-ggplot-2.html"><i class="fa fa-check"></i><b>4.3</b> Visualización - Ggplot 2</a></li>
-</ul></li>
-<li class="part"><span><b>IV Modelamiento</b></span></li>
-<li class="chapter" data-level="5" data-path="5-Est.html"><a href="5-Est.html"><i class="fa fa-check"></i><b>5</b> Estadística con R</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="5-1-estadística-descriptiva.html"><a href="5-1-estadística-descriptiva.html"><i class="fa fa-check"></i><b>5.1</b> Estadística descriptiva</a></li>
-<li class="chapter" data-level="5.2" data-path="5-2-estadística-bivariada.html"><a href="5-2-estadística-bivariada.html"><i class="fa fa-check"></i><b>5.2</b> Estadística bivariada</a></li>
-<li class="chapter" data-level="5.3" data-path="5-3-regresión-lineal.html"><a href="5-3-regresión-lineal.html"><i class="fa fa-check"></i><b>5.3</b> Regresión lineal</a></li>
-<li class="chapter" data-level="5.4" data-path="5-4-regresión-logística.html"><a href="5-4-regresión-logística.html"><i class="fa fa-check"></i><b>5.4</b> Regresión logística</a></li>
-</ul></li>
-<li class="part"><span><b>V Comunicación</b></span></li>
-<li class="chapter" data-level="6" data-path="6-Pub.html"><a href="6-Pub.html"><i class="fa fa-check"></i><b>6</b> Publicación de resultados con R</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="6-1-rmarkdown-1.html"><a href="6-1-rmarkdown-1.html"><i class="fa fa-check"></i><b>6.1</b> Rmarkdown 1</a></li>
-<li class="chapter" data-level="6.2" data-path="6-2-rmarkdown-2.html"><a href="6-2-rmarkdown-2.html"><i class="fa fa-check"></i><b>6.2</b> Rmarkdown 2</a></li>
-<li class="chapter" data-level="6.3" data-path="6-3-pdf-word-y-powerpoint.html"><a href="6-3-pdf-word-y-powerpoint.html"><i class="fa fa-check"></i><b>6.3</b> Pdf, Word y PowerPoint</a></li>
-</ul></li>
-<li class="part"><span><b>VI Tópicos</b></span></li>
-<li class="chapter" data-level="7" data-path="7-Ava.html"><a href="7-Ava.html"><i class="fa fa-check"></i><b>7</b> Tópicos avanzados con R</a></li>
 </ul>
 
       </nav>
@@ -233,8 +202,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="introR" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Introducción a R</h2>
-<p>En R, como en los demás lenguajes de programación un programa se le llama códico o scrip y cada línea de dicho código se conoce como linea de código. Para que un scrip o código de un lenguaje de programación sea entendido por nuestras computadoras, estos imponene algunas reglas básicas. A continuación se presentan las primeras dos reglas básica del lenguaje de programación R.</p>
+<h2><span class="header-section-number">2.1</span> Primeros pasos en R</h2>
+<p>R, como los demás lenguajes de programación, se ejecuta a través de un conjunto de instrucciones que se alojan dentro de un documento llamado programa, script o código conformado por líneas de código y comentarios. Para que un scrip o código pueda ser entendido por nuestras computadoras, estos imponenen algunas reglas básicas. A lo largo de este libro se presentarán, con títulos en color rojo, las reglas básicas del lenguaje de programación R; estas, como toda regla, nunca deben ser violadas.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>La primera regla de R está relacionada con los comentarios. Es decir, la forma como se documenta un código o programa y que el contenido de estos no sean tenidos en cuenta a la hora de la ejecución/compilación de los mismos. Los comentarios son de suma importancia para entender/explicar el contenido o las acciones adelantadas dentro de un programa. Estos son de suma utilidad para nosotros mismos, al momento de olvidar los porqués del contenido que construimos en un código en el pasado o, para otra u otras personas, al momento de intendar comprender/entender el contenido de nuestros programas.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla: Comentarios
+</p>
+</strong><br>
+En R, los comentarios; es decir, las partes que nos permiten documentar un código se anteceden de la letra numeral <strong>#</strong>. Los comentarios, en el momento de ejecutar un código, no son tenidos en cuenta por nuestras computadoras.
+</p>
+</blockquote>
+<p><br></p>
+<p>A continuación, se presenta un ejemplo de un comentario en R.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="2-1-introR.html#cb1-1"></a><span class="co"># Este es un comentario en R </span></span></code></pre></div>
+<p>R, como se mencionó al inicio de esta sección, se ejecuta a través de un programa o script el cual está confomado por un conjunto de instrucciones y comentarios que nos permiten obtener los resultados deseados. A continuación, se presenta un ejemplo de un script, programa o código en R.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p style="color:#e6550d";><i>Ejemplo. Script, programa o código en R</i></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="2-1-introR.html#cb2-1"></a><span class="co"># Ejemplo de un script, programa o código en R.</span></span>
+<span id="cb2-2"><a href="2-1-introR.html#cb2-2"></a>x &lt;-<span class="st"> </span><span class="dv">1</span>  <span class="co"># Esta es una línea de código</span></span>
+<span id="cb2-3"><a href="2-1-introR.html#cb2-3"></a>y &lt;-<span class="st"> </span><span class="dv">2</span> </span>
+<span id="cb2-4"><a href="2-1-introR.html#cb2-4"></a>x <span class="op">+</span><span class="st"> </span>y <span class="co"># Esta es otra línea de código</span></span></code></pre></div>
+<p>El programa de R que se acaba de presentar está conformado por tres líneas de código: la primera, conformada por una variable x, a la que se le asigna el valor 1; la segunda, conformada por una variable y, a la que se le asigna el valor 2 y, finalmente, la tercera línea de código, arroja el resultado de sumar los valores contenidos en la variables x e y.</p>
+<p>Cada una de las líneas de un programa, como se mencionó previamente se conoce como <em>línea de código</em> y solo puede existir <em>una</em> instrucción por línea de código. Esta condición deriva en la siguiente regla en R.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla: Instrucciones por línea
+</p>
+</strong><br>
+R solo permite una instrucción por cada una de las líneas que conforman un código o script. En consecuencia, si se ingresan dos o más instrucciones en una misma línea de un código, este genera un error.
+</p>
+</blockquote>
+<p><br></p>
+<p>A continuación, se presentan dos ejemplos de programas en R. El primero con una instrucción por línea de código (<em>programa correcto</em>) y el segundo con más de una instrucción po línea de código (<em>programa incorrecto</em>). Al ejecutar el programa incorrecto, el que viola la regla de más de una instrucción por línea de código (<em>el segundo</em>), el programa retornará un error.</p>
+<p style="color:#e6550d";><i>Ejemplos. Programas correctos e incorrectos en R</i></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="2-1-introR.html#cb3-1"></a><span class="co"># Ejemplo 1. Código o script correcto (una instrucción por línea)</span></span>
+<span id="cb3-2"><a href="2-1-introR.html#cb3-2"></a>x &lt;-<span class="st"> </span><span class="dv">1</span>  </span>
+<span id="cb3-3"><a href="2-1-introR.html#cb3-3"></a>y &lt;-<span class="st"> </span><span class="dv">2</span> </span>
+<span id="cb3-4"><a href="2-1-introR.html#cb3-4"></a>x <span class="op">+</span><span class="st"> </span>y </span>
+<span id="cb3-5"><a href="2-1-introR.html#cb3-5"></a></span>
+<span id="cb3-6"><a href="2-1-introR.html#cb3-6"></a><span class="co"># Ejemplo 2. Código o script incorrecto (más de una instrucción por línea)</span></span>
+<span id="cb3-7"><a href="2-1-introR.html#cb3-7"></a>x &lt;-<span class="st"> </span><span class="dv">1</span> y &lt;-<span class="st"> </span><span class="dv">2</span>  </span>
+<span id="cb3-8"><a href="2-1-introR.html#cb3-8"></a>x <span class="op">+</span><span class="st"> </span>y </span></code></pre></div>
+<p>El lenguaje de programación R, a diferencia de otros lenguajes, diferencia entre letras mayúsculas y minúsculas (<em>Case Sensitive</em>). Este hecho, implica la siguiente regla en este lenguaje.</p>
 <br>
 <blockquote>
 <p>
@@ -243,12 +258,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Regla: Mayúsculas y Minúsculas - (Case Sensitive)
 </p>
 </strong><br>
-R, a diferencia de otros lenguajes de programación, distingue/diferencia entre mayúsculas y minúsculas (Case Sensitive). Es decir, una letrá mayúscula es diferente a su contraparte en minúscula.
+R, a diferencia de otros lenguajes de programación, distingue/diferencia entre letras mayúsculas y minúsculas (Case Sensitive). Es decir, una letrá mayúscula es diferente a su contraparte en minúscula.
 </p>
 </blockquote>
 <p><br></p>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Regla 2. R sólo permite una instrucción por línea de código</strong></li>
+<p style="color:#e6550d";><i>Ejemplos. Letras mayúsculas y minúsculas</i></p>
+<p>A continuación, se presentan cuatro ejemplos en el que se refleja la importancia de diferenciar las letras mayúsculas y minúsculas en R. En el primero de ellos, el mismo programa expuesto con anterioridad, se presenta un programa con el uso de letras minúsculas. El segundo, el mismo programa con el uso de letras mayúsculas. El tercero, el mismo programa con una combinación correcta de letras mayúsculas y minúsculas. Finalmente, el ejemplo cuatro, presenta el mismo programa con una combinación/uso inorrecto de letras mayúsculas y minúsculas que implica un error en el mismo. En este último ejemplo, el valor 1 se asigna a la letra mayúscula X, el valor 2 a la letra mayúscula Y pero, la suma de los mismos -<strong>tercera línea de código</strong>-, se representa mediante las letras minúsculas x e y cuando se espera que allí se ubiquen sus contrapartes mayúsculas.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="2-1-introR.html#cb4-1"></a><span class="co"># Ejemplo 1. Script con letras minúsculas.</span></span>
+<span id="cb4-2"><a href="2-1-introR.html#cb4-2"></a>x &lt;-<span class="st"> </span><span class="dv">1</span>  </span>
+<span id="cb4-3"><a href="2-1-introR.html#cb4-3"></a>y &lt;-<span class="st"> </span><span class="dv">2</span> </span>
+<span id="cb4-4"><a href="2-1-introR.html#cb4-4"></a>x <span class="op">+</span><span class="st"> </span>y </span>
+<span id="cb4-5"><a href="2-1-introR.html#cb4-5"></a></span>
+<span id="cb4-6"><a href="2-1-introR.html#cb4-6"></a><span class="co"># Ejemplo 2. Script con letras mayúsculas.</span></span>
+<span id="cb4-7"><a href="2-1-introR.html#cb4-7"></a>x &lt;-<span class="st"> </span><span class="dv">1</span>  </span>
+<span id="cb4-8"><a href="2-1-introR.html#cb4-8"></a>Y &lt;-<span class="st"> </span><span class="dv">2</span> </span>
+<span id="cb4-9"><a href="2-1-introR.html#cb4-9"></a>x <span class="op">+</span><span class="st"> </span>Y </span>
+<span id="cb4-10"><a href="2-1-introR.html#cb4-10"></a></span>
+<span id="cb4-11"><a href="2-1-introR.html#cb4-11"></a><span class="co"># Ejemplo 3. Scrip con letras mayúsculas y minúsculas.</span></span>
+<span id="cb4-12"><a href="2-1-introR.html#cb4-12"></a>X &lt;-<span class="st"> </span><span class="dv">1</span>  </span>
+<span id="cb4-13"><a href="2-1-introR.html#cb4-13"></a>y &lt;-<span class="st"> </span><span class="dv">2</span> </span>
+<span id="cb4-14"><a href="2-1-introR.html#cb4-14"></a>X <span class="op">+</span><span class="st"> </span>y </span>
+<span id="cb4-15"><a href="2-1-introR.html#cb4-15"></a></span>
+<span id="cb4-16"><a href="2-1-introR.html#cb4-16"></a><span class="co"># Ejemplo 4. Error. Mal uso de letras mayúsculas y minúsculas.</span></span>
+<span id="cb4-17"><a href="2-1-introR.html#cb4-17"></a>X &lt;-<span class="st"> </span><span class="dv">1</span>  </span>
+<span id="cb4-18"><a href="2-1-introR.html#cb4-18"></a>Y &lt;-<span class="st"> </span><span class="dv">2</span> </span>
+<span id="cb4-19"><a href="2-1-introR.html#cb4-19"></a>x <span class="op">+</span><span class="st"> </span>y </span></code></pre></div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>A lo largo de los capítulos que conforman este documento se presentarán algunos casos en los cuales estas reglas pueden ser obviadas o ajustadas. Las reglas que permiten estas acciones pueden ser consideradas como <em>reglas débiles</em>.<a href="2-1-introR.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>En adelante, haremos uso de la palabra <strong>programa </strong> para hacer referencia a un script o código de R.<a href="2-1-introR.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 <h2 style="color:#2ca25f;">Comentarios</h2>
