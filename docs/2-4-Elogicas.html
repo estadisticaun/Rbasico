@@ -156,7 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html#operaciones-aritméticas-en-r"><i class="fa fa-check"></i><b>2.3.1</b> Operaciones aritméticas en R</a></li>
 <li class="chapter" data-level="2.3.2" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html#variables-en-r"><i class="fa fa-check"></i><b>2.3.2</b> Variables en R</a></li>
-<li class="chapter" data-level="2.3.3" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html#identificando-el-tipo-de-variables---primera-función"><i class="fa fa-check"></i><b>2.3.3</b> Identificando el tipo de variables - Primera función</a></li>
+<li class="chapter" data-level="2.3.3" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html#identificando-el-tipo-de-variables"><i class="fa fa-check"></i><b>2.3.3</b> Identificando el tipo de variables</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="2-4-Elogicas.html"><a href="2-4-Elogicas.html"><i class="fa fa-check"></i><b>2.4</b> Expresiones lógicas en R</a>
 <ul>
@@ -217,44 +217,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>A continuación se presentan dos tipos de ejemplos con el uso de expresiones regulares: <em>simples</em> y a través de <em>expresiones aritméticas</em></p>
 <p style="color:#FF0000";><i>Ejemplo. Expresiones lógicas simples</i></p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="2-4-Elogicas.html#cb124-1"></a><span class="dv">3</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="2-4-Elogicas.html#cb159-1"></a><span class="dv">3</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="2-4-Elogicas.html#cb126-1"></a><span class="dv">3</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="2-4-Elogicas.html#cb161-1"></a><span class="dv">3</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="2-4-Elogicas.html#cb128-1"></a><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="2-4-Elogicas.html#cb163-1"></a><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="2-4-Elogicas.html#cb130-1"></a><span class="dv">4</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="2-4-Elogicas.html#cb165-1"></a><span class="dv">4</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="2-4-Elogicas.html#cb132-1"></a><span class="dv">3</span> <span class="op">==</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="2-4-Elogicas.html#cb167-1"></a><span class="dv">3</span> <span class="op">==</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="2-4-Elogicas.html#cb134-1"></a><span class="dv">3</span> <span class="op">!=</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="2-4-Elogicas.html#cb169-1"></a><span class="dv">3</span> <span class="op">!=</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="2-4-Elogicas.html#cb136-1"></a><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="2-4-Elogicas.html#cb171-1"></a><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="2-4-Elogicas.html#cb138-1"></a><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="2-4-Elogicas.html#cb173-1"></a><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="2-4-Elogicas.html#cb140-1"></a><span class="ot">FALSE</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="2-4-Elogicas.html#cb175-1"></a><span class="ot">FALSE</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="2-4-Elogicas.html#cb142-1"></a><span class="ot">FALSE</span> <span class="op">!=</span><span class="st"> </span><span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="2-4-Elogicas.html#cb177-1"></a><span class="ot">FALSE</span> <span class="op">!=</span><span class="st"> </span><span class="dv">0</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p><strong>Regla 5.</strong></p>
 <ul>
 <li><em>Al evaluar un operador lógico con expresiones aritméticas, primero se evaluan las expresiones aritméticas y luego las expresiones lógicas</em></li>
 </ul>
 <p style="color:#FF0000";><i>Ejemplo. Operaciones lógicas entre expresiones aritméticas</i></p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="2-4-Elogicas.html#cb144-1"></a><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">24.90</span> <span class="op">-</span><span class="st"> </span><span class="fl">21.15</span></span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="2-4-Elogicas.html#cb179-1"></a><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">24.90</span> <span class="op">-</span><span class="st"> </span><span class="fl">21.15</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="2-4-Elogicas.html#cb146-1"></a>apple_profit &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span> </span>
-<span id="cb146-2"><a href="2-4-Elogicas.html#cb146-2"></a>mango_profit &lt;-<span class="st"> </span><span class="fl">24.90</span> <span class="op">-</span><span class="st"> </span><span class="fl">21.15</span></span>
-<span id="cb146-3"><a href="2-4-Elogicas.html#cb146-3"></a></span>
-<span id="cb146-4"><a href="2-4-Elogicas.html#cb146-4"></a>apple_profit <span class="op">&lt;</span><span class="st"> </span>mango_profit</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="2-4-Elogicas.html#cb181-1"></a>apple_profit &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span> </span>
+<span id="cb181-2"><a href="2-4-Elogicas.html#cb181-2"></a>mango_profit &lt;-<span class="st"> </span><span class="fl">24.90</span> <span class="op">-</span><span class="st"> </span><span class="fl">21.15</span></span>
+<span id="cb181-3"><a href="2-4-Elogicas.html#cb181-3"></a></span>
+<span id="cb181-4"><a href="2-4-Elogicas.html#cb181-4"></a>apple_profit <span class="op">&lt;</span><span class="st"> </span>mango_profit</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Finalmente, en R se puede almacenar el resultado de una comparación lógica dentro de una variable.</p>
 <p>logical_var &lt;- apple_profit &lt; mango_profit</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="2-4-Elogicas.html#cb148-1"></a>apple_sold &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">*</span><span class="st"> </span>12L</span>
-<span id="cb148-2"><a href="2-4-Elogicas.html#cb148-2"></a>lemon_sold &lt;-<span class="st"> </span><span class="fl">4.99</span> <span class="op">*</span><span class="st"> </span>24L</span>
-<span id="cb148-3"><a href="2-4-Elogicas.html#cb148-3"></a>logical_var &lt;-<span class="st"> </span>apple_sold <span class="op">==</span><span class="st"> </span>lemon_sold</span>
-<span id="cb148-4"><a href="2-4-Elogicas.html#cb148-4"></a>logical_var</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="2-4-Elogicas.html#cb183-1"></a>apple_sold &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">*</span><span class="st"> </span>12L</span>
+<span id="cb183-2"><a href="2-4-Elogicas.html#cb183-2"></a>lemon_sold &lt;-<span class="st"> </span><span class="fl">4.99</span> <span class="op">*</span><span class="st"> </span>24L</span>
+<span id="cb183-3"><a href="2-4-Elogicas.html#cb183-3"></a>logical_var &lt;-<span class="st"> </span>apple_sold <span class="op">==</span><span class="st"> </span>lemon_sold</span>
+<span id="cb183-4"><a href="2-4-Elogicas.html#cb183-4"></a>logical_var</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Los operadores relacionales se emplean para hacer comparaciones entre valores (expresiones). El resultado de la aplicación de los operadores relacionales es TRUE o FALSE</p>
 </div>
@@ -293,11 +293,11 @@ a+(1:b)
 (a+1):b</p>
 <p><a href="https://twitter.com/necronet/status/1286129628718018560">Caso tomado de</a></p>
 <p style="color:#FF0000";><i>Ejemplo. Combinando operadores</i></p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="2-4-Elogicas.html#cb150-1"></a>apple_profit &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span></span>
-<span id="cb150-2"><a href="2-4-Elogicas.html#cb150-2"></a>mango_profit &lt;-<span class="st"> </span><span class="fl">24.90</span> <span class="op">-</span><span class="st"> </span><span class="fl">21.15</span></span>
-<span id="cb150-3"><a href="2-4-Elogicas.html#cb150-3"></a>lemon_profit &lt;-<span class="st"> </span><span class="fl">4.99</span> <span class="op">-</span><span class="st"> </span><span class="fl">3.20</span></span>
-<span id="cb150-4"><a href="2-4-Elogicas.html#cb150-4"></a>logical_var &lt;-<span class="st"> </span>apple_profit <span class="op">&lt;=</span><span class="st"> </span>mango_profit <span class="op">||</span><span class="st"> </span>apple_profit <span class="op">&gt;</span><span class="st"> </span>mango_profit</span>
-<span id="cb150-5"><a href="2-4-Elogicas.html#cb150-5"></a>logical_var</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="2-4-Elogicas.html#cb185-1"></a>apple_profit &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span></span>
+<span id="cb185-2"><a href="2-4-Elogicas.html#cb185-2"></a>mango_profit &lt;-<span class="st"> </span><span class="fl">24.90</span> <span class="op">-</span><span class="st"> </span><span class="fl">21.15</span></span>
+<span id="cb185-3"><a href="2-4-Elogicas.html#cb185-3"></a>lemon_profit &lt;-<span class="st"> </span><span class="fl">4.99</span> <span class="op">-</span><span class="st"> </span><span class="fl">3.20</span></span>
+<span id="cb185-4"><a href="2-4-Elogicas.html#cb185-4"></a>logical_var &lt;-<span class="st"> </span>apple_profit <span class="op">&lt;=</span><span class="st"> </span>mango_profit <span class="op">||</span><span class="st"> </span>apple_profit <span class="op">&gt;</span><span class="st"> </span>mango_profit</span>
+<span id="cb185-5"><a href="2-4-Elogicas.html#cb185-5"></a>logical_var</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
