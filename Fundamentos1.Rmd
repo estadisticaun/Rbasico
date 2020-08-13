@@ -1,92 +1,4 @@
 
-## Expresiones lógicas en R {#Elogicas}
-
-Las expresiones lógicas se basan en los literales lógicos. Es decir, TRUE y FALSE o simplemente T y F. 
-
-### Operadores Relacionales
-
-Los _operadores relacionales_ disponibles en R son:
-
- * _**Menor que ( < )**_
- * _**Mayor que ( > )**_
- * _**Menor o igual que ( <= )**_
- * _**Mayor o igual que ( >= )**_
- * _**Igual a ( == )**_
- * _**No es igual a (diferente) ( != )**_
-
-
-A continuación se presentan dos tipos de ejemplos con el uso de expresiones regulares: _simples_ y a través de _expresiones aritméticas_
-
-<p style="color:#FF0000";><i>Ejemplo. Expresiones lógicas simples</i></p>
-
-```{r}
-3 >= 2
-3 > 3
-1 < 3
-4 <= 4
-3 == 3
-3 != 3
-TRUE == FALSE
-TRUE == 1
-FALSE == 0
-FALSE != 0
-```
-
-**Regla 5.**
-
-* _Al evaluar un operador lógico con expresiones aritméticas, primero se evaluan las expresiones aritméticas y luego las expresiones lógicas_
-
-<p style="color:#FF0000";><i>Ejemplo. Operaciones lógicas entre expresiones aritméticas</i></p>
-
-```{r}
-12.10 - 10.50 < 24.90 - 21.15
-
-apple_profit <- 12.10 - 10.50 
-mango_profit <- 24.90 - 21.15
-
-apple_profit < mango_profit
-```
-
-Finalmente, en R se puede almacenar el resultado de una comparación lógica dentro de una variable.
-
-logical_var <- apple_profit < mango_profit
-
-```{r}
-apple_sold <- 12.10 * 12L
-lemon_sold <- 4.99 * 24L
-logical_var <- apple_sold == lemon_sold
-logical_var
-```
-
-Los operadores relacionales se emplean para hacer comparaciones entre valores (expresiones). El resultado de la aplicación de los operadores relacionales es TRUE o FALSE
-
-### Operadores Lógicos
-
-Los _operadores lógicos_ disponibles en R son:
-
-
- * _**No lógico ( ! )**_
- * _** Y lógico ( & )**_
- * _** O lógico ( | )**_
- 
-Revisar los operadores (&& y ||), como se presenta en la siguiente ilustración.
-
-![Ilustración Resultado operadores lógicos](Imagenes/Operadores_Logicos.svg)
-
-### Combinando operadores
-
-**Regla 5. Priorización o precedencia general**
-
-Teniendo en cuenta todos los operadores vistos hasta ahora, la regla de priorización general es:
-
- * _Paréntesis_
- * _Exponentes_
- * _División y multiplicación_
- * _Adición y sustracción_
- * _Operadores relacionales_
- * _Operadores logicos_
-
-
 _**Estudiarr el siguiente caso con vectores**_
 
 a <- 3
@@ -100,15 +12,7 @@ a+(1:b)
 [Caso tomado de](https://twitter.com/necronet/status/1286129628718018560)
 
 
-<p style="color:#FF0000";><i>Ejemplo. Combinando operadores</i></p>
- 
-```{r}
-apple_profit <- 12.10 - 10.50
-mango_profit <- 24.90 - 21.15
-lemon_profit <- 4.99 - 3.20
-logical_var <- apple_profit <= mango_profit || apple_profit > mango_profit
-logical_var
-```
+
 
 ## Estructuras de datos {#Edatos}
 

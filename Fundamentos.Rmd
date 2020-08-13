@@ -535,3 +535,192 @@ class(var_5)
 
 El tipo de dato contenido en la variable del ejemplo 1 (var_1) es de tipo lógico, el de la variable 2 (var_2) es de tipo entero, el de las variable 3 y 4 (var_3 y var_4) es de tipo numérico y, finalmente, el tipo de dato contenido en la variable del ejemplo 5 (var_5) es de tipo cadena o caracter.
 
+## Expresiones lógicas en R {#Elogicas}
+
+Una expresión lógica en R está compúesta por dos componentes mediados por operadores que pueden ser de dos tipos: relacionales o lógicos. A continuación, se presenta un ejemplo con una operación lógica en R. Esta, como se mencionó, está compuesto de dos partes (_izquierda y derecha_) y es mediada por un operador lógico (**>=**). En específico, la expresión lógica del siguiente ejemplo indaga si el número 5 (_parte izquierda_) es mayor o igual **>=** (operador relacional) que el número 4 (_parte derecha_). 
+
+```r
+# Ejemplo de una expresión lógica
+5 >= 4
+```
+
+El resultado de una operación lógica es un dato de tipo booleano (TRUE o FALSE)^[En el ejemplo de la expresión lógica 5 >= 4, el resultado es igual a TRUE dado que 5 es mayor o igual que 4]. Este hecho, implica la siguiente regla aplicable a este lenguaje de programación.
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Resultado de expresiones lógicas </p></strong><br>
+En R, el resultado de una operación lógica, es un dato o literal de tipo booleano (TRUE o FALSE)
+</p>
+</blockquote>
+<br>
+
+### Operadores Relacionales
+
+Como se mencionó previamente, en R existen dos tipos de operadores asociados a las expresiones lógicas: relacionales y lógicos. Los _operadores relacionales_ disponibles en R son:
+
+ * _**Menor que ( < )**_
+ * _**Mayor que ( > )**_
+ * _**Menor o igual que ( <= )**_
+ * _**Mayor o igual que ( >= )**_
+ * _**Igual a ( == )**_
+ * _**No es igual a (diferente) ( != )**_
+
+A continuación, se presentan algunos ejemplos de expresiones lógicas en R haciendo uso de operadores relacionales con sus respectivos resultados (TRUE o FALSE). 
+
+<p style="color:#e6550d";><i>Ejemplo. Expresiones lógicas con operadores relacionales</i></p>
+
+```{r}
+# Ejemplo 1
+1 < 3
+# Ejemplo 2
+3 > 3
+# Ejemplo 3
+4 <= 4
+# Ejemplo 4
+3 >= 2
+# Ejemplo 5
+3 == 3
+# Ejemplo 6
+TRUE == FALSE
+# Ejemplo 7
+TRUE == 1
+# Ejemplo 8
+FALSE == 0
+# Ejemplo 9
+3 != 3
+# Ejemplo 10
+FALSE != 0
+# Ejemplo 11
+"Uno" != "1"
+# Ejemplo 12
+"Uno" == "Uno"
+```
+
+1. **Operaciones lógicas con operaciones aritméticas**: 
+
+Una expresión lógica, además de operadores relacionales, puede involucrar operaciones aritméticas simples, complementarias o compuestas. El ejemplo, que se presenta a continuación, ilustra una expresión lógica que involucra operaciones ariméticas compuestas.
+
+<p style="color:#e6550d";><i>Ejemplo. Expresiones lógicas con operadores relacionales y operaciones ariméticas</i></p>
+
+```{r}
+12.10 - 10.50 < 24.90 * 21.15
+```
+
+Una pregunta que surge, al momento de disponer de una operación lógica que involucra operaciones arirméticas y lógicas es qué evalúa R primero, ¿la operación aritmética o la expresión lógica? La respuesta a esta inquietud conduce a la siguiente regla del lenguaje.
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Precedencia en expresiones lógicas</p></strong><br>
+En R, al evaluar una expresión lógica que hace uso de operadores relacionales y operaciones aritméticas, primero se evalúan las expresiones aritméticas y luego las expresiones lógicas
+</p>
+</blockquote>
+<br>
+
+2. **Operaciones lógicas haciendo uso de variables**: 
+
+El resultado de las operaciones aritméticas, así como de las expresiones lógicas, pueden ser almacenados a través del uso de variables. Es decir, en lugar de evaluar de manera directa una expresión lógica y sus componentes, estos pueden ser evaluados previamente a través del uso de variables. A continuación, se presentan 2 ejemplos de expresiones lógicas en las que se hace uso  de variables.
+
+<p style="color:#e6550d";><i>Ejemplo. Expresiones lógicas con operadores relacionales y variables</i></p>
+
+```{r}
+# Ejemplo 1
+Var_1 <- 12.10 - 10.50 
+Var_2 <- 24.90 - 21.15
+
+Var_1 < Var_2
+
+# Ejemplo 2
+Var_3 <- 12.10 * 12L
+Var_4<- 4.99 * 24L
+Var_5 <- Var_3 == Var_4
+Var_5
+```
+
+En el ejemplo 1, se crean las variables Var_1 y Var_2 que contienen el resultado de aplicar dos operaciones aritméticas compuestas y, en la tercera línea del código (Var_1 < Var_2), se evalúa la expresión lógica propuesta entre estas dos variables (Var_1 < Var_2). En el ejemplo 2, las variables Var_3 y Var_4 contienen los resultados de dos operaciones aritméticas simples y la variable Var_5 el resultado de la operación lógica definida entre estas dos variables (Var_3 == Var_4). En este ejemplo, la  última línea del código (la 4) nos permite visualizar el resultado de la operación lógica implementada a través del uso de variables.
+
+```{r}
+12.10 * 12L == 4.99 * 24L
+```
+
+### Operadores Lógicos
+
+Los _operadores lógicos_ en R permiten evaluar la condiciones de verdad o de falsedad^[Estos operadores hacen parte de lo que en lógica matemática se conoce como tablas de verdad. En R, en el contexto de los operadores se hace uso de las tablas de verdad asociadas a la conjunción (∧), la disyunción (∨) y la  negación (¬)]  al comparar los resultados entre  dos operaciones lógicas relacionales.
+
+Los _operadores lógicos_ disponibles en R son:
+
+
+ * _**Y lógico ( & )**_
+ * _**O lógico ( | )**_
+ * _**No lógico ( ! )**_
+ 
+
+Los resultados obtenidos a la hora de la aplicación de los tres operadores lógicos disponibles en R se presentan en el gráfico que se dispone a continuación. El resultado de una operación lógica que involucra el operador lógico & (Y) solamente será cierta (TRUE) cuando las dos condiciones evaluadas sean ciertas. El resultado de una operación lógica que involucra el operador lógico | (O) solamente será falsa (FALSE) cuando las dos condiciones evaluadas sean falsas y, finalmente, el operador de negación (NO) cambia el resultado obtenido (TRUE por FALSE y viceversa).
+
+![Ilustración Resultado operadores lógicos](Imagenes/Logicos.png)
+
+
+A continuación, se presnetan los resultados en R de los operadores lógicos expuestos en la anterior imagen.
+
+<p style="color:#e6550d";><i>Ejemplo. Resultados expresiones lógicas con operadores lógicos</i></p>
+
+```{r}
+# Con el operador lógico &
+TRUE & TRUE
+TRUE & FALSE
+FALSE & TRUE
+FALSE & FALSE
+# Con el operador lógico |
+TRUE | TRUE
+TRUE | FALSE
+FALSE | TRUE
+FALSE | FALSE
+# Con el operador lógico de negación
+!TRUE
+!FALSE
+```
+
+### Combinando operadores
+
+En buena parte de esta sección hemos explorado las posibilidades que nos ofrece R para construir operaciones aritméticas simples o compuestas, disponer los resultados obtenidos dentro de variables así como crear expresiones de tipo lógico las cuales pueden estar asociadas a operadores relacionales o lógicos. Para finalizar esta sección, exploraremos la forma como R evalúa operaciones lógicas que hacen uso de los múltiples conceptos vistos hasta ahora. Para ello, se presenta a modo de ejemplo, la siguiente expresión lógica. 
+
+```r
+# Ejemplo de una expresión lógica compleja
+(40/2^3) + 2 >= 7 | 5*5  - 5 < 20
+```
+Al explorar el contenido de la anterior expresión lógica podemos observar que esta contiene operaciones aritméticas compuestas conformadas por exponentes, sumas, restas, divisiones, multiplicaciones y paréntesis. Así mismo, el ejemplo hace uso de expresiones lógicas asociadas a operadores relacionales y lógicos. La pregunta que surje ahora es: ¿cuál es el resultado de esta operación y cómo R procede para su desarrollo o evaluación? Para dara respuesta a ello, se presenta la siguiente regla del lenguaje la cual puede ser considerada de alcance general ya que incluye otras reglas presentadas hasta ahora.
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Precedencia o priorización general en R </p></strong><br>
+En R, teniendo en cuenta los operadores vistos hasta ahora y que conforman las operaciones aritméticas y las expresiones lógicas, la regla de priorización general que gobierna la evaluación de dichas expresiones es:
+<br><br>
+<ol>
+
+<li>Paréntesis</li>
+<li>Exponentes</li>
+<li>División y multiplicación</li>
+<li>Adición y sustracción</li>
+<li>Operadores relacionales</li>
+<li>Operadores logicos</li>
+
+</ol>  
+</p>
+</blockquote>
+<br>
+
+Es decir, en el ejemplo expuesto anteriormente, en el proceso de evaluación/compilación, el lenguaje primero realiza las operaciones que están dentro de los paréntesis, paso seguido calcula las multiplicaciones, luego las sumas y las restas y, finalmente, evalúa las expresiones lógicas asociadas a operadores relacionales para culminar con la evaluación resultante que involucra a los operadores de tipo lógico. A continuación, se presenta el resultado en R al evaluar la expresión lógica de nuestro ejemplo así como un ejemplo complementario a este.
+
+<p style="color:#e6550d";><i>Ejemplo. Resultados expresiones lógicas compuestas </i></p>
+
+```{r}
+# Ejemplo 1
+(40/2^3) + 2 >= 7 | 5*5  - 5 < 20
+
+# Ejemplo 2
+(40/2^3) + 2 >= 7 & 5*5  - 5 < 20
+
+```
+
+
+
+

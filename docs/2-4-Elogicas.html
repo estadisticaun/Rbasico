@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="2-3-Aritmet.html"/>
-<link rel="next" href="2-5-Edatos.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -164,25 +164,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.2" data-path="2-4-Elogicas.html"><a href="2-4-Elogicas.html#operadores-lógicos"><i class="fa fa-check"></i><b>2.4.2</b> Operadores Lógicos</a></li>
 <li class="chapter" data-level="2.4.3" data-path="2-4-Elogicas.html"><a href="2-4-Elogicas.html#combinando-operadores"><i class="fa fa-check"></i><b>2.4.3</b> Combinando operadores</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html"><i class="fa fa-check"></i><b>2.5</b> Estructuras de datos</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#vectores"><i class="fa fa-check"></i><b>2.5.1</b> Vectores</a></li>
-<li class="chapter" data-level="2.5.2" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#matrices"><i class="fa fa-check"></i><b>2.5.2</b> Matrices</a></li>
-<li class="chapter" data-level="2.5.3" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#arreglos"><i class="fa fa-check"></i><b>2.5.3</b> Arreglos</a></li>
-<li class="chapter" data-level="2.5.4" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#data-frames"><i class="fa fa-check"></i><b>2.5.4</b> Data frames</a></li>
-<li class="chapter" data-level="2.5.5" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#listas"><i class="fa fa-check"></i><b>2.5.5</b> Listas</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="2-6-Indexa.html"><a href="2-6-Indexa.html"><i class="fa fa-check"></i><b>2.6</b> Indexación en R</a></li>
-<li class="chapter" data-level="2.7" data-path="2-7-Progra.html"><a href="2-7-Progra.html"><i class="fa fa-check"></i><b>2.7</b> Programación con R</a>
-<ul>
-<li class="chapter" data-level="2.7.1" data-path="2-7-Progra.html"><a href="2-7-Progra.html#if-y-else"><i class="fa fa-check"></i><b>2.7.1</b> if y else</a></li>
-<li class="chapter" data-level="2.7.2" data-path="2-7-Progra.html"><a href="2-7-Progra.html#for"><i class="fa fa-check"></i><b>2.7.2</b> for</a></li>
-<li class="chapter" data-level="2.7.3" data-path="2-7-Progra.html"><a href="2-7-Progra.html#while"><i class="fa fa-check"></i><b>2.7.3</b> while</a></li>
-<li class="chapter" data-level="2.7.4" data-path="2-7-Progra.html"><a href="2-7-Progra.html#break-y-next"><i class="fa fa-check"></i><b>2.7.4</b> break y next</a></li>
-<li class="chapter" data-level="2.7.5" data-path="2-7-Progra.html"><a href="2-7-Progra.html#repeat"><i class="fa fa-check"></i><b>2.7.5</b> repeat</a></li>
-<li class="chapter" data-level="2.7.6" data-path="2-7-Progra.html"><a href="2-7-Progra.html#la-familia-apply"><i class="fa fa-check"></i><b>2.7.6</b> La familia apply</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="2-8-Mpracticas.html"><a href="2-8-Mpracticas.html"><i class="fa fa-check"></i><b>2.8</b> Mejores prácticas en R</a></li>
 </ul></li>
 </ul>
 
@@ -203,10 +184,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="Elogicas" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Expresiones lógicas en R</h2>
-<p>Las expresiones lógicas se basan en los literales lógicos. Es decir, TRUE y FALSE o simplemente T y F.</p>
+<p>Una expresión lógica en R está compúesta por dos componentes mediados por operadores que pueden ser de dos tipos: relacionales o lógicos. A continuación, se presenta un ejemplo con una operación lógica en R. Esta, como se mencionó, está compuesto de dos partes (<em>izquierda y derecha</em>) y es mediada por un operador lógico (<strong>&gt;=</strong>). En específico, la expresión lógica del siguiente ejemplo indaga si el número 5 (<em>parte izquierda</em>) es mayor o igual <strong>&gt;=</strong> (operador relacional) que el número 4 (<em>parte derecha</em>).</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="2-4-Elogicas.html#cb159-1"></a><span class="co"># Ejemplo de una expresión lógica</span></span>
+<span id="cb159-2"><a href="2-4-Elogicas.html#cb159-2"></a><span class="dv">5</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
+<p>El resultado de una operación lógica es un dato de tipo booleano (TRUE o FALSE)<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. Este hecho, implica la siguiente regla aplicable a este lenguaje de programación.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla: Resultado de expresiones lógicas
+</p>
+</strong><br>
+En R, el resultado de una operación lógica, es un dato o literal de tipo booleano (TRUE o FALSE)
+</p>
+</blockquote>
+<p><br></p>
 <div id="operadores-relacionales" class="section level3" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> Operadores Relacionales</h3>
-<p>Los <em>operadores relacionales</em> disponibles en R son:</p>
+<p>Como se mencionó previamente, en R existen dos tipos de operadores asociados a las expresiones lógicas: relacionales y lógicos. Los <em>operadores relacionales</em> disponibles en R son:</p>
 <ul>
 <li><em><strong>Menor que ( &lt; )</strong></em></li>
 <li><em><strong>Mayor que ( &gt; )</strong></em></li>
@@ -215,91 +211,196 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><em><strong>Igual a ( == )</strong></em></li>
 <li><em><strong>No es igual a (diferente) ( != )</strong></em></li>
 </ul>
-<p>A continuación se presentan dos tipos de ejemplos con el uso de expresiones regulares: <em>simples</em> y a través de <em>expresiones aritméticas</em></p>
-<p style="color:#FF0000";><i>Ejemplo. Expresiones lógicas simples</i></p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="2-4-Elogicas.html#cb159-1"></a><span class="dv">3</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<p>A continuación, se presentan algunos ejemplos de expresiones lógicas en R haciendo uso de operadores relacionales con sus respectivos resultados (TRUE o FALSE).</p>
+<p style="color:#e6550d";><i>Ejemplo. Expresiones lógicas con operadores relacionales</i></p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="2-4-Elogicas.html#cb160-1"></a><span class="co"># Ejemplo 1</span></span>
+<span id="cb160-2"><a href="2-4-Elogicas.html#cb160-2"></a><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="2-4-Elogicas.html#cb161-1"></a><span class="dv">3</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="2-4-Elogicas.html#cb162-1"></a><span class="co"># Ejemplo 2</span></span>
+<span id="cb162-2"><a href="2-4-Elogicas.html#cb162-2"></a><span class="dv">3</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="2-4-Elogicas.html#cb163-1"></a><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="2-4-Elogicas.html#cb164-1"></a><span class="co"># Ejemplo 3</span></span>
+<span id="cb164-2"><a href="2-4-Elogicas.html#cb164-2"></a><span class="dv">4</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="2-4-Elogicas.html#cb165-1"></a><span class="dv">4</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="2-4-Elogicas.html#cb166-1"></a><span class="co"># Ejemplo 4</span></span>
+<span id="cb166-2"><a href="2-4-Elogicas.html#cb166-2"></a><span class="dv">3</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="2-4-Elogicas.html#cb167-1"></a><span class="dv">3</span> <span class="op">==</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="2-4-Elogicas.html#cb168-1"></a><span class="co"># Ejemplo 5</span></span>
+<span id="cb168-2"><a href="2-4-Elogicas.html#cb168-2"></a><span class="dv">3</span> <span class="op">==</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="2-4-Elogicas.html#cb169-1"></a><span class="dv">3</span> <span class="op">!=</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="2-4-Elogicas.html#cb170-1"></a><span class="co"># Ejemplo 6</span></span>
+<span id="cb170-2"><a href="2-4-Elogicas.html#cb170-2"></a><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="2-4-Elogicas.html#cb171-1"></a><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="2-4-Elogicas.html#cb172-1"></a><span class="co"># Ejemplo 7</span></span>
+<span id="cb172-2"><a href="2-4-Elogicas.html#cb172-2"></a><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="2-4-Elogicas.html#cb174-1"></a><span class="co"># Ejemplo 8</span></span>
+<span id="cb174-2"><a href="2-4-Elogicas.html#cb174-2"></a><span class="ot">FALSE</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="2-4-Elogicas.html#cb176-1"></a><span class="co"># Ejemplo 9</span></span>
+<span id="cb176-2"><a href="2-4-Elogicas.html#cb176-2"></a><span class="dv">3</span> <span class="op">!=</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="2-4-Elogicas.html#cb173-1"></a><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="2-4-Elogicas.html#cb175-1"></a><span class="ot">FALSE</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="2-4-Elogicas.html#cb177-1"></a><span class="ot">FALSE</span> <span class="op">!=</span><span class="st"> </span><span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="2-4-Elogicas.html#cb178-1"></a><span class="co"># Ejemplo 10</span></span>
+<span id="cb178-2"><a href="2-4-Elogicas.html#cb178-2"></a><span class="ot">FALSE</span> <span class="op">!=</span><span class="st"> </span><span class="dv">0</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<p><strong>Regla 5.</strong></p>
-<ul>
-<li><em>Al evaluar un operador lógico con expresiones aritméticas, primero se evaluan las expresiones aritméticas y luego las expresiones lógicas</em></li>
-</ul>
-<p style="color:#FF0000";><i>Ejemplo. Operaciones lógicas entre expresiones aritméticas</i></p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="2-4-Elogicas.html#cb179-1"></a><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">24.90</span> <span class="op">-</span><span class="st"> </span><span class="fl">21.15</span></span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="2-4-Elogicas.html#cb180-1"></a><span class="co"># Ejemplo 11</span></span>
+<span id="cb180-2"><a href="2-4-Elogicas.html#cb180-2"></a><span class="st">&quot;Uno&quot;</span> <span class="op">!=</span><span class="st"> &quot;1&quot;</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="2-4-Elogicas.html#cb181-1"></a>apple_profit &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span> </span>
-<span id="cb181-2"><a href="2-4-Elogicas.html#cb181-2"></a>mango_profit &lt;-<span class="st"> </span><span class="fl">24.90</span> <span class="op">-</span><span class="st"> </span><span class="fl">21.15</span></span>
-<span id="cb181-3"><a href="2-4-Elogicas.html#cb181-3"></a></span>
-<span id="cb181-4"><a href="2-4-Elogicas.html#cb181-4"></a>apple_profit <span class="op">&lt;</span><span class="st"> </span>mango_profit</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="2-4-Elogicas.html#cb182-1"></a><span class="co"># Ejemplo 12</span></span>
+<span id="cb182-2"><a href="2-4-Elogicas.html#cb182-2"></a><span class="st">&quot;Uno&quot;</span> <span class="op">==</span><span class="st"> &quot;Uno&quot;</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Finalmente, en R se puede almacenar el resultado de una comparación lógica dentro de una variable.</p>
-<p>logical_var &lt;- apple_profit &lt; mango_profit</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="2-4-Elogicas.html#cb183-1"></a>apple_sold &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">*</span><span class="st"> </span>12L</span>
-<span id="cb183-2"><a href="2-4-Elogicas.html#cb183-2"></a>lemon_sold &lt;-<span class="st"> </span><span class="fl">4.99</span> <span class="op">*</span><span class="st"> </span>24L</span>
-<span id="cb183-3"><a href="2-4-Elogicas.html#cb183-3"></a>logical_var &lt;-<span class="st"> </span>apple_sold <span class="op">==</span><span class="st"> </span>lemon_sold</span>
-<span id="cb183-4"><a href="2-4-Elogicas.html#cb183-4"></a>logical_var</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li><strong>Operaciones lógicas con operaciones aritméticas</strong>:</li>
+</ol>
+<p>Una expresión lógica, además de operadores relacionales, puede involucrar operaciones aritméticas simples, complementarias o compuestas. El ejemplo, que se presenta a continuación, ilustra una expresión lógica que involucra operaciones ariméticas compuestas.</p>
+<p style="color:#e6550d";><i>Ejemplo. Expresiones lógicas con operadores relacionales y operaciones ariméticas</i></p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="2-4-Elogicas.html#cb184-1"></a><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">24.90</span> <span class="op">*</span><span class="st"> </span><span class="fl">21.15</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Una pregunta que surge, al momento de disponer de una operación lógica que involucra operaciones arirméticas y lógicas es qué evalúa R primero, ¿la operación aritmética o la expresión lógica? La respuesta a esta inquietud conduce a la siguiente regla del lenguaje.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla: Precedencia en expresiones lógicas
+</p>
+</strong><br>
+En R, al evaluar una expresión lógica que hace uso de operadores relacionales y operaciones aritméticas, primero se evalúan las expresiones aritméticas y luego las expresiones lógicas
+</p>
+</blockquote>
+<p><br></p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Operaciones lógicas haciendo uso de variables</strong>:</li>
+</ol>
+<p>El resultado de las operaciones aritméticas, así como de las expresiones lógicas, pueden ser almacenados a través del uso de variables. Es decir, en lugar de evaluar de manera directa una expresión lógica y sus componentes, estos pueden ser evaluados previamente a través del uso de variables. A continuación, se presentan 2 ejemplos de expresiones lógicas en las que se hace uso de variables.</p>
+<p style="color:#e6550d";><i>Ejemplo. Expresiones lógicas con operadores relacionales y variables</i></p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="2-4-Elogicas.html#cb186-1"></a><span class="co"># Ejemplo 1</span></span>
+<span id="cb186-2"><a href="2-4-Elogicas.html#cb186-2"></a>Var_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span> </span>
+<span id="cb186-3"><a href="2-4-Elogicas.html#cb186-3"></a>Var_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="fl">24.90</span> <span class="op">-</span><span class="st"> </span><span class="fl">21.15</span></span>
+<span id="cb186-4"><a href="2-4-Elogicas.html#cb186-4"></a></span>
+<span id="cb186-5"><a href="2-4-Elogicas.html#cb186-5"></a>Var_<span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span>Var_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="2-4-Elogicas.html#cb188-1"></a><span class="co"># Ejemplo 2</span></span>
+<span id="cb188-2"><a href="2-4-Elogicas.html#cb188-2"></a>Var_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">*</span><span class="st"> </span>12L</span>
+<span id="cb188-3"><a href="2-4-Elogicas.html#cb188-3"></a>Var_<span class="dv">4</span>&lt;-<span class="st"> </span><span class="fl">4.99</span> <span class="op">*</span><span class="st"> </span>24L</span>
+<span id="cb188-4"><a href="2-4-Elogicas.html#cb188-4"></a>Var_<span class="dv">5</span> &lt;-<span class="st"> </span>Var_<span class="dv">3</span> <span class="op">==</span><span class="st"> </span>Var_<span class="dv">4</span></span>
+<span id="cb188-5"><a href="2-4-Elogicas.html#cb188-5"></a>Var_<span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<p>Los operadores relacionales se emplean para hacer comparaciones entre valores (expresiones). El resultado de la aplicación de los operadores relacionales es TRUE o FALSE</p>
+<p>En el ejemplo 1, se crean las variables Var_1 y Var_2 que contienen el resultado de aplicar dos operaciones aritméticas compuestas y, en la tercera línea del código (Var_1 &lt; Var_2), se evalúa la expresión lógica propuesta entre estas dos variables (Var_1 &lt; Var_2). En el ejemplo 2, las variables Var_3 y Var_4 contienen los resultados de dos operaciones aritméticas simples y la variable Var_5 el resultado de la operación lógica definida entre estas dos variables (Var_3 == Var_4). En este ejemplo, la última línea del código (la 4) nos permite visualizar el resultado de la operación lógica implementada a través del uso de variables.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="2-4-Elogicas.html#cb190-1"></a><span class="fl">12.10</span> <span class="op">*</span><span class="st"> </span>12L <span class="op">==</span><span class="st"> </span><span class="fl">4.99</span> <span class="op">*</span><span class="st"> </span>24L</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
 </div>
 <div id="operadores-lógicos" class="section level3" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Operadores Lógicos</h3>
+<p>Los <em>operadores lógicos</em> en R permiten evaluar la condiciones de verdad o de falsedad<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> al comparar los resultados entre dos operaciones lógicas relacionales.</p>
 <p>Los <em>operadores lógicos</em> disponibles en R son:</p>
 <ul>
+<li><em><strong>Y lógico ( &amp; )</strong></em></li>
+<li><em><strong>O lógico ( | )</strong></em></li>
 <li><em><strong>No lógico ( ! )</strong></em></li>
-<li>_** Y lógico ( &amp; )**_</li>
-<li>_** O lógico ( | )**_</li>
 </ul>
-<p>Revisar los operadores (&amp;&amp; y ||), como se presenta en la siguiente ilustración.</p>
+<p>Los resultados obtenidos a la hora de la aplicación de los tres operadores lógicos disponibles en R se presentan en el gráfico que se dispone a continuación. El resultado de una operación lógica que involucra el operador lógico &amp; (Y) solamente será cierta (TRUE) cuando las dos condiciones evaluadas sean ciertas. El resultado de una operación lógica que involucra el operador lógico | (O) solamente será falsa (FALSE) cuando las dos condiciones evaluadas sean falsas y, finalmente, el operador de negación (NO) cambia el resultado obtenido (TRUE por FALSE y viceversa).</p>
 <div class="figure">
-<img src="Imagenes/Operadores_Logicos.svg" alt="" />
+<img src="Imagenes/Logicos.png" alt="" />
 <p class="caption">Ilustración Resultado operadores lógicos</p>
 </div>
+<p>A continuación, se presnetan los resultados en R de los operadores lógicos expuestos en la anterior imagen.</p>
+<p style="color:#e6550d";><i>Ejemplo. Resultados expresiones lógicas con operadores lógicos</i></p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="2-4-Elogicas.html#cb192-1"></a><span class="co"># Con el operador lógico &amp;</span></span>
+<span id="cb192-2"><a href="2-4-Elogicas.html#cb192-2"></a><span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span><span class="ot">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="2-4-Elogicas.html#cb194-1"></a><span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span><span class="ot">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="2-4-Elogicas.html#cb196-1"></a><span class="ot">FALSE</span> <span class="op">&amp;</span><span class="st"> </span><span class="ot">TRUE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="2-4-Elogicas.html#cb198-1"></a><span class="ot">FALSE</span> <span class="op">&amp;</span><span class="st"> </span><span class="ot">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="2-4-Elogicas.html#cb200-1"></a><span class="co"># Con el operador lógico |</span></span>
+<span id="cb200-2"><a href="2-4-Elogicas.html#cb200-2"></a><span class="ot">TRUE</span> <span class="op">|</span><span class="st"> </span><span class="ot">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="2-4-Elogicas.html#cb202-1"></a><span class="ot">TRUE</span> <span class="op">|</span><span class="st"> </span><span class="ot">FALSE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="2-4-Elogicas.html#cb204-1"></a><span class="ot">FALSE</span> <span class="op">|</span><span class="st"> </span><span class="ot">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="2-4-Elogicas.html#cb206-1"></a><span class="ot">FALSE</span> <span class="op">|</span><span class="st"> </span><span class="ot">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="2-4-Elogicas.html#cb208-1"></a><span class="co"># Con el operador lógico de negación</span></span>
+<span id="cb208-2"><a href="2-4-Elogicas.html#cb208-2"></a><span class="op">!</span><span class="ot">TRUE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="2-4-Elogicas.html#cb210-1"></a><span class="op">!</span><span class="ot">FALSE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="combinando-operadores" class="section level3" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> Combinando operadores</h3>
-<p><strong>Regla 5. Priorización o precedencia general</strong></p>
-<p>Teniendo en cuenta todos los operadores vistos hasta ahora, la regla de priorización general es:</p>
-<ul>
-<li><em>Paréntesis</em></li>
-<li><em>Exponentes</em></li>
-<li><em>División y multiplicación</em></li>
-<li><em>Adición y sustracción</em></li>
-<li><em>Operadores relacionales</em></li>
-<li><em>Operadores logicos</em></li>
-</ul>
-<p><em><strong>Estudiarr el siguiente caso con vectores</strong></em></p>
-<p>a &lt;- 3
-b &lt;- 15</p>
-<p>a:b
-a+1:b
-a+(1:b)
-(a+1):b</p>
-<p><a href="https://twitter.com/necronet/status/1286129628718018560">Caso tomado de</a></p>
-<p style="color:#FF0000";><i>Ejemplo. Combinando operadores</i></p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="2-4-Elogicas.html#cb185-1"></a>apple_profit &lt;-<span class="st"> </span><span class="fl">12.10</span> <span class="op">-</span><span class="st"> </span><span class="fl">10.50</span></span>
-<span id="cb185-2"><a href="2-4-Elogicas.html#cb185-2"></a>mango_profit &lt;-<span class="st"> </span><span class="fl">24.90</span> <span class="op">-</span><span class="st"> </span><span class="fl">21.15</span></span>
-<span id="cb185-3"><a href="2-4-Elogicas.html#cb185-3"></a>lemon_profit &lt;-<span class="st"> </span><span class="fl">4.99</span> <span class="op">-</span><span class="st"> </span><span class="fl">3.20</span></span>
-<span id="cb185-4"><a href="2-4-Elogicas.html#cb185-4"></a>logical_var &lt;-<span class="st"> </span>apple_profit <span class="op">&lt;=</span><span class="st"> </span>mango_profit <span class="op">||</span><span class="st"> </span>apple_profit <span class="op">&gt;</span><span class="st"> </span>mango_profit</span>
-<span id="cb185-5"><a href="2-4-Elogicas.html#cb185-5"></a>logical_var</span></code></pre></div>
+<p>En buena parte de esta sección hemos explorado las posibilidades que nos ofrece R para construir operaciones aritméticas simples o compuestas, disponer los resultados obtenidos dentro de variables así como crear expresiones de tipo lógico las cuales pueden estar asociadas a operadores relacionales o lógicos. Para finalizar esta sección, exploraremos la forma como R evalúa operaciones lógicas que hacen uso de los múltiples conceptos vistos hasta ahora. Para ello, se presenta a modo de ejemplo, la siguiente expresión lógica.</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="2-4-Elogicas.html#cb212-1"></a><span class="co"># Ejemplo de una expresión lógica compleja</span></span>
+<span id="cb212-2"><a href="2-4-Elogicas.html#cb212-2"></a>(<span class="dv">40</span><span class="op">/</span><span class="dv">2</span><span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">7</span> <span class="op">|</span><span class="st"> </span><span class="dv">5</span><span class="op">*</span><span class="dv">5</span>  <span class="op">-</span><span class="st"> </span><span class="dv">5</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span></span></code></pre></div>
+<p>Al explorar el contenido de la anterior expresión lógica podemos observar que esta contiene operaciones aritméticas compuestas conformadas por exponentes, sumas, restas, divisiones, multiplicaciones y paréntesis. Así mismo, el ejemplo hace uso de expresiones lógicas asociadas a operadores relacionales y lógicos. La pregunta que surje ahora es: ¿cuál es el resultado de esta operación y cómo R procede para su desarrollo o evaluación? Para dara respuesta a ello, se presenta la siguiente regla del lenguaje la cual puede ser considerada de alcance general ya que incluye otras reglas presentadas hasta ahora.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla: Precedencia o priorización general en R
+</p>
+</strong><br>
+En R, teniendo en cuenta los operadores vistos hasta ahora y que conforman las operaciones aritméticas y las expresiones lógicas, la regla de priorización general que gobierna la evaluación de dichas expresiones es:
+<br><br>
+<ol>
+<li>
+Paréntesis
+</li>
+<li>
+Exponentes
+</li>
+<li>
+División y multiplicación
+</li>
+<li>
+Adición y sustracción
+</li>
+<li>
+Operadores relacionales
+</li>
+<li>
+Operadores logicos
+</li>
+</ol>
+</p>
+</blockquote>
+<p><br></p>
+<p>Es decir, en el ejemplo expuesto anteriormente, en el proceso de evaluación/compilación, el lenguaje primero realiza las operaciones que están dentro de los paréntesis, paso seguido calcula las multiplicaciones, luego las sumas y las restas y, finalmente, evalúa las expresiones lógicas asociadas a operadores relacionales para culminar con la evaluación resultante que involucra a los operadores de tipo lógico. A continuación, se presenta el resultado en R al evaluar la expresión lógica de nuestro ejemplo así como un ejemplo complementario a este.</p>
+<p style="color:#e6550d";><i>Ejemplo. Resultados expresiones lógicas compuestas </i></p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="2-4-Elogicas.html#cb213-1"></a><span class="co"># Ejemplo 1</span></span>
+<span id="cb213-2"><a href="2-4-Elogicas.html#cb213-2"></a>(<span class="dv">40</span><span class="op">/</span><span class="dv">2</span><span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">7</span> <span class="op">|</span><span class="st"> </span><span class="dv">5</span><span class="op">*</span><span class="dv">5</span>  <span class="op">-</span><span class="st"> </span><span class="dv">5</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="2-4-Elogicas.html#cb215-1"></a><span class="co"># Ejemplo 2</span></span>
+<span id="cb215-2"><a href="2-4-Elogicas.html#cb215-2"></a>(<span class="dv">40</span><span class="op">/</span><span class="dv">2</span><span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">7</span> <span class="op">&amp;</span><span class="st"> </span><span class="dv">5</span><span class="op">*</span><span class="dv">5</span>  <span class="op">-</span><span class="st"> </span><span class="dv">5</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+
 </div>
+</div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>En el ejemplo de la expresión lógica 5 &gt;= 4, el resultado es igual a TRUE dado que 5 es mayor o igual que 4<a href="2-4-Elogicas.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Estos operadores hacen parte de lo que en lógica matemática se conoce como tablas de verdad. En R, en el contexto de los operadores se hace uso de las tablas de verdad asociadas a la conjunción (∧), la disyunción (∨) y la negación (¬)<a href="2-4-Elogicas.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
 <h2 style="color:#2ca25f;">Comentarios</h2>
 
@@ -330,8 +431,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="2-3-Aritmet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-Edatos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="2-3-Aritmet.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
