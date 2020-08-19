@@ -3,6 +3,7 @@ bookdown::gitbook:
   split_by: section+number
   config:
     toc:
+      collapse: none
       before: |
         <li><center><img src="https://ih0.redbubble.net/image.522698608.2413/flat,550x550,075,f.u4.jpg"  height=50 width="50"> <a href="./">Primer Curso de R</a></center></li>
     # download: ["pdf", "epub"]
