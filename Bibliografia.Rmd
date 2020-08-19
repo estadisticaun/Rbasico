@@ -1,0 +1,3 @@
+# Bibliografía complementaria {-#Presenta}
+
+* [RStudio para Estadística Descriptiva en Ciencias Sociales](https://bookdown.org/gboccardo/manual-ED-UCH/)

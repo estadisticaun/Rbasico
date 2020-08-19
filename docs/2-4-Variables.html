@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.4 Variables | Un Primer Curso de R</title>
+  <meta name="description" content="2.4 Variables | Un Primer Curso de R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.4 Variables | Un Primer Curso de R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.4 Variables | Un Primer Curso de R" />
+  
+  
+  
+
+<meta name="author" content="Alberto Rodríguez Rodríguez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="2-3-Aritmet.html"/>
+<link rel="next" href="2-5-Elogicas.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/unal/css/style.css" rel="stylesheet" />
+<link href="libs/unal/css/bootstrap-buttons.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="https://ih0.redbubble.net/image.522698608.2413/flat,550x550,075,f.u4.jpg"  height=50 width="50"> <a href="./">Primer Curso de R</a></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Portada</a></li>
+<li class="chapter" data-level="" data-path="Presenta.html"><a href="Presenta.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="chapter" data-level="1" data-path="1-Instalar.html"><a href="1-Instalar.html"><i class="fa fa-check"></i><b>1</b> Instalar R y Rstudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1-1-instalar-r.html"><a href="1-1-instalar-r.html"><i class="fa fa-check"></i><b>1.1</b> Instalar R</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-instalar-rstudio.html"><a href="1-2-instalar-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> Instalar Rstudio</a></li>
+<li class="chapter" data-level="1.3" data-path="1-3-personalizar-rstudio.html"><a href="1-3-personalizar-rstudio.html"><i class="fa fa-check"></i><b>1.3</b> Personalizar Rstudio</a></li>
+</ul></li>
+<li class="part"><span><b>I Fundamentos</b></span></li>
+<li class="chapter" data-level="2" data-path="2-Fund.html"><a href="2-Fund.html"><i class="fa fa-check"></i><b>2</b> Fundamentos del lenguaje R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-1-introR.html"><a href="2-1-introR.html"><i class="fa fa-check"></i><b>2.1</b> Primeros pasos</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html"><i class="fa fa-check"></i><b>2.2</b> Tipos de datos</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html#Tdatos1"><i class="fa fa-check"></i><b>2.2.1</b> Tipos de datos en R</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html#Constantes"><i class="fa fa-check"></i><b>2.2.2</b> Constantes integradas en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html"><i class="fa fa-check"></i><b>2.3</b> Operaciones aritméticas</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html#operaciones-aritméticas-en-r"><i class="fa fa-check"></i><b>2.3.1</b> Operaciones aritméticas en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="2-4-Variables.html"><a href="2-4-Variables.html"><i class="fa fa-check"></i><b>2.4</b> Variables</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="2-4-Variables.html"><a href="2-4-Variables.html#nombre-de-variables"><i class="fa fa-check"></i><b>2.4.1</b> Nombre de variables</a></li>
+<li class="chapter" data-level="2.4.2" data-path="2-4-Variables.html"><a href="2-4-Variables.html#tipos-de-variables"><i class="fa fa-check"></i><b>2.4.2</b> Tipos de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html"><i class="fa fa-check"></i><b>2.5</b> Expresiones lógicas</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#operadores-relacionales"><i class="fa fa-check"></i><b>2.5.1</b> Operadores Relacionales</a></li>
+<li class="chapter" data-level="2.5.2" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#operadores-lógicos"><i class="fa fa-check"></i><b>2.5.2</b> Operadores Lógicos</a></li>
+<li class="chapter" data-level="2.5.3" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#combinando-operadores"><i class="fa fa-check"></i><b>2.5.3</b> Combinando operadores</a></li>
+<li class="chapter" data-level="2.5.4" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#coerción-en-expresiones-lógicas"><i class="fa fa-check"></i><b>2.5.4</b> Coerción en expresiones lógicas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html"><i class="fa fa-check"></i><b>2.6</b> Estructuras de datos</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#vectores"><i class="fa fa-check"></i><b>2.6.1</b> Vectores</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Un Primer Curso de R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Variables" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Variables</h2>
+<p>Una de las funcionalidades y de las partes más importantes en el aprendizaje de R es la creación de variables. Una variable en R es un espacio reservado en memoria el cual está compuesto por un nombre y un contenido definido o asignado a este nombre. A continuación, se presenta un ejemplo de una variable en R.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="2-4-Variables.html#cb126-1"></a><span class="co"># ejemplo de una variable en R</span></span>
+<span id="cb126-2"><a href="2-4-Variables.html#cb126-2"></a>x &lt;-<span class="st"> </span>5L</span></code></pre></div>
+<p>En el ejemplo, hemos creado una variable llamada x y a esta se le ha asignado el valor/número entero 5. En R, el simbolo de asignación<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> es <strong>&lt;-</strong>.</p>
+<p>El uso de variables en R es altamente frecuente pues a través de estas podemos reservar contenidos de nuestros procesos que serán usados en fases posteriores de nuestros análisis. Para mostrar el contenido de una variable en R, además de definir la variable, se debe adicionar una nueva línea de código a nuestros programas con el nombre de la variable o las variables cuyo contenido deseamos conocer. Por ejemplo, si deseamos conocer el contenido de la variable x definida en el ejemplo anterior, debemos adicionar una nueva línea de código con dicho nombre como se presenta a continuación.</p>
+<p style="color:#e6550d";><i>Ejemplo. Visualización del contenido de una variable en R</i></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="2-4-Variables.html#cb127-1"></a><span class="co"># Visualización del contenido de una variable en R</span></span>
+<span id="cb127-2"><a href="2-4-Variables.html#cb127-2"></a>x &lt;-<span class="st"> </span>5L</span>
+<span id="cb127-3"><a href="2-4-Variables.html#cb127-3"></a>x</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>A continuación, se presentan otros ejemplos de visualización de variables en R.</p>
+<p style="color:#e6550d";><i>Ejemplo. Visualización del contenido de otras variables en R</i></p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="2-4-Variables.html#cb129-1"></a><span class="co"># Visualización del contenido de variables en R</span></span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="2-4-Variables.html#cb130-1"></a><span class="co"># Ejemplo 1</span></span>
+<span id="cb130-2"><a href="2-4-Variables.html#cb130-2"></a>y &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="fl">3.2</span></span>
+<span id="cb130-3"><a href="2-4-Variables.html#cb130-3"></a>y</span></code></pre></div>
+<pre><code>## [1] 8.2</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="2-4-Variables.html#cb132-1"></a><span class="co"># Ejemplo 2</span></span>
+<span id="cb132-2"><a href="2-4-Variables.html#cb132-2"></a>y &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>pi</span>
+<span id="cb132-3"><a href="2-4-Variables.html#cb132-3"></a>y</span></code></pre></div>
+<pre><code>## [1] 4.141593</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="2-4-Variables.html#cb134-1"></a><span class="co"># Ejemplo 3</span></span>
+<span id="cb134-2"><a href="2-4-Variables.html#cb134-2"></a>z &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span><span class="op">*</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb134-3"><a href="2-4-Variables.html#cb134-3"></a>z</span></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="2-4-Variables.html#cb136-1"></a><span class="co"># Ejemplo 4</span></span>
+<span id="cb136-2"><a href="2-4-Variables.html#cb136-2"></a>x &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></span>
+<span id="cb136-3"><a href="2-4-Variables.html#cb136-3"></a>y &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb136-4"><a href="2-4-Variables.html#cb136-4"></a>x <span class="op">+</span><span class="st"> </span>y</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div id="nombre-de-variables" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Nombre de variables</h3>
+<p>Una vez que tenemos claro el objetivo con la creación de variables en R, el paso a seguir consiste en presentar algunas recomendaciones y restricciones a la hora de crear variables en R. Para ello, haremos uso de la siguiente regla en la que se presentan los criterios con las recomendaciones y las restricciones que deben ser tenidas en cuenta a la hora de crear nombres asociados a variables en R.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla: Nombres de variables en R (recomendaciones y restricciones)
+</p>
+</strong><br>
+En R, para nombrar una variable, existen 5 criterios o reglas que deben ser tenidas en cuenta:
+<br><br>
+<ol>
+<li>
+Los nombres de las variables consisten en letras (mayúsculas o minúsculas), números, un punto (.) o un guión bajo (_).
+</li>
+<li>
+Podemos comenzar un nombre de variable con una letra o un punto, pero los puntos no pueden ser seguidos por un número.
+</li>
+<li>
+No podemos comenzar un nombre de variable con un número.
+</li>
+<li>
+No se permiten caracteres especiales, por ejemplo, espacios, símbolos de operadores, paréntesis.
+</li>
+<li>
+No podemos usar una palabra clave ya utilizada e interpretada por R como un nombre de variable (Palabras Reservadas). Por ejemplo, if, else, for, while, break, next, repeat, NA, NULL y NaN
+</li>
+</ol>
+</p>
+</blockquote>
+<p><br></p>
+<p>El contenido de los criterios presentados en la anterior regla se ilustra, con algunos ejemplos de nombres válidos y no válidos para variables en R, a través de la figura que se presenta a continuación.</p>
+<div class="figure">
+<img src="Imagenes/Variables_Validas.svg" alt="" />
+<p class="caption">Ilustración. Nombres correctos e incorrectos para nombrar variables en R</p>
+</div>
+<p>Además de los criterios presentados en la regla para la asignación de nombres de variables en R, se recomienda que el nombre que se asigne a estas se corresponda con el contenido de las mismas. Por ejemplo, si en una variable se aloja la <em>edad</em> de una persona, sería conveniente que esta variable se llame o nombre como <em>edad</em>. De la misma manera, aunque R permite que los nombres de las variable sean grandes (alta cantidad de caractéres), se recomienda que los mismos no sean demasiado largos. Finalmente, aunque no se recomienda, es normal encontrar en la práctica interesados en nombrar variables con nombres compuestos separados por espacios. Si este es el caso, los nombres compuestos de estas variables deben estar contenidos dentro de comillas a la izquierda. A continuación, se presentan tres ejemplos con nombres de variables compuestos.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="2-4-Variables.html#cb138-1"></a><span class="co"># Ejemplo 1</span></span>
+<span id="cb138-2"><a href="2-4-Variables.html#cb138-2"></a><span class="st">`</span><span class="dt">Nombre variable</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="fl">4.5</span></span>
+<span id="cb138-3"><a href="2-4-Variables.html#cb138-3"></a></span>
+<span id="cb138-4"><a href="2-4-Variables.html#cb138-4"></a><span class="co"># Ejemplo 2</span></span>
+<span id="cb138-5"><a href="2-4-Variables.html#cb138-5"></a><span class="st">`</span><span class="dt">Nombre compuesto</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb138-6"><a href="2-4-Variables.html#cb138-6"></a></span>
+<span id="cb138-7"><a href="2-4-Variables.html#cb138-7"></a><span class="co"># Ejemplo 3</span></span>
+<span id="cb138-8"><a href="2-4-Variables.html#cb138-8"></a><span class="st">`</span><span class="dt">Este es otro nombre para mi variable</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="op">-</span>10L</span></code></pre></div>
+</div>
+<div id="tipos-de-variables" class="section level3" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Tipos de variables</h3>
+<p>El trabajo con variables en R, como ya se mencionó, es altamente frecuente hecho que conlleva a que en algunos casos olvidemos el tipo de elementos que estas contienen. Para ello, en R existe una función<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> llamada <code>class()</code> que nos permite conocer la tipología de los elementos que hacen parte de una variable. A continuación, a modo de ejemplo, se definen 5 variables, se expone su contenido y se indaga, haciendo uso de la función <code>class</code>, por los tipos de datos que estas variables contienen.</p>
+<p style="color:#e6550d";><i>Ejemplo. Tipos de variables en R</i></p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="2-4-Variables.html#cb139-1"></a><span class="co"># Ejemplo 1</span></span>
+<span id="cb139-2"><a href="2-4-Variables.html#cb139-2"></a>var_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb139-3"><a href="2-4-Variables.html#cb139-3"></a>var_<span class="dv">1</span> </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="2-4-Variables.html#cb141-1"></a><span class="kw">class</span>(var_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="2-4-Variables.html#cb143-1"></a><span class="co"># Ejemplo 2</span></span>
+<span id="cb143-2"><a href="2-4-Variables.html#cb143-2"></a>var_<span class="dv">2</span> &lt;-<span class="st"> </span>2L</span>
+<span id="cb143-3"><a href="2-4-Variables.html#cb143-3"></a>var_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="2-4-Variables.html#cb145-1"></a><span class="kw">class</span>(var_<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="2-4-Variables.html#cb147-1"></a><span class="co"># Ejemplo 3</span></span>
+<span id="cb147-2"><a href="2-4-Variables.html#cb147-2"></a>var_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="fl">0.14</span></span>
+<span id="cb147-3"><a href="2-4-Variables.html#cb147-3"></a>var_<span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 0.14</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="2-4-Variables.html#cb149-1"></a><span class="kw">class</span>(var_<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="2-4-Variables.html#cb151-1"></a><span class="co"># Ejemplo 4</span></span>
+<span id="cb151-2"><a href="2-4-Variables.html#cb151-2"></a>var_<span class="dv">4</span> &lt;-<span class="st"> </span>var_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>var_<span class="dv">2</span> <span class="op">+</span><span class="st"> </span>var_<span class="dv">3</span></span>
+<span id="cb151-3"><a href="2-4-Variables.html#cb151-3"></a>var_<span class="dv">4</span></span></code></pre></div>
+<pre><code>## [1] 3.14</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="2-4-Variables.html#cb153-1"></a><span class="kw">class</span>(var_<span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="2-4-Variables.html#cb155-1"></a><span class="co"># Ejemplo 4</span></span>
+<span id="cb155-2"><a href="2-4-Variables.html#cb155-2"></a>var_<span class="dv">5</span> &lt;-<span class="st"> </span>LETTERS</span>
+<span id="cb155-3"><a href="2-4-Variables.html#cb155-3"></a>var_<span class="dv">5</span></span></code></pre></div>
+<pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot;
+## [20] &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot; &quot;Z&quot;</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="2-4-Variables.html#cb157-1"></a><span class="kw">class</span>(var_<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>El tipo de dato contenido en la variable del ejemplo 1 (var_1) es de tipo lógico, el de la variable 2 (var_2) es de tipo entero, el de las variable 3 y 4 (var_3 y var_4) es de tipo numérico y, finalmente, el tipo de dato contenido en la variable del ejemplo 5 (var_5) es de tipo cadena o caracter.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="6">
+<li id="fn6"><p>También pueden ser empleados, como símbolos de asignación, las expresiones = o -&gt;. Para el último de estos casos las partes contenidas dentro de una variable deben ser invertidas (5 -&gt; x). Aunque las tres formas de asignación (&lt;- , = , -&gt;) son válidas, se recomienda el uso de la primera (&lt;-) para evitar confusiones, en el caso de la igualdad, cuando este sea usado en el contexto de las funciones y en, en el otro caso (-&gt;), por ser contraintuitivo al pensamiento humano<a href="2-4-Variables.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>Esta es la primera vez que hacemos uso, dentro de este documento, de una función. R, en sentido estricto, es un lenguaje de tipo funcional; es decir, altamente/totalmente soportado en funciones. Más adelante se contará con una sección dedicada al uso y construcción de funciones en R<a href="2-4-Variables.html#fnref7" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+<h2 style="color:#2ca25f;">Comentarios</h2>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-rbasico-netlify-app-2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script src="libs/unal/js/widgets.js"></script>
+<script src="libs/unal/js/full-screen-helper.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-3-Aritmet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="2-5-Elogicas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

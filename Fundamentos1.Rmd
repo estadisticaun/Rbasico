@@ -1,112 +1,26 @@
+#### _Usando nombres en vectores_
 
-_**Estudiarr el siguiente caso con vectores**_
+![Filosofia nombre vectores](Imagenes/Nombres_vectores.svg)
 
-a <- 3
-b <- 15
-
-a:b
-a+1:b
-a+(1:b)
-(a+1):b
-
-[Caso tomado de](https://twitter.com/necronet/status/1286129628718018560)
-
-
-
-
-## Estructuras de datos {#Edatos}
-
-![Principales estructuras de datos en R. <br> Extraída de https://medium.com/@tiwarigaurav2512/r-data-types-847fffb01d5b](Imagenes/TiposDatos.png)
-
-### Vectores
-
-Importancia de la función c()
-
-![Representación gráfica de un vector](Imagenes/Vector.png)
-
-```{r}
-vector1 <- 1
-vector2 <- c(1)
-# vector3 <- 1, 2
-vector4 <- 1:2
-vector5 <- c(1,2)
+```{r, eval=TRUE, warning=FALSE}
+# Alternativa 1
+vector = c(a = 1, b = 2, c = 3, d = 4, e = 5)
+vector
+# Alternativa 2
+vector1 <- c(1L:5L)
+Nombres <- c('a', 'b', 'c', 'd', 'e') # letters[c(1:5)] # letters[seq(1,5)] 
+names(vector1) <- Nombres
+vector1
+# Indexación
+vector1[c('a', 'e')]
+# Reemplazar valores
+vector1[c('a', 'e')] <- 6L
+vector1
+# Revisar los nombres de un vector
+names(vector1)
 ```
 
-
-Mi primer vector.
-
-```{r}
-# Mi primer vector con 5 elementos
-c(1, 2, 3, 4, 5)
-
-# Matriz con tres filas y cuatro columnas
-matrix(1:12, nrow = 3, ncol = 4) 
-```
-
-#### _Tipos de vectores_
-
-1. _**Lógicos**_
-
-
-```{r, eval=FALSE}
-# Mi primer vector Lógico
-c(TRUE, FALSE, FALSE, TRUE)
-```
-
-
-2. _**Enteros**_
-
-```{r, eval=FALSE}
-# Mi primer vector entero
-c(12L, 3L, 24L, 8L)
-```
-
-
-3. _**Reales**_
-
-```{r, eval=FALSE}
-# Mi primer vector real
-c(12.10, 24.90, 4.99)
-```
-
-
-4. _**Cadena**_
-
-```{r, eval=FALSE}
-# Mi primer vector cadena
-c("Lunes", "Martes", "Miércoles","Jueves", "Viernes", "Sábado","Domingo")
-```
-
-#### _Cómo crear vectores rápidamente_
-
-Funciones (seq() y rep())
-
-#### _Indexación de vectores_
-
-Fuente: [Manual R Base Indexación](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Indexing)
-
-Cómo extraer elementos de un vector - R es un lenguaje de programación indexado en 1; es decir, al primer elemento de un vector se le asigna la posición 1. Para extraer elementos de un vector usamos corchetes []
-
-![Gráfico de indexación de vectores](Imagenes/Indexacion.svg)
-
-##### _Por posición_
-
-```{r,  eval=FALSE}
-Nombre_vector[3]
-Nombre_vector[c(3)]
-Nombre_vector[1:4]
-Nombre_vector[c(1:4)]
-Nombre_vector[c(1,3,7)]
-Nombre_vector[-c(1,3,7)]
-```
-
-##### _Por vectores lógicos_
-
-```{r,  eval=FALSE}
-Nombre_vector[c(LOGICO)]
-```
-
-#### _Modificar, anexar, remover elementos de un vector_
+#### _Modificar, anexar y remover elementos de un vector_
 
 1. _**Modificar elementos de un vector**_
 
@@ -124,7 +38,7 @@ vector2[c(TRUE, FALSE, FALSE, FALSE, TRUE)] <- 6L
 vector2
 ```
 
-2. _**Adicionar elementos a un vector**_
+2. _**Anexar/adicionar elementos a un vector**_
 
 ```{r, eval=TRUE}
 vector1 <- c(1:3)
@@ -158,74 +72,7 @@ vector <- vector[vector<6]
 vector
 ```
 
-#### _Operaciones aritméticas con vectores_
 
-1. _**Adición, multiplicación y división**_
-
-![Ejemplo suma con vectores](Imagenes/Aritmetica.svg)
-
-```{r, eval=TRUE}
-v1 <- c(1:5)
-v2 <- c(5:1)
-v3 <- c(1:5)
-v4 <- c(5:1)
-suma <- v1 + v2 + v3 + v4
-promedio <- suma/3
-promedio
-```
-
-
-
-2. _**Reciclaje en operaciones con vectores**_
-
-_Aritmética con vectores de diferentes longitudes_
-
-![Reciclaje en operaciones con vectores](Imagenes/Reciclaje.svg)
-
-```{r, eval=TRUE, warning=FALSE}
-v1 <- c(92, 90, 84, 95, 77, 92, 85)
-v2 <- c(87, 81)
-suma <- v1 + v2
-suma
-```
-
-
-#### _Usando nombres en vectores_
-
-![Filosofia nombre vectores](Imagenes/Nombres_vectores.svg)
-
-```{r, eval=TRUE, warning=FALSE}
-# Alternativa 1
-vector = c(a = 1, b = 2, c = 3, d = 4, e = 5)
-vector
-# Alternativa 2
-vector1 <- c(1L:5L)
-Nombres <- c('a', 'b', 'c', 'd', 'e') # letters[c(1:5)] # letters[seq(1,5)] 
-names(vector1) <- Nombres
-vector1
-# Indexación
-vector1[c('a', 'e')]
-# Reemplazar valores
-vector1[c('a', 'e')] <- 6L
-vector1
-# Revisar los nombres de un vector
-names(vector1)
-```
-
-
-#### _Coerción en vectores_
-
-<br>
-<br>
-<blockquote>
-<p><strong><p style="color:red;">Regla:Coerción</p></strong>
-<strong>character → double → integer → logical.</strong><br> 
-<br>
-Es decir, si existe un vector con elementos de tipo lógico y de tipo entero, el resultado es un vector con elemento de tipo entero. Si existe un vector elementos de tipo lógico, entero y real, el resultado es un vector de tipo real. Finalmente, si existe un vector con elementos de tipo lógico, entero, real y caracter o cadena, el resultado es un vector de tipo caracter.
-</p>
-</blockquote>
-<br>
-<br>
 
 ### Matrices
 
@@ -303,13 +150,39 @@ rownames(matriz)
 colnames(matriz)  
 ```
 
+#### _Anexar filas/columnas en matrices_
 
-#### _Indexación en matrices_
+En las matrices se pueden adicionar filas o columnas. A continuación se presenta una ilustración gráfica de estas dos ideas.
+
+![Ilustración adicionar filas o culmnas en una matriz](Imagenes/Adicionar_Matriz.svg)
+
+Para adicionar filas en una matriz se hace uso de la función **rbind()**; para adicionar columnas, se hace uso de la función **cbind**.
+
+```{r, eval=TRUE, warning=FALSE}
+matriz1 <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = FALSE)
+rownames(matriz1) <- c('f_1', 'f_2', 'f_3')
+colnames(matriz1) <- c('c_1', 'c_2', 'c_3')
+# Adicionar una fila
+matriz1 <- rbind(matriz, 'c_4' = c(4, 7, 10))
+matriz1
+# Adicionar dos columnas
+matriz2 <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = FALSE)
+rownames(matriz2) <- c('f_1', 'f_2', 'f_3')
+colnames(matriz2) <- c('c_1', 'c_2', 'c_3')
+# Adicionar una fila
+matriz2 <- cbind(matriz2, matrix(c(7:12), nrow = 3, ncol = 2))
+colnames(matriz2) <- c('c_1', 'c_2', 'c_3', 'c_4', 'c_5')
+matriz2
+
+```
+
+#### _Indexación/subconjuntos en matrices_
+
 ![Ilustración idexación en matrices](Imagenes/Indexacion_Matrices.svg)
 
 A partir de una matriz podemos extraer/indexar con tres propósitos. 
 
-* *Extraer un elemento [fila, columna]*
+* *Extraer un elemento o bloque de elementos [fila, columna]*
 * *Extraer una fila o filas [fila, ]*
 * *Extraer una columna o columnas [, columna]*
 
@@ -347,6 +220,9 @@ matriz[, c(TRUE, FALSE)]
 matriz[c(1,3), c('c_2', 'c_3')]
 ```
 
+
+
+
 #### _Modificando elementos en matrices_
 
 Se puede modificar un único elemento dentro de una matriz o bloques de elementos (más de un elementos). Veámos estas ídeas gráficamente
@@ -375,31 +251,6 @@ matriz[c(1,2), c('c_2', 'c_3')] <- 0
 matriz
 ```
 
-#### _Adicionando elementos en matrices_
-
-En las matrices se pueden adicionar filas o columnas. A continuación se presenta una ilustración gráfica de estas dos ideas.
-
-![Ilustración adicionar filas o culmnas en una matriz](Imagenes/Adicionar_Matriz.svg)
-
-Para adicionar filas en una matriz se hace uso de la función **rbind()**; para adicionar columnas, se hace uso de la función **cbind**.
-
-```{r, eval=TRUE, warning=FALSE}
-matriz1 <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = FALSE)
-rownames(matriz1) <- c('f_1', 'f_2', 'f_3')
-colnames(matriz1) <- c('c_1', 'c_2', 'c_3')
-# Adicionar una fila
-matriz1 <- rbind(matriz, 'c_4' = c(4, 7, 10))
-matriz1
-# Adicionar dos columnas
-matriz2 <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = FALSE)
-rownames(matriz2) <- c('f_1', 'f_2', 'f_3')
-colnames(matriz2) <- c('c_1', 'c_2', 'c_3')
-# Adicionar una fila
-matriz2 <- cbind(matriz2, matrix(c(7:12), nrow = 3, ncol = 2))
-colnames(matriz2) <- c('c_1', 'c_2', 'c_3', 'c_4', 'c_5')
-matriz2
-
-```
 
 #### _Removiendo elementos en matrices_
 
@@ -464,39 +315,25 @@ Las operaciones con matrices son la suma, la resta, la multiplicación y la divi
 
 ![Representación gráfica de un Data Frame (marco de datos)](Imagenes/DataFrame.png)
 
+#### _Nombres de variables en marcos de datos (data frame)_
+#### _Indexación/subconjuntos en marcos de datos (data frame)_
+1. _**Con [ ]**_
+2. _**Con [[ ]]**_
+3. _**$**_
+#### _Modificar, anexar o remover elementos en marcos de datos (data frame)_
+1. _**Modificar elementos**_
+2. _**Anexar variables o filas**_
+3. _**Remover variables o filas**_
+#### _Coerción en marcos de datos (data frame)_
+
 ### Listas
 
-Una lista es una estructura de datos multidimensional que permite, en su interior, la disposición de estructuras de datos y objetos de diversas tipologías.
 
-![Representación gráfica de una lista](Imagenes/Lista.png)
-
-¿Por qué querríamos crear listas de objetos en R? La respuesta es que almacenar objetos en listas nos permite utilizar algunas funciones R muy poderosas para realizar la misma operación en cada objeto de nuestra lista, lo que nos permite evitar escribir repetidamente la misma función.
-
-#### Creando listas
-
-Las listas se crean a través de la función **list()**. Los elementos que hacen parte de una lista se separan, como en el caso de los vectores, a través de comas **(,)** y pueden ser de cualquier tipo.
-
-<p style="color:#FF0000";><i>Ejemplos. Diferentes listas</i></p>
-
-```{r}
-#Lista 1
-list(1:3, "a", c(TRUE, FALSE, TRUE), c(2.3, 5.9))
-#Lista 2
-list("Hola mundo", 1, 1, 3, TRUE)
-#Lista 3
-list(país = "Colombia", matriz = matrix(c(1:9), ncol =3), vector = c(TRUE, FALSE))
-```
-
-Revisar las posiciones, en el output, en las que aparece cada uno de los elementos de una lista a través del numero contenidoen [[]]
-
-#### Nombrando listas
-
-La asignación de nombres a los elementos que conforman una lista,  al igual que en el caso de los vectores, se logra haciendo uso de la función **names()**.
-
-```{r}
-#Lista
-mi_lista <- list(1, 2, 3, 4)
+Una lista es una estructura de datos multidimensional que permite, en su interior, la disposición de estructuras de datos +
 mi_lista
+
+```{r, eval=TRUE, warning=FALSE}
+mi_lista <- list(1,2,3,4)
 #Nombrando los elementos de la lista
 names(mi_lista) <- c('a', "b", 'c', "d")
 # El resultado
@@ -524,7 +361,28 @@ recurre[2][[1]][[3]][[2]]
 
 #### Combinando listas
 
+### Una estructura especial: factores en R
+
+_**Estudiarr el siguiente caso con vectores**_
+
+a <- 3
+b <- 15
+
+a:b
+a+1:b
+a+(1:b)
+(a+1):b
+
+[Caso tomado de](https://twitter.com/necronet/status/1286129628718018560)
+
+
+
+
+
 ## Indexación en R {#Indexa}
+
+Fuente: [Manual R Base Indexación](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Indexing)
+
 
 ## Programación con R {#Progra}
 

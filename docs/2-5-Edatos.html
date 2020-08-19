@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="2-4-Elogicas.html"/>
-<link rel="next" href="2-6-Indexa.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -171,18 +171,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.3" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#arreglos"><i class="fa fa-check"></i><b>2.5.3</b> Arreglos</a></li>
 <li class="chapter" data-level="2.5.4" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#data-frames"><i class="fa fa-check"></i><b>2.5.4</b> Data frames</a></li>
 <li class="chapter" data-level="2.5.5" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#listas"><i class="fa fa-check"></i><b>2.5.5</b> Listas</a></li>
+<li class="chapter" data-level="2.5.6" data-path="2-5-Edatos.html"><a href="2-5-Edatos.html#una-estructura-especial-factores-en-r"><i class="fa fa-check"></i><b>2.5.6</b> Una estructura especial: factores en R</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="2-6-Indexa.html"><a href="2-6-Indexa.html"><i class="fa fa-check"></i><b>2.6</b> Indexación en R</a></li>
-<li class="chapter" data-level="2.7" data-path="2-7-Progra.html"><a href="2-7-Progra.html"><i class="fa fa-check"></i><b>2.7</b> Programación con R</a>
-<ul>
-<li class="chapter" data-level="2.7.1" data-path="2-7-Progra.html"><a href="2-7-Progra.html#if-y-else"><i class="fa fa-check"></i><b>2.7.1</b> if y else</a></li>
-<li class="chapter" data-level="2.7.2" data-path="2-7-Progra.html"><a href="2-7-Progra.html#for"><i class="fa fa-check"></i><b>2.7.2</b> for</a></li>
-<li class="chapter" data-level="2.7.3" data-path="2-7-Progra.html"><a href="2-7-Progra.html#while"><i class="fa fa-check"></i><b>2.7.3</b> while</a></li>
-<li class="chapter" data-level="2.7.4" data-path="2-7-Progra.html"><a href="2-7-Progra.html#break-y-next"><i class="fa fa-check"></i><b>2.7.4</b> break y next</a></li>
-<li class="chapter" data-level="2.7.5" data-path="2-7-Progra.html"><a href="2-7-Progra.html#repeat"><i class="fa fa-check"></i><b>2.7.5</b> repeat</a></li>
-<li class="chapter" data-level="2.7.6" data-path="2-7-Progra.html"><a href="2-7-Progra.html#la-familia-apply"><i class="fa fa-check"></i><b>2.7.6</b> La familia apply</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="2-8-Mpracticas.html"><a href="2-8-Mpracticas.html"><i class="fa fa-check"></i><b>2.8</b> Mejores prácticas en R</a></li>
 </ul></li>
 </ul>
 
@@ -203,133 +193,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="Edatos" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Estructuras de datos</h2>
+<p>En las secciones anteriores se presentaron, principalmente, los tipos de datos de mayor uso en R; la posibilidad de implementar en este lenguaje expresiones aritméticas a través del uso de operaciones simples y compuestas; la creación y el nombramiento de variables en R así como la implementación de expresiones lógicas haciendo uso de operadores relacionales y de tipo lógico. En esta sección del documento, nos concentraremos en el estudio de las principales estructuras de datos existentes en R.</p>
+<p>Una estructura de datos en R, es un <em><strong>artefacto</strong></em> conformado o no por datos del mismo tipo. En este lenguaje, existen 5 estructuras de datos, principalmente: <em>vectores</em>, <em>matrices</em>, <em>arreglos</em>, <em>marcos de datos o data frame</em> y <em>listas</em><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>.</p>
+<p>A continuación, el diagrama, presenta una representación/esquematización gráfica de la arquitectura que hace parte de cada una de las estructuras de datos que serán presentadas en este apartado.</p>
 <div class="figure">
 <img src="Imagenes/TiposDatos.png" alt="" />
 <p class="caption">Principales estructuras de datos en R. <br> Extraída de <a href="https://medium.com/@tiwarigaurav2512/r-data-types-847fffb01d5b" class="uri">https://medium.com/@tiwarigaurav2512/r-data-types-847fffb01d5b</a></p>
 </div>
 <div id="vectores" class="section level3" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Vectores</h3>
-<p>Importancia de la función c()</p>
+<p>La primera estructura de datos empleda por R son los <em><strong>vectores</strong></em>. Estos, como se ilustra en la siguiente imagen, están conformados por “filas” en cuyo interior existen datos de una misma tipología.</p>
 <div class="figure">
 <img src="Imagenes/Vector.png" alt="" />
 <p class="caption">Representación gráfica de un vector</p>
 </div>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="2-5-Edatos.html#cb187-1"></a>vector1 &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb187-2"><a href="2-5-Edatos.html#cb187-2"></a>vector2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>)</span>
-<span id="cb187-3"><a href="2-5-Edatos.html#cb187-3"></a><span class="co"># vector3 &lt;- 1, 2</span></span>
-<span id="cb187-4"><a href="2-5-Edatos.html#cb187-4"></a>vector4 &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span></span>
-<span id="cb187-5"><a href="2-5-Edatos.html#cb187-5"></a>vector5 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
-<p>Mi primer vector.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="2-5-Edatos.html#cb188-1"></a><span class="co"># Mi primer vector con 5 elementos</span></span>
-<span id="cb188-2"><a href="2-5-Edatos.html#cb188-2"></a><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span></code></pre></div>
+<p>A continuación, se presenta la regla general para la construcción de vectores en R.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla: Construcción de vectores en R
+</p>
+</strong><br>
+En R, los vectores se construyen haciendo uso de paréntesis precedidos de la letra minuscula <strong>c()</strong>. Los elementos o tipos de datos que conforman un vector están separados por <strong>comas</strong> y estos deben ser en su totalidad de la <strong>misma tipología</strong>.
+</p>
+</blockquote>
+<p><br></p>
+<p>A continuación, se presentan dos ejemplos de vectores en en R. El primero, está conformado por los números del 1 al 5 (datos de tipo numérico) y el segundo, está conformado por los números enteros del 6 al 10 cuyo resultado es almacenado y visualizado a través de la conformación/definición de una variable y.</p>
+<p style="color:#e6550d";><i>Ejemplo. Vectores en R </i></p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="2-5-Edatos.html#cb217-1"></a><span class="co"># Ejemplo 1. Ilustración de un vector en R</span></span>
+<span id="cb217-2"><a href="2-5-Edatos.html#cb217-2"></a><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="2-5-Edatos.html#cb190-1"></a><span class="co"># Matriz con tres filas y cuatro columnas</span></span>
-<span id="cb190-2"><a href="2-5-Edatos.html#cb190-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">4</span>) </span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    4    7   10
-## [2,]    2    5    8   11
-## [3,]    3    6    9   12</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="2-5-Edatos.html#cb219-1"></a><span class="co"># Ejemplo 2. Ilustración de un vector en R dentro de una variable</span></span>
+<span id="cb219-2"><a href="2-5-Edatos.html#cb219-2"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(6L, 7L, 8L, 9L, 10L)</span>
+<span id="cb219-3"><a href="2-5-Edatos.html#cb219-3"></a>y</span></code></pre></div>
+<pre><code>## [1]  6  7  8  9 10</code></pre>
 <div id="tipos-de-vectores" class="section level4" number="2.5.1.1">
 <h4><span class="header-section-number">2.5.1.1</span> <em>Tipos de vectores</em></h4>
 <ol style="list-style-type: decimal">
 <li><em><strong>Lógicos</strong></em></li>
 </ol>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="2-5-Edatos.html#cb192-1"></a><span class="co"># Mi primer vector Lógico</span></span>
-<span id="cb192-2"><a href="2-5-Edatos.html#cb192-2"></a><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="2-5-Edatos.html#cb221-1"></a><span class="co"># Mi primer vector Lógico</span></span>
+<span id="cb221-2"><a href="2-5-Edatos.html#cb221-2"></a><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li><em><strong>Enteros</strong></em></li>
 </ol>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="2-5-Edatos.html#cb193-1"></a><span class="co"># Mi primer vector entero</span></span>
-<span id="cb193-2"><a href="2-5-Edatos.html#cb193-2"></a><span class="kw">c</span>(12L, 3L, 24L, 8L)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="2-5-Edatos.html#cb222-1"></a><span class="co"># Mi primer vector entero</span></span>
+<span id="cb222-2"><a href="2-5-Edatos.html#cb222-2"></a><span class="kw">c</span>(12L, 3L, 24L, 8L)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li><em><strong>Reales</strong></em></li>
 </ol>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="2-5-Edatos.html#cb194-1"></a><span class="co"># Mi primer vector real</span></span>
-<span id="cb194-2"><a href="2-5-Edatos.html#cb194-2"></a><span class="kw">c</span>(<span class="fl">12.10</span>, <span class="fl">24.90</span>, <span class="fl">4.99</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="2-5-Edatos.html#cb223-1"></a><span class="co"># Mi primer vector real</span></span>
+<span id="cb223-2"><a href="2-5-Edatos.html#cb223-2"></a><span class="kw">c</span>(<span class="fl">12.10</span>, <span class="fl">24.90</span>, <span class="fl">4.99</span>)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
-<li><em><strong>Cadena</strong></em></li>
+<li><em><strong>Cadena o caracter</strong></em></li>
 </ol>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="2-5-Edatos.html#cb195-1"></a><span class="co"># Mi primer vector cadena</span></span>
-<span id="cb195-2"><a href="2-5-Edatos.html#cb195-2"></a><span class="kw">c</span>(<span class="st">&quot;Lunes&quot;</span>, <span class="st">&quot;Martes&quot;</span>, <span class="st">&quot;Miércoles&quot;</span>,<span class="st">&quot;Jueves&quot;</span>, <span class="st">&quot;Viernes&quot;</span>, <span class="st">&quot;Sábado&quot;</span>,<span class="st">&quot;Domingo&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="2-5-Edatos.html#cb224-1"></a><span class="co"># Mi primer vector cadena</span></span>
+<span id="cb224-2"><a href="2-5-Edatos.html#cb224-2"></a><span class="kw">c</span>(<span class="st">&quot;Lunes&quot;</span>, <span class="st">&quot;Martes&quot;</span>, <span class="st">&quot;Miércoles&quot;</span>,<span class="st">&quot;Jueves&quot;</span>, <span class="st">&quot;Viernes&quot;</span>, <span class="st">&quot;Sábado&quot;</span>,<span class="st">&quot;Domingo&quot;</span>)</span></code></pre></div>
 </div>
 <div id="cómo-crear-vectores-rápidamente" class="section level4" number="2.5.1.2">
-<h4><span class="header-section-number">2.5.1.2</span> <em>Cómo crear vectores rápidamente</em></h4>
+<h4><span class="header-section-number">2.5.1.2</span> <em>¿Cómo crear vectores rápidamente?</em></h4>
 <p>Funciones (seq() y rep())</p>
 </div>
-<div id="indexación-de-vectores" class="section level4" number="2.5.1.3">
-<h4><span class="header-section-number">2.5.1.3</span> <em>Indexación de vectores</em></h4>
-<p>Fuente: <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Indexing">Manual R Base Indexación</a></p>
-<p>Cómo extraer elementos de un vector - R es un lenguaje de programación indexado en 1; es decir, al primer elemento de un vector se le asigna la posición 1. Para extraer elementos de un vector usamos corchetes []</p>
-<div class="figure">
-<img src="Imagenes/Indexacion.svg" alt="" />
-<p class="caption">Gráfico de indexación de vectores</p>
-</div>
-<div id="por-posición" class="section level5" number="2.5.1.3.1">
-<h5><span class="header-section-number">2.5.1.3.1</span> <em>Por posición</em></h5>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="2-5-Edatos.html#cb196-1"></a>Nombre_vector[<span class="dv">3</span>]</span>
-<span id="cb196-2"><a href="2-5-Edatos.html#cb196-2"></a>Nombre_vector[<span class="kw">c</span>(<span class="dv">3</span>)]</span>
-<span id="cb196-3"><a href="2-5-Edatos.html#cb196-3"></a>Nombre_vector[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</span>
-<span id="cb196-4"><a href="2-5-Edatos.html#cb196-4"></a>Nombre_vector[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)]</span>
-<span id="cb196-5"><a href="2-5-Edatos.html#cb196-5"></a>Nombre_vector[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">7</span>)]</span>
-<span id="cb196-6"><a href="2-5-Edatos.html#cb196-6"></a>Nombre_vector[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">7</span>)]</span></code></pre></div>
-</div>
-<div id="por-vectores-lógicos" class="section level5" number="2.5.1.3.2">
-<h5><span class="header-section-number">2.5.1.3.2</span> <em>Por vectores lógicos</em></h5>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="2-5-Edatos.html#cb197-1"></a>Nombre_vector[<span class="kw">c</span>(LOGICO)]</span></code></pre></div>
-</div>
-</div>
-<div id="modificar-anexar-remover-elementos-de-un-vector" class="section level4" number="2.5.1.4">
-<h4><span class="header-section-number">2.5.1.4</span> <em>Modificar, anexar, remover elementos de un vector</em></h4>
-<ol style="list-style-type: decimal">
-<li><em><strong>Modificar elementos de un vector</strong></em></li>
-</ol>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="2-5-Edatos.html#cb198-1"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(1L<span class="op">:</span>5L)</span>
-<span id="cb198-2"><a href="2-5-Edatos.html#cb198-2"></a>vector[<span class="dv">5</span>] &lt;-<span class="st"> </span>6L</span>
-<span id="cb198-3"><a href="2-5-Edatos.html#cb198-3"></a>vector</span></code></pre></div>
-<pre><code>## [1] 1 2 3 4 6</code></pre>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="2-5-Edatos.html#cb200-1"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(1L<span class="op">:</span>5L)</span>
-<span id="cb200-2"><a href="2-5-Edatos.html#cb200-2"></a>vector1[<span class="kw">c</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>)] &lt;-<span class="st"> </span>6L</span>
-<span id="cb200-3"><a href="2-5-Edatos.html#cb200-3"></a>vector1</span></code></pre></div>
-<pre><code>## [1] 1 2 6 6 6</code></pre>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="2-5-Edatos.html#cb202-1"></a>vector2 &lt;-<span class="st"> </span><span class="kw">c</span>(1L<span class="op">:</span>5L)</span>
-<span id="cb202-2"><a href="2-5-Edatos.html#cb202-2"></a>vector2[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)] &lt;-<span class="st"> </span>6L</span>
-<span id="cb202-3"><a href="2-5-Edatos.html#cb202-3"></a>vector2</span></code></pre></div>
-<pre><code>## [1] 6 2 3 4 6</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li><em><strong>Adicionar elementos a un vector</strong></em></li>
-</ol>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="2-5-Edatos.html#cb204-1"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
-<span id="cb204-2"><a href="2-5-Edatos.html#cb204-2"></a>vector2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb204-3"><a href="2-5-Edatos.html#cb204-3"></a><span class="co"># nuevo vector</span></span>
-<span id="cb204-4"><a href="2-5-Edatos.html#cb204-4"></a>vector3_<span class="dv">1</span> &lt;-<span class="st">  </span><span class="kw">c</span>(vector1, vector2)</span>
-<span id="cb204-5"><a href="2-5-Edatos.html#cb204-5"></a>vector3_<span class="dv">1</span></span></code></pre></div>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="2-5-Edatos.html#cb206-1"></a><span class="co"># mismo vector</span></span>
-<span id="cb206-2"><a href="2-5-Edatos.html#cb206-2"></a>vector1[<span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">5</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb206-3"><a href="2-5-Edatos.html#cb206-3"></a>vector1</span></code></pre></div>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li><em><strong>Remover elementos de un vector</strong></em></li>
-</ol>
-<p>Indexando negativamente (OJO, para data.frames y listas se puede usar la opción NULL)</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="2-5-Edatos.html#cb208-1"></a><span class="co"># Ejemplo1</span></span>
-<span id="cb208-2"><a href="2-5-Edatos.html#cb208-2"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span>
-<span id="cb208-3"><a href="2-5-Edatos.html#cb208-3"></a>vector &lt;-<span class="st"> </span>vector[<span class="op">-</span><span class="kw">c</span>(<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>)]</span>
-<span id="cb208-4"><a href="2-5-Edatos.html#cb208-4"></a>vector</span></code></pre></div>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="2-5-Edatos.html#cb210-1"></a><span class="co"># Ejemplo2</span></span>
-<span id="cb210-2"><a href="2-5-Edatos.html#cb210-2"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span>
-<span id="cb210-3"><a href="2-5-Edatos.html#cb210-3"></a>vector &lt;-<span class="st"> </span>vector[<span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">-7</span>, <span class="dv">-8</span>, <span class="dv">-9</span>, <span class="dv">-10</span>)]</span>
-<span id="cb210-4"><a href="2-5-Edatos.html#cb210-4"></a>vector</span></code></pre></div>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="2-5-Edatos.html#cb212-1"></a><span class="co"># Ejemplo3</span></span>
-<span id="cb212-2"><a href="2-5-Edatos.html#cb212-2"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span>
-<span id="cb212-3"><a href="2-5-Edatos.html#cb212-3"></a>vector &lt;-<span class="st"> </span>vector[vector<span class="op">&lt;</span><span class="dv">6</span>]</span>
-<span id="cb212-4"><a href="2-5-Edatos.html#cb212-4"></a>vector</span></code></pre></div>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-</div>
-<div id="operaciones-aritméticas-con-vectores" class="section level4" number="2.5.1.5">
-<h4><span class="header-section-number">2.5.1.5</span> <em>Operaciones aritméticas con vectores</em></h4>
+<div id="operaciones-con-vectores" class="section level4" number="2.5.1.3">
+<h4><span class="header-section-number">2.5.1.3</span> <em>Operaciones con vectores</em></h4>
 <ol style="list-style-type: decimal">
 <li><em><strong>Adición, multiplicación y división</strong></em></li>
 </ol>
@@ -337,13 +265,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="Imagenes/Aritmetica.svg" alt="" />
 <p class="caption">Ejemplo suma con vectores</p>
 </div>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="2-5-Edatos.html#cb214-1"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb214-2"><a href="2-5-Edatos.html#cb214-2"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span><span class="op">:</span><span class="dv">1</span>)</span>
-<span id="cb214-3"><a href="2-5-Edatos.html#cb214-3"></a>v3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb214-4"><a href="2-5-Edatos.html#cb214-4"></a>v4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span><span class="op">:</span><span class="dv">1</span>)</span>
-<span id="cb214-5"><a href="2-5-Edatos.html#cb214-5"></a>suma &lt;-<span class="st"> </span>v1 <span class="op">+</span><span class="st"> </span>v2 <span class="op">+</span><span class="st"> </span>v3 <span class="op">+</span><span class="st"> </span>v4</span>
-<span id="cb214-6"><a href="2-5-Edatos.html#cb214-6"></a>promedio &lt;-<span class="st"> </span>suma<span class="op">/</span><span class="dv">3</span></span>
-<span id="cb214-7"><a href="2-5-Edatos.html#cb214-7"></a>promedio</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="2-5-Edatos.html#cb225-1"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb225-2"><a href="2-5-Edatos.html#cb225-2"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span><span class="op">:</span><span class="dv">1</span>)</span>
+<span id="cb225-3"><a href="2-5-Edatos.html#cb225-3"></a>v3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb225-4"><a href="2-5-Edatos.html#cb225-4"></a>v4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span><span class="op">:</span><span class="dv">1</span>)</span>
+<span id="cb225-5"><a href="2-5-Edatos.html#cb225-5"></a>suma &lt;-<span class="st"> </span>v1 <span class="op">+</span><span class="st"> </span>v2 <span class="op">+</span><span class="st"> </span>v3 <span class="op">+</span><span class="st"> </span>v4</span>
+<span id="cb225-6"><a href="2-5-Edatos.html#cb225-6"></a>promedio &lt;-<span class="st"> </span>suma<span class="op">/</span><span class="dv">3</span></span>
+<span id="cb225-7"><a href="2-5-Edatos.html#cb225-7"></a>promedio</span></code></pre></div>
 <pre><code>## [1] 4 4 4 4 4</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><em><strong>Reciclaje en operaciones con vectores</strong></em></li>
@@ -353,45 +281,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="Imagenes/Reciclaje.svg" alt="" />
 <p class="caption">Reciclaje en operaciones con vectores</p>
 </div>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="2-5-Edatos.html#cb216-1"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">92</span>, <span class="dv">90</span>, <span class="dv">84</span>, <span class="dv">95</span>, <span class="dv">77</span>, <span class="dv">92</span>, <span class="dv">85</span>)</span>
-<span id="cb216-2"><a href="2-5-Edatos.html#cb216-2"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">87</span>, <span class="dv">81</span>)</span>
-<span id="cb216-3"><a href="2-5-Edatos.html#cb216-3"></a>suma &lt;-<span class="st"> </span>v1 <span class="op">+</span><span class="st"> </span>v2</span>
-<span id="cb216-4"><a href="2-5-Edatos.html#cb216-4"></a>suma</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="2-5-Edatos.html#cb227-1"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">92</span>, <span class="dv">90</span>, <span class="dv">84</span>, <span class="dv">95</span>, <span class="dv">77</span>, <span class="dv">92</span>, <span class="dv">85</span>)</span>
+<span id="cb227-2"><a href="2-5-Edatos.html#cb227-2"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">87</span>, <span class="dv">81</span>)</span>
+<span id="cb227-3"><a href="2-5-Edatos.html#cb227-3"></a>suma &lt;-<span class="st"> </span>v1 <span class="op">+</span><span class="st"> </span>v2</span>
+<span id="cb227-4"><a href="2-5-Edatos.html#cb227-4"></a>suma</span></code></pre></div>
 <pre><code>## [1] 179 171 171 176 164 173 172</code></pre>
 </div>
-<div id="usando-nombres-en-vectores" class="section level4" number="2.5.1.6">
-<h4><span class="header-section-number">2.5.1.6</span> <em>Usando nombres en vectores</em></h4>
-<div class="figure">
-<img src="Imagenes/Nombres_vectores.svg" alt="" />
-<p class="caption">Filosofia nombre vectores</p>
-</div>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="2-5-Edatos.html#cb218-1"></a><span class="co"># Alternativa 1</span></span>
-<span id="cb218-2"><a href="2-5-Edatos.html#cb218-2"></a>vector =<span class="st"> </span><span class="kw">c</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">c =</span> <span class="dv">3</span>, <span class="dt">d =</span> <span class="dv">4</span>, <span class="dt">e =</span> <span class="dv">5</span>)</span>
-<span id="cb218-3"><a href="2-5-Edatos.html#cb218-3"></a>vector</span></code></pre></div>
-<pre><code>## a b c d e 
-## 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="2-5-Edatos.html#cb220-1"></a><span class="co"># Alternativa 2</span></span>
-<span id="cb220-2"><a href="2-5-Edatos.html#cb220-2"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(1L<span class="op">:</span>5L)</span>
-<span id="cb220-3"><a href="2-5-Edatos.html#cb220-3"></a>Nombres &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>) <span class="co"># letters[c(1:5)] # letters[seq(1,5)] </span></span>
-<span id="cb220-4"><a href="2-5-Edatos.html#cb220-4"></a><span class="kw">names</span>(vector1) &lt;-<span class="st"> </span>Nombres</span>
-<span id="cb220-5"><a href="2-5-Edatos.html#cb220-5"></a>vector1</span></code></pre></div>
-<pre><code>## a b c d e 
-## 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="2-5-Edatos.html#cb222-1"></a><span class="co"># Indexación</span></span>
-<span id="cb222-2"><a href="2-5-Edatos.html#cb222-2"></a>vector1[<span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;e&#39;</span>)]</span></code></pre></div>
-<pre><code>## a e 
-## 1 5</code></pre>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="2-5-Edatos.html#cb224-1"></a><span class="co"># Reemplazar valores</span></span>
-<span id="cb224-2"><a href="2-5-Edatos.html#cb224-2"></a>vector1[<span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;e&#39;</span>)] &lt;-<span class="st"> </span>6L</span>
-<span id="cb224-3"><a href="2-5-Edatos.html#cb224-3"></a>vector1</span></code></pre></div>
-<pre><code>## a b c d e 
-## 6 2 3 4 6</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="2-5-Edatos.html#cb226-1"></a><span class="co"># Revisar los nombres de un vector</span></span>
-<span id="cb226-2"><a href="2-5-Edatos.html#cb226-2"></a><span class="kw">names</span>(vector1)</span></code></pre></div>
-<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</code></pre>
-</div>
-<div id="coerción-en-vectores" class="section level4" number="2.5.1.7">
-<h4><span class="header-section-number">2.5.1.7</span> <em>Coerción en vectores</em></h4>
+<div id="coerción-en-vectores" class="section level4" number="2.5.1.4">
+<h4><span class="header-section-number">2.5.1.4</span> <em>Coerción en vectores</em></h4>
 <br>
 <br>
 <blockquote>
@@ -408,6 +305,110 @@ Es decir, si existe un vector con elementos de tipo lógico y de tipo entero, el
 </blockquote>
 <p><br>
 <br></p>
+</div>
+<div id="indexaciónsubconjuntos-de-vectores" class="section level4" number="2.5.1.5">
+<h4><span class="header-section-number">2.5.1.5</span> <em>Indexación/subconjuntos de vectores</em></h4>
+<p>Fuente: <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Indexing">Manual R Base Indexación</a></p>
+<p>Cómo extraer elementos de un vector - R es un lenguaje de programación indexado en 1; es decir, al primer elemento de un vector se le asigna la posición 1. Para extraer elementos de un vector usamos corchetes []</p>
+<div class="figure">
+<img src="Imagenes/Indexacion.svg" alt="" />
+<p class="caption">Gráfico de indexación de vectores</p>
+</div>
+<p>Existen 6 caminos (cosas) que pueden ser empleadas para crear subconjuntos de un vector en R: <em>vectores con enteros positivos</em>, <em>vectores con enteros negativos</em>, <em>vectores lógicos</em>, <em>vectores de tipo caracter</em>, <em>vacios (nothing)</em> y <em>cero (zero)</em>.</p>
+<ol style="list-style-type: decimal">
+<li><em><strong>Por posición</strong></em></li>
+</ol>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="2-5-Edatos.html#cb229-1"></a>Nombre_vector[<span class="dv">3</span>]</span>
+<span id="cb229-2"><a href="2-5-Edatos.html#cb229-2"></a>Nombre_vector[<span class="kw">c</span>(<span class="dv">3</span>)]</span>
+<span id="cb229-3"><a href="2-5-Edatos.html#cb229-3"></a>Nombre_vector[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</span>
+<span id="cb229-4"><a href="2-5-Edatos.html#cb229-4"></a>Nombre_vector[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)]</span>
+<span id="cb229-5"><a href="2-5-Edatos.html#cb229-5"></a>Nombre_vector[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">7</span>)]</span>
+<span id="cb229-6"><a href="2-5-Edatos.html#cb229-6"></a>Nombre_vector[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">7</span>)]</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><em><strong>Por vectores lógicos</strong></em></li>
+</ol>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="2-5-Edatos.html#cb230-1"></a>Nombre_vector[<span class="kw">c</span>(LOGICO)]</span></code></pre></div>
+</div>
+<div id="usando-nombres-en-vectores" class="section level4" number="2.5.1.6">
+<h4><span class="header-section-number">2.5.1.6</span> <em>Usando nombres en vectores</em></h4>
+<div class="figure">
+<img src="Imagenes/Nombres_vectores.svg" alt="" />
+<p class="caption">Filosofia nombre vectores</p>
+</div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="2-5-Edatos.html#cb231-1"></a><span class="co"># Alternativa 1</span></span>
+<span id="cb231-2"><a href="2-5-Edatos.html#cb231-2"></a>vector =<span class="st"> </span><span class="kw">c</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">c =</span> <span class="dv">3</span>, <span class="dt">d =</span> <span class="dv">4</span>, <span class="dt">e =</span> <span class="dv">5</span>)</span>
+<span id="cb231-3"><a href="2-5-Edatos.html#cb231-3"></a>vector</span></code></pre></div>
+<pre><code>## a b c d e 
+## 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="2-5-Edatos.html#cb233-1"></a><span class="co"># Alternativa 2</span></span>
+<span id="cb233-2"><a href="2-5-Edatos.html#cb233-2"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(1L<span class="op">:</span>5L)</span>
+<span id="cb233-3"><a href="2-5-Edatos.html#cb233-3"></a>Nombres &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>) <span class="co"># letters[c(1:5)] # letters[seq(1,5)] </span></span>
+<span id="cb233-4"><a href="2-5-Edatos.html#cb233-4"></a><span class="kw">names</span>(vector1) &lt;-<span class="st"> </span>Nombres</span>
+<span id="cb233-5"><a href="2-5-Edatos.html#cb233-5"></a>vector1</span></code></pre></div>
+<pre><code>## a b c d e 
+## 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="2-5-Edatos.html#cb235-1"></a><span class="co"># Indexación</span></span>
+<span id="cb235-2"><a href="2-5-Edatos.html#cb235-2"></a>vector1[<span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;e&#39;</span>)]</span></code></pre></div>
+<pre><code>## a e 
+## 1 5</code></pre>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="2-5-Edatos.html#cb237-1"></a><span class="co"># Reemplazar valores</span></span>
+<span id="cb237-2"><a href="2-5-Edatos.html#cb237-2"></a>vector1[<span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;e&#39;</span>)] &lt;-<span class="st"> </span>6L</span>
+<span id="cb237-3"><a href="2-5-Edatos.html#cb237-3"></a>vector1</span></code></pre></div>
+<pre><code>## a b c d e 
+## 6 2 3 4 6</code></pre>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="2-5-Edatos.html#cb239-1"></a><span class="co"># Revisar los nombres de un vector</span></span>
+<span id="cb239-2"><a href="2-5-Edatos.html#cb239-2"></a><span class="kw">names</span>(vector1)</span></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</code></pre>
+</div>
+<div id="modificar-anexar-remover-elementos-de-un-vector" class="section level4" number="2.5.1.7">
+<h4><span class="header-section-number">2.5.1.7</span> <em>Modificar, anexar, remover elementos de un vector</em></h4>
+<ol style="list-style-type: decimal">
+<li><em><strong>Modificar elementos de un vector</strong></em></li>
+</ol>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="2-5-Edatos.html#cb241-1"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(1L<span class="op">:</span>5L)</span>
+<span id="cb241-2"><a href="2-5-Edatos.html#cb241-2"></a>vector[<span class="dv">5</span>] &lt;-<span class="st"> </span>6L</span>
+<span id="cb241-3"><a href="2-5-Edatos.html#cb241-3"></a>vector</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 6</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="2-5-Edatos.html#cb243-1"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(1L<span class="op">:</span>5L)</span>
+<span id="cb243-2"><a href="2-5-Edatos.html#cb243-2"></a>vector1[<span class="kw">c</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>)] &lt;-<span class="st"> </span>6L</span>
+<span id="cb243-3"><a href="2-5-Edatos.html#cb243-3"></a>vector1</span></code></pre></div>
+<pre><code>## [1] 1 2 6 6 6</code></pre>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="2-5-Edatos.html#cb245-1"></a>vector2 &lt;-<span class="st"> </span><span class="kw">c</span>(1L<span class="op">:</span>5L)</span>
+<span id="cb245-2"><a href="2-5-Edatos.html#cb245-2"></a>vector2[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)] &lt;-<span class="st"> </span>6L</span>
+<span id="cb245-3"><a href="2-5-Edatos.html#cb245-3"></a>vector2</span></code></pre></div>
+<pre><code>## [1] 6 2 3 4 6</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><em><strong>Adicionar elementos a un vector</strong></em></li>
+</ol>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="2-5-Edatos.html#cb247-1"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
+<span id="cb247-2"><a href="2-5-Edatos.html#cb247-2"></a>vector2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb247-3"><a href="2-5-Edatos.html#cb247-3"></a><span class="co"># nuevo vector</span></span>
+<span id="cb247-4"><a href="2-5-Edatos.html#cb247-4"></a>vector3_<span class="dv">1</span> &lt;-<span class="st">  </span><span class="kw">c</span>(vector1, vector2)</span>
+<span id="cb247-5"><a href="2-5-Edatos.html#cb247-5"></a>vector3_<span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="2-5-Edatos.html#cb249-1"></a><span class="co"># mismo vector</span></span>
+<span id="cb249-2"><a href="2-5-Edatos.html#cb249-2"></a>vector1[<span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">5</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb249-3"><a href="2-5-Edatos.html#cb249-3"></a>vector1</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><em><strong>Remover elementos de un vector</strong></em></li>
+</ol>
+<p>Indexando negativamente (OJO, para data.frames y listas se puede usar la opción NULL)</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="2-5-Edatos.html#cb251-1"></a><span class="co"># Ejemplo1</span></span>
+<span id="cb251-2"><a href="2-5-Edatos.html#cb251-2"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb251-3"><a href="2-5-Edatos.html#cb251-3"></a>vector &lt;-<span class="st"> </span>vector[<span class="op">-</span><span class="kw">c</span>(<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>)]</span>
+<span id="cb251-4"><a href="2-5-Edatos.html#cb251-4"></a>vector</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="2-5-Edatos.html#cb253-1"></a><span class="co"># Ejemplo2</span></span>
+<span id="cb253-2"><a href="2-5-Edatos.html#cb253-2"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb253-3"><a href="2-5-Edatos.html#cb253-3"></a>vector &lt;-<span class="st"> </span>vector[<span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">-7</span>, <span class="dv">-8</span>, <span class="dv">-9</span>, <span class="dv">-10</span>)]</span>
+<span id="cb253-4"><a href="2-5-Edatos.html#cb253-4"></a>vector</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="2-5-Edatos.html#cb255-1"></a><span class="co"># Ejemplo3</span></span>
+<span id="cb255-2"><a href="2-5-Edatos.html#cb255-2"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb255-3"><a href="2-5-Edatos.html#cb255-3"></a>vector &lt;-<span class="st"> </span>vector[vector<span class="op">&lt;</span><span class="dv">6</span>]</span>
+<span id="cb255-4"><a href="2-5-Edatos.html#cb255-4"></a>vector</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
 </div>
 </div>
 <div id="matrices" class="section level3" number="2.5.2">
@@ -432,64 +433,64 @@ Es decir, si existe un vector con elementos de tipo lógico y de tipo entero, el
 <img src="Imagenes/Matrices.svg" alt="" />
 <p class="caption">Ilustración matrices</p>
 </div>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="2-5-Edatos.html#cb228-1"></a><span class="co"># Ejemplo 1 - Por defecto - columnas</span></span>
-<span id="cb228-2"><a href="2-5-Edatos.html#cb228-2"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="2-5-Edatos.html#cb257-1"></a><span class="co"># Ejemplo 1 - Por defecto - columnas</span></span>
+<span id="cb257-2"><a href="2-5-Edatos.html#cb257-2"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>))</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    1
 ## [2,]    2
 ## [3,]    3
 ## [4,]    4
 ## [5,]    5</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="2-5-Edatos.html#cb230-1"></a><span class="co"># Ejemplo 2 - Indicando filas y columnas</span></span>
-<span id="cb230-2"><a href="2-5-Edatos.html#cb230-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="2-5-Edatos.html#cb259-1"></a><span class="co"># Ejemplo 2 - Indicando filas y columnas</span></span>
+<span id="cb259-2"><a href="2-5-Edatos.html#cb259-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    5    9
 ## [2,]    2    6   10
 ## [3,]    3    7   11
 ## [4,]    4    8   12</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="2-5-Edatos.html#cb232-1"></a><span class="co"># Ejemplo 3 - Por filas</span></span>
-<span id="cb232-2"><a href="2-5-Edatos.html#cb232-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="2-5-Edatos.html#cb261-1"></a><span class="co"># Ejemplo 3 - Por filas</span></span>
+<span id="cb261-2"><a href="2-5-Edatos.html#cb261-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    2    3
 ## [2,]    4    5    6
 ## [3,]    7    8    9
 ## [4,]   10   11   12</code></pre>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="2-5-Edatos.html#cb234-1"></a><span class="co"># Ejemplo 4 - Sin definir columnas</span></span>
-<span id="cb234-2"><a href="2-5-Edatos.html#cb234-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="2-5-Edatos.html#cb263-1"></a><span class="co"># Ejemplo 4 - Sin definir columnas</span></span>
+<span id="cb263-2"><a href="2-5-Edatos.html#cb263-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    5    9
 ## [2,]    2    6   10
 ## [3,]    3    7   11
 ## [4,]    4    8   12</code></pre>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="2-5-Edatos.html#cb236-1"></a><span class="co"># Ejemplo 5 - Sin definir filas</span></span>
-<span id="cb236-2"><a href="2-5-Edatos.html#cb236-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="2-5-Edatos.html#cb265-1"></a><span class="co"># Ejemplo 5 - Sin definir filas</span></span>
+<span id="cb265-2"><a href="2-5-Edatos.html#cb265-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="2-5-Edatos.html#cb238-1"></a><span class="co"># Ejemplo 6 - Con secuencias</span></span>
-<span id="cb238-2"><a href="2-5-Edatos.html#cb238-2"></a><span class="kw">matrix</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>, <span class="dt">to =</span> <span class="dv">8</span>, <span class="dt">by =</span> <span class="dv">2</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="2-5-Edatos.html#cb267-1"></a><span class="co"># Ejemplo 6 - Con secuencias</span></span>
+<span id="cb267-2"><a href="2-5-Edatos.html#cb267-2"></a><span class="kw">matrix</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>, <span class="dt">to =</span> <span class="dv">8</span>, <span class="dt">by =</span> <span class="dv">2</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    2    6
 ## [2,]    4    8</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="2-5-Edatos.html#cb240-1"></a><span class="co"># Ejemplo 7 - Con repeticiones</span></span>
-<span id="cb240-2"><a href="2-5-Edatos.html#cb240-2"></a><span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="2-5-Edatos.html#cb269-1"></a><span class="co"># Ejemplo 7 - Con repeticiones</span></span>
+<span id="cb269-2"><a href="2-5-Edatos.html#cb269-2"></a><span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    1
 ## [2,]    1    1</code></pre>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="2-5-Edatos.html#cb242-1"></a><span class="co"># Ejemplo 8 - Reciclando elementos</span></span>
-<span id="cb242-2"><a href="2-5-Edatos.html#cb242-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="2-5-Edatos.html#cb271-1"></a><span class="co"># Ejemplo 8 - Reciclando elementos</span></span>
+<span id="cb271-2"><a href="2-5-Edatos.html#cb271-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    1
 ## [3,]    3    6    2</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="2-5-Edatos.html#cb244-1"></a><span class="co"># Ejemplo 9 - Con elementos lógicos</span></span>
-<span id="cb244-2"><a href="2-5-Edatos.html#cb244-2"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="2-5-Edatos.html#cb273-1"></a><span class="co"># Ejemplo 9 - Con elementos lógicos</span></span>
+<span id="cb273-2"><a href="2-5-Edatos.html#cb273-2"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##       [,1]  [,2]
 ## [1,]  TRUE FALSE
 ## [2,] FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="2-5-Edatos.html#cb246-1"></a><span class="co"># Ejemplo 10 - Con elementos tipo caractér - cadena</span></span>
-<span id="cb246-2"><a href="2-5-Edatos.html#cb246-2"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="st">&#39;Lunes&#39;</span>, <span class="st">&#39;Martes&#39;</span>, <span class="st">&#39;Miércoles&#39;</span>, <span class="st">&#39;Jueves&#39;</span>, <span class="st">&#39;Viernes&#39;</span>, <span class="st">&#39;Sábado&#39;</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="2-5-Edatos.html#cb275-1"></a><span class="co"># Ejemplo 10 - Con elementos tipo caractér - cadena</span></span>
+<span id="cb275-2"><a href="2-5-Edatos.html#cb275-2"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="st">&#39;Lunes&#39;</span>, <span class="st">&#39;Martes&#39;</span>, <span class="st">&#39;Miércoles&#39;</span>, <span class="st">&#39;Jueves&#39;</span>, <span class="st">&#39;Viernes&#39;</span>, <span class="st">&#39;Sábado&#39;</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##      [,1]        [,2]     
 ## [1,] &quot;Lunes&quot;     &quot;Jueves&quot; 
 ## [2,] &quot;Martes&quot;    &quot;Viernes&quot;
@@ -498,19 +499,19 @@ Es decir, si existe un vector con elementos de tipo lógico y de tipo entero, el
 <li><em><strong>Combinando vectores</strong></em></li>
 </ol>
 <p>A través de las funciones <strong>rbind()</strong> y <strong>cbind()</strong></p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="2-5-Edatos.html#cb248-1"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb248-2"><a href="2-5-Edatos.html#cb248-2"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb248-3"><a href="2-5-Edatos.html#cb248-3"></a>v3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb248-4"><a href="2-5-Edatos.html#cb248-4"></a><span class="co"># creación de matrices con vectores- por filas</span></span>
-<span id="cb248-5"><a href="2-5-Edatos.html#cb248-5"></a>fil_matriz &lt;-<span class="st"> </span><span class="kw">rbind</span>(v1, v2, v3)</span>
-<span id="cb248-6"><a href="2-5-Edatos.html#cb248-6"></a>fil_matriz</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="2-5-Edatos.html#cb277-1"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb277-2"><a href="2-5-Edatos.html#cb277-2"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb277-3"><a href="2-5-Edatos.html#cb277-3"></a>v3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb277-4"><a href="2-5-Edatos.html#cb277-4"></a><span class="co"># creación de matrices con vectores- por filas</span></span>
+<span id="cb277-5"><a href="2-5-Edatos.html#cb277-5"></a>fil_matriz &lt;-<span class="st"> </span><span class="kw">rbind</span>(v1, v2, v3)</span>
+<span id="cb277-6"><a href="2-5-Edatos.html#cb277-6"></a>fil_matriz</span></code></pre></div>
 <pre><code>##    [,1] [,2] [,3]
 ## v1    1    2    3
 ## v2    3    2    1
 ## v3    1    2    3</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="2-5-Edatos.html#cb250-1"></a><span class="co"># creación de matrices con vectores- por columnas</span></span>
-<span id="cb250-2"><a href="2-5-Edatos.html#cb250-2"></a>col_matriz &lt;-<span class="st"> </span><span class="kw">cbind</span>(v1, v2, v3)</span>
-<span id="cb250-3"><a href="2-5-Edatos.html#cb250-3"></a>col_matriz</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="2-5-Edatos.html#cb279-1"></a><span class="co"># creación de matrices con vectores- por columnas</span></span>
+<span id="cb279-2"><a href="2-5-Edatos.html#cb279-2"></a>col_matriz &lt;-<span class="st"> </span><span class="kw">cbind</span>(v1, v2, v3)</span>
+<span id="cb279-3"><a href="2-5-Edatos.html#cb279-3"></a>col_matriz</span></code></pre></div>
 <pre><code>##      v1 v2 v3
 ## [1,]  1  3  1
 ## [2,]  2  2  2
@@ -519,58 +520,89 @@ Es decir, si existe un vector con elementos de tipo lógico y de tipo entero, el
 <div id="nombrando-las-dimensiones-de-una-matriz" class="section level4" number="2.5.2.2">
 <h4><span class="header-section-number">2.5.2.2</span> <em>Nombrando las dimensiones de una matriz</em></h4>
 <p>Una matriz está conformada por dos dimensiones (filas y columnas). El nombre de las filas y de las columnas se da a través de las funciones <strong>rownames()</strong> y <strong>colnames()</strong>.</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="2-5-Edatos.html#cb252-1"></a><span class="co"># matriz básica</span></span>
-<span id="cb252-2"><a href="2-5-Edatos.html#cb252-2"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb252-3"><a href="2-5-Edatos.html#cb252-3"></a>matriz</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="2-5-Edatos.html#cb281-1"></a><span class="co"># matriz básica</span></span>
+<span id="cb281-2"><a href="2-5-Edatos.html#cb281-2"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb281-3"><a href="2-5-Edatos.html#cb281-3"></a>matriz</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    2
 ## [2,]    3    4</code></pre>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="2-5-Edatos.html#cb254-1"></a><span class="co"># Matriz con nombres de filas y columnas</span></span>
-<span id="cb254-2"><a href="2-5-Edatos.html#cb254-2"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>)</span>
-<span id="cb254-3"><a href="2-5-Edatos.html#cb254-3"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>)</span>
-<span id="cb254-4"><a href="2-5-Edatos.html#cb254-4"></a>matriz</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="2-5-Edatos.html#cb283-1"></a><span class="co"># Matriz con nombres de filas y columnas</span></span>
+<span id="cb283-2"><a href="2-5-Edatos.html#cb283-2"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>)</span>
+<span id="cb283-3"><a href="2-5-Edatos.html#cb283-3"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>)</span>
+<span id="cb283-4"><a href="2-5-Edatos.html#cb283-4"></a>matriz</span></code></pre></div>
 <pre><code>##     c_1 c_2
 ## f_1   1   2
 ## f_2   3   4</code></pre>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="2-5-Edatos.html#cb256-1"></a><span class="co"># Consultar los nombres de filas y columnas en una matriz</span></span>
-<span id="cb256-2"><a href="2-5-Edatos.html#cb256-2"></a><span class="co"># Nombre de las filas</span></span>
-<span id="cb256-3"><a href="2-5-Edatos.html#cb256-3"></a><span class="kw">rownames</span>(matriz)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="2-5-Edatos.html#cb285-1"></a><span class="co"># Consultar los nombres de filas y columnas en una matriz</span></span>
+<span id="cb285-2"><a href="2-5-Edatos.html#cb285-2"></a><span class="co"># Nombre de las filas</span></span>
+<span id="cb285-3"><a href="2-5-Edatos.html#cb285-3"></a><span class="kw">rownames</span>(matriz)</span></code></pre></div>
 <pre><code>## [1] &quot;f_1&quot; &quot;f_2&quot;</code></pre>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="2-5-Edatos.html#cb258-1"></a><span class="co"># Nombre de las columnas</span></span>
-<span id="cb258-2"><a href="2-5-Edatos.html#cb258-2"></a><span class="kw">colnames</span>(matriz)  </span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="2-5-Edatos.html#cb287-1"></a><span class="co"># Nombre de las columnas</span></span>
+<span id="cb287-2"><a href="2-5-Edatos.html#cb287-2"></a><span class="kw">colnames</span>(matriz)  </span></code></pre></div>
 <pre><code>## [1] &quot;c_1&quot; &quot;c_2&quot;</code></pre>
 </div>
-<div id="indexación-en-matrices" class="section level4" number="2.5.2.3">
-<h4><span class="header-section-number">2.5.2.3</span> <em>Indexación en matrices</em></h4>
+<div id="anexar-filascolumnas-en-matrices" class="section level4" number="2.5.2.3">
+<h4><span class="header-section-number">2.5.2.3</span> <em>Anexar filas/columnas en matrices</em></h4>
+<p>En las matrices se pueden adicionar filas o columnas. A continuación se presenta una ilustración gráfica de estas dos ideas.</p>
+<div class="figure">
+<img src="Imagenes/Adicionar_Matriz.svg" alt="" />
+<p class="caption">Ilustración adicionar filas o culmnas en una matriz</p>
+</div>
+<p>Para adicionar filas en una matriz se hace uso de la función <strong>rbind()</strong>; para adicionar columnas, se hace uso de la función <strong>cbind</strong>.</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="2-5-Edatos.html#cb289-1"></a>matriz1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb289-2"><a href="2-5-Edatos.html#cb289-2"></a><span class="kw">rownames</span>(matriz1) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>)</span>
+<span id="cb289-3"><a href="2-5-Edatos.html#cb289-3"></a><span class="kw">colnames</span>(matriz1) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
+<span id="cb289-4"><a href="2-5-Edatos.html#cb289-4"></a><span class="co"># Adicionar una fila</span></span>
+<span id="cb289-5"><a href="2-5-Edatos.html#cb289-5"></a>matriz1 &lt;-<span class="st"> </span><span class="kw">rbind</span>(matriz, <span class="st">&#39;c_4&#39;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>))</span>
+<span id="cb289-6"><a href="2-5-Edatos.html#cb289-6"></a>matriz1</span></code></pre></div>
+<pre><code>##     c_1 c_2
+## f_1   1   2
+## f_2   3   4
+## c_4   4   7</code></pre>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="2-5-Edatos.html#cb291-1"></a><span class="co"># Adicionar dos columnas</span></span>
+<span id="cb291-2"><a href="2-5-Edatos.html#cb291-2"></a>matriz2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb291-3"><a href="2-5-Edatos.html#cb291-3"></a><span class="kw">rownames</span>(matriz2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>)</span>
+<span id="cb291-4"><a href="2-5-Edatos.html#cb291-4"></a><span class="kw">colnames</span>(matriz2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
+<span id="cb291-5"><a href="2-5-Edatos.html#cb291-5"></a><span class="co"># Adicionar una fila</span></span>
+<span id="cb291-6"><a href="2-5-Edatos.html#cb291-6"></a>matriz2 &lt;-<span class="st"> </span><span class="kw">cbind</span>(matriz2, <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">12</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>))</span>
+<span id="cb291-7"><a href="2-5-Edatos.html#cb291-7"></a><span class="kw">colnames</span>(matriz2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>, <span class="st">&#39;c_4&#39;</span>, <span class="st">&#39;c_5&#39;</span>)</span>
+<span id="cb291-8"><a href="2-5-Edatos.html#cb291-8"></a>matriz2</span></code></pre></div>
+<pre><code>##     c_1 c_2 c_3 c_4 c_5
+## f_1   1   4   7   7  10
+## f_2   2   5   8   8  11
+## f_3   3   6   9   9  12</code></pre>
+</div>
+<div id="indexaciónsubconjuntos-en-matrices" class="section level4" number="2.5.2.4">
+<h4><span class="header-section-number">2.5.2.4</span> <em>Indexación/subconjuntos en matrices</em></h4>
 <div class="figure">
 <img src="Imagenes/Indexacion_Matrices.svg" alt="" />
 <p class="caption">Ilustración idexación en matrices</p>
 </div>
 <p>A partir de una matriz podemos extraer/indexar con tres propósitos.</p>
 <ul>
-<li><em>Extraer un elemento [fila, columna]</em></li>
+<li><em>Extraer un elemento o bloque de elementos [fila, columna]</em></li>
 <li><em>Extraer una fila o filas [fila, ]</em></li>
 <li><em>Extraer una columna o columnas [, columna]</em></li>
 </ul>
 <ol style="list-style-type: decimal">
 <li><strong>Indexación básica</strong></li>
 </ol>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="2-5-Edatos.html#cb260-1"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb260-2"><a href="2-5-Edatos.html#cb260-2"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>)</span>
-<span id="cb260-3"><a href="2-5-Edatos.html#cb260-3"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>)</span>
-<span id="cb260-4"><a href="2-5-Edatos.html#cb260-4"></a>matriz</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="2-5-Edatos.html#cb293-1"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb293-2"><a href="2-5-Edatos.html#cb293-2"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>)</span>
+<span id="cb293-3"><a href="2-5-Edatos.html#cb293-3"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>)</span>
+<span id="cb293-4"><a href="2-5-Edatos.html#cb293-4"></a>matriz</span></code></pre></div>
 <pre><code>##     c_1 c_2
 ## f_1   1   2
 ## f_2   3   4</code></pre>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="2-5-Edatos.html#cb262-1"></a><span class="co"># Extraer el elemento ubicado en la fila 2 y la columna 1</span></span>
-<span id="cb262-2"><a href="2-5-Edatos.html#cb262-2"></a>matriz[<span class="dv">2</span>,<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="2-5-Edatos.html#cb295-1"></a><span class="co"># Extraer el elemento ubicado en la fila 2 y la columna 1</span></span>
+<span id="cb295-2"><a href="2-5-Edatos.html#cb295-2"></a>matriz[<span class="dv">2</span>,<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="2-5-Edatos.html#cb264-1"></a><span class="co"># Extraer la fila 1</span></span>
-<span id="cb264-2"><a href="2-5-Edatos.html#cb264-2"></a>matriz[<span class="dv">1</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="2-5-Edatos.html#cb297-1"></a><span class="co"># Extraer la fila 1</span></span>
+<span id="cb297-2"><a href="2-5-Edatos.html#cb297-2"></a>matriz[<span class="dv">1</span>, ]</span></code></pre></div>
 <pre><code>## c_1 c_2 
 ##   1   2</code></pre>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="2-5-Edatos.html#cb266-1"></a><span class="co"># Extraer la columna 2</span></span>
-<span id="cb266-2"><a href="2-5-Edatos.html#cb266-2"></a>matriz[, <span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="2-5-Edatos.html#cb299-1"></a><span class="co"># Extraer la columna 2</span></span>
+<span id="cb299-2"><a href="2-5-Edatos.html#cb299-2"></a>matriz[, <span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## f_1 f_2 
 ##   2   4</code></pre>
 <ol start="2" style="list-style-type: decimal">
@@ -581,41 +613,41 @@ Es decir, si existe un vector con elementos de tipo lógico y de tipo entero, el
 <li><em>vectores lógicos</em></li>
 <li><em>vectores de caractéres (nombres de filas o columnas)</em></li>
 </ul>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="2-5-Edatos.html#cb268-1"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb268-2"><a href="2-5-Edatos.html#cb268-2"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>)</span>
-<span id="cb268-3"><a href="2-5-Edatos.html#cb268-3"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
-<span id="cb268-4"><a href="2-5-Edatos.html#cb268-4"></a><span class="co"># Con vectores numéricos - filas 1 y 2</span></span>
-<span id="cb268-5"><a href="2-5-Edatos.html#cb268-5"></a>matriz[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>), ]</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="2-5-Edatos.html#cb301-1"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb301-2"><a href="2-5-Edatos.html#cb301-2"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>)</span>
+<span id="cb301-3"><a href="2-5-Edatos.html#cb301-3"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
+<span id="cb301-4"><a href="2-5-Edatos.html#cb301-4"></a><span class="co"># Con vectores numéricos - filas 1 y 2</span></span>
+<span id="cb301-5"><a href="2-5-Edatos.html#cb301-5"></a>matriz[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>), ]</span></code></pre></div>
 <pre><code>##     c_1 c_2 c_3
 ## f_1   1   4   7
 ## f_2   2   5   8</code></pre>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="2-5-Edatos.html#cb270-1"></a><span class="co"># Con vectores lógicos - columnas 1 y 3</span></span>
-<span id="cb270-2"><a href="2-5-Edatos.html#cb270-2"></a><span class="co"># Igual a matriz[, c(TRUE, FALSE, TRUE, FALSE)]</span></span>
-<span id="cb270-3"><a href="2-5-Edatos.html#cb270-3"></a>matriz[, <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="2-5-Edatos.html#cb303-1"></a><span class="co"># Con vectores lógicos - columnas 1 y 3</span></span>
+<span id="cb303-2"><a href="2-5-Edatos.html#cb303-2"></a><span class="co"># Igual a matriz[, c(TRUE, FALSE, TRUE, FALSE)]</span></span>
+<span id="cb303-3"><a href="2-5-Edatos.html#cb303-3"></a>matriz[, <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</span></code></pre></div>
 <pre><code>##     c_1 c_3
 ## f_1   1   7
 ## f_2   2   8
 ## f_3   3   9</code></pre>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="2-5-Edatos.html#cb272-1"></a><span class="co"># Con vectores de caractéres - columnas 2 y 3 - filas 1 y 3</span></span>
-<span id="cb272-2"><a href="2-5-Edatos.html#cb272-2"></a>matriz[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="kw">c</span>(<span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="2-5-Edatos.html#cb305-1"></a><span class="co"># Con vectores de caractéres - columnas 2 y 3 - filas 1 y 3</span></span>
+<span id="cb305-2"><a href="2-5-Edatos.html#cb305-2"></a>matriz[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="kw">c</span>(<span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)]</span></code></pre></div>
 <pre><code>##     c_2 c_3
 ## f_1   4   7
 ## f_3   6   9</code></pre>
 </div>
-<div id="modificando-elementos-en-matrices" class="section level4" number="2.5.2.4">
-<h4><span class="header-section-number">2.5.2.4</span> <em>Modificando elementos en matrices</em></h4>
+<div id="modificando-elementos-en-matrices" class="section level4" number="2.5.2.5">
+<h4><span class="header-section-number">2.5.2.5</span> <em>Modificando elementos en matrices</em></h4>
 <p>Se puede modificar un único elemento dentro de una matriz o bloques de elementos (más de un elementos). Veámos estas ídeas gráficamente</p>
 <div class="figure">
 <img src="Imagenes/Modificar_Matriz1.svg" alt="" />
 <p class="caption">Ilustración modificación de un elemento dentro de una matriz</p>
 </div>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="2-5-Edatos.html#cb274-1"></a><span class="co"># Ejemplo</span></span>
-<span id="cb274-2"><a href="2-5-Edatos.html#cb274-2"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb274-3"><a href="2-5-Edatos.html#cb274-3"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>)</span>
-<span id="cb274-4"><a href="2-5-Edatos.html#cb274-4"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
-<span id="cb274-5"><a href="2-5-Edatos.html#cb274-5"></a><span class="co"># Modificar elemento (3,3) por 20</span></span>
-<span id="cb274-6"><a href="2-5-Edatos.html#cb274-6"></a>matriz[<span class="dv">3</span>, <span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">30</span></span>
-<span id="cb274-7"><a href="2-5-Edatos.html#cb274-7"></a>matriz</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="2-5-Edatos.html#cb307-1"></a><span class="co"># Ejemplo</span></span>
+<span id="cb307-2"><a href="2-5-Edatos.html#cb307-2"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb307-3"><a href="2-5-Edatos.html#cb307-3"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>)</span>
+<span id="cb307-4"><a href="2-5-Edatos.html#cb307-4"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
+<span id="cb307-5"><a href="2-5-Edatos.html#cb307-5"></a><span class="co"># Modificar elemento (3,3) por 20</span></span>
+<span id="cb307-6"><a href="2-5-Edatos.html#cb307-6"></a>matriz[<span class="dv">3</span>, <span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">30</span></span>
+<span id="cb307-7"><a href="2-5-Edatos.html#cb307-7"></a>matriz</span></code></pre></div>
 <pre><code>##     c_1 c_2 c_3
 ## f_1   1   4   7
 ## f_2   2   5   8
@@ -624,98 +656,66 @@ Es decir, si existe un vector con elementos de tipo lógico y de tipo entero, el
 <img src="Imagenes/Modificar_Matriz2.svg" alt="" />
 <p class="caption">Ilustración modificación de un bloque de elementos dentro de una matriz</p>
 </div>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="2-5-Edatos.html#cb276-1"></a><span class="co"># Ejemplo</span></span>
-<span id="cb276-2"><a href="2-5-Edatos.html#cb276-2"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb276-3"><a href="2-5-Edatos.html#cb276-3"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>)</span>
-<span id="cb276-4"><a href="2-5-Edatos.html#cb276-4"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
-<span id="cb276-5"><a href="2-5-Edatos.html#cb276-5"></a><span class="co"># Modificar filas 1,2 y columnas 2 y 3</span></span>
-<span id="cb276-6"><a href="2-5-Edatos.html#cb276-6"></a>matriz[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)] &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb276-7"><a href="2-5-Edatos.html#cb276-7"></a>matriz</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="2-5-Edatos.html#cb309-1"></a><span class="co"># Ejemplo</span></span>
+<span id="cb309-2"><a href="2-5-Edatos.html#cb309-2"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb309-3"><a href="2-5-Edatos.html#cb309-3"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>)</span>
+<span id="cb309-4"><a href="2-5-Edatos.html#cb309-4"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
+<span id="cb309-5"><a href="2-5-Edatos.html#cb309-5"></a><span class="co"># Modificar filas 1,2 y columnas 2 y 3</span></span>
+<span id="cb309-6"><a href="2-5-Edatos.html#cb309-6"></a>matriz[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)] &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb309-7"><a href="2-5-Edatos.html#cb309-7"></a>matriz</span></code></pre></div>
 <pre><code>##     c_1 c_2 c_3
 ## f_1   1   0   0
 ## f_2   2   0   0
 ## f_3   3   6   9</code></pre>
 </div>
-<div id="adicionando-elementos-en-matrices" class="section level4" number="2.5.2.5">
-<h4><span class="header-section-number">2.5.2.5</span> <em>Adicionando elementos en matrices</em></h4>
-<p>En las matrices se pueden adicionar filas o columnas. A continuación se presenta una ilustración gráfica de estas dos ideas.</p>
-<div class="figure">
-<img src="Imagenes/Adicionar_Matriz.svg" alt="" />
-<p class="caption">Ilustración adicionar filas o culmnas en una matriz</p>
-</div>
-<p>Para adicionar filas en una matriz se hace uso de la función <strong>rbind()</strong>; para adicionar columnas, se hace uso de la función <strong>cbind</strong>.</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="2-5-Edatos.html#cb278-1"></a>matriz1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb278-2"><a href="2-5-Edatos.html#cb278-2"></a><span class="kw">rownames</span>(matriz1) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>)</span>
-<span id="cb278-3"><a href="2-5-Edatos.html#cb278-3"></a><span class="kw">colnames</span>(matriz1) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
-<span id="cb278-4"><a href="2-5-Edatos.html#cb278-4"></a><span class="co"># Adicionar una fila</span></span>
-<span id="cb278-5"><a href="2-5-Edatos.html#cb278-5"></a>matriz1 &lt;-<span class="st"> </span><span class="kw">rbind</span>(matriz, <span class="st">&#39;c_4&#39;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>))</span>
-<span id="cb278-6"><a href="2-5-Edatos.html#cb278-6"></a>matriz1</span></code></pre></div>
-<pre><code>##     c_1 c_2 c_3
-## f_1   1   0   0
-## f_2   2   0   0
-## f_3   3   6   9
-## c_4   4   7  10</code></pre>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="2-5-Edatos.html#cb280-1"></a><span class="co"># Adicionar dos columnas</span></span>
-<span id="cb280-2"><a href="2-5-Edatos.html#cb280-2"></a>matriz2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb280-3"><a href="2-5-Edatos.html#cb280-3"></a><span class="kw">rownames</span>(matriz2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>)</span>
-<span id="cb280-4"><a href="2-5-Edatos.html#cb280-4"></a><span class="kw">colnames</span>(matriz2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
-<span id="cb280-5"><a href="2-5-Edatos.html#cb280-5"></a><span class="co"># Adicionar una fila</span></span>
-<span id="cb280-6"><a href="2-5-Edatos.html#cb280-6"></a>matriz2 &lt;-<span class="st"> </span><span class="kw">cbind</span>(matriz2, <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">12</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>))</span>
-<span id="cb280-7"><a href="2-5-Edatos.html#cb280-7"></a><span class="kw">colnames</span>(matriz2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>, <span class="st">&#39;c_4&#39;</span>, <span class="st">&#39;c_5&#39;</span>)</span>
-<span id="cb280-8"><a href="2-5-Edatos.html#cb280-8"></a>matriz2</span></code></pre></div>
-<pre><code>##     c_1 c_2 c_3 c_4 c_5
-## f_1   1   4   7   7  10
-## f_2   2   5   8   8  11
-## f_3   3   6   9   9  12</code></pre>
-</div>
 <div id="removiendo-elementos-en-matrices" class="section level4" number="2.5.2.6">
 <h4><span class="header-section-number">2.5.2.6</span> <em>Removiendo elementos en matrices</em></h4>
 <p>Se eliminan columnas o elementos de columnas haciendo uso del simbolo (-) entre corchetes. [-() , -c()]</p>
 <p style="color:#FF0000";><i>Ejemplo. Removiendo elementos de matrices</i></p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="2-5-Edatos.html#cb282-1"></a><span class="co">#Creando una matriz</span></span>
-<span id="cb282-2"><a href="2-5-Edatos.html#cb282-2"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb282-3"><a href="2-5-Edatos.html#cb282-3"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>, <span class="st">&#39;f_4&#39;</span>)</span>
-<span id="cb282-4"><a href="2-5-Edatos.html#cb282-4"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
-<span id="cb282-5"><a href="2-5-Edatos.html#cb282-5"></a>matriz</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="2-5-Edatos.html#cb311-1"></a><span class="co">#Creando una matriz</span></span>
+<span id="cb311-2"><a href="2-5-Edatos.html#cb311-2"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb311-3"><a href="2-5-Edatos.html#cb311-3"></a><span class="kw">rownames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>, <span class="st">&#39;f_4&#39;</span>)</span>
+<span id="cb311-4"><a href="2-5-Edatos.html#cb311-4"></a><span class="kw">colnames</span>(matriz) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)</span>
+<span id="cb311-5"><a href="2-5-Edatos.html#cb311-5"></a>matriz</span></code></pre></div>
 <pre><code>##     c_1 c_2 c_3
 ## f_1   1   5   9
 ## f_2   2   6  10
 ## f_3   3   7  11
 ## f_4   4   8  12</code></pre>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="2-5-Edatos.html#cb284-1"></a><span class="co"># Eliminando primera fila</span></span>
-<span id="cb284-2"><a href="2-5-Edatos.html#cb284-2"></a>matriz[<span class="op">-</span><span class="dv">1</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="2-5-Edatos.html#cb313-1"></a><span class="co"># Eliminando primera fila</span></span>
+<span id="cb313-2"><a href="2-5-Edatos.html#cb313-2"></a>matriz[<span class="op">-</span><span class="dv">1</span>, ]</span></code></pre></div>
 <pre><code>##     c_1 c_2 c_3
 ## f_2   2   6  10
 ## f_3   3   7  11
 ## f_4   4   8  12</code></pre>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="2-5-Edatos.html#cb286-1"></a><span class="co"># Eliminando segunda columna</span></span>
-<span id="cb286-2"><a href="2-5-Edatos.html#cb286-2"></a>matriz[ ,<span class="op">-</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="2-5-Edatos.html#cb315-1"></a><span class="co"># Eliminando segunda columna</span></span>
+<span id="cb315-2"><a href="2-5-Edatos.html#cb315-2"></a>matriz[ ,<span class="op">-</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##     c_1 c_3
 ## f_1   1   9
 ## f_2   2  10
 ## f_3   3  11
 ## f_4   4  12</code></pre>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="2-5-Edatos.html#cb288-1"></a><span class="co"># Eliminando haciendo uso de vectores - enteros</span></span>
-<span id="cb288-2"><a href="2-5-Edatos.html#cb288-2"></a>matriz[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dv">-3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="2-5-Edatos.html#cb317-1"></a><span class="co"># Eliminando haciendo uso de vectores - enteros</span></span>
+<span id="cb317-2"><a href="2-5-Edatos.html#cb317-2"></a>matriz[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dv">-3</span>]</span></code></pre></div>
 <pre><code>##     c_1 c_2
 ## f_2   2   6
 ## f_3   3   7</code></pre>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="2-5-Edatos.html#cb290-1"></a><span class="co"># Eliminando haciendo uso de vectores lógicas - reciclando</span></span>
-<span id="cb290-2"><a href="2-5-Edatos.html#cb290-2"></a>matriz[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>), <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="2-5-Edatos.html#cb319-1"></a><span class="co"># Eliminando haciendo uso de vectores lógicas - reciclando</span></span>
+<span id="cb319-2"><a href="2-5-Edatos.html#cb319-2"></a>matriz[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>), <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>)]</span></code></pre></div>
 <pre><code>##     c_2 c_3
 ## f_1   5   9
 ## f_3   7  11</code></pre>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="2-5-Edatos.html#cb292-1"></a><span class="co"># Eliminando haciendo uso de vectores lógicas - sin reciclar</span></span>
-<span id="cb292-2"><a href="2-5-Edatos.html#cb292-2"></a>matriz[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>), <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="2-5-Edatos.html#cb321-1"></a><span class="co"># Eliminando haciendo uso de vectores lógicas - sin reciclar</span></span>
+<span id="cb321-2"><a href="2-5-Edatos.html#cb321-2"></a>matriz[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>), <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>)]</span></code></pre></div>
 <pre><code>##     c_2 c_3
 ## f_1   5   9
 ## f_3   7  11</code></pre>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="2-5-Edatos.html#cb294-1"></a><span class="co"># Eliminando haciendo uso de vectores lógicas - derivados de expresiones lógicas </span></span>
-<span id="cb294-2"><a href="2-5-Edatos.html#cb294-2"></a>expl &lt;-<span class="st"> </span>matriz[, <span class="dv">3</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span></span>
-<span id="cb294-3"><a href="2-5-Edatos.html#cb294-3"></a>expl</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="2-5-Edatos.html#cb323-1"></a><span class="co"># Eliminando haciendo uso de vectores lógicas - derivados de expresiones lógicas </span></span>
+<span id="cb323-2"><a href="2-5-Edatos.html#cb323-2"></a>expl &lt;-<span class="st"> </span>matriz[, <span class="dv">3</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span></span>
+<span id="cb323-3"><a href="2-5-Edatos.html#cb323-3"></a>expl</span></code></pre></div>
 <pre><code>##   f_1   f_2   f_3   f_4 
 ## FALSE FALSE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="2-5-Edatos.html#cb296-1"></a>matriz[expl, <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="2-5-Edatos.html#cb325-1"></a>matriz[expl, <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>)]</span></code></pre></div>
 <pre><code>##     c_2 c_3
 ## f_3   7  11
 ## f_4   8  12</code></pre>
@@ -728,27 +728,27 @@ Es decir, si existe un vector con elementos de tipo lógico y de tipo entero, el
 <p class="caption">Ilustración sumar filas y columnas</p>
 </div>
 <p style="color:#FF0000";><i>Ejemplo. Marginales en matrices</i></p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="2-5-Edatos.html#cb298-1"></a><span class="co">#Creando una matriz - haciendo uso de la función dimnames</span></span>
-<span id="cb298-2"><a href="2-5-Edatos.html#cb298-2"></a>matriz1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>), <span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)))</span>
-<span id="cb298-3"><a href="2-5-Edatos.html#cb298-3"></a>matriz1</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="2-5-Edatos.html#cb327-1"></a><span class="co">#Creando una matriz - haciendo uso de la función dimnames</span></span>
+<span id="cb327-2"><a href="2-5-Edatos.html#cb327-2"></a>matriz1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&#39;f_1&#39;</span>, <span class="st">&#39;f_2&#39;</span>, <span class="st">&#39;f_3&#39;</span>), <span class="kw">c</span>(<span class="st">&#39;c_1&#39;</span>, <span class="st">&#39;c_2&#39;</span>, <span class="st">&#39;c_3&#39;</span>)))</span>
+<span id="cb327-3"><a href="2-5-Edatos.html#cb327-3"></a>matriz1</span></code></pre></div>
 <pre><code>##     c_1 c_2 c_3
 ## f_1   1   4   7
 ## f_2   2   5   8
 ## f_3   3   6   9</code></pre>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="2-5-Edatos.html#cb300-1"></a><span class="co"># Suma de filas</span></span>
-<span id="cb300-2"><a href="2-5-Edatos.html#cb300-2"></a><span class="kw">rowSums</span>(matriz1)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="2-5-Edatos.html#cb329-1"></a><span class="co"># Suma de filas</span></span>
+<span id="cb329-2"><a href="2-5-Edatos.html#cb329-2"></a><span class="kw">rowSums</span>(matriz1)</span></code></pre></div>
 <pre><code>## f_1 f_2 f_3 
 ##  12  15  18</code></pre>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="2-5-Edatos.html#cb302-1"></a><span class="co"># Suma de columnas</span></span>
-<span id="cb302-2"><a href="2-5-Edatos.html#cb302-2"></a><span class="kw">colSums</span>(matriz1)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="2-5-Edatos.html#cb331-1"></a><span class="co"># Suma de columnas</span></span>
+<span id="cb331-2"><a href="2-5-Edatos.html#cb331-2"></a><span class="kw">colSums</span>(matriz1)</span></code></pre></div>
 <pre><code>## c_1 c_2 c_3 
 ##   6  15  24</code></pre>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="2-5-Edatos.html#cb304-1"></a><span class="co"># Promedio de filas</span></span>
-<span id="cb304-2"><a href="2-5-Edatos.html#cb304-2"></a><span class="kw">rowMeans</span>(matriz1)</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="2-5-Edatos.html#cb333-1"></a><span class="co"># Promedio de filas</span></span>
+<span id="cb333-2"><a href="2-5-Edatos.html#cb333-2"></a><span class="kw">rowMeans</span>(matriz1)</span></code></pre></div>
 <pre><code>## f_1 f_2 f_3 
 ##   4   5   6</code></pre>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="2-5-Edatos.html#cb306-1"></a><span class="co"># Promedio de columnas</span></span>
-<span id="cb306-2"><a href="2-5-Edatos.html#cb306-2"></a><span class="kw">colMeans</span>(matriz1)</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="2-5-Edatos.html#cb335-1"></a><span class="co"># Promedio de columnas</span></span>
+<span id="cb335-2"><a href="2-5-Edatos.html#cb335-2"></a><span class="kw">colMeans</span>(matriz1)</span></code></pre></div>
 <pre><code>## c_1 c_2 c_3 
 ##   2   5   8</code></pre>
 </div>
@@ -770,84 +770,32 @@ Es decir, si existe un vector con elementos de tipo lógico y de tipo entero, el
 <img src="Imagenes/DataFrame.png" alt="" />
 <p class="caption">Representación gráfica de un Data Frame (marco de datos)</p>
 </div>
+<div id="nombres-de-variables-en-marcos-de-datos-data-frame" class="section level4" number="2.5.4.1">
+<h4><span class="header-section-number">2.5.4.1</span> <em>Nombres de variables en marcos de datos (data frame)</em></h4>
+</div>
+<div id="indexaciónsubconjuntos-en-marcos-de-datos-data-frame" class="section level4" number="2.5.4.2">
+<h4><span class="header-section-number">2.5.4.2</span> <em>Indexación/subconjuntos en marcos de datos (data frame)</em></h4>
+<ol style="list-style-type: decimal">
+<li><em><strong>Con [ ]</strong></em></li>
+<li><em><strong>Con [[ ]]</strong></em></li>
+<li><em><strong>$</strong></em>
+#### <em>Modificar, anexar o remover elementos en marcos de datos (data frame)</em></li>
+<li><em><strong>Modificar elementos</strong></em></li>
+<li><em><strong>Anexar variables o filas</strong></em></li>
+<li><em><strong>Remover variables o filas</strong></em>
+#### <em>Coerción en marcos de datos (data frame)</em></li>
+</ol>
+</div>
 </div>
 <div id="listas" class="section level3" number="2.5.5">
 <h3><span class="header-section-number">2.5.5</span> Listas</h3>
-<p>Una lista es una estructura de datos multidimensional que permite, en su interior, la disposición de estructuras de datos y objetos de diversas tipologías.</p>
-<div class="figure">
-<img src="Imagenes/Lista.png" alt="" />
-<p class="caption">Representación gráfica de una lista</p>
-</div>
-<p>¿Por qué querríamos crear listas de objetos en R? La respuesta es que almacenar objetos en listas nos permite utilizar algunas funciones R muy poderosas para realizar la misma operación en cada objeto de nuestra lista, lo que nos permite evitar escribir repetidamente la misma función.</p>
-<div id="creando-listas" class="section level4" number="2.5.5.1">
-<h4><span class="header-section-number">2.5.5.1</span> Creando listas</h4>
-<p>Las listas se crean a través de la función <strong>list()</strong>. Los elementos que hacen parte de una lista se separan, como en el caso de los vectores, a través de comas <strong>(,)</strong> y pueden ser de cualquier tipo.</p>
-<p style="color:#FF0000";><i>Ejemplos. Diferentes listas</i></p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="2-5-Edatos.html#cb308-1"></a><span class="co">#Lista 1</span></span>
-<span id="cb308-2"><a href="2-5-Edatos.html#cb308-2"></a><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="st">&quot;a&quot;</span>, <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), <span class="kw">c</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>))</span></code></pre></div>
-<pre><code>## [[1]]
-## [1] 1 2 3
-## 
-## [[2]]
-## [1] &quot;a&quot;
-## 
-## [[3]]
-## [1]  TRUE FALSE  TRUE
-## 
-## [[4]]
-## [1] 2.3 5.9</code></pre>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="2-5-Edatos.html#cb310-1"></a><span class="co">#Lista 2</span></span>
-<span id="cb310-2"><a href="2-5-Edatos.html#cb310-2"></a><span class="kw">list</span>(<span class="st">&quot;Hola mundo&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>## [[1]]
-## [1] &quot;Hola mundo&quot;
-## 
-## [[2]]
-## [1] 1
-## 
-## [[3]]
-## [1] 1
-## 
-## [[4]]
-## [1] 3
-## 
-## [[5]]
-## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="2-5-Edatos.html#cb312-1"></a><span class="co">#Lista 3</span></span>
-<span id="cb312-2"><a href="2-5-Edatos.html#cb312-2"></a><span class="kw">list</span>(país =<span class="st"> &quot;Colombia&quot;</span>, <span class="dt">matriz =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">ncol =</span><span class="dv">3</span>), <span class="dt">vector =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>))</span></code></pre></div>
-<pre><code>## $país
-## [1] &quot;Colombia&quot;
-## 
-## $matriz
-##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9
-## 
-## $vector
-## [1]  TRUE FALSE</code></pre>
-<p>Revisar las posiciones, en el output, en las que aparece cada uno de los elementos de una lista a través del numero contenidoen [[]]</p>
-</div>
-<div id="nombrando-listas" class="section level4" number="2.5.5.2">
-<h4><span class="header-section-number">2.5.5.2</span> Nombrando listas</h4>
-<p>La asignación de nombres a los elementos que conforman una lista, al igual que en el caso de los vectores, se logra haciendo uso de la función <strong>names()</strong>.</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="2-5-Edatos.html#cb314-1"></a><span class="co">#Lista</span></span>
-<span id="cb314-2"><a href="2-5-Edatos.html#cb314-2"></a>mi_lista &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb314-3"><a href="2-5-Edatos.html#cb314-3"></a>mi_lista</span></code></pre></div>
-<pre><code>## [[1]]
-## [1] 1
-## 
-## [[2]]
-## [1] 2
-## 
-## [[3]]
-## [1] 3
-## 
-## [[4]]
-## [1] 4</code></pre>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="2-5-Edatos.html#cb316-1"></a><span class="co">#Nombrando los elementos de la lista</span></span>
-<span id="cb316-2"><a href="2-5-Edatos.html#cb316-2"></a><span class="kw">names</span>(mi_lista) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&quot;d&quot;</span>)</span>
-<span id="cb316-3"><a href="2-5-Edatos.html#cb316-3"></a><span class="co"># El resultado</span></span>
-<span id="cb316-4"><a href="2-5-Edatos.html#cb316-4"></a>mi_lista</span></code></pre></div>
+<p>Una lista es una estructura de datos multidimensional que permite, en su interior, la disposición de estructuras de datos +
+mi_lista</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="2-5-Edatos.html#cb337-1"></a>mi_lista &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb337-2"><a href="2-5-Edatos.html#cb337-2"></a><span class="co">#Nombrando los elementos de la lista</span></span>
+<span id="cb337-3"><a href="2-5-Edatos.html#cb337-3"></a><span class="kw">names</span>(mi_lista) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&quot;d&quot;</span>)</span>
+<span id="cb337-4"><a href="2-5-Edatos.html#cb337-4"></a><span class="co"># El resultado</span></span>
+<span id="cb337-5"><a href="2-5-Edatos.html#cb337-5"></a>mi_lista</span></code></pre></div>
 <pre><code>## $a
 ## [1] 1
 ## 
@@ -859,31 +807,56 @@ Es decir, si existe un vector con elementos de tipo lógico y de tipo entero, el
 ## 
 ## $d
 ## [1] 4</code></pre>
-</div>
-<div id="indexación-en-listas" class="section level4" number="2.5.5.3">
-<h4><span class="header-section-number">2.5.5.3</span> Indexación en listas</h4>
+<div id="indexación-en-listas" class="section level4" number="2.5.5.1">
+<h4><span class="header-section-number">2.5.5.1</span> Indexación en listas</h4>
 <p>En las listas existen dos alternativas de indexación.</p>
 <ol style="list-style-type: decimal">
 <li><em><strong>Paréntesis individuales</strong></em>: Retorna una <em>lista</em> de elementos.</li>
 <li><em><strong>Doble paréntesis</strong></em>: Retorna un único elemento.</li>
 </ol>
 <p style="color:#FF0000";><i>Ejemplos. Indexación con listas</i></p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="2-5-Edatos.html#cb318-1"></a>recurre &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>,<span class="kw">list</span>(<span class="dv">2</span>,<span class="dv">3</span>, <span class="kw">list</span>(<span class="dv">4</span>,<span class="dv">5</span>)))</span>
-<span id="cb318-2"><a href="2-5-Edatos.html#cb318-2"></a><span class="co">#Extraer el número 5 - tres alternativas</span></span>
-<span id="cb318-3"><a href="2-5-Edatos.html#cb318-3"></a>recurre[[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)]][[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="2-5-Edatos.html#cb339-1"></a>recurre &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>,<span class="kw">list</span>(<span class="dv">2</span>,<span class="dv">3</span>, <span class="kw">list</span>(<span class="dv">4</span>,<span class="dv">5</span>)))</span>
+<span id="cb339-2"><a href="2-5-Edatos.html#cb339-2"></a><span class="co">#Extraer el número 5 - tres alternativas</span></span>
+<span id="cb339-3"><a href="2-5-Edatos.html#cb339-3"></a>recurre[[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)]][[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="2-5-Edatos.html#cb320-1"></a>recurre[[<span class="dv">2</span>]][[<span class="dv">3</span>]][[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="2-5-Edatos.html#cb341-1"></a>recurre[[<span class="dv">2</span>]][[<span class="dv">3</span>]][[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="2-5-Edatos.html#cb322-1"></a>recurre[<span class="dv">2</span>][[<span class="dv">1</span>]][[<span class="dv">3</span>]][[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="2-5-Edatos.html#cb343-1"></a>recurre[<span class="dv">2</span>][[<span class="dv">1</span>]][[<span class="dv">3</span>]][[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 </div>
-<div id="modificar-adicionar-y-remover-elementos-de-una-lista" class="section level4" number="2.5.5.4">
-<h4><span class="header-section-number">2.5.5.4</span> Modificar, adicionar y remover elementos de una lista</h4>
+<div id="modificar-adicionar-y-remover-elementos-de-una-lista" class="section level4" number="2.5.5.2">
+<h4><span class="header-section-number">2.5.5.2</span> Modificar, adicionar y remover elementos de una lista</h4>
 </div>
-<div id="combinando-listas" class="section level4" number="2.5.5.5">
-<h4><span class="header-section-number">2.5.5.5</span> Combinando listas</h4>
+<div id="combinando-listas" class="section level4" number="2.5.5.3">
+<h4><span class="header-section-number">2.5.5.3</span> Combinando listas</h4>
 </div>
 </div>
+<div id="una-estructura-especial-factores-en-r" class="section level3" number="2.5.6">
+<h3><span class="header-section-number">2.5.6</span> Una estructura especial: factores en R</h3>
+
+</div>
+</div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="10">
+<li id="fn10"><p>Al final de esta sección, se presenta una “estructura” especial de datos la cual,en sentido estricto, no presenta las mismas características que las demás estructuras presentadas en este documento<a href="2-5-Edatos.html#fnref10" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
 <h2 style="color:#2ca25f;">Comentarios</h2>
 
@@ -914,8 +887,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="2-4-Elogicas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-6-Indexa.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="2-4-Elogicas.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
