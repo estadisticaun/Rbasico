@@ -158,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="2-4-Variables.html"><a href="2-4-Variables.html"><i class="fa fa-check"></i><b>2.4</b> Variables</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="2-4-Variables.html"><a href="2-4-Variables.html#nombre-de-variables"><i class="fa fa-check"></i><b>2.4.1</b> Nombre de variables</a></li>
+<li class="chapter" data-level="2.4.1" data-path="2-4-Variables.html"><a href="2-4-Variables.html#NombreV"><i class="fa fa-check"></i><b>2.4.1</b> Nombre de variables</a></li>
 <li class="chapter" data-level="2.4.2" data-path="2-4-Variables.html"><a href="2-4-Variables.html#tipos-de-variables"><i class="fa fa-check"></i><b>2.4.2</b> Tipos de variables</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html"><i class="fa fa-check"></i><b>2.5</b> Expresiones lógicas</a>
@@ -261,7 +261,7 @@ En R, a diferencia de otros lenguajes de programación, no existen datos de tipo
 <div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="2-6-Edatos.html#cb242-1"></a>var_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(1L)</span>
 <span id="cb242-2"><a href="2-6-Edatos.html#cb242-2"></a>var_<span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div id="tipos-de-vectores" class="section level4" number="2.6.1.1">
+<div id="Tvectores" class="section level4" number="2.6.1.1">
 <h4><span class="header-section-number">2.6.1.1</span> <em>Tipos de vectores</em></h4>
 <p>Los elementos que conforman un vector en R, como se mencionó en la regla anterior, deben ser del mismo tipo. Este hecho implica que, en este lenguaje podemos construir vectores los cuales, dependiendo del tipo de datos que contienen, pueden ser clasificados en una de cuatro categorías: <em>lógicos</em>, <em>enteros</em>, <em>numéricos</em> y de <em>cadena o caracter</em>. A continuación, se presenta una breve descripción así como algunos ejemplos de los diferentes tipos de vectores existentes en R.</p>
 <ol style="list-style-type: decimal">
@@ -645,7 +645,7 @@ En una operación lógica entre vectores de diferente longitud R iguala, las lon
 <p>Dado que la regla de reciclaje puede inducir a importantes errores para aquellos usuarios que desconozcan la forma como este lenguaje implementa operaciones lógicas entre vectores con diferentes longitudes, R, como se observa en los resultados del ejemplo anterior, genera un mensaje de alerta (Warning) en el que se advierte sobre la presencia de vectores con longitudes disímiles en la operación evaluada.</p>
 </div>
 </div>
-<div id="indexaciónsubconjuntos-de-vectores" class="section level4" number="2.6.1.5">
+<div id="Indexa" class="section level4" number="2.6.1.5">
 <h4><span class="header-section-number">2.6.1.5</span> <em>Indexación/subconjuntos de vectores</em></h4>
 <p>Una de las acciones más frecuentes a la hora de trabajar con vectores o cualquier otra estructura de datos en R, como veremos en adelante, es la orientada a la extracción o indexación de un subconjunto de sus elementos. Para ello, hay que tener en cuenta que R es un lenguaje de programación <strong>indexado en 1</strong>; es decir, para el caso del trabajo con vectores, al primer elemento se le asigna la posición 1.</p>
 <p>Para extraer elementos de un vector, como se muestra en la figura de abajo, hay que comprender que cada uno de los elementos que conforman un vector tiene asociada una posición conocida como indíce. En el vector ilustrado en la figura, al número 92 le corresponde la posición 1, al 87 la posición 2 y al 85 la posición 3.</p>
@@ -848,6 +848,76 @@ En R, existen seis (6) posibilidades para extraer elementos de un vector: <em>ve
 <span id="cb441-5"><a href="2-6-Edatos.html#cb441-5"></a>Vect_<span class="dv">4</span></span></code></pre></div>
 <pre><code>## [1] 0 1 2 3 4</code></pre>
 </div>
+<div id="nombres-de-elementos-en-vectores" class="section level4" number="2.6.1.6">
+<h4><span class="header-section-number">2.6.1.6</span> <em>Nombres de elementos en vectores</em></h4>
+<p>Los vectores en R, además de ser construidos a partir del comando <code>c()</code>, están compuestos por elementos los cuales, como se presentó en la sección de <a href="2-6-Edatos.html#Tvectores">tipos de vectores</a>, definen la tipolología que los representa: <em>lógicos</em>, <em>enteros</em>, <em>numéricos</em> y <em>cadena o caracter</em>. Los vectores, además de las características antes ilustradas, pueden contener nombres que identifiquen a cada uno de sus elementos. Es decir, además de contar con un número indice que los identifica, estos pueden contener nombres asociados a dichos indíces. En la figura que se presenta a continuación, se ilustra la filosofía a la hora de asignar nombres a los elementos que conforman un vector.</p>
+<div class="figure">
+<img src="Imagenes/Nombres_vectores.svg" alt="" />
+<p class="caption">Filosofia nombre vectores</p>
+</div>
+<p>En R, existen 2 formas de asignar nombres a vectores: al momento de crear vectores o cuando estos están creados. A continuación, se presentan en detalle estas dos formas de asignación de nombres.</p>
+<ol style="list-style-type: decimal">
+<li><em><strong>Asignación de nombres a vectores - al crear el vector</strong></em></li>
+</ol>
+<p>La asignación de nombres a los elementos de un vector en el momento en el que estos son creados se da a través del operador <code>=</code>. Este operador, inermedia entre el nombre y el valor que acompaña a cada uno de los elementos de un vector. Por ejemplo, el vector <code>c(a = 5, b = 6, c = 7)</code> está conformado por tres elementos en donde el nombre que representa al elemento 1 es la <strong>a</strong>, el que representa el elemento 2 es la <strong>b</strong> y el que representa al elemento 3 es la <strong>c</strong>. A continuación, se presenta este y otros ejemplos de asignación directa de nombres<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a> a los elementos de vectores en R.</p>
+<p style="color:#e6550d";><i>Ejemplo. Asignación a nombres de elementos de vectores en R - al crear vectores</i></p>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="2-6-Edatos.html#cb443-1"></a><span class="co"># Ejemplo 1. Nombres de elementos en vectores </span></span>
+<span id="cb443-2"><a href="2-6-Edatos.html#cb443-2"></a><span class="kw">c</span>(<span class="dt">a =</span> <span class="dv">5</span>, <span class="dt">b =</span> <span class="dv">6</span>, <span class="dt">c =</span> <span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## a b c 
+## 5 6 7</code></pre>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="2-6-Edatos.html#cb445-1"></a><span class="co"># Ejemplo 2. Nombres de elementos en vectores </span></span>
+<span id="cb445-2"><a href="2-6-Edatos.html#cb445-2"></a><span class="kw">c</span>(<span class="dt">x =</span> <span class="ot">TRUE</span>, <span class="dt">y =</span> <span class="ot">FALSE</span>, <span class="dt">z =</span> <span class="ot">TRUE</span>, <span class="dt">w =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>##     x     y     z     w 
+##  TRUE FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="2-6-Edatos.html#cb447-1"></a><span class="co"># Ejemplo 3. Nombres de elementos en vectores haciendo uso de variables</span></span>
+<span id="cb447-2"><a href="2-6-Edatos.html#cb447-2"></a>Var_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">Nombre1 =</span> <span class="st">&#39;a&#39;</span>, <span class="dt">Nombre2 =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">Nombre3 =</span> <span class="st">&#39;c&#39;</span>)</span>
+<span id="cb447-3"><a href="2-6-Edatos.html#cb447-3"></a>Var_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## Nombre1 Nombre2 Nombre3 
+##     &quot;a&quot;     &quot;b&quot;     &quot;c&quot;</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><em><strong>Asignación de nombres a vectores - cuando el vector está creado</strong></em></li>
+</ol>
+<p>La asignación de nombres a elementos de vectores en R en su momento de creación, en la excepción y no la regla. Lo norma, en este lenguaje, es que la asignación de nombres se dé una vez estos se han creado. Para ello, debemos acudir a una combinación entre una función disponible en R conocida como <code>names()</code> y un vector de tipo caracter con los nombres que serán asignados a los elementos de un vector dado. A continuación, se presentan dos ejemplos con la asignación de nombres de manera indirecta en R; es decir, cuando el vector ya se encuentra creado.</p>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="2-6-Edatos.html#cb449-1"></a><span class="co"># Ejemplo 1. Nombres de elementos en vectores</span></span>
+<span id="cb449-2"><a href="2-6-Edatos.html#cb449-2"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb449-3"><a href="2-6-Edatos.html#cb449-3"></a>Nombres1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>) </span>
+<span id="cb449-4"><a href="2-6-Edatos.html#cb449-4"></a><span class="kw">names</span>(vector1) &lt;-<span class="st"> </span>Nombres1</span>
+<span id="cb449-5"><a href="2-6-Edatos.html#cb449-5"></a>vector1</span></code></pre></div>
+<pre><code>## a b c d e 
+## 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="2-6-Edatos.html#cb451-1"></a><span class="co"># Ejemplo 2. Nombres de elementos en vectores</span></span>
+<span id="cb451-2"><a href="2-6-Edatos.html#cb451-2"></a>vector2 &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">1</span>)</span>
+<span id="cb451-3"><a href="2-6-Edatos.html#cb451-3"></a>Nombres2 &lt;-<span class="st"> </span>letters[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)] </span>
+<span id="cb451-4"><a href="2-6-Edatos.html#cb451-4"></a><span class="kw">names</span>(vector2) &lt;-<span class="st"> </span>Nombres2</span>
+<span id="cb451-5"><a href="2-6-Edatos.html#cb451-5"></a>vector2</span></code></pre></div>
+<pre><code>##  a  b  c  d  e  f  g  h  i  j 
+##  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>En el primero de los ejemplos, en su primera línea de código, se crea un vector numérico <code>c(1:5)</code> y su contenido es almacenado en una variable llamada <code>vector1</code>. En la segunda línea de código, se crea un vector de tipo caracter <code>c('a', 'b', 'c', 'd', 'e')</code> con los nombres que tendrán los elementos del vector previamente creado y su contenido se guarda dentro de la variable <code>Nombres1</code>. En la tercera línea de código del ejemplo 1, se hace uso de la función <code>names()</code> para indicarle que a los elementos del <code>vector1</code> se le asignen los nombres contenidos en el vector caracter <code>Nombres1</code>. Por último, en la línea cuatro del código, verificamos que el vector 1 cuenta con los nombres asignados a cada uno de sus elementos. Invitamos al lector a analizar y estudiar lo que hace R en el proceso de creación del nombre de los elementos del vector que hace parte del ejemplo 2.</p>
+<p>Finalmente, si deseamos conocer en R los nombres de los elementos de un vector, podemos hacerlo a través de la misma función empleada para su asignación; es decir, <code>names()</code>. Por ejemplo, si aplicamos la instrucción <code>names(vector1)</code> al vector resultantes del desarrollo del ejemplo 1, el lenguaje nos retorna los nombres de los elementos que hacen parte de este vector.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><em><strong>Indexación de vectores a partir de nombres de elementos</strong></em></li>
+</ol>
+<p>En la sección de <a href="2-6-Edatos.html#Indexa">Indexación/subconjuntos de vectores</a>, se definió que en R existen 6 posibilidades para extraer elementos de un vector. De estas, se anunció que en este documento se ilustrarían 4 de estas posibilidades y se avanzó en tres de ellas: extracción de elementos a partir de <em>vectores con enteros positivos</em>, <em>vectores con enteros negativos</em> y <em>vectores lógicos</em>. A continuación, se presenta la cuarta y última alternativa para la selección de elementos de un vector la cual, como se verá, implica el uso de vectores de tipo cadena o caracter conformados por los nombres de los elementos de un vector.</p>
+<p>La extracción de elementos a partir de vectores conformados por <em>vectores de tipo cadena o caracter</em> retorna los elementos disponibles en las posiciones de un vector según sus nombres. Por ejemplo, si deseamos extraer la primera y la última posición del vector <code>Var_1 &lt;- c(a = 1, b = 2, c = 3, d = 4, e = 5)</code> a partir de los nombres de estos elementos, basta con implementar en R la línea de comando <code>Var_1[c('a', 'e')]</code>. En esta línea de comando, el operador (corchete) <code>[]</code> indica que estamos interesados en extraer un subconjunto de elementos contenidos en el vector <code>Var_1</code> y el vector <code>c('a', 'e')</code> indica que los elementos que deseamos extraer son aquellos cuyos nombres son <code>a</code> y <code>e</code>; es decir, los ubicados en la primera y la última posición del vector <code>Var_1</code>. A continuación, en el ejemplo, se presenta el desarrollo de la anterior instrucción y de otros subconjuntos de vectores en R extraídos a partir de vectores de tipo caracter con los nombres de sus elementos.</p>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="2-6-Edatos.html#cb453-1"></a><span class="co"># Ejemplo 1. Extracción del primero y del último elemento</span></span>
+<span id="cb453-2"><a href="2-6-Edatos.html#cb453-2"></a>Var_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">c =</span> <span class="dv">3</span>, <span class="dt">d =</span> <span class="dv">4</span>, <span class="dt">e =</span> <span class="dv">5</span>)</span>
+<span id="cb453-3"><a href="2-6-Edatos.html#cb453-3"></a>Var_<span class="dv">1</span>[<span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;e&#39;</span>)]</span></code></pre></div>
+<pre><code>## a e 
+## 1 5</code></pre>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="2-6-Edatos.html#cb455-1"></a><span class="co"># Ejemplo 2. Extracción de los elementos 2 y 3</span></span>
+<span id="cb455-2"><a href="2-6-Edatos.html#cb455-2"></a>Var_<span class="dv">1</span>[<span class="kw">c</span>(<span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>)]</span></code></pre></div>
+<pre><code>## b c 
+## 2 3</code></pre>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="2-6-Edatos.html#cb457-1"></a><span class="co"># Ejemplo 3. Extracción de los últimos dos elementos y guardar el resultado en una variable</span></span>
+<span id="cb457-2"><a href="2-6-Edatos.html#cb457-2"></a>Var_<span class="dv">2</span> &lt;-<span class="st"> </span>Var_<span class="dv">1</span>[<span class="kw">c</span>(<span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)]</span>
+<span id="cb457-3"><a href="2-6-Edatos.html#cb457-3"></a>Var_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## d e 
+## 4 5</code></pre>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="2-6-Edatos.html#cb459-1"></a><span class="co"># Ejemplo 4. Extracción del primer elemento 5 veces</span></span>
+<span id="cb459-2"><a href="2-6-Edatos.html#cb459-2"></a>Var_<span class="dv">1</span>[<span class="kw">rep</span>(<span class="st">&#39;a&#39;</span>, <span class="dv">5</span>)]</span></code></pre></div>
+<pre><code>## a a a a a 
+## 1 1 1 1 1</code></pre>
+</div>
 </div>
 <div id="matrices" class="section level3" number="2.6.2">
 <h3><span class="header-section-number">2.6.2</span> Matrices</h3>
@@ -855,6 +925,7 @@ En R, existen seis (6) posibilidades para extraer elementos de un vector: <em>ve
 </div>
 </div>
 <!-- </div> -->
+
 
 
 
@@ -894,6 +965,7 @@ En R, existen seis (6) posibilidades para extraer elementos de un vector: <em>ve
 <li id="fn18"><p>En este documento, dado su alcance, nos concentraremos en las primeras cuatro posibilidades; es decir, no serán tenidas en cuenta las opciones <em>ninguno (nothing)</em> y <em>cero (zero)</em>, de poca utilidad o uso en el análisis de datos<a href="2-6-Edatos.html#fnref18" class="footnote-back">↩︎</a></p></li>
 <li id="fn19"><p>La cuarta opción, basada en <em><strong>vectores de tipo caracter</strong></em>, será presentada en la sección siguiente<a href="2-6-Edatos.html#fnref19" class="footnote-back">↩︎</a></p></li>
 <li id="fn20"><p>Esta característica resulta útil al momento de extraer elementos de un vector con una gran cantidad de elementos siempre y cuando los elementos a ser seleccionados presenten una sucesión/ciclo útil en la práctica<a href="2-6-Edatos.html#fnref20" class="footnote-back">↩︎</a></p></li>
+<li id="fn21"><p>Los nombres de los elementos de un vector deben cumplir los mismos requisitos definidos para la creación de <a href="2-4-Variables.html#NombreV">nombres</a> asociados a variables en R (no iniciar con números, no incluir caracteres especiales, no utilizar palabras claves del lenguaje, etc.).<a href="2-6-Edatos.html#fnref21" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 <h2 style="color:#2ca25f;">Comentarios</h2>

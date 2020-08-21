@@ -1,24 +1,3 @@
-#### _Usando nombres en vectores_
-
-![Filosofia nombre vectores](Imagenes/Nombres_vectores.svg)
-
-```{r, eval=TRUE, warning=FALSE}
-# Alternativa 1
-vector = c(a = 1, b = 2, c = 3, d = 4, e = 5)
-vector
-# Alternativa 2
-vector1 <- c(1L:5L)
-Nombres <- c('a', 'b', 'c', 'd', 'e') # letters[c(1:5)] # letters[seq(1,5)] 
-names(vector1) <- Nombres
-vector1
-# Indexación
-vector1[c('a', 'e')]
-# Reemplazar valores
-vector1[c('a', 'e')] <- 6L
-vector1
-# Revisar los nombres de un vector
-names(vector1)
-```
 
 #### _Modificar, anexar y remover elementos de un vector_
 

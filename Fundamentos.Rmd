@@ -464,7 +464,7 @@ y <- 4
 x + y
 ```
 
-### Nombre de variables 
+### Nombre de variables {#NombreV}
 
 Una vez que tenemos claro el objetivo con la creación de variables en R, el paso a seguir consiste en presentar algunas recomendaciones y restricciones a la hora de crear variables en R. Para ello, haremos uso de la siguiente regla en la que se presentan los criterios con las recomendaciones y las restricciones que deben ser tenidas en cuenta a la hora de crear nombres asociados a variables en R.
 
@@ -828,7 +828,7 @@ var_2 <- c(1L)
 var_2
 ```
 
-#### _Tipos de vectores_
+#### _Tipos de vectores_ {#Tvectores}
 
 Los elementos que conforman un vector en R, como se mencionó en la regla anterior, deben ser del mismo tipo. Este hecho implica que, en este lenguaje podemos construir vectores los cuales, dependiendo del tipo de datos que contienen, pueden ser clasificados en una de cuatro categorías: _lógicos_, _enteros_, _numéricos_ y de _cadena o caracter_. A continuación, se presenta una breve descripción así como algunos ejemplos de los diferentes tipos de vectores existentes en R.  
 
@@ -1193,7 +1193,7 @@ x > 0 & y > 0
 
 Dado que la regla de reciclaje puede inducir a importantes errores para aquellos usuarios que desconozcan la forma como este lenguaje implementa operaciones lógicas entre vectores con diferentes longitudes, R, como se observa en los resultados del ejemplo anterior, genera un mensaje de alerta (Warning) en el que se advierte sobre la presencia de vectores con longitudes disímiles en la operación evaluada.
 
-#### _Indexación/subconjuntos de vectores_
+#### _Indexación/subconjuntos de vectores_ {#Indexa}
 
 Una de las acciones más frecuentes a la hora de trabajar con vectores o cualquier otra estructura de datos en R, como veremos en adelante, es la orientada a la extracción o indexación de un subconjunto de sus elementos. Para ello, hay que tener en cuenta que R es un lenguaje de programación **indexado en 1**; es decir, para el caso del trabajo con vectores, al primer elemento se le asigna la posición 1. 
 
@@ -1400,6 +1400,70 @@ Vect_3[!(Vect_3 < 0 | Vect_3 >= 5)]
 # Guardar y evaluar resultados a partir de una variable
 Vect_4 <- Vect_3[Vect_3 < 5 & Vect_3 >= 0]
 Vect_4
+```
+
+#### _Nombres de elementos en vectores_
+
+Los vectores en R, además de ser construidos a partir del comando `c()`, están compuestos por elementos los cuales, como se presentó en la sección de [tipos de vectores](#Tvectores), definen la tipolología que los representa: _lógicos_, _enteros_, _numéricos_ y _cadena o caracter_. Los vectores, además de las características antes ilustradas, pueden contener nombres que identifiquen a cada uno de sus elementos. Es decir, además de contar con un número indice que los identifica, estos pueden contener nombres asociados a dichos indíces. En la figura que se presenta a continuación, se ilustra la filosofía a la hora de asignar nombres a los elementos que conforman un vector.
+
+![Filosofia nombre vectores](Imagenes/Nombres_vectores.svg)
+
+En R, existen 2 formas de asignar nombres a vectores: al momento de crear vectores o cuando estos están creados. A continuación, se presentan en detalle estas dos formas de asignación de nombres.  
+
+1. _**Asignación de nombres a vectores - al crear el vector**_
+
+La asignación de nombres a los elementos de un vector en el momento en el que estos son creados se da a través del operador `=`. Este operador, inermedia entre el nombre y el valor que acompaña a cada uno de los elementos de un vector. Por ejemplo, el vector `c(a = 5, b = 6, c = 7)` está conformado por tres elementos en donde el nombre que representa al elemento 1 es la **a**, el que representa el elemento 2 es la **b** y el que representa al elemento 3  es la **c**. A continuación, se presenta este y otros ejemplos de asignación directa de nombres^[Los nombres de los elementos de un vector deben cumplir los mismos requisitos definidos para la creación de [nombres](#NombreV) asociados a variables en R (no iniciar con números, no incluir caracteres especiales, no utilizar palabras claves del lenguaje, etc.).] a los elementos de vectores en R.
+
+<p style="color:#e6550d";><i>Ejemplo. Asignación a nombres de elementos de vectores en R - al crear vectores</i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Ejemplo 1. Nombres de elementos en vectores 
+c(a = 5, b = 6, c = 7)
+# Ejemplo 2. Nombres de elementos en vectores 
+c(x = TRUE, y = FALSE, z = TRUE, w = TRUE)
+# Ejemplo 3. Nombres de elementos en vectores haciendo uso de variables
+Var_2 <- c(Nombre1 = 'a', Nombre2 = 'b', Nombre3 = 'c')
+Var_2
+```
+
+2. _**Asignación de nombres a vectores - cuando el vector está creado**_
+
+La asignación de nombres a elementos de vectores en R en su momento de creación, en la excepción y no la regla. Lo norma, en este lenguaje, es que la asignación de nombres se dé una vez estos se han creado. Para ello, debemos acudir a una combinación entre una función disponible en R conocida como `names()` y un vector de tipo caracter con los nombres que serán asignados a los elementos de un vector dado. A continuación, se presentan dos ejemplos con la asignación de nombres de manera indirecta en R; es decir, cuando el vector ya se encuentra creado.
+
+```{r, eval=TRUE, warning=FALSE}
+# Ejemplo 1. Nombres de elementos en vectores
+vector1 <- c(1:5)
+Nombres1 <- c('a', 'b', 'c', 'd', 'e') 
+names(vector1) <- Nombres1
+vector1
+# Ejemplo 2. Nombres de elementos en vectores
+vector2 <- seq(from = 1, to = 10, by = 1)
+Nombres2 <- letters[c(1:10)] 
+names(vector2) <- Nombres2
+vector2
+```
+
+En el primero de los ejemplos, en su primera línea de código, se crea un vector numérico `c(1:5)` y su contenido es almacenado en una variable llamada `vector1`. En la segunda línea de código, se crea un vector de tipo caracter `c('a', 'b', 'c', 'd', 'e')` con los nombres que tendrán los elementos del vector previamente creado y su contenido se guarda dentro de la variable `Nombres1`. En la tercera línea de código del ejemplo 1, se hace uso de la función `names()` para indicarle que a los elementos del `vector1` se le asignen los nombres contenidos en el vector caracter `Nombres1`. Por último, en la línea cuatro del código, verificamos que el vector 1 cuenta con los nombres asignados a cada uno de sus elementos. Invitamos al lector a analizar y estudiar lo que hace R en el proceso de creación del nombre de los elementos del vector que hace parte del ejemplo 2.
+
+Finalmente, si deseamos conocer en R los nombres de los elementos de un vector, podemos hacerlo a través de la misma función empleada para su asignación; es decir, `names()`. Por ejemplo, si aplicamos la instrucción `names(vector1)` al vector resultantes del desarrollo del ejemplo 1, el lenguaje nos retorna los nombres de los elementos que hacen parte de este vector.
+
+3. _**Indexación de vectores a partir de nombres de elementos**_
+
+En la sección de [Indexación/subconjuntos de vectores](#Indexa), se definió que en R existen 6 posibilidades para extraer elementos de un vector. De estas, se anunció que en este documento se ilustrarían 4 de estas posibilidades y se avanzó en tres de ellas: extracción de elementos a partir de _vectores con enteros positivos_, _vectores con enteros negativos_ y _vectores lógicos_. A continuación, se presenta la cuarta y última alternativa para la selección de elementos de un vector la cual, como se verá, implica el uso de vectores de tipo cadena o caracter conformados por los nombres de los elementos de un vector. 
+
+La extracción de elementos a partir de vectores conformados por _vectores de tipo cadena o caracter_ retorna los elementos disponibles en las posiciones de un vector según sus nombres. Por ejemplo, si deseamos extraer la primera y la última posición del vector `Var_1 <- c(a = 1, b = 2, c = 3, d = 4, e = 5)` a partir de los nombres de estos elementos, basta con implementar en R la línea de comando `Var_1[c('a', 'e')]`. En esta línea de comando, el operador (corchete) `[]` indica que estamos interesados en extraer un subconjunto de elementos contenidos en el vector `Var_1` y el vector `c('a', 'e')` indica que los elementos que deseamos extraer son aquellos cuyos nombres son `a` y `e`; es decir, los ubicados en la primera y la última posición del vector `Var_1`. A continuación, en el ejemplo, se presenta el desarrollo de la anterior instrucción y de otros subconjuntos de vectores en R extraídos a partir de vectores de tipo caracter con los nombres de sus elementos.
+
+```{r}
+# Ejemplo 1. Extracción del primero y del último elemento
+Var_1 <- c(a = 1, b = 2, c = 3, d = 4, e = 5)
+Var_1[c('a', 'e')]
+# Ejemplo 2. Extracción de los elementos 2 y 3
+Var_1[c('b', 'c')]
+# Ejemplo 3. Extracción de los últimos dos elementos y guardar el resultado en una variable
+Var_2 <- Var_1[c('d', 'e')]
+Var_2
+# Ejemplo 4. Extracción del primer elemento 5 veces
+Var_1[rep('a', 5)]
 ```
 
 ### Matrices
