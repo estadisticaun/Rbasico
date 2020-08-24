@@ -1,0 +1,39 @@
+# Ejercicios {#Ejercicios}
+
+En esta sección, se presenta un conjunto de ejercicios en R los cuales se iran presentando/asignando de manera periódica a lo largo del desarrollo del presente curso. Estos, están orientados a afianzar los conocimientos adquiridos en el proceso de aprendizaje y a fomentar su discusión en algunas de las sesiones virtuales del curso.
+
+## Trabajo 1
+
+
+1. ¿Qué regla aplica R para evaluar/desarrollar la operación aritmética compuesta `(6/2*(2+1 + 2^3) + 24/(2*3 + 0^3) + 3)/8`? Explicar, paso a paso y mediante varias líneas de comando, ¿cómo este lenguaje genera el resultado de la anterior operación?
+
+2. Escriba el número pi haciendo uso de la constante integrada `pi`, guarde su valor dentro de una variable llamada `longitud circunferencia vs radio` e imprima su resultado. <br> 
+_**Nota: el nombre de la variable debe respetar los espacios existentes entre las diferentes palabras.**_  
+
+3. Escribra un dato de tipo lógico, almacene/guarde su contenido en una variable llamada `Var%_1` e imprima su resultado. ¿Qué pasó al imprimir el resultado en R?, ¿Cómo arreglaría el problema generado para que imprima el resultado de manera correcta?
+
+4. Crear dos vectores en R con los números de 5 en 5: uno  iniciando en 5 y terminando en 100 y el otro iniciando en 100 y terminando en 5. Es decir, `c(5, 10, 15, 20, ... 100)` y `c(100, 95, 90, 85, ... 5)`.
+
+5. Cree en R, a partir de las funciones vistas para generar vectores de manera rápida (`:, seq() o rep()`), el siguiente vector c("a", "b", "b", "c", "c", "c", "d", "d", "d", "d").
+
+6. Cree la variable `var_1` y asigne a esta los elementos del vector `c(1:10)`; luego cree la variable `var_2` y asigne los elementos contenidos en el vector `c(1, 0)`. Una vez se hayan creado los anteriores dos vectores, cree una nueva variable `Rta` y almacene allí la división entre los vectores `var_1` y `var_2`. ¿Qué regla aplica R para realizar esta operación dado que los vectores son de diferente longitud? ¿Qué le llama la atención de los tipos de datos que genera esta división? ¿Qué explicación podría dar a los datos "raros" que esta operación genera?
+
+7. Cree la variable `x` y asigne a esta los elementos del vector `c(10, 15, 20 , '30')`; luego cree la variable `y` y asigne los elementos contenidos en el vector `c(2, 5, '2', 10)`.  Una vez se hayan creado los anteriores dos vectores, cree una nueva variable `z` y almacene allí la multiplicación entre los vectores `x` e `y`. ¿Por qué se genera un error al realizar la multiplicación entre los vectores `x` e `y`?, ¿qué regla está aplicando R a los elementos que conforman los vectores `x` e `y` antes de realizar la multiplicación? ¿Cómo solucionaria el problema generado por R para que se pueda implementar la multiplicación deseada? <br>
+_**Nota: Copie el contenido de los vectores `x` e `y` directamente desde el ejercicio; es decir, no los ingrese manualmente a través del teclado.**_  
+
+8. Cree en R un vector con los números del 1 al 100 y almacene el resultado en una variable llamada `m`. Haciendo uso de operadores relacionales, genere un vector lógico en donde TRUE contenga las posiciones de los elementos menores o iguales a 10 (`<= 10`) que hacen parte del vector `m`.
+
+9. Cree la variable `Números` y asigne a esta los elementos del vector `c('uno', 'tres', 'uno ', 'cuatro', ' uno', 'cinco', 'uno')`. Haciendo uso de operadores lógicos de tipo relacional, cree una variable llamada `Resultado` y almacene allí un vector lógico con las posiciones en donde la variable `Números` es **igual** a la palabra `uno`, imprima los resultados contenidos en la variable `Resultado`. ¿Por qué algunos elementos del vector contenido en la variable `Números`, que tienen la palabra `uno`, no aparecen como `TRUE` en el vector lógico contenido en la variable `Resultado`? Realice los ajustes que considere pertinentes al vector `Números` para que la totalidad de los elementos que contienen la palabra `uno` aparezcan como `TRUE` en el vector lógico contenido en la variable `Resultado`.<br>
+_**Nota: Copie el contenido del vector `Números` directamente desde el ejercicio; es decir, no los ingrese manualmente a través del teclado.**_  
+
+10. Cree la variable `var_1` y asigne a esta los elementos del vector `seq(-5, 5, 1)`; luego cree la variable `var_2` y asigne los elementos contenidos en el vector `c(-5, 1, 2, -5, 3, 1, 0, -4, -5, 3, 1, -5)`. Implemente en R una expresión lógica que contenga las posiciones en donde los elementos de la variable `var_1` son menores o iguales a cero **y** los elementos del vector `var_2` son iguales a `-5`, `2` o `-4`.<br>
+_**Nota: Investigue en la web el operador `%in%` en R y úselo si lo considera útil para desarrollar este ejercicio**_
+
+11. Cree la variable `Serie` y asigne a esta los números del 1 al 99 de dos en 2 (`1, 3, 5, 7, ... , 99`). Seleccione, haciendo uso del operador `[ ]` (corchetes), los elementos múltiplos de 5 contenidos en el vector `Serie` y almacene el resultado en una variable llamada `Multiplo5`. Imprima los resultados contenidos en la variable `Multiplo5`. ¿Por qué la variable `Multiplo5` no genera un conflicto en R a pesar de que esta contiene un número en su nombre?
+
+12. Cree la variable `Var` en R y almacene en ella las primeras 5 letras del abecedario romano a partir de la constante integrada `LETTERS`. Cree, a partir de los elementos almacenados en la variable `Var`, una variable llamada `Rep_Var` con cada uno de los elementos contenidos en la variable `Var` de manera duplicada; es decir, `"A" "A" "B" "B" "C" "C" "D" "D" "E" "E"`. Imprima los resultados de la variable `Rep_Var`.<br>
+_**Nota: Los elementos de la variable `Var` no pueden ser ingresados desde el teclado; estos deben ser extraidos (un subconjunto) a partir del uso de la constante integrada `LETTERS`.**_ 
+
+13. Cree la variable `Nueva` y asigne a esta los elementos del vector `c(11, 20, 15, 10)`; cree la variable `Nombres` y asigne a esta los elementos del vector `c('xyz', 'c%2', 'mno', 'for')`. Asigne a los elementos de la variable `Nueva` los nombres contenidos en la variable `Nombres` e imprima los resultados. Seleccione los elementos del vector contenido en la variable `Nueva` cuyos nombres son `xyz` y `for`. ¿Por qué cree que R no genera un error en los nombres de los elementos contenidos en el vector `Nombres` a pesar de que dos de ellos usan caracteres especiales del lenguaje R o palabras reservadas (`c%2` y `for`)? 
+
+

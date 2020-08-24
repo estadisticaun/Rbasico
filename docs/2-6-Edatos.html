@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="2-5-Elogicas.html"/>
-
+<link rel="next" href="3-Ejercicios.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -173,6 +173,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6.1" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#vectores"><i class="fa fa-check"></i><b>2.6.1</b> Vectores</a></li>
 <li class="chapter" data-level="2.6.2" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#matrices"><i class="fa fa-check"></i><b>2.6.2</b> Matrices</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-Ejercicios.html"><a href="3-Ejercicios.html"><i class="fa fa-check"></i><b>3</b> Ejercicios</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-1-trabajo-1.html"><a href="3-1-trabajo-1.html"><i class="fa fa-check"></i><b>3.1</b> Trabajo 1</a></li>
 </ul></li>
 </ul>
 
@@ -859,7 +863,7 @@ En R, existen seis (6) posibilidades para extraer elementos de un vector: <em>ve
 <ol style="list-style-type: decimal">
 <li><em><strong>Asignación de nombres a vectores - al crear el vector</strong></em></li>
 </ol>
-<p>La asignación de nombres a los elementos de un vector en el momento en el que estos son creados se da a través del operador <code>=</code>. Este operador, inermedia entre el nombre y el valor que acompaña a cada uno de los elementos de un vector. Por ejemplo, el vector <code>c(a = 5, b = 6, c = 7)</code> está conformado por tres elementos en donde el nombre que representa al elemento 1 es la <strong>a</strong>, el que representa el elemento 2 es la <strong>b</strong> y el que representa al elemento 3 es la <strong>c</strong>. A continuación, se presenta este y otros ejemplos de asignación directa de nombres<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a> a los elementos de vectores en R.</p>
+<p>La asignación de nombres a los elementos de un vector en el momento en el que estos son creados se da a través del operador <code>=</code>. Este operador, inermedia entre el nombre y el valor que acompaña a cada uno de los elementos de un vector. Por ejemplo, el vector <code>c(a = 5, b = 6, c = 7)</code> está conformado por tres elementos en donde el nombre que representa al elemento 1 es la <strong>a</strong>, el que representa el elemento 2 es la <strong>b</strong> y el que representa al elemento 3 es la <strong>c</strong>. A continuación, se presenta este y otros ejemplos de asignación directa de nombres a los elementos de vectores en R.</p>
 <p style="color:#e6550d";><i>Ejemplo. Asignación a nombres de elementos de vectores en R - al crear vectores</i></p>
 <div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="2-6-Edatos.html#cb443-1"></a><span class="co"># Ejemplo 1. Nombres de elementos en vectores </span></span>
 <span id="cb443-2"><a href="2-6-Edatos.html#cb443-2"></a><span class="kw">c</span>(<span class="dt">a =</span> <span class="dv">5</span>, <span class="dt">b =</span> <span class="dv">6</span>, <span class="dt">c =</span> <span class="dv">7</span>)</span></code></pre></div>
@@ -925,32 +929,6 @@ En R, existen seis (6) posibilidades para extraer elementos de un vector: <em>ve
 </div>
 </div>
 <!-- </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
 <ol start="10">
@@ -965,7 +943,6 @@ En R, existen seis (6) posibilidades para extraer elementos de un vector: <em>ve
 <li id="fn18"><p>En este documento, dado su alcance, nos concentraremos en las primeras cuatro posibilidades; es decir, no serán tenidas en cuenta las opciones <em>ninguno (nothing)</em> y <em>cero (zero)</em>, de poca utilidad o uso en el análisis de datos<a href="2-6-Edatos.html#fnref18" class="footnote-back">↩︎</a></p></li>
 <li id="fn19"><p>La cuarta opción, basada en <em><strong>vectores de tipo caracter</strong></em>, será presentada en la sección siguiente<a href="2-6-Edatos.html#fnref19" class="footnote-back">↩︎</a></p></li>
 <li id="fn20"><p>Esta característica resulta útil al momento de extraer elementos de un vector con una gran cantidad de elementos siempre y cuando los elementos a ser seleccionados presenten una sucesión/ciclo útil en la práctica<a href="2-6-Edatos.html#fnref20" class="footnote-back">↩︎</a></p></li>
-<li id="fn21"><p>Los nombres de los elementos de un vector deben cumplir los mismos requisitos definidos para la creación de <a href="2-4-Variables.html#NombreV">nombres</a> asociados a variables en R (no iniciar con números, no incluir caracteres especiales, no utilizar palabras claves del lenguaje, etc.).<a href="2-6-Edatos.html#fnref21" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 <h2 style="color:#2ca25f;">Comentarios</h2>
@@ -997,8 +974,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="2-5-Elogicas.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="2-5-Elogicas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-Ejercicios.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

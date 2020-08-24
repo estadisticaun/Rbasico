@@ -1412,7 +1412,7 @@ En R, existen 2 formas de asignar nombres a vectores: al momento de crear vector
 
 1. _**Asignación de nombres a vectores - al crear el vector**_
 
-La asignación de nombres a los elementos de un vector en el momento en el que estos son creados se da a través del operador `=`. Este operador, inermedia entre el nombre y el valor que acompaña a cada uno de los elementos de un vector. Por ejemplo, el vector `c(a = 5, b = 6, c = 7)` está conformado por tres elementos en donde el nombre que representa al elemento 1 es la **a**, el que representa el elemento 2 es la **b** y el que representa al elemento 3  es la **c**. A continuación, se presenta este y otros ejemplos de asignación directa de nombres^[Los nombres de los elementos de un vector deben cumplir los mismos requisitos definidos para la creación de [nombres](#NombreV) asociados a variables en R (no iniciar con números, no incluir caracteres especiales, no utilizar palabras claves del lenguaje, etc.).] a los elementos de vectores en R.
+La asignación de nombres a los elementos de un vector en el momento en el que estos son creados se da a través del operador `=`. Este operador, inermedia entre el nombre y el valor que acompaña a cada uno de los elementos de un vector. Por ejemplo, el vector `c(a = 5, b = 6, c = 7)` está conformado por tres elementos en donde el nombre que representa al elemento 1 es la **a**, el que representa el elemento 2 es la **b** y el que representa al elemento 3  es la **c**. A continuación, se presenta este y otros ejemplos de asignación directa de nombres a los elementos de vectores en R.
 
 <p style="color:#e6550d";><i>Ejemplo. Asignación a nombres de elementos de vectores en R - al crear vectores</i></p>
 

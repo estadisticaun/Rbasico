@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.1 Sesiones 2 y 3 | Un Primer Curso de R</title>
+  <meta name="description" content="2.1 Sesiones 2 y 3 | Un Primer Curso de R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.1 Sesiones 2 y 3 | Un Primer Curso de R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.1 Sesiones 2 y 3 | Un Primer Curso de R" />
+  
+  
+  
+
+<meta name="author" content="Alberto Rodríguez Rodríguez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="2-Ejercicios.html"/>
+
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/unal/css/style.css" rel="stylesheet" />
+<link href="libs/unal/css/bootstrap-buttons.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="https://ih0.redbubble.net/image.522698608.2413/flat,550x550,075,f.u4.jpg"  height=50 width="50"> <a href="./">Primer Curso de R</a></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Portada</a></li>
+<li class="chapter" data-level="" data-path="Presenta.html"><a href="Presenta.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="chapter" data-level="1" data-path="1-Instalar.html"><a href="1-Instalar.html"><i class="fa fa-check"></i><b>1</b> Instalar R y Rstudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1-1-instalar-r.html"><a href="1-1-instalar-r.html"><i class="fa fa-check"></i><b>1.1</b> Instalar R</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-instalar-rstudio.html"><a href="1-2-instalar-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> Instalar Rstudio</a></li>
+<li class="chapter" data-level="1.3" data-path="1-3-personalizar-rstudio.html"><a href="1-3-personalizar-rstudio.html"><i class="fa fa-check"></i><b>1.3</b> Personalizar Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#part-fundamentos"><i class="fa fa-check"></i>(PART) Fundamentos</a>
+<ul>
+<li class="chapter" data-level="1.4" data-path="1-4-introR.html"><a href="1-4-introR.html"><i class="fa fa-check"></i><b>1.4</b> Primeros pasos</a></li>
+<li class="chapter" data-level="1.5" data-path="1-5-Tdatos.html"><a href="1-5-Tdatos.html"><i class="fa fa-check"></i><b>1.5</b> Tipos de datos</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="1-5-Tdatos.html"><a href="1-5-Tdatos.html#Tdatos1"><i class="fa fa-check"></i><b>1.5.1</b> Tipos de datos en R</a></li>
+<li class="chapter" data-level="1.5.2" data-path="1-5-Tdatos.html"><a href="1-5-Tdatos.html#Constantes"><i class="fa fa-check"></i><b>1.5.2</b> Constantes integradas en R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="1-6-Aritmet.html"><a href="1-6-Aritmet.html"><i class="fa fa-check"></i><b>1.6</b> Operaciones aritméticas</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="1-6-Aritmet.html"><a href="1-6-Aritmet.html#operaciones-aritméticas-en-r"><i class="fa fa-check"></i><b>1.6.1</b> Operaciones aritméticas en R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="1-7-Variables.html"><a href="1-7-Variables.html"><i class="fa fa-check"></i><b>1.7</b> Variables</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="1-7-Variables.html"><a href="1-7-Variables.html#NombreV"><i class="fa fa-check"></i><b>1.7.1</b> Nombre de variables</a></li>
+<li class="chapter" data-level="1.7.2" data-path="1-7-Variables.html"><a href="1-7-Variables.html#tipos-de-variables"><i class="fa fa-check"></i><b>1.7.2</b> Tipos de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="1-8-Elogicas.html"><a href="1-8-Elogicas.html"><i class="fa fa-check"></i><b>1.8</b> Expresiones lógicas</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="1-8-Elogicas.html"><a href="1-8-Elogicas.html#operadores-relacionales"><i class="fa fa-check"></i><b>1.8.1</b> Operadores Relacionales</a></li>
+<li class="chapter" data-level="1.8.2" data-path="1-8-Elogicas.html"><a href="1-8-Elogicas.html#operadores-lógicos"><i class="fa fa-check"></i><b>1.8.2</b> Operadores Lógicos</a></li>
+<li class="chapter" data-level="1.8.3" data-path="1-8-Elogicas.html"><a href="1-8-Elogicas.html#combinando-operadores"><i class="fa fa-check"></i><b>1.8.3</b> Combinando operadores</a></li>
+<li class="chapter" data-level="1.8.4" data-path="1-8-Elogicas.html"><a href="1-8-Elogicas.html#coerción-en-expresiones-lógicas"><i class="fa fa-check"></i><b>1.8.4</b> Coerción en expresiones lógicas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="1-9-Edatos.html"><a href="1-9-Edatos.html"><i class="fa fa-check"></i><b>1.9</b> Estructuras de datos</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="1-9-Edatos.html"><a href="1-9-Edatos.html#vectores"><i class="fa fa-check"></i><b>1.9.1</b> Vectores</a></li>
+<li class="chapter" data-level="1.9.2" data-path="1-9-Edatos.html"><a href="1-9-Edatos.html#matrices"><i class="fa fa-check"></i><b>1.9.2</b> Matrices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-Ejercicios.html"><a href="2-Ejercicios.html"><i class="fa fa-check"></i><b>2</b> Ejercicios</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-1-sesiones-2-y-3.html"><a href="2-1-sesiones-2-y-3.html"><i class="fa fa-check"></i><b>2.1</b> Sesiones 2 y 3</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Un Primer Curso de R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sesiones-2-y-3" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Sesiones 2 y 3</h2>
+<ol style="list-style-type: decimal">
+<li><p>¿Qué regla aplica R para evaluar/desarrollar la operación aritmética compuesta <code>(6/2*(2+1 + 2^3) + 24/(2*3 + 0^3) + 3)/8</code>? Explicar paso a paso y mediante varias líneas de comando, cómo este lenguaje obtiene el resultado al evaluar la anterior operación.</p></li>
+<li><p>Escriba el número pi haciendo uso de la constante integrada <code>pi</code>, guarde su valor dentro de una variable llamada <code>longitud circunferencia vs radio</code> e imprima su resultado. <br>
+<em><strong>Nota: el nombre de la variable debe respetar los espacios existentes entre las diferentes palabras.</strong></em></p></li>
+<li><p>Escribra un dato de tipo lógico, almacene/guarde su contenido en una variable llamada <code>Var%_1</code> e imprima su resultado. ¿Qué pasó al imprimir el resultado en R?, ¿Cómo arreglaría el problema generado para que imprima el resultado de manera correcta?</p></li>
+<li><p>Crear dos vectores en R con los números de 5 en 5: uno iniciando en 5 y terminando en 100 y el otro iniciando en 100 y terminando en 5. Es decir, <code>c(5, 10, 15, 20, ... 100)</code> y <code>c(100, 95, 90, 85, ... 5)</code>.</p></li>
+<li><p>Cree en R, a partir de las funciones vistas para generar vectores de manera rápida (<code>:, seq() o rep()</code>), el siguiente vector c(“a”, “b”, “b”, “c”, “c”, “c”, “d”, “d”, “d”, “d”).</p></li>
+<li><p>Cree la variable <code>var_1</code> y asigne a esta los elementos del vector <code>c(1:10)</code>; luego cree la variable <code>var_2</code> y asigne los elementos contenidos en el vector <code>c(1, 0)</code>. Una vez se hayan creado los anteriores dos vectores, cree una nueva variable <code>Rta</code> y almacene allí la división entre los vectores <code>var_1</code> y <code>var_2</code>. ¿Qué regla aplica R para realizar esta operación dado que los vectores son de diferente longitud? ¿Qué le llama la atención de los tipos de datos que genera esta división? ¿Qué explicación podría dar a los datos “raros” que esta operación genera?</p></li>
+<li><p>Cree la variable <code>x</code> y asigne a esta los elementos del vector <code>c(10, 15, 20 , '30')</code>; luego cree la variable <code>y</code> y asigne los elementos contenidos en el vector <code>c(2, 5, '2', 10)</code>. Una vez se hayan creado los anteriores dos vectores, cree una nueva variable <code>z</code> y almacene allí la multiplicación entre los vectores <code>x</code> e <code>y</code>. ¿Por qué se genera un error al realizar la multiplicación entre los vectores <code>x</code> e <code>y</code>?, ¿qué regla está aplicando R a los elementos que conforman los vectores <code>x</code> e <code>y</code> antes de realizar la multiplicación? ¿Cómo solucionaria el problema generado por R para que se pueda implementar la multiplicación deseada? <br>
+<em><strong>Nota: Copie el contenido de los vectores <code>x</code> e <code>y</code> directamente desde el ejercicio; es decir, no los ingrese manualmente a través del teclado.</strong></em></p></li>
+<li><p>Cree en R un vector con los números del 1 al 100 y almacene el resultado en una variable llamada <code>m</code>. Haciendo uso de operadores relacionales, genere un vector lógico en donde TRUE contenga las posiciones de los elementos menores o iguales a 10 (<code>&lt;= 10</code>) que hacen parte del vector <code>m</code>.</p></li>
+<li><p>Cree la variable <code>Números</code> y asigne a esta los elementos del vector <code>c('uno', 'tres', 'uno ', 'cuatro', ' uno', 'cinco', 'uno')</code>. Haciendo uso de operadores lógicos de tipo relacional, cree una variable llamada <code>Resultado</code> y almacene allí un vector lógico con las posiciones en donde la variable <code>Números</code> es <strong>igual</strong> a la palabra <code>uno</code>, imprima los resultados contenidos en la variable <code>Resultado</code>. ¿Por qué algunos elementos del vector contenido en la variable <code>Números</code>, que tienen la palabra <code>uno</code>, no aparecen como <code>TRUE</code> en el vector lógico contenido en la variable <code>Resultado</code>? Realice los ajustes que considere pertinentes al vector <code>Números</code> para que la totalidad de los elementos que contienen la palabra <code>uno</code> aparezcan como <code>TRUE</code> en el vector lógico contenido en la variable <code>Resultado</code>.<br>
+<em><strong>Nota: Copie el contenido del vector <code>Números</code> directamente desde el ejercicio; es decir, no los ingrese manualmente a través del teclado.</strong></em></p></li>
+<li><p>Cree la variable <code>var_1</code> y asigne a esta los elementos del vector <code>seq(-5, 5, 1)</code>; luego cree la variable <code>var_2</code> y asigne los elementos contenidos en el vector <code>c(-5, 1, 2, -5, 3, 1, 0, -4, -5, 3, 1, -5)</code>. Implemente en R una expresión lógica que contenga las posiciones en donde los elementos de la variable <code>var_1</code> son menores o iguales a cero <strong>y</strong> los elementos del vector <code>var_2</code> son iguales a <code>-5</code>, <code>2</code> o <code>-4</code>.
+<em><strong>Nota: Investigue en la web el operador <code>%in%</code> en R y úselo si lo considera útil para desarrollar este ejercicio</strong></em></p></li>
+<li><p>Cree la variable <code>Serie</code> y asigne a esta los números del 1 al 99 de dos en 2 (<code>1, 3, 5, 7, ... , 99</code>). Seleccione, haciendo uso del operador <code>[ ]</code> (corchetes), los elementos múltiplos de 5 contenidos en el vector <code>Serie</code> y almacene el resultado en una variable llamada <code>Multiplo5</code>. Imprima los resultados contenidos en la variable <code>Multiplo5</code>. ¿Por qué la variable <code>Multiplo5</code> no genera un conflicto en R a pesar de que esta contiene un número en su nombre?</p></li>
+<li><p>Cree la variable <code>Var</code> en R y almacene en ella las primeras 5 letras del abecedario romano a partir de la constante integrada <code>LETTERS</code>. Cree, a partir de los elementos almacenados en la variable <code>Var</code>, una variable llamada <code>Rep_Var</code> con cada uno de los elementos contenidos en la variable <code>Var</code> de manera duplicada; es decir, <code>"A" "A" "B" "B" "C" "C" "D" "D" "E" "E"</code>. Imprima los resultados de la variable <code>Rep_Var</code>.<br>
+<em><strong>Nota: Los elementos de la variable <code>Var</code> no pueden ser ingresados desde el teclado; estos deben ser extraidos (un subconjunto) a partir del uso de la constante integrada <code>LETTERS</code>.</strong></em></p></li>
+<li><p>Cree la variable <code>Nueva</code> y asigne a esta los elementos del vector <code>c(11, 20, 15, 10)</code>; cree la variable <code>Nombres</code> y asigne a esta los elementos del vector <code>c('xyz', 'c%2', 'mno', 'for')</code>. Asigne a los elementos de la variable <code>Nueva</code> los nombres contenidos en la variable <code>Nombres</code> e imprima los resultados. Seleccione los elementos del vector contenido en la variable <code>Nueva</code> cuyos nombres son <code>xyz</code> y <code>for</code>. ¿Por qué cree que R no genera un error en los nombres de los elementos contenidos en el vector <code>Nombres</code> a pesar de que dos de ellos usan caracteres especiales del lenguaje R o palabras reservadas (<code>c%2</code> y <code>for</code>)?</p></li>
+</ol>
+
+</div>
+<!-- </div> -->
+<h2 style="color:#2ca25f;">Comentarios</h2>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-rbasico-netlify-app-2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script src="libs/unal/js/widgets.js"></script>
+<script src="libs/unal/js/full-screen-helper.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-Ejercicios.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
