@@ -1,3 +1,67 @@
+# Fundamentos del lenguaje R {#Fund}
+
+
+https://www.youtube.com/watch?v=SWxoJqTqo08
+
+Ilustración ciclo de vida de la ciencia de los datos
+
+![Ilustración ciclo de vida Ciencia de Datos](Imagenes/Ciencia_Datos.png)
+
+```{r}
+# Compilar varias líneas de comando en una única línea (con ;)
+x <- 1 y <- 2  
+x <- 1 ; y <- 2  
+
+# Mostrar resultados y generación de una variable dentro de una única línea
+x <- c(1:5)
+# vs
+(x <- c(1:5))
+```
+
+1^x y x^0 es igual a 1 (para todo x). Entonces ...
+
+```{r}
+NA^0
+0^0
+```
+
+NA es un objeto lógico válido en R. Entonces...
+
+```{r}
+NA == TRUE
+NA == FALSE
+NaN == NA
+NA*0
+NaN*0
+NA + 7
+```
+
+x*0 no es cero para todo (x). Ver (NaN)x0
+
+
+Valores Especiales en R
+
+<!-- Valores Faltantes en R -->
+NA: Not Available (No disponible)
+NaN: Not a Number (No es un número)
+
+<!-- Conceptos -->
+
+Inf: Concepto de infinito positivo (+ infinito)
+-Inf: Concepto de infinito negativo (- infinito)
+
+Ver los siguientes resultados:
+
+```{r}
+12/0
+Inf*(-1)
+0/0
+NA + 7
+NA + NaN
+Inf + 1
+```
+
+
 
 #### _Modificar, anexar y remover elementos de un vector_
 

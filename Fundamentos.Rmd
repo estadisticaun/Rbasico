@@ -2,12 +2,6 @@
 
 # Fundamentos del lenguaje R {#Fund}
 
-<!-- https://www.youtube.com/watch?v=SWxoJqTqo08 -->
-
-<!-- Ilustración ciclo de vida de la ciencia de los datos -->
-
-<!-- ![Ilustración ciclo de vida Ciencia de Datos](Imagenes/Ciencia_Datos.png) -->
-
 En esta sección, se presentan los fundamentos del lenguaje de programación R. Estos están constituidos por los principales tipos de datos existentes en R, las operaciones aritméticas, la creación de variables, las expresiones lógicas, las estructuras de datos, la indexación o creación de subconjuntos de datos en R así como las principales rutinas de programación que hacen parte de este lenguaje.
 
 ## Primeros pasos {#introR}
@@ -773,7 +767,7 @@ A continuación, el diagrama, presenta una representación/esquematización grá
 
 ![Principales estructuras de datos en R. <br> Extraída de https://medium.com/@tiwarigaurav2512/r-data-types-847fffb01d5b](Imagenes/TiposDatos.png)
 
-### Vectores
+### Vectores {#Vectores}
 
 La primera estructura de datos empleda por R son los _**vectores**_. Estos, como se ilustra en la siguiente imagen, están conformados por "filas/columnas" de tipo unidimensional en cuyo interior existen datos de una misma tipología. 
 
@@ -1466,6 +1460,206 @@ Var_2
 Var_1[rep('a', 5)]
 ```
 
-### Matrices
+### Matrices {#Matrices}
 
+La segunda estructura de datos empleda por R son las matrices. Estas, como se ilustra en la siguiente imagen, son estructuras de tipo bidimensional conformadas por filas (_rows_) y columnas (_columns_) las cuales, al igual que los vectores, están conformadas por datos de una **misma tipología** (lógicos, enteros, numéricos o doble y caracter o cadena).
+
+![Representación gráfica de una matriz](Imagenes/Matriz.png)
+
+A continuación, se presenta la regla general para la construcción de matrices^[Esta no es la única forma que ofrece el lenguaje para la construcción de matrices. No obstante, es la forma convencional que ofrece R para la construcción de este tipo de estructuras] en R.
+
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Construcción de matrices en R</p></strong><br>
+En R, las matrices se construyen haciendo uso de la función `matrix()`. Los tipos de datos que conforman una matrix deben ser en su totalidad de la **misma tipología**.
+</p>
+</blockquote>
+<br>
+
+La función `matrix()` está compuesta por parámetros o argumentos entre los cuales se destacan: un conjunto de datos `data` que generalmente es un vector`c()`, la cantidad de filas de la matriz `nrow`, la cantidad de columnas de la matriz `ncol`, un dato lógico con la forma como se conformarán los elementos dentro de la matriz `byrow` (por filas o columnas) y, finalmente, el argumento `dimnames` conformado por una lista^[Más adelante se presentarán de manera formal lo que es una lista en R. Por el momento, aceptaremos que estas estructura de datos -las listas- nos permiten alojar más de un vector de datos] en donde se define, si se considera necesario y a través de vectores de tipo caracter, los nombres de las filas y de las columnas de la matriz de datos. A Continuación, se presenta un ejemplo de creación de una matriz en R.
+
+```{r, eval=FALSE}
+matrix(data = c(1:9), nrow= 3, ncol = 3, byrow = TRUE, 
+                      dimnames = list(c('F1', 'F2', 'F3'), 
+                                      c('C1', 'C2', 'C3')))
+```
+
+En el ejemplo anterior, el argumento `data = c(1:9)` nos dice que vamos a conformar una matriz con los números del 1 al 9 contenidos dentro del vector `c(1:9)`. Los argumentos `nrow = 3` y ` ncol = 3` nos dicen que vamos a conformar una matriz de tres filas y tres columnas (_3x3_). El argumento `byrow = TRUE` nos dice que los números del 1 al 9 serán ingresados a la matriz a través de filas -primero la fila 1, luego la 2 y por último, la fila 3-. Finalmente, el argumento `dimnames`contiene  una lista con dos vectores que conforman los nombres de las filas `c('F1', 'F2', 'F3')` así como los nombres de las columnas `c('C1', 'C2', 'C3')` de la matriz del presente ejemplo. Al evaluar esta matriz en R, obtendremos el siguiente resultado.
+
+
+```{r, eval=TRUE, echo=FALSE}
+matrix(data = c(1:9), nrow= 3, ncol = 3, byrow = TRUE, 
+                      dimnames = list(c('F1', 'F2', 'F3'), 
+                                      c('C1', 'C2', 'C3')))
+```
+
+Si, por ejemplo, en la matriz anterior, estamos interesados en cambiar el ingreso de los elementos que conforman la matriz de datos (de filas a columnas), basta con cambiar el argumento `byrow` de `TRUE` a `FALSE`. A continuación, se presenta la matriz de datos resultante al cambiar este argumento.
+
+```{r, eval=TRUE}
+matrix(data = c(1:9), nrow= 3, ncol = 3, byrow = FALSE, 
+                      dimnames = list(c('F1', 'F2', 'F3'), 
+                                      c('C1', 'C2', 'C3')))
+```
+
+En R, a menos que se diga lo contrario, el ingreso de los datos a una matriz se da por columnas (por defecto `byrow = FALSE`); así mismo, este puede omitir tanto el nombre de las filas o columnas de la matriz como el número de filas, siempre y cuando, se diga el número de columnas o viceversa. A continuación, se presenta el mismo ejemplo de la matriz anterior en donde se evalúa(imprime) únicamente dos de sus argumentos.
+
+```{r, eval=TRUE}
+matrix(data = c(1:9), nrow= 3)
+```
+
+En la matriz anterior, el lenguaje entiende que estamos interesados en obtener una matriz con tres filas conformada por los números del 1 al 9. Por defecto, R entiende/asume que `byrow = FALSE`; es decir, los datos se ingresarán por columnas y que no estamos interesados en definir los nombres de las filas y las columnas de dicha matriz. En este caso, le hemos indicado a R que conforme una matriz de tres filas y que cree tantas columnas como sea necesario para que en dicha matriz existan los elementos con los números del 1 al 9; desde luego, 3 es la cantidad de columnas requeridas^[En el caso de que la cantidad de columnas requeridas multiplicada por la cantidad de filas, sea mayor a la cantidad de elementos disponibles, R, al igual que en el caso de vectores, recicla los elementos del vector de datos disponible hasta completar la matriz requerida] para conformar una matriz de tres filas con los elementos del 1 al 9. 
+
+A continuación, se presentan 10 ejemplos de diversas matrices creadas en R. Invitamos al lector a explorar y analizar la forma como el lenguaje evalúa/procesa cada una de estas matrices.
+
+<p style="color:#e6550d";><i>Ejemplo. Creación de matrices en R</i></p>
+
+
+```{r, eval=TRUE, warning=FALSE}
+# Ejemplo 1 - Por defecto - columnas
+matrix(c(1:5))
+# Ejemplo 2 - Indicando filas y columnas
+matrix(1L:12L, nrow = 4, ncol = 3)
+# Ejemplo 3 - Por filas
+matrix(1:12, nrow = 4, ncol = 3, byrow = TRUE)
+# Ejemplo 4 - Sin definir columnas
+matrix(1:12, nrow = 4)
+# Ejemplo 5 - Sin definir filas
+matrix(1:12, ncol = 4)
+# Ejemplo 6 - Con secuencias y creación de variables
+M <- matrix(seq(from = 2, to = 8, by = 2), nrow = 2, ncol = 2)
+M
+# Ejemplo 7 - Con repeticiones
+matrix(rep(1,4), nrow = 2, ncol = 2)
+# Ejemplo 8 - Con elementos lógicos
+matrix(c(TRUE, FALSE, FALSE, TRUE), nrow = 2, ncol = 2)
+# Ejemplo 9 - Con elementos tipo caractér - cadena
+matrix(c('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'), nrow = 3, ncol = 2)
+# Ejemplo 10 - Reciclando elementos
+matrix(1:7, ncol = 3)
+```
+
+#### _Indexación/subconjuntos de matrices _ {#Imatrices}
+
+En R, al igual que en el caso de los vectores, una de las actividades de mayor uso en la gestión de matrices es la selección de elementos o subconjuntos de elementos de estas. La selección de elementos de una matriz en R se soporta en la siguiente regla.
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla. Subconjuntos de matrices en R</p></strong><br>
+Para extraer elementos de una matriz en R se hace uso de corchetes **[ , ]**. La coma, entre los corchetes, nos permite separar, **haciendo uso de vectores**, los elementos o subconjuntos de elementos de interés según su ubicación tanto en filas como en columnas.  
+</p>
+</blockquote>
+<br>
+
+Si disponemos, por ejemplo, de una matriz `M` conformada por la matriz `matrix(c(1:16), nrow = 4)`, cuyo resultado se presenta a continuación. 
+
+```{r, eval=TRUE, echo=FALSE}
+M <- matrix(c(1:16), nrow = 4)
+M
+```
+
+Y si, por ejemplo, estamos interesados en extraer el elemento de la matriz `M` ubicado en la fila 2 y la columna 3; es decir, el número 10, basta con implementar en R la línea de código `M[2, 3]`^[Este resultado es equivalente a haber implementado la línea de código `M[c(2), c(3)]` en razón a que en este lenguaje, como se mencionó en la segunda regla del capítulo de [vectores](#Vectores), no existen escalares sino vectores de longitud 1]. De igual manera, si deseamos obtener la totalidad  de elementos que conforman la fila 4 de la matriz `M`, basta con implementar la línea de comando `M[4, ]`^[Si lo que se hubiese requerido es la selección de los elementos de la columna 4, la línea de código requerida es `M[ , 4]`]. Finalmente, si estamos interesados en obtener los elementos -subconjunto o submatriz- ubicados entre las filas 3 y 4 y las columnas 1 y 2 de la matriz `M`, se deberá implementar la siguiente línea de comando en R `M[c(3,4), c(1,2)]`. A continuación, se presenta el desarrollo en R de los anteriores subconjuntos de elementos de la matriz `M`.
+
+```{r, eval = TRUE}
+# Construcción y visualización de la matriz M
+M <- matrix(c(1:16), nrow = 4)
+M
+# Selección del elemento ubicado en la fila 2 y la columna 3 - opción 1
+M[2, 3]
+# Selección del elemento ubicado en la fila 2 y la columna 3 - opción 2
+M[c(2), c(3)]
+# Selección de la totalidad de elementos ubicados en la fila 4.
+M[4, ]
+# Selección de la totalidad de elementos ubicados en la columna 4
+M[ , 4]
+# selección de los elementos ubicados en las filas 3 y 4 y en las columnas 1 y 2 (submatriz).
+M[c(3,4), c(1,2)]
+```
+
+De manera general, la selección de elementos o subconjuntos de elementos de una matriz en R, al igual que en caso de vectores, se puede realizar a través del uso de 6 tipos de opciones de las cuales se presentan, en este documento, ejemplos para 4 de ellas: _vectores con enteros positivos_, _vectores con enteros negativos_, _vectores lógicos_ y _vectores de tipo caracter_^[La selección de elementos de una matriz haciendo uso de vectores de tipo caracter, requiere que las filas y las columnas de la matriz hayan sido nombradas (tengan nombres)]. A continuación, se presentan algunos ejemplos de extracción de elementos de una matriz en R haciendo uso de los cuatro tipos de vectores previamente anunciados.
+
+
+<p style="color:#e6550d";><i>Ejemplo. Extracción de elementos de matrices en R según tipos de vectores</i></p>
+
+```{r, eval=TRUE}
+# Creación y evaluación/visualización de una matriz en R
+N <- matrix(data = c(1:9), nrow= 3, ncol = 3, byrow = FALSE, 
+                      dimnames = list(c('F1', 'F2', 'F3'), 
+                                      c('C1', 'C2', 'C3')))
+N
+# Ejemplo 1. Extracción de elementos haciendo uso de enteros positivos
+# selección de filas 1 y 2 y columnas 2 y 3
+# Esta línea de código es equivalente a: N[c(1L, 2L), c(2L, 3L)]
+N[c(1, 2), c(2, 3)]
+# Ejemplo 2. Extracción de elementos haciendo uso de enteros negativos
+# selección de elementos ubicados en una posición diferente de la fila 1 y la columna 2
+# Esta línea de código es equivalente a: N[c(-1), c(-2)] o N[-c(1), -c(2)] 
+N[-1, -2]
+# Ejemplo 3. Extracción de elementos haciendo uso de elementos lógicos
+# selección de elementos ubicados en las filas 1 y 3 y las columnas 1 y 3
+# Esta línea de código es equivalente a: N[c(TRUE, FALSE), c(TRUE, FALSE)], por qué?
+N[c(TRUE, FALSE, TRUE), c(TRUE, FALSE, TRUE)]
+# Ejemplo 4. Extracción de elementos haciendo uso de elementos de tipo caracter
+# selección de elementos ubicados en las filas 1 y 2 y las columnas 2 y 3
+N[c('F1', 'F2'), c('C2', 'C3')]
+```
+
+#### _Funciones útiles para la gestión de matrices_ {#Fmatrices}
+
+Hasta ahora, en este documento, poco se ha hablado sobre las funciones y su importancia en este lenguaje de programación. En sentido estricto, R es un lenguaje funcional; es decir, altamente soportado en el uso de funciones. Las funciones en R, como veremos más adelante, se encuentran contenidas principalmente dentro de paquetes o librerías^[En R, como se presentará más adelante, es posible y común, construir funciones por parte de los usuarios para propósitos particulares.]. Los paquetes o librerías que contienen funciones hacen parte de dos grandes subconjuntos de librerías: las que ofrece el lenguaje por defecto al momento de su instalación y aquellas construidas por la comunidad para diversos propósitos asociados a la gestión y el análisis de datos. Por el momento, iniciaremos con el abordaje de algunas funciones de interés que hacen parte del conjunto de librerías instaladas por defecto en R; es decir, que no requieren ser invocadas/instaladas previamente para ser usadas. A medida que se avance en el desarrollo de este documento, se irá incursionando con mayor frecuencia en el acceso, entendimiento y uso de las funciones en R.
+
+Para el caso de la gestión de matrices en R, a continuación, se presentan y se describe el uso de diez^[En R, existen cientos de funciones para la gestión de matrices las cuales exigen del usuario, además de una correcta gestión de las mismas, conocer cuáles de ellas resultan útiles para los propósitos deseados.] funciones útiles para la gestión de matrices y que hacen parte de las librerías incuídas por defecto en este lenguaje^[Una función en R puede ser útil para más de una estructura de datos. Por ejemplo, la función `class()` que se usa para determinar el tipo de estructura que contiene un conjunto de datos puede usarse en vectores, matrices o cualquier otro tipo de objeto en R].
+
+* _**class()**_: Verifica si el tipo de objeto o estructura de datos es una matriz.
+* _**nrow()**_: Retorna el número de filas de una matriz.
+* _**ncol()**_: Retorna el número de columnas de una matriz.
+* _**dim()**_: Retorna las dimensiones de una matriz; es decir, cuántas filas y cuántas columnas tiene.
+* _**rowSums()**_: Retorna un vector con la suma de los elementos que conforman las filas de una matriz.
+* _**colSums()**_: Retorna un vector con la suma de los elementos que conforman las columnas de una matriz.
+* _**rbind()**_: Permite adicionar filas a una matriz.
+* _**cbind()**_: Permite adicionar columnas a una matriz.
+* _**rownames()**_: Permite ingresar los nombres de las filas de una matriz. 
+* _**colnames()**_: Permite ingresar los nombres de las columnas de una matriz.
+
+
+A continuación, a través de una matriz de ejemplo, se presenta el uso de las anteriores funciones en el contexto de la gestión de matrices en R. Se invita al lector a explorar y analizar la forma como operan en R cada una de estas funciones.
+
+<p style="color:#e6550d";><i>Ejemplo. Uso de funciones para la gestión de matrices en R</i></p>
+
+```{r, eval=TRUE}
+# Crea una matriz en R, almacenar su resultado en una variable M y visualizar su contenido.
+M <- matrix(data = c(1:6), ncol = 2, byrow = TRUE)
+M
+# Determinar la clase de la estructura de datos M - función class()
+class(M)
+# Determinar el número de filas de la matriz M - función nrow()
+nrow(M)
+# Determinar el número de columnas de la matriz M - función ncol()
+ncol(M)
+# Determinar las dimensiones de la matriz M - función dim()
+dim(M)
+# Calcular un vector con las suma de las filas de la matriz M - función rowSums()
+rowSums(M)
+# Calcular un vector con las suma de las columnas de la matriz M - función colSums()
+colSums(M)
+# Adicionar una fila a la Matriz M - función rbind()
+# ¿Qué tiene de especial la función rbind() en comparación con las anteriores funciones?
+M <- rbind(M, c(7, 8))
+M
+# Adicionar una columna a la matriz M - función cbind()
+# ¿Por qué se adiciona un vector con cuatro elementos y no uno con tres?
+M <- cbind(M, c(1, 2, 3, 4))
+M
+# Adicionar los nombres de las filas de la matriz M - función rownames()
+# Qué tiene de especial esta función en comparación con las anteriores?
+rownames(M) <- c('Fil_1', 'Fil_2', 'Fil_3', 'Fil_4')
+M
+# Adicionar los nombres de las columnas de la matriz M - función colnames()
+# La variable con la que iniciamos tenía 2 columnas
+# ¿Por qué en esta línea de código la matriz M tiene 3 columnas?
+colnames(M) <- c('Col_1', 'Col_2', 'Col_3')
+M
+```
+
+### Data.frames {#DataFrames}
 

@@ -170,8 +170,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html"><i class="fa fa-check"></i><b>2.6</b> Estructuras de datos</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#vectores"><i class="fa fa-check"></i><b>2.6.1</b> Vectores</a></li>
-<li class="chapter" data-level="2.6.2" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#matrices"><i class="fa fa-check"></i><b>2.6.2</b> Matrices</a></li>
+<li class="chapter" data-level="2.6.1" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#Vectores"><i class="fa fa-check"></i><b>2.6.1</b> Vectores</a></li>
+<li class="chapter" data-level="2.6.2" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#Matrices"><i class="fa fa-check"></i><b>2.6.2</b> Matrices</a></li>
+<li class="chapter" data-level="2.6.3" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#DataFrames"><i class="fa fa-check"></i><b>2.6.3</b> Data.frames</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="3-Ejercicios.html"><a href="3-Ejercicios.html"><i class="fa fa-check"></i><b>3</b> Ejercicios</a>
@@ -204,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="Imagenes/TiposDatos.png" alt="" />
 <p class="caption">Principales estructuras de datos en R. <br> Extraída de <a href="https://medium.com/@tiwarigaurav2512/r-data-types-847fffb01d5b" class="uri">https://medium.com/@tiwarigaurav2512/r-data-types-847fffb01d5b</a></p>
 </div>
-<div id="vectores" class="section level3" number="2.6.1">
+<div id="Vectores" class="section level3" number="2.6.1">
 <h3><span class="header-section-number">2.6.1</span> Vectores</h3>
 <p>La primera estructura de datos empleda por R son los <em><strong>vectores</strong></em>. Estos, como se ilustra en la siguiente imagen, están conformados por “filas/columnas” de tipo unidimensional en cuyo interior existen datos de una misma tipología.</p>
 <div class="figure">
@@ -923,8 +924,285 @@ En R, existen seis (6) posibilidades para extraer elementos de un vector: <em>ve
 ## 1 1 1 1 1</code></pre>
 </div>
 </div>
-<div id="matrices" class="section level3" number="2.6.2">
+<div id="Matrices" class="section level3" number="2.6.2">
 <h3><span class="header-section-number">2.6.2</span> Matrices</h3>
+<p>La segunda estructura de datos empleda por R son las matrices. Estas, como se ilustra en la siguiente imagen, son estructuras de tipo bidimensional conformadas por filas (<em>rows</em>) y columnas (<em>columns</em>) las cuales, al igual que los vectores, están conformadas por datos de una <strong>misma tipología</strong> (lógicos, enteros, numéricos o doble y caracter o cadena).</p>
+<div class="figure">
+<img src="Imagenes/Matriz.png" alt="" />
+<p class="caption">Representación gráfica de una matriz</p>
+</div>
+<p>A continuación, se presenta la regla general para la construcción de matrices<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a> en R.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla: Construcción de matrices en R
+</p>
+</strong><br>
+En R, las matrices se construyen haciendo uso de la función <code>matrix()</code>. Los tipos de datos que conforman una matrix deben ser en su totalidad de la <strong>misma tipología</strong>.
+</p>
+</blockquote>
+<p><br></p>
+<p>La función <code>matrix()</code> está compuesta por parámetros o argumentos entre los cuales se destacan: un conjunto de datos <code>data</code> que generalmente es un vector<code>c()</code>, la cantidad de filas de la matriz <code>nrow</code>, la cantidad de columnas de la matriz <code>ncol</code>, un dato lógico con la forma como se conformarán los elementos dentro de la matriz <code>byrow</code> (por filas o columnas) y, finalmente, el argumento <code>dimnames</code> conformado por una lista<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a> en donde se define, si se considera necesario y a través de vectores de tipo caracter, los nombres de las filas y de las columnas de la matriz de datos. A Continuación, se presenta un ejemplo de creación de una matriz en R.</p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="2-6-Edatos.html#cb461-1"></a><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow=</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb461-2"><a href="2-6-Edatos.html#cb461-2"></a>                      <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&#39;F1&#39;</span>, <span class="st">&#39;F2&#39;</span>, <span class="st">&#39;F3&#39;</span>), </span>
+<span id="cb461-3"><a href="2-6-Edatos.html#cb461-3"></a>                                      <span class="kw">c</span>(<span class="st">&#39;C1&#39;</span>, <span class="st">&#39;C2&#39;</span>, <span class="st">&#39;C3&#39;</span>)))</span></code></pre></div>
+<p>En el ejemplo anterior, el argumento <code>data = c(1:9)</code> nos dice que vamos a conformar una matriz con los números del 1 al 9 contenidos dentro del vector <code>c(1:9)</code>. Los argumentos <code>nrow = 3</code> y <code>ncol = 3</code> nos dicen que vamos a conformar una matriz de tres filas y tres columnas (<em>3x3</em>). El argumento <code>byrow = TRUE</code> nos dice que los números del 1 al 9 serán ingresados a la matriz a través de filas -primero la fila 1, luego la 2 y por último, la fila 3-. Finalmente, el argumento <code>dimnames</code>contiene una lista con dos vectores que conforman los nombres de las filas <code>c('F1', 'F2', 'F3')</code> así como los nombres de las columnas <code>c('C1', 'C2', 'C3')</code> de la matriz del presente ejemplo. Al evaluar esta matriz en R, obtendremos el siguiente resultado.</p>
+<pre><code>##    C1 C2 C3
+## F1  1  2  3
+## F2  4  5  6
+## F3  7  8  9</code></pre>
+<p>Si, por ejemplo, en la matriz anterior, estamos interesados en cambiar el ingreso de los elementos que conforman la matriz de datos (de filas a columnas), basta con cambiar el argumento <code>byrow</code> de <code>TRUE</code> a <code>FALSE</code>. A continuación, se presenta la matriz de datos resultante al cambiar este argumento.</p>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="2-6-Edatos.html#cb463-1"></a><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow=</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>, </span>
+<span id="cb463-2"><a href="2-6-Edatos.html#cb463-2"></a>                      <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&#39;F1&#39;</span>, <span class="st">&#39;F2&#39;</span>, <span class="st">&#39;F3&#39;</span>), </span>
+<span id="cb463-3"><a href="2-6-Edatos.html#cb463-3"></a>                                      <span class="kw">c</span>(<span class="st">&#39;C1&#39;</span>, <span class="st">&#39;C2&#39;</span>, <span class="st">&#39;C3&#39;</span>)))</span></code></pre></div>
+<pre><code>##    C1 C2 C3
+## F1  1  4  7
+## F2  2  5  8
+## F3  3  6  9</code></pre>
+<p>En R, a menos que se diga lo contrario, el ingreso de los datos a una matriz se da por columnas (por defecto <code>byrow = FALSE</code>); así mismo, este puede omitir tanto el nombre de las filas o columnas de la matriz como el número de filas, siempre y cuando, se diga el número de columnas o viceversa. A continuación, se presenta el mismo ejemplo de la matriz anterior en donde se evalúa(imprime) únicamente dos de sus argumentos.</p>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="2-6-Edatos.html#cb465-1"></a><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow=</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<p>En la matriz anterior, el lenguaje entiende que estamos interesados en obtener una matriz con tres filas conformada por los números del 1 al 9. Por defecto, R entiende/asume que <code>byrow = FALSE</code>; es decir, los datos se ingresarán por columnas y que no estamos interesados en definir los nombres de las filas y las columnas de dicha matriz. En este caso, le hemos indicado a R que conforme una matriz de tres filas y que cree tantas columnas como sea necesario para que en dicha matriz existan los elementos con los números del 1 al 9; desde luego, 3 es la cantidad de columnas requeridas<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a> para conformar una matriz de tres filas con los elementos del 1 al 9.</p>
+<p>A continuación, se presentan 10 ejemplos de diversas matrices creadas en R. Invitamos al lector a explorar y analizar la forma como el lenguaje evalúa/procesa cada una de estas matrices.</p>
+<p style="color:#e6550d";><i>Ejemplo. Creación de matrices en R</i></p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="2-6-Edatos.html#cb467-1"></a><span class="co"># Ejemplo 1 - Por defecto - columnas</span></span>
+<span id="cb467-2"><a href="2-6-Edatos.html#cb467-2"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>))</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    1
+## [2,]    2
+## [3,]    3
+## [4,]    4
+## [5,]    5</code></pre>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="2-6-Edatos.html#cb469-1"></a><span class="co"># Ejemplo 2 - Indicando filas y columnas</span></span>
+<span id="cb469-2"><a href="2-6-Edatos.html#cb469-2"></a><span class="kw">matrix</span>(1L<span class="op">:</span>12L, <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    5    9
+## [2,]    2    6   10
+## [3,]    3    7   11
+## [4,]    4    8   12</code></pre>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="2-6-Edatos.html#cb471-1"></a><span class="co"># Ejemplo 3 - Por filas</span></span>
+<span id="cb471-2"><a href="2-6-Edatos.html#cb471-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## [4,]   10   11   12</code></pre>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="2-6-Edatos.html#cb473-1"></a><span class="co"># Ejemplo 4 - Sin definir columnas</span></span>
+<span id="cb473-2"><a href="2-6-Edatos.html#cb473-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    5    9
+## [2,]    2    6   10
+## [3,]    3    7   11
+## [4,]    4    8   12</code></pre>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="2-6-Edatos.html#cb475-1"></a><span class="co"># Ejemplo 5 - Sin definir filas</span></span>
+<span id="cb475-2"><a href="2-6-Edatos.html#cb475-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12</code></pre>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="2-6-Edatos.html#cb477-1"></a><span class="co"># Ejemplo 6 - Con secuencias y creación de variables</span></span>
+<span id="cb477-2"><a href="2-6-Edatos.html#cb477-2"></a>M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>, <span class="dt">to =</span> <span class="dv">8</span>, <span class="dt">by =</span> <span class="dv">2</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb477-3"><a href="2-6-Edatos.html#cb477-3"></a>M</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    2    6
+## [2,]    4    8</code></pre>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="2-6-Edatos.html#cb479-1"></a><span class="co"># Ejemplo 7 - Con repeticiones</span></span>
+<span id="cb479-2"><a href="2-6-Edatos.html#cb479-2"></a><span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    1
+## [2,]    1    1</code></pre>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="2-6-Edatos.html#cb481-1"></a><span class="co"># Ejemplo 8 - Con elementos lógicos</span></span>
+<span id="cb481-2"><a href="2-6-Edatos.html#cb481-2"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##       [,1]  [,2]
+## [1,]  TRUE FALSE
+## [2,] FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="2-6-Edatos.html#cb483-1"></a><span class="co"># Ejemplo 9 - Con elementos tipo caractér - cadena</span></span>
+<span id="cb483-2"><a href="2-6-Edatos.html#cb483-2"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="st">&#39;Lunes&#39;</span>, <span class="st">&#39;Martes&#39;</span>, <span class="st">&#39;Miércoles&#39;</span>, <span class="st">&#39;Jueves&#39;</span>, <span class="st">&#39;Viernes&#39;</span>, <span class="st">&#39;Sábado&#39;</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##      [,1]        [,2]     
+## [1,] &quot;Lunes&quot;     &quot;Jueves&quot; 
+## [2,] &quot;Martes&quot;    &quot;Viernes&quot;
+## [3,] &quot;Miércoles&quot; &quot;Sábado&quot;</code></pre>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="2-6-Edatos.html#cb485-1"></a><span class="co"># Ejemplo 10 - Reciclando elementos</span></span>
+<span id="cb485-2"><a href="2-6-Edatos.html#cb485-2"></a><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    1
+## [3,]    3    6    2</code></pre>
+<div id="Imatrices" class="section level4" number="2.6.2.1">
+<h4><span class="header-section-number">2.6.2.1</span> <em>Indexación/subconjuntos de matrices </em></h4>
+<p>En R, al igual que en el caso de los vectores, una de las actividades de mayor uso en la gestión de matrices es la selección de elementos o subconjuntos de elementos de estas. La selección de elementos de una matriz en R se soporta en la siguiente regla.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla. Subconjuntos de matrices en R
+</p>
+</strong><br>
+Para extraer elementos de una matriz en R se hace uso de corchetes <strong>[ , ]</strong>. La coma, entre los corchetes, nos permite separar, <strong>haciendo uso de vectores</strong>, los elementos o subconjuntos de elementos de interés según su ubicación tanto en filas como en columnas.
+</p>
+</blockquote>
+<p><br></p>
+<p>Si disponemos, por ejemplo, de una matriz <code>M</code> conformada por la matriz <code>matrix(c(1:16), nrow = 4)</code>, cuyo resultado se presenta a continuación.</p>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    5    9   13
+## [2,]    2    6   10   14
+## [3,]    3    7   11   15
+## [4,]    4    8   12   16</code></pre>
+<p>Y si, por ejemplo, estamos interesados en extraer el elemento de la matriz <code>M</code> ubicado en la fila 2 y la columna 3; es decir, el número 10, basta con implementar en R la línea de código <code>M[2, 3]</code><a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>. De igual manera, si deseamos obtener la totalidad de elementos que conforman la fila 4 de la matriz <code>M</code>, basta con implementar la línea de comando <code>M[4, ]</code><a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>. Finalmente, si estamos interesados en obtener los elementos -subconjunto o submatriz- ubicados entre las filas 3 y 4 y las columnas 1 y 2 de la matriz <code>M</code>, se deberá implementar la siguiente línea de comando en R <code>M[c(3,4), c(1,2)]</code>. A continuación, se presenta el desarrollo en R de los anteriores subconjuntos de elementos de la matriz <code>M</code>.</p>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="2-6-Edatos.html#cb488-1"></a><span class="co"># Construcción y visualización de la matriz M</span></span>
+<span id="cb488-2"><a href="2-6-Edatos.html#cb488-2"></a>M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">16</span>), <span class="dt">nrow =</span> <span class="dv">4</span>)</span>
+<span id="cb488-3"><a href="2-6-Edatos.html#cb488-3"></a>M</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    5    9   13
+## [2,]    2    6   10   14
+## [3,]    3    7   11   15
+## [4,]    4    8   12   16</code></pre>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="2-6-Edatos.html#cb490-1"></a><span class="co"># Selección del elemento ubicado en la fila 2 y la columna 3 - opción 1</span></span>
+<span id="cb490-2"><a href="2-6-Edatos.html#cb490-2"></a>M[<span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="2-6-Edatos.html#cb492-1"></a><span class="co"># Selección del elemento ubicado en la fila 2 y la columna 3 - opción 2</span></span>
+<span id="cb492-2"><a href="2-6-Edatos.html#cb492-2"></a>M[<span class="kw">c</span>(<span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">3</span>)]</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="2-6-Edatos.html#cb494-1"></a><span class="co"># Selección de la totalidad de elementos ubicados en la fila 4.</span></span>
+<span id="cb494-2"><a href="2-6-Edatos.html#cb494-2"></a>M[<span class="dv">4</span>, ]</span></code></pre></div>
+<pre><code>## [1]  4  8 12 16</code></pre>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="2-6-Edatos.html#cb496-1"></a><span class="co"># Selección de la totalidad de elementos ubicados en la columna 4</span></span>
+<span id="cb496-2"><a href="2-6-Edatos.html#cb496-2"></a>M[ , <span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] 13 14 15 16</code></pre>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="2-6-Edatos.html#cb498-1"></a><span class="co"># selección de los elementos ubicados en las filas 3 y 4 y en las columnas 1 y 2 (submatriz).</span></span>
+<span id="cb498-2"><a href="2-6-Edatos.html#cb498-2"></a>M[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>), <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    3    7
+## [2,]    4    8</code></pre>
+<p>De manera general, la selección de elementos o subconjuntos de elementos de una matriz en R, al igual que en caso de vectores, se puede realizar a través del uso de 6 tipos de opciones de las cuales se presentan, en este documento, ejemplos para 4 de ellas: <em>vectores con enteros positivos</em>, <em>vectores con enteros negativos</em>, <em>vectores lógicos</em> y <em>vectores de tipo caracter</em><a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>. A continuación, se presentan algunos ejemplos de extracción de elementos de una matriz en R haciendo uso de los cuatro tipos de vectores previamente anunciados.</p>
+<p style="color:#e6550d";><i>Ejemplo. Extracción de elementos de matrices en R según tipos de vectores</i></p>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="2-6-Edatos.html#cb500-1"></a><span class="co"># Creación y evaluación/visualización de una matriz en R</span></span>
+<span id="cb500-2"><a href="2-6-Edatos.html#cb500-2"></a>N &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow=</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>, </span>
+<span id="cb500-3"><a href="2-6-Edatos.html#cb500-3"></a>                      <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&#39;F1&#39;</span>, <span class="st">&#39;F2&#39;</span>, <span class="st">&#39;F3&#39;</span>), </span>
+<span id="cb500-4"><a href="2-6-Edatos.html#cb500-4"></a>                                      <span class="kw">c</span>(<span class="st">&#39;C1&#39;</span>, <span class="st">&#39;C2&#39;</span>, <span class="st">&#39;C3&#39;</span>)))</span>
+<span id="cb500-5"><a href="2-6-Edatos.html#cb500-5"></a>N</span></code></pre></div>
+<pre><code>##    C1 C2 C3
+## F1  1  4  7
+## F2  2  5  8
+## F3  3  6  9</code></pre>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="2-6-Edatos.html#cb502-1"></a><span class="co"># Ejemplo 1. Extracción de elementos haciendo uso de enteros positivos</span></span>
+<span id="cb502-2"><a href="2-6-Edatos.html#cb502-2"></a><span class="co"># selección de filas 1 y 2 y columnas 2 y 3</span></span>
+<span id="cb502-3"><a href="2-6-Edatos.html#cb502-3"></a><span class="co"># Esta línea de código es equivalente a: N[c(1L, 2L), c(2L, 3L)]</span></span>
+<span id="cb502-4"><a href="2-6-Edatos.html#cb502-4"></a>N[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<pre><code>##    C2 C3
+## F1  4  7
+## F2  5  8</code></pre>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="2-6-Edatos.html#cb504-1"></a><span class="co"># Ejemplo 2. Extracción de elementos haciendo uso de enteros negativos</span></span>
+<span id="cb504-2"><a href="2-6-Edatos.html#cb504-2"></a><span class="co"># selección de elementos ubicados en una posición diferente de la fila 1 y la columna 2</span></span>
+<span id="cb504-3"><a href="2-6-Edatos.html#cb504-3"></a><span class="co"># Esta línea de código es equivalente a: N[c(-1), c(-2)] o N[-c(1), -c(2)] </span></span>
+<span id="cb504-4"><a href="2-6-Edatos.html#cb504-4"></a>N[<span class="op">-</span><span class="dv">1</span>, <span class="dv">-2</span>]</span></code></pre></div>
+<pre><code>##    C1 C3
+## F2  2  8
+## F3  3  9</code></pre>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="2-6-Edatos.html#cb506-1"></a><span class="co"># Ejemplo 3. Extracción de elementos haciendo uso de elementos lógicos</span></span>
+<span id="cb506-2"><a href="2-6-Edatos.html#cb506-2"></a><span class="co"># selección de elementos ubicados en las filas 1 y 3 y las columnas 1 y 3</span></span>
+<span id="cb506-3"><a href="2-6-Edatos.html#cb506-3"></a><span class="co"># Esta línea de código es equivalente a: N[c(TRUE, FALSE), c(TRUE, FALSE)], por qué?</span></span>
+<span id="cb506-4"><a href="2-6-Edatos.html#cb506-4"></a>N[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)]</span></code></pre></div>
+<pre><code>##    C1 C3
+## F1  1  7
+## F3  3  9</code></pre>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="2-6-Edatos.html#cb508-1"></a><span class="co"># Ejemplo 4. Extracción de elementos haciendo uso de elementos de tipo caracter</span></span>
+<span id="cb508-2"><a href="2-6-Edatos.html#cb508-2"></a><span class="co"># selección de elementos ubicados en las filas 1 y 2 y las columnas 2 y 3</span></span>
+<span id="cb508-3"><a href="2-6-Edatos.html#cb508-3"></a>N[<span class="kw">c</span>(<span class="st">&#39;F1&#39;</span>, <span class="st">&#39;F2&#39;</span>), <span class="kw">c</span>(<span class="st">&#39;C2&#39;</span>, <span class="st">&#39;C3&#39;</span>)]</span></code></pre></div>
+<pre><code>##    C2 C3
+## F1  4  7
+## F2  5  8</code></pre>
+</div>
+<div id="Fmatrices" class="section level4" number="2.6.2.2">
+<h4><span class="header-section-number">2.6.2.2</span> <em>Funciones útiles para la gestión de matrices</em></h4>
+<p>Hasta ahora, en este documento, poco se ha hablado sobre las funciones y su importancia en este lenguaje de programación. En sentido estricto, R es un lenguaje funcional; es decir, altamente soportado en el uso de funciones. Las funciones en R, como veremos más adelante, se encuentran contenidas principalmente dentro de paquetes o librerías<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>. Los paquetes o librerías que contienen funciones hacen parte de dos grandes subconjuntos de librerías: las que ofrece el lenguaje por defecto al momento de su instalación y aquellas construidas por la comunidad para diversos propósitos asociados a la gestión y el análisis de datos. Por el momento, iniciaremos con el abordaje de algunas funciones de interés que hacen parte del conjunto de librerías instaladas por defecto en R; es decir, que no requieren ser invocadas/instaladas previamente para ser usadas. A medida que se avance en el desarrollo de este documento, se irá incursionando con mayor frecuencia en el acceso, entendimiento y uso de las funciones en R.</p>
+<p>Para el caso de la gestión de matrices en R, a continuación, se presentan y se describe el uso de diez<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a> funciones útiles para la gestión de matrices y que hacen parte de las librerías incuídas por defecto en este lenguaje<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>.</p>
+<ul>
+<li><em><strong>class()</strong></em>: Verifica si el tipo de objeto o estructura de datos es una matriz.</li>
+<li><em><strong>nrow()</strong></em>: Retorna el número de filas de una matriz.</li>
+<li><em><strong>ncol()</strong></em>: Retorna el número de columnas de una matriz.</li>
+<li><em><strong>dim()</strong></em>: Retorna las dimensiones de una matriz; es decir, cuántas filas y cuántas columnas tiene.</li>
+<li><em><strong>rowSums()</strong></em>: Retorna un vector con la suma de los elementos que conforman las filas de una matriz.</li>
+<li><em><strong>colSums()</strong></em>: Retorna un vector con la suma de los elementos que conforman las columnas de una matriz.</li>
+<li><em><strong>rbind()</strong></em>: Permite adicionar filas a una matriz.</li>
+<li><em><strong>cbind()</strong></em>: Permite adicionar columnas a una matriz.</li>
+<li><em><strong>rownames()</strong></em>: Permite ingresar los nombres de las filas de una matriz.</li>
+<li><em><strong>colnames()</strong></em>: Permite ingresar los nombres de las columnas de una matriz.</li>
+</ul>
+<p>A continuación, a través de una matriz de ejemplo, se presenta el uso de las anteriores funciones en el contexto de la gestión de matrices en R. Se invita al lector a explorar y analizar la forma como operan en R cada una de estas funciones.</p>
+<p style="color:#e6550d";><i>Ejemplo. Uso de funciones para la gestión de matrices en R</i></p>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="2-6-Edatos.html#cb510-1"></a><span class="co"># Crea una matriz en R, almacenar su resultado en una variable M y visualizar su contenido.</span></span>
+<span id="cb510-2"><a href="2-6-Edatos.html#cb510-2"></a>M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb510-3"><a href="2-6-Edatos.html#cb510-3"></a>M</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## [3,]    5    6</code></pre>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="2-6-Edatos.html#cb512-1"></a><span class="co"># Determinar la clase de la estructura de datos M - función class()</span></span>
+<span id="cb512-2"><a href="2-6-Edatos.html#cb512-2"></a><span class="kw">class</span>(M)</span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot;</code></pre>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="2-6-Edatos.html#cb514-1"></a><span class="co"># Determinar el número de filas de la matriz M - función nrow()</span></span>
+<span id="cb514-2"><a href="2-6-Edatos.html#cb514-2"></a><span class="kw">nrow</span>(M)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="2-6-Edatos.html#cb516-1"></a><span class="co"># Determinar el número de columnas de la matriz M - función ncol()</span></span>
+<span id="cb516-2"><a href="2-6-Edatos.html#cb516-2"></a><span class="kw">ncol</span>(M)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="2-6-Edatos.html#cb518-1"></a><span class="co"># Determinar las dimensiones de la matriz M - función dim()</span></span>
+<span id="cb518-2"><a href="2-6-Edatos.html#cb518-2"></a><span class="kw">dim</span>(M)</span></code></pre></div>
+<pre><code>## [1] 3 2</code></pre>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="2-6-Edatos.html#cb520-1"></a><span class="co"># Calcular un vector con las suma de las filas de la matriz M - función rowSums()</span></span>
+<span id="cb520-2"><a href="2-6-Edatos.html#cb520-2"></a><span class="kw">rowSums</span>(M)</span></code></pre></div>
+<pre><code>## [1]  3  7 11</code></pre>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="2-6-Edatos.html#cb522-1"></a><span class="co"># Calcular un vector con las suma de las columnas de la matriz M - función colSums()</span></span>
+<span id="cb522-2"><a href="2-6-Edatos.html#cb522-2"></a><span class="kw">colSums</span>(M)</span></code></pre></div>
+<pre><code>## [1]  9 12</code></pre>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="2-6-Edatos.html#cb524-1"></a><span class="co"># Adicionar una fila a la Matriz M - función rbind()</span></span>
+<span id="cb524-2"><a href="2-6-Edatos.html#cb524-2"></a><span class="co"># ¿Qué tiene de especial la función rbind() en comparación con las anteriores funciones?</span></span>
+<span id="cb524-3"><a href="2-6-Edatos.html#cb524-3"></a>M &lt;-<span class="st"> </span><span class="kw">rbind</span>(M, <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">8</span>))</span>
+<span id="cb524-4"><a href="2-6-Edatos.html#cb524-4"></a>M</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## [3,]    5    6
+## [4,]    7    8</code></pre>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="2-6-Edatos.html#cb526-1"></a><span class="co"># Adicionar una columna a la matriz M - función cbind()</span></span>
+<span id="cb526-2"><a href="2-6-Edatos.html#cb526-2"></a><span class="co"># ¿Por qué se adiciona un vector con cuatro elementos y no uno con tres?</span></span>
+<span id="cb526-3"><a href="2-6-Edatos.html#cb526-3"></a>M &lt;-<span class="st"> </span><span class="kw">cbind</span>(M, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb526-4"><a href="2-6-Edatos.html#cb526-4"></a>M</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    1
+## [2,]    3    4    2
+## [3,]    5    6    3
+## [4,]    7    8    4</code></pre>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="2-6-Edatos.html#cb528-1"></a><span class="co"># Adicionar los nombres de las filas de la matriz M - función rownames()</span></span>
+<span id="cb528-2"><a href="2-6-Edatos.html#cb528-2"></a><span class="co"># Qué tiene de especial esta función en comparación con las anteriores?</span></span>
+<span id="cb528-3"><a href="2-6-Edatos.html#cb528-3"></a><span class="kw">rownames</span>(M) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Fil_1&#39;</span>, <span class="st">&#39;Fil_2&#39;</span>, <span class="st">&#39;Fil_3&#39;</span>, <span class="st">&#39;Fil_4&#39;</span>)</span>
+<span id="cb528-4"><a href="2-6-Edatos.html#cb528-4"></a>M</span></code></pre></div>
+<pre><code>##       [,1] [,2] [,3]
+## Fil_1    1    2    1
+## Fil_2    3    4    2
+## Fil_3    5    6    3
+## Fil_4    7    8    4</code></pre>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="2-6-Edatos.html#cb530-1"></a><span class="co"># Adicionar los nombres de las columnas de la matriz M - función colnames()</span></span>
+<span id="cb530-2"><a href="2-6-Edatos.html#cb530-2"></a><span class="co"># La variable con la que iniciamos tenía 2 columnas</span></span>
+<span id="cb530-3"><a href="2-6-Edatos.html#cb530-3"></a><span class="co"># ¿Por qué en esta línea de código la matriz M tiene 3 columnas?</span></span>
+<span id="cb530-4"><a href="2-6-Edatos.html#cb530-4"></a><span class="kw">colnames</span>(M) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Col_1&#39;</span>, <span class="st">&#39;Col_2&#39;</span>, <span class="st">&#39;Col_3&#39;</span>)</span>
+<span id="cb530-5"><a href="2-6-Edatos.html#cb530-5"></a>M</span></code></pre></div>
+<pre><code>##       Col_1 Col_2 Col_3
+## Fil_1     1     2     1
+## Fil_2     3     4     2
+## Fil_3     5     6     3
+## Fil_4     7     8     4</code></pre>
+</div>
+</div>
+<div id="DataFrames" class="section level3" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> Data.frames</h3>
 
 </div>
 </div>
@@ -943,6 +1221,15 @@ En R, existen seis (6) posibilidades para extraer elementos de un vector: <em>ve
 <li id="fn18"><p>En este documento, dado su alcance, nos concentraremos en las primeras cuatro posibilidades; es decir, no serán tenidas en cuenta las opciones <em>ninguno (nothing)</em> y <em>cero (zero)</em>, de poca utilidad o uso en el análisis de datos<a href="2-6-Edatos.html#fnref18" class="footnote-back">↩︎</a></p></li>
 <li id="fn19"><p>La cuarta opción, basada en <em><strong>vectores de tipo caracter</strong></em>, será presentada en la sección siguiente<a href="2-6-Edatos.html#fnref19" class="footnote-back">↩︎</a></p></li>
 <li id="fn20"><p>Esta característica resulta útil al momento de extraer elementos de un vector con una gran cantidad de elementos siempre y cuando los elementos a ser seleccionados presenten una sucesión/ciclo útil en la práctica<a href="2-6-Edatos.html#fnref20" class="footnote-back">↩︎</a></p></li>
+<li id="fn21"><p>Esta no es la única forma que ofrece el lenguaje para la construcción de matrices. No obstante, es la forma convencional que ofrece R para la construcción de este tipo de estructuras<a href="2-6-Edatos.html#fnref21" class="footnote-back">↩︎</a></p></li>
+<li id="fn22"><p>Más adelante se presentarán de manera formal lo que es una lista en R. Por el momento, aceptaremos que estas estructura de datos -las listas- nos permiten alojar más de un vector de datos<a href="2-6-Edatos.html#fnref22" class="footnote-back">↩︎</a></p></li>
+<li id="fn23"><p>En el caso de que la cantidad de columnas requeridas multiplicada por la cantidad de filas, sea mayor a la cantidad de elementos disponibles, R, al igual que en el caso de vectores, recicla los elementos del vector de datos disponible hasta completar la matriz requerida<a href="2-6-Edatos.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p>Este resultado es equivalente a haber implementado la línea de código <code>M[c(2), c(3)]</code> en razón a que en este lenguaje, como se mencionó en la segunda regla del capítulo de <a href="2-6-Edatos.html#Vectores">vectores</a>, no existen escalares sino vectores de longitud 1<a href="2-6-Edatos.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p>Si lo que se hubiese requerido es la selección de los elementos de la columna 4, la línea de código requerida es <code>M[ , 4]</code><a href="2-6-Edatos.html#fnref25" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p>La selección de elementos de una matriz haciendo uso de vectores de tipo caracter, requiere que las filas y las columnas de la matriz hayan sido nombradas (tengan nombres)<a href="2-6-Edatos.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn27"><p>En R, como se presentará más adelante, es posible y común, construir funciones por parte de los usuarios para propósitos particulares.<a href="2-6-Edatos.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn28"><p>En R, existen cientos de funciones para la gestión de matrices las cuales exigen del usuario, además de una correcta gestión de las mismas, conocer cuáles de ellas resultan útiles para los propósitos deseados.<a href="2-6-Edatos.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p>Una función en R puede ser útil para más de una estructura de datos. Por ejemplo, la función <code>class()</code> que se usa para determinar el tipo de estructura que contiene un conjunto de datos puede usarse en vectores, matrices o cualquier otro tipo de objeto en R<a href="2-6-Edatos.html#fnref29" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 <h2 style="color:#2ca25f;">Comentarios</h2>
