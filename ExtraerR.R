@@ -1,1 +1,1 @@
-knitr::knit("Fundamentos.Rmd", tangle = TRUE, output = "OutputR/Fundamentos_s3.R")
+knitr::knit("Fundamentos.Rmd", tangle = TRUE, output = "OutputR/Fundamentos_s4.R")

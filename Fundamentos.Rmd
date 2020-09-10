@@ -1663,3 +1663,968 @@ M
 
 ### Data.frames {#DataFrames}
 
+
+La cuarta estructura de datos empleada por R son los data.frames o marcos de datos. Estas estructuras de datos, como se ilustra en la siguiente imagen, son estructuras de tipo bidimensional conformadas por filas (_individuos_) y columnas (_variables_). Los data.frames, a diferencia de los vectores, matrices y arreglos, no exigen un mismo tipo de dato en su conformación; estos pueden estar conformados por datos de **diferente tipología** entre columnas. No obstante, estas estructuras de datos exigen la **misma tipología** de datos al interior de cada una de sus columnas.
+
+
+![Representación gráfica de un data.frame (marco de datos)](Imagenes/DataFrame.png)
+
+Los marcos de datos (_data.frame_) es la estructura de datos más empleada para almacenar la información requerida en el análisis de datos en R al permitir almacenar/disponer la información proveniente de poblaciones o muestras conformadas por **individuos** para los cuales se dispone información de interés contenida en **variables**. Es decir, en un data.frame una fila representa/contiene la información de un individuo bajo estudio y una columna la información de una variable disponible para la totalidad de los individuos. A continuación, se presenta la regla general para la construcción de data.frames en R.
+
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Construcción de data.frame en R</p></strong><br>
+En R, los  **marcos de datos** o **data.frame** se construyen haciendo uso de la función `data.frame()`. Dentro de la función `data.frame()`, la información de las variables está contenida en vectores con elementos de la misma tipología.
+</p>
+</blockquote>
+<br>
+
+#### _¿Cómo crear data.frames?_ {#CreaDF}
+
+En R, existen principalmente dos manera de crear marcos de datos o data.frames. En primer lugar, a través de un proceso de importación de datos por parte del usuario haciendo uso de un conjunto de funciones disponibles para este propósito o ingresando los mismos a través de líneas de comando haciendo uso de la función `data.frame()`. Aunque el mecanismo convencional de creación/diposición de data.frames se da como resultado de procesos de importación de datos desde fuentes externas^[En el componente de transformación de datos se explicará con mayor detalle el proceso de importación de datos en R desde fuentes externas y la conformación de data.frames como resultados de este proceso.], en esta sección nos concentraremos en la creación de `data.frames` por parte del usuario con el fin de comprender la filosofía de estas estructuras de datos en R.
+
+Por ejemplo, supongamos que disponemos de la información del sexo, la edad, la presencia de discapacidades (Sí o No) y la calificación obtenida en un examen por un grupo de 6 estudiantes y que deseamos que la misma sea almacenada/contenida en un marco de datos o data.frame llamado `Curso` en R. La edad de los estudiantes está contenida en el vector entero `Edad <- c(17L, 26L, 19L, 20L, 15L, 22L)`, el sexo en un vector caracter o textual `Sexo <- c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre', 'Mujer')`, la presencia de discapacidades en un vector lógico `Discapacidad <- c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE)` y la nota en un vector numérico `Nota <- c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5)`. Para crear de manera manual el marco de datos en R con la información de los estudiantes del ejemplo, existen dos posibilidades: ingresando la información contenida en los vectores `Edad`, `Sexo`, `Discapacidad` y `Nota` de manera directa dentro de la función `data.frame()` o creando/almacenando la información en variables y luego llamando/invocando estas dentro de la función`data.frame()`. A continuación, se crean en R los marcos de datos con la información de los estudiantes del presente ejemplo. 
+
+<p style="color:#e6550d";><i>Ejemplo. Creación de marcos de datos (data.frame) en R de manera manual</i></p>
+
+```{r, eval=TRUE}
+# Alternativa 1 - Creación de data.frame de manera directa
+Curso_A1 <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre','Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5)
+                       )
+Curso_A1
+# Alternativa 2 - Creación de data.frame a través de variables
+# Definiendo las variables
+Edad <- c(17L, 26L, 19L, 20L, 15L, 22L)
+Sexo <- c("Mujer", "Hombre", "Hombre", "Mujer", "Hombre", "Mujer")
+Discapacidad <- c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE)
+Nota <- c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5)
+# Creando el data.frame
+Curso_A2 <- data.frame(Edad, Sexo, Discapacidad, Nota)
+Curso_A2
+```
+#### _Indexación/subconjuntos en data.frames_ {#IndexaDF}
+
+Al igual que el caso de vectores y de matrices, una de las actividades que más se usa a la hora gestionar marcos de datos en R con propósitos analíticos es la indexación o extracción de subconjuntos de variables o de individuos que cumplen alguna condición deseada. La actividad de extracción de subconjuntos de elementos en un `data.frame`, tiene tres propósitos: extraer subconjuntos de variables, extraer subconjuntos de invividios o extraer subconjuntos tanto de variables como de individuos.
+
+En R, existen tres operadores o formas (`[]`, `[[]]` y `$`) para la selección de variables e/o individuos que hacen parte de `data.frames`. A continuación, se presenta la regla del lenguaje asociada a la indexación de `data.frame` en R.
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla. Subconjuntos de variables e/o individuos en data.frame</p></strong><br>
+Para extraer variables e/o individuos de un marco de datos (data.frame) en R se puede hacer uso de tres operadores **`[]`**, **`[[]]`** o **`$`**.
+</p>
+</blockquote>
+<br>
+
+Para presentar, a través de ejemplos, los propósitos buscados con la creación de subconjuntos de variables o de elementos a partir de marcos de datos en R, en esta sección del documento haremos uso de un conjunto de datos `data.frame()` llamado `iris` el cual viene incluido por defecto^[Este marco de datos hace parte de una librería llamada `datasets` la cual, además de hacer parte de las librerías instaladas por defecto en el lenguaje, contiene un número importante de conjuntos de datos `data.frame` útiles para ser usados como ejemplos en en el proceso de aprendizaje o experimentación con este lenguaje. Si se desea conocer los conjuntos de datos disponibles dentro de esta librería, basta con invocar y compilar en la consola o en el editor de Rstudio la funcion `data()`.] en el software estadístico R. El conjunto de datos `data.frame` iris contiene la información de 150 flores y 5 variables de interés. A continuación, haciendo uso de algunas funciones útiles para la gestión de marcos de datos en R y que se presentarán con más detalle en la parte final de este apartado, se presenta una descripción rápida del contenido y las características del conjunto de datos `iris`.
+
+<p style="color:#e6550d";><i>Descripción del marco de datos (data.frame) iris </i></p>
+
+```{r, eval = TRUE}
+# Evaluar la tipología del conjunto de datos iris
+class(iris)
+# Dimensiones del conjunto de datos iris (150 registros y 5 variables)
+dim(iris)
+# Nombres de las variables del conjunto de datos iris
+names(iris)
+# Primeros 5 registros/individuos del conjunto de datos iris
+head(iris)
+# Últimos 5 registros/individuos del conjunto de datos iris
+tail(iris)
+```
+
+
+##### Subconjuntos de variables en data.frame
+
+La actividad de extracción de subconjuntos de variables en `data.frame` en R tiene el objetivo de seleccionar aquellas **variables** que hacen parte de un conjunto de datos disponible y que resultan de interés para ciertos propósitos analíticos. En R, la selección de variables de un marco de datos puede a su vez subdividerse en dos grandes propósitos: selección de una variable o selección de más de una variable.
+
+###### Selección de una variable en un data.frame
+
+La selección de una variable de un conjunto de datos (`data.frame`) en R se puede dar a través de tres formas: haciendo uso de los operadores `[]`, `[[]]` y `$`. A continuación, se presenta el desarrollo de cada una de estas formas de selección.
+
++ _Selección de un variable haciendo uso del operador `[]`_
+
+La selección de una variable contenida en un marco de datos haciendo uso del operador `[]` puede realizarse a través de dos vías: definiendo, dentro del operador, la posición de la variable de interés o haciendo uso del nombre de la variable. Así mismo, la posición o el nombre de la variable de interés, puede o no estar antecedida por una coma hecho que conlleva a que el resultado conserve o no la misma estructura del conjunto de datos fuente. A continuación, se presentan algunos ejemplos haciendo uso del conjunto de datos `iris`, para la selección de una única variable en R haciendo uso del operador `[]`.
+
+<p style="color:#e6550d";><i>Ejemplo. Alternativas de selección de una variable de un data.frame haciendo uso del operador []</i></p>
+
+```{r, eval=TRUE}
+# Ejemplo 1
+# Selección de la variable ubicada en la posición 1 - 
+# Se conserva la estructura del conjunto de datos original (data.frame)
+
+iris[1]
+
+# Ejemplo 2
+# Selección de la variable ubicada en la posición 1 
+# No se conserva la estructura original (se cambia a vector).
+
+iris[, 1]
+
+# Ejemplo 3
+# Selección de la variable con nombre Petal.Length y creación de una variable
+# Sin conservar la estructura de datos del conjunto fuente
+ 
+Petal_Length <- iris[, "Petal.Length"]
+Petal_Length
+# Revisar la clase de la estructura resultante haciendo uso de la función class()
+class(Petal_Length)
+
+# Ejemplo 4
+# Selección de la variable con el nombre Sepal.Width y creación de una variable
+# Conservando la estructura de datos del conjunto fuente (data.frame)
+# Este resultado es equivalente a: iris["Sepal.Width"]  ¿por qué?
+# Presentar/imprimir sólo los primeros 5 elementos de la variable seleccionada
+
+Sepal_Width <- iris[c("Sepal.Width")]
+head(Sepal_Width)
+```
+
++ _Selección de un variable haciendo uso del operador `[[ ]]`_
+
+La selección de una variable contenida en un marco de datos haciendo uso del operador `[[ ]]` puede realizarse a través de dos vías: definiendo, dentro del operador, la posición de la variable de interés o haciendo uso del nombre de la variable. No obstante, a diferencia del operador `[]`, este operador no permite la inclusión de comas en su interior y la salida siempre será un vector de datos; es decir, por defecto, no conserva la estructura de datos fuente (`data.frame()`)
+
+A continuación, se presentan algunos ejemplos de selección de una única variable de un `data.frame` en R haciendo uso del operador `[[ ]]`. Para ello, al igual que los ejemplos anteriores, se acudirá al uso del conjunto de datos `iris`.
+
+<p style="color:#e6550d";><i>Ejemplo. Alternativas de selección de una variable de un data.frame haciendo uso del operador [[]]</i></p>
+
+```{r, eval=TRUE}
+# Ejemplo 1
+# Selección de la primera variable del conjunto de datos iris - por posición
+iris[[1]]
+
+# Ejemplo 2
+# Selección de la primera variable del conjunto de datos iris - por posición
+# Resultado equivalente al del ejemplo anterior.
+iris[[c(1)]]
+
+# Ejemplo 3
+# Selección de la primera variable del conjunto de datos iris - por nombre de la variable
+iris[['Sepal.Length']]
+
+# Ejemplo 4
+# Selección de la cuarta variable del conjunto de datos iris - por posición
+# Almacenar el resultado dentro de una variable 
+Petal_Width <- iris[[4]]
+# Evaluación/impresión de la variable
+Petal_Width
+# Verificar la clase de la variable Petal_Width
+class(Petal_Width)
+```
+
++ _Selección de un variable haciendo uso del operador `$`_
+
+
+La selección de una variable contenida en un marco de datos haciendo uso del operador `$` exige, como única alternativa y a diferencia de la selección haciendo uso del operador `[[ ]]`, la existencia del nombre de la variable que será seleccionada; es decir, para hacer uso de este operador, la única alternativa disponible es el conocimiento del nombre de la variable que estamos interesados en seleccionar. Este operador `$`, al igual que el operador `[[]]`, elimina la estructura de datos fuente `data.frame()` y la convierte en un `vector`.
+
+A continuación, se presentan algunos ejemplos de selección de una única variable de un `data.frame` en R haciendo uso del operador `$`. Para ello, al igual que los ejemplos anteriores, se acudirá al uso del conjunto de datos `iris`.
+
+<p style="color:#e6550d";><i>Ejemplo. Alternativas de selección de una variable de un data.frame haciendo uso del operador $</i></p>
+
+```{r, eval=TRUE}
+# Ejemplo 1
+# Selección de la variable llamada Sepal.Width
+iris$Sepal.Width
+
+# Ejemplo 2
+# Selección de la variable llamada Species
+iris$Species
+
+# Ejemplo 3
+# Selección de la variable Petal.Length y almacenamiento del resultado en una variable llamada Petal_Length
+Petal_Length <- iris$Petal.Length
+Petal_Length
+# Evaluación de la estructura de datos contenida en la variable previamente creada (Petal_Length)
+class(Petal_Length)
+```
+
+###### Selección de más de una variable en un data.frame
+
+La selección de más de una variable contenida en un marco de datos en R, se hace únicamente a través del uso del operador`[]` y dentro de este, acudiendo a vectores cuyos elementos pueden ser _enteros positivos_, _enteros negativos_, _lógicos_ o de tipo _caracter_. El operador `[]` puede estar acompañado de una coma `[ , ]` y su resultado ser equivalente al uso del mismo sin la presencia de esta^[Auque ambas formas conducen al mismo resultado, se recomienda usar la forma que contiene a su interior la coma pues esta da la idea de separación entre los individuos de un `data.frame` y sus variables -a la izquierda de la coma del operador se ubican los individuos `[Individuos , ]` que se desea seleccionar y a la derecha las variables- `[ , Variables]`.]. A continuación, se presentan las cuatro alternativas existentes en R para la selección de variables haciendo uso de los cuatro tipos de vectores previamente mencionados.
+
++ _Selección de más de una variable haciendo uso de vectores con enteros positivos_
+
+La selección de más de una variable de un marco de datos `data.frame()` en R haciendo uso de vectores con enteros positivos permite seleccionar aquellas variables según su ubicación: la primera variable se ubica en la posición 1 del marco de datos `data.frame()`, la segunda variable en la posición 2 y así, sucesivamente. A continuación , haciendo uso del conjunto de datos `iris`, se presentan algunos ejemplos de selección de variables haciendo uso de vectores con _enteros positivos_. 
+
+Dado que el conjunto de datos `iris` contiene 150 individuos y que la impresión en el documento de los resultados de los ejemplos de este y los siguiente componentes implica un alto uso de espacio, en la salida de cada uno de ellos se presentará, haciendo uso de la función `head()`, la información correspondiente a los primeros 6 individuos.
+
+<p style="color:#e6550d";><i>Ejemplo. Selección de más de una variable de un data.frame haciendo uso de vectores con enteros positivos</i></p>
+
+```{r, eval = TRUE}
+# Imprimir los primeros 6 elementos del conjunto de datos iris
+head(iris)
+# Ejemplo 1
+# Selección de las primeras dos variables (posiciones 1 y 2)
+# Sin hacer uso de la coma
+head(iris[c(1,2)])
+
+# Ejemplo 2
+# Selección de las primeras dos variables (posiciones 1 y 2)
+# Haciendo uso de la coma
+head(iris[ , c(1,2)])
+
+# Ejemplo 3
+# Selección de las variables ubicadas en las posiciones 3, 4 y 5
+# Haciendo uso de la coma
+head(iris[ , c(3:5)])
+```
+
++ _Selección de más de una variable haciendo uso de vectores con enteros negativos_
+
+La selección de más de una variable de un marco de datos `data.frame()` en R haciendo uso de vectores con enteros negativos permite seleccionar aquellas variables que no se encuentran contenidas dentro de las posiciones definidas en el vector con enteros negativos. A continuación , haciendo uso del conjunto de datos `iris`, se presentan algunos ejemplos de selección de variables haciendo uso de vectores con _enteros negativos_. 
+
+<p style="color:#e6550d";><i>Ejemplo. Selección de más de una variable de un data.frame haciendo uso de vectores con enteros negativos</i></p>
+
+```{r, eval = TRUE}
+# Imprimir los primeros 6 elementos del conjunto de datos iris
+head(iris)
+
+# Ejemplo 1
+# Selección de todas las primeras variables, excepto la última.
+# Sin hacer uso de la coma
+head(iris[c(-5)])
+
+# Ejemplo 2
+# Selección de las primeras dos variables (posiciones 1 y 2)
+# Haciendo uso de la coma
+head(iris[ , c(-3,-4, -5)])
+
+# Ejemplo 3
+# Selección de las primeras dos variables (posiciones 1 y 2)
+# Haciendo uso de la coma
+# El mismo resultado del ejemplo 2
+head(iris[ , -c(3, 4, 5)])
+
+# Ejemplo 4
+# Selección de las últimas dos variables (posiciones 4 y 5)
+# Almacenar los resultados en una variable
+Var_final <- iris[ , -c(1:3)]
+head(Var_final)
+```
+
++ _Selección de más de una variable haciendo uso de vectores con elementos lógicos_
+
+La selección de más de una variable de un marco de datos `data.frame()` en R haciendo uso de vectores con elementos lógicos permite seleccionar aquellas variables en donde los elementos del vector lógico son iguales a TRUE y excluir aquellas en donde sus elementos son iguales a FALSE. El uso de vectores con elementos de tipo lógico para la selección de variables en R aplica la regla de reciclaje; es decir, si el vector lógico tiene una longitud inferior que la cantidad de variables existente en el marco de datos, este recicla sus elementos -partiendo del primero- hasta igualar la cantidad de variables existentes en el `data.frame`. A continuación , haciendo uso del conjunto de datos `iris`, se presentan algunos ejemplos de selección de variables haciendo uso de vectores con _elementos lógicos_. 
+
+<p style="color:#e6550d";><i>Ejemplo. Selección de más de una variable de un data.frame haciendo uso de vectores lógicos</i></p>
+
+```{r, eval = TRUE}
+# Imprimir los primeros 6 elementos del conjunto de datos iris
+head(iris)
+
+# Ejemplo 1
+# Selección de la variable ubicada en las posición 3
+# Sin hacer uso de la coma
+head(iris[c(FALSE, FALSE, TRUE, FALSE, FALSE)])
+
+# Ejemplo 2
+# Selección de la primera y la última variables (posiciones 1 y 5)
+# Haciendo uso de la coma
+head(iris[ , c(TRUE, FALSE, FALSE, FALSE, TRUE)])
+
+# Ejemplo 3
+# Selección de las variables ubicadas en las posiciones 1, 3, 5
+# Aplicando la regla de reciclaje 
+head(iris[ , c(TRUE, FALSE)])
+```
+
++ _Selección de más de una variable haciendo uso de vectores con elementos de tipo caracter o textual_
+
+La selección de más de una variable de un marco de datos `data.frame()` en R haciendo uso de vectores con elementos  de tipo caracter o textual permite seleccionar aquellas variables de interés de acuerdo a sus nombres. A continuación , haciendo uso del conjunto de datos `iris`, se presentan algunos ejemplos de selección de variables haciendo uso de vectores con datos de tipo _caracter o textuales_.
+
+<p style="color:#e6550d";><i>Ejemplo. Selección de más de una variable de un data.frame haciendo uso de vectores de tipo caracter (textuales)</i></p>
+
+```{r, eval = TRUE}
+# Imprimir los primeros 6 elementos del conjunto de datos iris
+head(iris)
+
+# Ejemplo 1
+# Selección de la variables llamadas Sepal.Length y Petal.Width
+# Sin hacer uso de la coma y con comillas dobles
+head(iris[c("Sepal.Length", "Petal.Width")])
+
+# Ejemplo 2
+# Selección de las variables llamadas Sepal.Length, Petal.Length y Species
+# Haciendo uso de comillas sencillas
+head(iris[ , c('Sepal.Length', 'Petal.Length', 'Species')])
+
+# Ejemplo 3
+# Selección de la variable llamada Species
+# Almacenar el resultado en una variable llamada Tipo_flor 
+# Sin conservar la estructura del conjunto de datos iris (data.frame)
+Tipo_flor <- iris[ , c('Species')]
+# Imprimir los primeros 15 elementos. ¿Qué tiene de especial la función head() de este ejemplo?
+head(Tipo_flor, 15)
+
+# Ejemplo 4
+# Selección de la variable llamada Species
+# Almacenar el resultado en una variable llamada Tipo_flor 
+# Conservando la estructura del conjunto de datos iris (data.frame)
+Tipo_flor <- iris[c('Species')]
+head(Tipo_flor)
+```
+
+##### Subconjuntos de individuos en data.frame
+
+La actividad de extracción de subconjuntos de individuos en `data.frame` en R tiene el objetivo de seleccionar aquellos **individuos** que hacen parte de un marco de datos disponible y que son de interés para ciertos propósitos analíticos. En R, la selección de individuos de un marco de datos puede realizarse a través de tres alternativas, principalmente: haciendo uso de vectores, aplicando el operador `%in%` o haciendo uso de expresiones lógicas. A continuación, se presentan en detalle estas tres formas de seleccionar individuos contenidos en un marco de datos `data.frame`. 
+
++ Selección de individuos de un data.frame haciendo uso de **vectores**
+
+La selección de individuos de un `data.frame` haciendo uso de vectores puede implementarse a través de la aplicación de vectores cuyos elementos pueden ser _enteros positivos_, _enteros negativos_ o _lógicos_^[En R existe una alternativa para la selección de individuos de un data.frame haciendo uso de vectores de tipo cadena o caracter (textuales). No obstante, dado el alcance de este documento, no se presentará esta alternativa pues ella implica tener claro cómo el lenguaje nombra/identifica a cada uno de los individuos que conforman un marco de datos.]. En la selección de individuos de un `data.frame` haciendo uso de vectores con enteros positivos, cada uno de los elementos (enteros) del vector corresponde a las posiciones de los individuos dentro del `data.frame` que se **desean seleccionar**. En la selección de individuos de un `data.frame` haciendo uso de vectores con enteros negativos, cada uno de los elementos (enteros) del vector corresponde a la posiciones de los individuos dentro del `data.frame` que **no deseamos seleccionar**. Finalmente, en la selección de individuos de un `data.frame` haciendo uso de vectores con elementos lógicos, se seleccionarán aquellos individuos cuyos elementos se correspondan con los elementos tipo TRUE dentro del vector lógico. A continuación, haciendo uso del conjunto de datos `iris`, se presentan algunos ejemplos de selección de individuos de un marco de datos `data.frame` haciendo uso de vectores.
+
+<p style="color:#e6550d";><i>Ejemplo. Selección de individuos de un data.frame haciendo uso de vectores</i></p>
+
+```{r, eval = TRUE}
+# Ejemplo 1
+# Haciendo uso de enteros positivos
+# Selección de los individuos (flores) ubicad@s en las posiciones 1, 50, 100 y 150
+
+iris[c(1, 50, 100, 150), ]
+
+# Ejemplo 2
+# Haciendo uso de enteros positivos
+# Selección de los individuos ubicados en las posiciones 5, 10, 15, ....
+
+iris[seq(from = 5, to = 150, by = 5), ]
+
+# Ejemplo 3
+# Haciendo uso de enteros negativos
+# Selección de los últimos 10 individuos
+
+iris[-c(1:140), ]
+
+# Ejemplo 4
+# Haciendo uso de enteros negativos
+# Selección de los primeros 20 individuos
+# Guardar los resultados en una variable llamada First_20
+First_20 <- iris[-c(21:150), ]
+First_20
+
+# Ejemplo 5
+# Haciendo uso de vectores lógicos
+# Selección de los individuos ubicados en las posiciones 5, 10, 15, ....
+# Aplicando la regla de reciclaje
+iris[c(FALSE, FALSE, FALSE, FALSE, TRUE), ]
+
+# Ejemplo 6
+# Haciendo uso de vectores lógicos
+# Selección de los individuos ubicados en las posiciones 20, 40, 60, ...
+# Aplicando la regla de reciclaje
+# Analizar detenidamente la forma de construcción del vector lógico
+iris[c(rep(FALSE, 19), c(TRUE)), ]
+```
+
++ Selección de individuos de un data.frame haciendo uso del operador **`%in%`**
+
+Uno de los principales tipos de variables usadas en el ámbito de la investigación en general y de las ciencias sociales y humanas en particular son las llamadas variables categóricas o cualitativas. Estas variables permiten identificar/clasificar a los individuos según una cualidad existente en estos; información del sexo, del estado civil, del país de residencia, del estrato social, etc., son algunos ejemplos de variables de tipo categórico. Para la selección de individuos de una población que cumplen una característica (modalidad) deseada de una variable cualitativa en particular o para la selección de individuos que no cumplen un patrón particular en variables de tipo cuantitativo, resulta de gran utilidad el uso del operador `%in%`. 
+
+
+La selección de individuos de un marco de datos `data.frame` haciendo uso del operador `%in%` exige el acompañamiento del nombre de la variable _(categórica o numérica)_ que contienen los atributos de interés así como el uso del operador `$` previo al nombre de la variable y posterior al nombre del marco de datos `data.frame` que contiene dichas variables. Por ejemplo, si se desean seleccionar las flores del conjunto de datos `iris` cuya especie (variable Species) es igual a `versicolor` se tendrá que, en primer lugar, anunciar al leguaje en qué variable se ubica la especie de las flores antecedida del nombre del conjunto de datos bajo estudio -en nuestro caso `iris`- y separado por el operador `$`; es decir `iris$Species`. En segundo lugar, una vez definida la variable en donde se encuentra el o los atributo(s)/modalidad(es) de interés -en nuestro caso el tipo de flor cuya especie es `versicolor`-, se procede a incluir estas dentro de un vector de tipo cadena o caracter y a separarlo haciendo uso del operador `%in%`; es decir `iris$Species %in% c('versicolor')`. Finalmente, una vez definida la variable y los atributos de interés, se procede a la selección de los elementos de interés haciendo uso del operador de selección `[ , ]` precedido del nombre del marco de datos que contiene los elementos de interes -en nuestro caso `iris`-; es decir, `iris[iris$Species %in% c('versicolor'), ]`.
+
+A continuación, haciendo uso del conjunto de datos `iris`, se presenta el desarrollo del ejemplo del párrafo anterior así como otros ejemplos de selección de individuos haciendo uso del operador `%in%`.
+
+<p style="color:#e6550d";><i>Ejemplo. Selección de individuos de un data.frame haciendo uso del operador %in%</i></p>
+
+```{r, eval=TRUE}
+# Ejemplo 1 - ejercicio párrafo anterior
+# Selección de los individuos (flores) cuya especie (Species) es igual a versicolor
+iris[iris$Species %in% c('versicolor'), ]
+
+# Ejemplo 2
+# Selección de los individuos cuyo valor en la variable Sepal.Width es igual a 2, 4.4 o 3.5
+
+
+iris[iris$Sepal.Width %in% c(2, 4.4, 3.5), ]
+
+# Ejemplo 3
+# Selección de los individuos (flores) cuya especie (Species) es igual a setosa
+# Se presentan los primeros 6 individuos de la selcción haciendo uso de la función head()
+head(iris[iris$Species %in% c('setosa'), ])
+
+# Ejemplo 4
+# Selección de los individuos (flores) cuya especie (Species) es igual a setosa o virginica
+# Guardar los resultados en una variable llamada Especie
+
+Especie <- iris[iris$Species %in% c('virginica', 'setosa'), ]
+# Visualizar los primeros 10 individuos (flores) haciendo uso de la función head
+head(Especie, n = 10)
+# Visualizar los últimos 6 individuos (flores) haciendo uso de la función tail
+tail(Especie)
+# Cantidad de individuos en el marco de datos llamado Especie - función nrow()
+nrow(Especie)
+```
+
++ Selección de individuos de un data.frame haciendo uso de **expresiones lógicas**
+
+Una de las formas más útiles y populares para la selección de los individuos que presentan ciertas características en un marco de datos `data.frame()` en R es el uso de expresiones lógicas. A través de estas, es posible selccionar aquellos individuos que cumplen una o más características de interés de acuerdo al comportamiento observado en las distintas variables. Por ejemplo, si acudimos nuevamente al marco de datos `iris` y si deseamos seleccionar aquellas flores cuya longitud del sépalo (Sepal.Length) es mayor o igual a 7.3, basta con hacer uso del operador relacional `>=` e implementar en R la siguiente línea de código `iris[iris$Sepal.Length >= 7.3, ]`. Así mismo, si además de conocer las flores cuyo longitud del sépalo es mayor o igual a 7.3, deseamos saber cuáles de ellas son de la especie `versicolor`, basta con implementar en R la siguiente línea de código en donde se acude al uso de una operación lógica combinada^[Ninguna flor de la especie `versicolor`del conjunto de datos `iris` tiene una longitud del sépalo igual o superior a 7.3] para obtener las flores con las condiciones deseadas (uso de operadores relacionales y lógicos) `iris[iris$Sepal.Length >= 7.3 & iris$Species == 'versicolor', ]`. 
+
+A continuación, haciendo uso del conjunto de datos `iris`, se presenta el desarrollo de los ejemplos del párrafo anterior así como otros ejemplos de selección de individuos haciendo uso de expresiones lógicas.
+
+<p style="color:#e6550d";><i>Ejemplo. Selección de individuos de un data.frame haciendo uso del expresiones lógicas</i></p>
+
+```{r, eval = TRUE}
+# Ejemplo 1
+# Flores cuya longitud del sépalo es mayor o igual a 7.3
+iris[iris$Sepal.Length >= 7.3, ]
+
+# Ejemplo 2
+# Flores cuya longitud del sépalo es mayor o igual a 7.3 y pertenecen a la especie versicolor
+# Ninguna flor cumple la condición deseada
+iris[iris$Sepal.Length >= 7.3 & iris$Species == 'versicolor', ]
+
+# Ejemplo 3
+# Flores con ancho del pétalo menor o igual a 0.1
+iris[iris$Petal.Width <= 0.1, ]
+
+# Ejemplo 4
+# Flores con ancho del sépalo >= 3.9 o ancho del pétalo >= 2.4
+iris[iris$Sepal.Width >= 3.9 | iris$Petal.Width >= 2.4, ]
+
+# Ejemplo 5
+# Flores de la especie setosa con un ancho de pétalo menor que 1.4
+iris[iris$Species == 'setosa' & iris$Petal.Length < 1.4, ]
+
+# Ejemplo 6
+# Flores de las especies setosa o virginica
+# Almacenar los resultados en una variable llamada Flor
+Flor <- iris[iris$Species == 'setosa' | iris$Species == 'virginica', ]
+# Revisar las primeras y las últimas 6 flores del data.frame Flor
+# Haciendo uso de las funciones head() y tail()
+head(Flor)
+tail(Flor)
+# Número de individuos/flores que conforman el marco de datos Flor
+nrow(Flor)
+```
+
+##### Subconjuntos de variables e individuos en data.frame
+
+La actividad de selección de elementos de un marco de datos `data.frame()` en R en general implica la selección de un subconjunto de individuos con ciertas variables de interés; es decir, selección de estos tanto por individuos como por variables. A continuación, teniendo en cuenta lo abordado en este componente del documento, se presentan algunos ejemplos de selección de elementos de un marco de datos `data.frame` que involucra tanto a sus individuos como sus variables. Para ello, acudiremos nuevamente al uso del conjunto de datos `iris`.
+
+<p style="color:#e6550d";><i>Ejemplo. Selección de individuos y variables de un data.frame</i></p>
+
+```{r, eval=TRUE}
+# Nombres de las variables del conjunto de datos (data.frame) iris
+# Hacer uso de la función names()
+names(iris)
+
+# Ejemplo 1
+# Seleccionar las flores ubicadas en las posiciones 20, 70 y 120 
+# Retener la variable Sepal.Width
+iris[c(20, 70, 120), c("Sepal.Width")]
+
+# Ejemplo 2
+# Seleccionar los últimos 5 individuos (flores) del data.frame iris
+# Seleccionar las variables ubicadas en las posiciones 1 y 2
+iris[-c(1:145), c(1,2)]
+
+# Ejemplo 3
+# Selecionar las flores con ancho del sépalo (Sepal.Width) mayor o igual a 3.9
+# Retener las variables ubicadas en posiciones diferentes a la 3, 4 y 5.
+iris[iris$Sepal.Width>= 3.9, -c(3, 4, 5)]
+
+# Ejemplo 4
+# Seleccionar las flores con ancho del sépalo >= a 3.9 o ancho del pétalo >= 2.4
+# Retener las variables ubicadas en las posicones 1, 3, 5, ...
+# Recordar aplicación de la regla de reciclaje
+iris[iris$Sepal.Width >= 3.9 | iris$Petal.Width >= 2.4, c(TRUE, FALSE)]
+
+# Ejemplo 5
+# Seleccionar las flores de la especie setosa con una longitud del pétalo menor a 1.4
+# Retener, para estas flores, las variables llamadas Sepal.Length y Species
+iris[iris$Species == 'setosa' & iris$Petal.Length < 1.4, c("Sepal.Length", "Species")]
+
+# Ejemplo 6
+# Selección de las flores pertenecientes a las especies setosa y versicolor
+# Selección de las variables ubicadas en las posiciones 4 y 5 ¿por qué?
+# Almacenar los resultados en una variable llamada Final
+Final <- iris[iris$Species %in% c('setosa', 'versicolor'), c(-1:-3)]
+
+# Visualizar las primeras 10 y las últimas 6 flores del data.frame Final
+head(Final, 10)
+tail(Final)
+
+# Visualizar la cantidad de flores/individuos existentes en el data.frame Final
+# Hacer uso de la función nrow()
+nrow(Final)
+```
+
+#### _Mofificar y eliminar variables o individuos en data.frames_{#EliminaDF}
+
+El proceso de gestión y análisis de datos en R haciendo uso de marcos de datos `data.frame` implica, en muchos casos, la necesidad de modificar y/o eliminar algunas de sus caracteristicas. A continuación, se presenta la forma como R permite en un `data.frame` modificar los nombres de las variables, eliminar y adicionar variables,  modificar sus elementos y, finalmente, la forma como en este lenguaje se  adicionan o eliminan individuos contenidos en un marco de datos. Para ello, acudiremos nuevamente al marco de datos `data.frame` definido al inicio de este apartado el cual contiene la información de 6 estudiantes y cuatro variables de interés(Edad, Sexo, Discapacidad y Nota). A continuación, se presenta el contenido de este conjunto de datos `data.frame` el cual, como se mencionó previamente, se conoce con el nombre de `Curso`.
+
+
+<p style="color:#e6550d";><i>Contenido marco de datos (data.frame) llamado Curso</i></p>
+
+```{r, eval = TRUE, echo=FALSE}
+Curso <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre','Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5)
+                       )
+Curso
+```
+
+##### Modificar nombres de variables en data.frame
+
+La primera característica que exploraremos al momento de interactuar con marcos de datos `data.frame` en R es la forma como este lenguaje permite cambiar los nombres definidos en las variables. Para modificar el nombre de una o más variables de un `data.frame` en R, se debe hacer uso de la función `names()`, de los operadores `[ ]` y `<-`, de un vector de `enteros positivos` con las posiciones de las variables a modificar y finalmente, un vector de `tipo caracter` con los nombres de las variables a modificar. Por ejemplo, si deseamos cambiar el nombre de la variable `Nota` por el de `Nota_Final` en el conjunto de datos `data.frame` que contiene la información de los  estudiantes contenidos en el conjunto de datos `Curso`, debemos definir un vector `c(4)`con la posición 4 que es donde se ubica la variable `Nota` y uno de tipo caracter con el nuevo nombre de la variable `c(Nota_Final)`. Una vez definidos los vectores de posiciones y de nuevos nombres para las variables, se procede al uso de las función `names()` y los operadores `[ ]` y `<-` con el fin de consolidar la línea de código requerida para cambiar el nombre de la variable `Nota` por el de `Nota_Final` en el marco de datos `Curso`; esta línea de código es `names(Curso)[c(4)] <- c('Nota_Final')`.
+
+A continuación, se presenta el desarrollo de este ejemplo y de otros en el contexto de la modificación de nombres de variables en `data.frame` haciendo uso, para ello, del conjunto de datos `Curso`.
+
+<p style="color:#e6550d";><i>Ejemplo. Cambio de nombres de variables en marcos de datos (data.frame)</i></p>
+
+```{r, eval=TRUE}
+# Creación del conjunto de datos (data.frame) Curso
+Curso <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre','Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5))
+
+# Visualización del marco de datos Curso
+Curso
+
+# Ejemplo 1
+# Cambio del nombre de la variable Nota por el de Nota_Final
+names(Curso)[c(4)] <- c('Nota_Final')
+# Visualización del data.frame Curso con el nombre de la variable Nota ajustado
+Curso
+
+# Ejemplo 2
+# Cambiar el nombre de la variable Edad por Edad_F
+names(Curso)[c(1)] <- c('Edad_F')
+# Visualización del data.frame Curso con el nombre de la variable Edad ajustado
+Curso
+
+# Ejemplo 3
+# Cambiar el nombre de las variables Sexo y Discapacidad por Sexo_F y Discapacidad_F
+names(Curso)[c(2, 3)] <- c('Sexo_F', 'Discapacidad_F')
+# Visualización del data.frame Curso con el nombre de las variables ajusatadas
+Curso
+```
+
+##### Eliminar variables en data.frame
+
+La segunda característica que exploraremos al momento de interactuar con marcos de datos `data.frame` en R es la forma como este lenguaje permite eliminar variables. Para eliminar una o más variables de un `data.frame` en R, existen dos posibilidades: haciendo uso de vectores o haciendo uso del tipo de dato `NULL`. A continuación, se presenta en detalle cada una de estas dos formas de eliminación de variables en `data.frame` en R.
+
++ Eliminación de variables de `data.frame` haciendo uso de `vectores`
+
+El proceso de eliminación de variables en marcos de datos `data.frame` en R haciendo uso de vectores es equivalente al proceso de indexación o selección de subconjuntos de variables cuyo contenido se presentó en el apartado de [indexacción](#IndexaDF) de este documento. Eliminar una o más variables de un `data.frame` es equivalente a retener/selccionar aquellas variables que no hacen parte del proceso de eliminación. Por ejemplo, si deseamos eliminar la variable `Nota` del conjunto de datos `Curso`, basta con implementar en R una instrucción que nos permita retener el conjunto de  variables diferentes a la variable `Nota` y para ello, desde luego, podemos acudir a un proceso de indexación de variables en R haciendo uso de vectores los cuales pueden estar conformados por _enteros positivos_, _enteros negativos_, _elementos lógicos_ o _elementos de tipo caracter_. A continuación, haciendo uso del conjunto de datos `Curso`, se presentan algunos ejemplos de eliminación de variables de un `data.frame` en R haciendo uso de vectores
+
+
+<p style="color:#e6550d";><i>Ejemplo. Eliminación de variables en marcos de datos (data.frame) haciendo uso de vectores</i></p>
+
+```{r, eval=TRUE}
+# Creación del conjunto de datos (data.frame) Curso
+Curso <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre','Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5))
+
+# Visualización del marco de datos Curso
+Curso
+
+# Ejemplo 1
+# Eliminación de la variable Nota
+# Indexación - haciendo uso de enteros negativos
+# Almacenar los resultados en un data.frame llamado Curso_1
+Curso_1 <- Curso[ , -c(4)]
+Curso_1
+
+# Ejemplo 2
+# Eliminación de la variable Nota
+# Indexación - haciendo uso de enteros positivos
+# Almacenar los resultados en un data.frame llamado Curso_2
+Curso_2 <- Curso[ , c(1:3)]
+Curso_2
+
+# Ejemplo 3
+# Eliminación de la variable Nota
+# Indexación - haciendo uso de vectores lógicos
+# Almacenar los resultados en un data.frame llamado Curso_3
+Curso_3 <- Curso[ , c(TRUE, TRUE, TRUE, FALSE)]
+Curso_3
+
+# Ejemplo 4
+# Eliminación de las variable Edad y Discapacidad
+# Indexación - haciendo uso de vectores con elementos textuales
+# Almacenar los resultados en un data.frame llamado Curso_4
+Curso_4 <- Curso[ , c('Sexo','Nota')]
+Curso_4
+```
+
++ Eliminación de variables de `data.frame` haciendo uso de `NULL`
+
+El proceso de eliminación de variables en marcos de datos `data.frame` en R haciendo uso del tipo de dato `NULL` implica la selección e inclusión dentro de un vector^[Los elementos de estos vectores pueden estar conformados por _enteros positivos_, _enteros negativos_, _elementos lógicos_ o _elementos de tipo caracter_] de las variables a eliminar por nombres o posición y luego, haciendo uso de los operadores `[]` y `<-`, asignar el dato NULL. por Ejemplo, el proceso de eliminar la variable `Sexo` del conjunto de datos `Curso`, implica implementar en R la siguiente línea de código `Curso[ , c(2)] <- NULL`.  A continuación, se presenta el desarrollo de este ejemplo y de otros haciendo uso del conjunto de datos `Curso` y del dato `NULL` para la eliminación de variables contenidas en `data.frame`.
+
+<p style="color:#e6550d";><i>Ejemplo. Eliminación de variables en marcos de datos (data.frame) haciendo uso del tipo de dato NULL</i></p>
+
+
+```{r, eval=TRUE}
+# Creación del conjunto de datos (data.frame) Curso
+Curso <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre','Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5))
+
+# Visualización del marco de datos Curso
+Curso
+
+# Ejemplo 1
+# Eliminación de la variable Sexo
+# Haciendo uso de enteros positivos
+Curso[ , c(2)] <- NULL
+# Visualización del marco de datos Curso sin la variable Sexo
+Curso
+
+# Ejemplo 2
+# Eliminar, del data.frame resultante del ejemplo 1, las variables Edad y Nota
+# Haciendo uso de vectores de tipo caracter o textual
+
+Curso[ , c('Edad', 'Nota')] <- NULL
+# Visualización del marco de datos Curso sin las variables Sexo, Edad y Nota
+Curso
+```
+
+##### Modificar elementos en data.frame
+
+La tercera característica que será explorada al momento de interactuar con marcos de datos `data.frame` en R es la forma como este lenguaje permite modificar algunos de sus elementos; es decir, la información de uno o más individuos para ciertas variables. Para ello, el lenguaje exige la identificación y asignación dentro de un vector de las posiciones de los elementos a modificar en el `data.frame` y en un `vector` o `lista` independiente, mediado por el operador `<-`, el o los valores a modificar para cada una de las variables de interés. Por ejemplo, modificar la nota de 3.5 a 5.0 del estudiante ubicado en la posición 1 del marco de datos `Curso` (primera fila), implica en R implementar la línea de código `Curso[c(1), c('Nota')] <- c(5.0)`. En este ejemplo, se le está ordenando al programa que seleccione, del conjunto de datos `Curso`, el dato/nota del estudiante ubicado en la primera posición `c(1)` y que cambie su nota `c(Nota)` por el valor 5 `c(5.0)`. 
+
+A continuación, haciendo uso del conjunto de datos `Curso`, se presenta el desarrollo de este ejemplo y de otros^[En el caso de modificación de elementos ubicados en diferentes variables, como se muestra en uno de los ejemplos, se debe acudir al uso de `listas` en R. Las características y la conformación de estas estructuras de datos se presenta en la sección de [Listas](#Listas) de este documento.] sobre modificación de elementos en R contenidos en `data.frame`. 
+
+<p style="color:#e6550d";><i>Ejemplo. Modificación de elementos en marcos de datos (data.frame).</i></p>
+
+```{r, eval = TRUE}
+
+# Creación del conjunto de datos (data.frame) Curso
+Curso <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre','Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5))
+
+# Visualización del marco de datos Curso
+Curso
+
+# Ejemplo 1
+# Cambiar la nota del estudiante ubicado en la posición 1 (de 3.5 a 5.0)
+Curso[c(1), c('Nota')] <- c(5.0)
+# Mostrar el data.frame con el cambio requerido
+Curso
+
+# Ejemplo 2
+# Cambiar a 5.0 las notas de los estudiante ubicados en la posiciones 1, 4 y 6.
+# Resultado equivalente a Curso[c(1, 4, 6), c('Nota')] <- c(5.0, 5.0, 5.0)
+Curso[c(1, 4, 6), c('Nota')] <- c(5.0)
+Curso
+
+# Ejemplo 3
+# Cambiar a 5.0 las notas de los estudiante ubicados en la posiciones 1, 4 y 6.
+# Cambiar el Sexo a hombres de los estudiante ubicados en la posiciones 1, 4 y 6.
+# Hacer uso de una lista (list) para contener los vectores con los nuevos valores.
+
+Curso[c(1, 4, 6), c('Sexo', 'Nota')] <- list(c('Hombre', 'Hombre', "Hombre"), c(5.0, 5.0, 5.0))
+
+Curso
+```
+
+
+##### Eliminar individuos en data.frame
+
+La cuarta característica que será explorada al momento de interactuar con marcos de datos `data.frame` en R es la forma como este lenguaje permite eliminar individuos (filas); es decir, la información de uno o más individuos según ciertos criterios de interés. Para ello, el lenguaje ofrece dos alternativas: haciendo uso de vectores o a través de expresiones lógicas. 
+
++ Eliminación de individuos en `data.frame` haciendo uso de vectores 
+
+La eliminación de individuos de un marco de datos haciendo uso de vectores es equivalente (igual) al proceso de indexación o extracción de subconjuntos de individuos presentado previamente en la sección de [Indexación](#IndexaDF) de `data.frame`. Eliminar individuos de un marco de datos `data.frame` haciendo uso de vectores^[Los elementos de estos vectores pueden ser _enteros positivos_, _enteros negativos_ o _lógicos_] es equivalente a seleccionar aquellos individuos que no pertenecen a dicho subconjunto -los que no se desean eliminar- o que son iguales a dicho subconjunto de individuos -los que se desean eliminar-. A continuación, haciendo uso del conjunto de datos `Curso`, se presentan algunos ejemplos de eliminación de individuos en un `data.frame` haciendo uso de vectores.
+
+
+<p style="color:#e6550d";><i>Ejemplo. Eliminación de individuos de un marco de datos (data.frame) haciendo uso de vectores.</i></p>
+
+```{r, eval=TRUE}
+# Creación del conjunto de datos (data.frame) Curso
+Curso <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre','Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5))
+
+# Visualización del marco de datos Curso
+Curso
+
+# Ejemplo 1
+# Eliminar el primero y el último individuo del data.frame Curso
+# Guardar los resultado en una variable llamada Curso_1
+# Hacer uso de un vector con enteros positivos - los que no se desean eliminar-
+Curso_1 <- Curso[c(2:5), ]
+Curso_1
+
+# Ejemplo 2
+# Eliminar el primero y el último individuo del data.frame Curso
+# Guardar los resultado en una variable llamada Curso_2
+# Hacer uso de un vector con enteros negativos - los que se desean eliminar-
+Curso_2 <- Curso[-c(1, 6), ]
+Curso_2
+
+# Ejemplo 3
+# Eliminar los individuos 1, 3 y 5 del data.frame Curso
+# Guardar los resultado en una variable llamada Curso_3
+# Hacer uso de un vector con elementos lógicos 
+Curso_3 <- Curso[c(FALSE, TRUE, FALSE, TRUE, FALSE, TRUE), ]
+Curso_3
+
+# Ejemplo 4
+# Eliminar los individuos 2, 4 y 6 del data.frame Curso
+# Guardar los resultado en una variable llamada Curso_4
+# Hacer uso de un vector con elementos lógicos 
+# Aplicando la regla de reciclaje de elementos
+Curso_4 <- Curso[c(TRUE, FALSE), ]
+Curso_4
+```
+
++ Eliminación de individuos en `data.frame` haciendo uso de expresiones lógicas
+
+La eliminación de individuos de un marco de datos haciendo uso de expresiones lógicas es equivalente (igual) al uso de estas estructuras para la indexación o extracción de subconjuntos de individuos presentado en la sección de [Indexación](#IndexaDF) de `data.frame`. Por ejemplo, si deseamos eliminar los estudiantes del marco de datos `Curso` que obtuvieron una nota igual o superior a 4, debemos implementar en R la siguiente línea de comando haciendo uso de expresioens lógicas `Curso[Curso$Nota < 4, ]` la cual es equivalente a extraer, a través de un proceso de indexación, el subconjunto de estudiantes con una nota inferior a 4. A continuación, haciendo uso del marco de datos `Curso`, se presenta el desarrollo de este y de otros ejemplos orientados a la eliminación de individuos de un `data.frame` haciendo uso de expresiones lógicas.
+
+
+<p style="color:#e6550d";><i>Ejemplo. Eliminación de individuos de un marco de datos (data.frame) haciendo uso de expresiones lógicas.</i></p>
+
+```{r, eval=TRUE}
+# Creación del conjunto de datos (data.frame) Curso
+Curso <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre','Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5))
+
+# Visualización del marco de datos Curso
+Curso
+
+# Ejemplo 1
+# Eliminar los estudiantes con una nota igual o superior a 4 
+# Guardar los resultado en una variable llamada Curso_1
+# Haciendo uso del operador relacional < (opción 1)
+Curso_1 <- Curso[Curso$Nota < 4, ]
+Curso_1
+
+# Ejemplo 2
+# Eliminar los estudiantes con una nota igual o superior a 4 
+# Guardar los resultado en una variable llamada Curso_2
+# Haciendo uso del operador relacional >= y del signo ! (opción 2)
+# Analizar y recordar el papel del operador lógico !
+Curso_2 <- Curso[!(Curso$Nota >= 4), ]
+Curso_2
+
+# Ejemplo 3
+# Eliminar los hombres del data.frame Curso
+# Guardar los resultado en una variable llamada Curso_3
+# ¿Por qué se usa la opción Mujer despues del operador relacional ==?
+# ¿Qué ajuste debemos hacer al código si deseamos utilizar la opción Hombre después del operador relacional ==?
+Curso_3 <- Curso[Curso$Sexo == 'Mujer', ]
+Curso_3
+
+# Ejemplo 4
+# Eliminar las mujeres con una nota igual o superior a 4
+# Guardar los resultado en una variable llamada Curso_4
+# Analizar y entender el contenido de esta instrucción
+Curso_4 <- Curso[!(Curso$Sexo == 'Mujer' & Curso$Nota >= 4), ]
+Curso_4
+```
+
+#### _Adicionar variables e individuos en data.frames_ {#AdicionaDF}
+
+Además de modificar nombres de variables, eliminar variables, modificar elementos y eliminar individuos contenidos en un marco de datos `data.frame`, R ofrece la posibilidad de adicionar variables o individuos a estos. A continuación, se presenta la forma como este lenguaje permite adicionar variables o individuos en un marco de datos o `data.frame`.
+
+##### Adicionar variables a un data.frame
+
+La quinta característica que será explorada al momento de interactuar con marcos de datos `data.frame` en R es la forma como este lenguaje permite adicionar nuevas variables (columnas) a estas estructuras de datos. Para ello, el lenguaje ofrece varias alternativas las cuales pueden ser reducidas a dos ámbitos: adición de una variable o adición de más de una variable en un marco de datos `data.frame`. A continuación, se presenta la forma como R adiciona variables en cada uno de estos ámbitos.
+
++ Adición de una variable en un `data.frame`
+
+La adición de una variable en un marco de datos `data.frame` puede realizarse a través de dos alternativas las cuales se corresponden con los operadores `$` y `[[ ]]` del lenguaje presentados en la sección de [indexación](#IndexaDF) de subconjuntos de variables en R. Por ejemplo, si deseamos adicionar una nueva variable llamada `Nueva1` al conjunto de datos `Curso` que hemos trabajado a lo largo de este documento, podemos usar dos alternativas de código  `Curso$Nueva1 <- c(1:6)` o `Curso[['Nueva1']] <- c(6:1)`. En la primera de las líneas de código, la que hace uso del operador `$`, le estamos indicando al lenguaje que cree una nueva variable dentro del marco de datos `Curso` y que le asigne el nombre de `Nueva1`; es decir, `Curso$Nueva1`. Luego, haciendo uso del operador de asignación `<-`, le estamos indicando al lenguaje que la variable `Nueva1` contenga la información del vector `c(6:1)`. El mismo, raciocinio puede emplearse en el caso de la línea de código que contiene el operador `[[ ]]`.
+
+A continuación, haciendo uso del marco de datos `Curso`, se presenta el desarrollo de los anteriores dos ejemplos orientados a la creación de una nueva variable dentro de un `data.frame` en R.
+
+
+<p style="color:#e6550d";><i>Ejemplo. Alternativas de creación de una nueva variable en un marco de datos (data.frame).</i></p>
+
+```{r, eval=TRUE}
+# Creación del conjunto de datos (data.frame) Curso
+Curso <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre', 'Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5))
+
+# Visualización del marco de datos Curso
+Curso
+
+# Ejemplo 1
+# Creación de la variable Nueva1 haciendo uso del operador $
+Curso$Nueva1 <- c(1:6)
+Curso
+
+#Ejemplo 2
+# Adicionar, al data.frame resultante del ejemplo 1, una nueva variable llamada Nueva2
+# Haciendo uso del operador [[]]
+Curso[['Nueva2']] <- c(6:1)
+Curso
+```
+
++ Adición de más de una variable en un `data.frame`
+
+La adición de más de una variable en un marco de datos `data.frame` puede realizarse, al igual que en el caso de una variable, a través de dos alternativas las cuales se corresponden con las funciones `cbind()` y `list()`. A continuación, haciendo uso del marco de datos `Curso`, se presentan algunos ejemplos de creación de más de una variable en un `data.frame` haciendo uso de la función `cbind()` y de la función `list()` la cual sirve de base para la creación de una estructura de datos llamada listas y que hará parte de la [siguiente](#Listas) sección del presente documento.
+
+<p style="color:#e6550d";><i>Ejemplo. Alternativas de creación de más de una variable en un marco de datos (data.frame).</i></p>
+
+```{r, eval=TRUE}
+# Creación del conjunto de datos (data.frame) Curso
+Curso <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre','Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5))
+
+# Visualización del marco de datos Curso
+Curso
+
+# Ejemplo 1
+# Haciendo uso de la función cbind()
+# Crear dos variables. 
+# Nueva1 con el contenido del vector rep(5, 6) 
+# Nueva2 con la información del vector rep(1, 6)
+# Almacenar los resultados del nuevo data.frame en un variable llamada Curso_Ajustado
+Curso_Ajustado <- cbind(Curso, data.frame(Nueva1 = rep(5, 6), Nueva2 = rep(1, 6)))
+Curso_Ajustado
+
+# Ejemplo 2
+# Haciendo uso de la función list()
+# Crear la variable llamada Nueva3 con 6 números aleatorios de una distrinución normal N(0, 1)
+# Requiere definir un vector con la posisión en donde se almacenará la nueva variable c(5)
+# recordar que el conjunto de datos Curso está conformado por cuatro variables
+Curso[, c(5)] <- list(Nueva3 = rnorm(6))
+Curso
+
+# Ejemplo 3
+# Haciendo uso de la función list()
+# Adicionar, al marco de datos del ejemplo 2, dos nuevas variables (Nueva4 y Nueva5)
+# Almacenar la información de la variable Nueva4 en una variable previa llamada Normal
+# Analizar la forma como R procesa este ejemplo
+Normal <- rnorm(6)
+Curso[, c(6, 7)] <- list(Nueva4 = Normal, Nueva5 = rep(1, 6))
+Curso
+```
+
+##### Adicionar individuos a un data.frame
+
+
+La sexta y última característica que será explorada en este documento al momento de interactuar con marcos de datos `data.frame` en R es la forma como este lenguaje permite adicionar nuevos individuos. Para ello, el lenguaje requiere la definición de las posiciones que ocuparán los nuevos individuos y el uso de la función `list()` la cual, como se mencionó previamente, nos servirá de base para el desarrollo de la siguiente sección de trabajo en donde se abordarán las estructuras de datos conocidas como [listas](#Listas). Por ejemplo, si deseamos adicionar un nuevo estudiante (posición/fila 7) al conjunto de datos `Curso` que tiene 26 años de edad, que es hombre, que no presenta discapacidades y que obtuvo una nota de 2.0, debemos imprementar en R la siguiente instrucción `Curso[c(7), ] <- list(Edad = c(26), Sexo = c('Hombre'), Discapacidad = c(FALSE), Nota = c(2.0))`.  A continuación, haciendo uso del marco de datos `Curso`, se presenta el desarrollo de este ejemplo y de otros asociados a la adición de individuos en un `data.frame`. 
+
+<p style="color:#e6550d";><i>Ejemplo. Adición de individuos en un marco de datos (data.frame).</i></p>
+
+```{r, eval=TRUE}
+# Creación del conjunto de datos (data.frame) Curso
+Curso <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
+                       Sexo = c('Mujer', 'Hombre', 'Hombre', 'Mujer', 'Hombre','Mujer'),
+                       Discapacidad = c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+                       Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5))
+
+# Visualización del marco de datos Curso
+Curso
+
+# Ejemplo 1
+# Adicionar un nuevo estudiante con la siguiente información
+# Edad = 26, Sexo = Hombre, sin discapacidades y con una nota de 2.0
+Curso[c(7), ] <- list(Edad = c(26), Sexo = c('Hombre'), Discapacidad = c(FALSE), Nota = c(2.0))
+# Visualizar el data.frame con el nuevo individuo
+Curso
+
+# Ejemplo 2
+# Adicionar dos nuevos estudiante al data.frame resultante del ejemplo 1
+# ¿Por qué usamos las posiciones 8 y 9?
+Curso[c(8, 9), ] <- list(Edad = c(20, 13), 
+                         Sexo = c('Hombre', 'Mujer'),
+                         Discapacidad = c(FALSE, TRUE), 
+                         Nota = c(2.0, 3.9))
+# Visualizar el data.frame resultante con los nuevos individuos
+Curso
+
+# Ejemplo 3
+# Adicionar tres nuevos estudiantes al data.frame Curso
+# Almacenar el data.frame resultante en una variable llamada Curso_AF
+# Ingresar la información de los nuevos individuos en variables 
+# ¿Por qué usamos, en este ejemplo, las posiciones 7, 8 y 9?
+# Reflexionar sobre la forma como R compila este ejemplo
+Edad_3 <-  c(23, 19, 29)
+Sexo_3 <- c('Hombre', 'Mujer', 'Mujer')
+Discapacidad_3 <- c(FALSE, TRUE, FALSE)
+Nota_3 <- c(3.3, 4.9, 4.5)
+Curso_AF <- Curso[c(7:9), ] <- list(Edad = Edad_3, 
+                                    Sexo = Sexo_3,
+                                    Discapacidad = Discapacidad_3, 
+                                    Nota = Nota_3)
+# Visualizar el data.frame resultante con los nuevos individuos
+Curso
+```
+
+#### _Funciones útiles para la gestión de data.frame_ {#FunDF}
+
+En la sección sobre [matrices](#Matrices) de este documento se abordó un listado de [funciones](#Fmatrices) útiles para la gestión de dichas estructuras de datos. En R, de igual manera, existe un número importante de funciones contenidas por defecto en el software^[Estas funciones, como se mencionó en la sección de matrices, hacen parte de los paquetes instalados por defecto en el lenguaje. Es decir, no requieren invocar o instalar nuevas librerías pues ellas se cargaron al momento de instalar por primera vez R en nuestras computadoras.] que resultan de gran utilidad para explorar y gestionar marcos de datos `data.frame`.  A continuación, se presentan y describen 10 funciones aplicables a la gestión de marcos de datos en R.
+
+* _**class()**_: Verifica si el tipo de objeto o estructura de datos es un `data.frame`.
+* _**names()**_: Retorna un vector de tipo caracter o textual con los nombres de las variables de un `data.frame`.
+* _**dim()**_: Retorna las dimensiones de un `data.frame`; es decir, cuántos individuos y cuántas variables tiene.
+* _**length()**_: Retorna la cantidad (número) de variables de un `data.frame`.
+* _**ncol()**_: Retorna el número de variables de un `data.frame`. Arroja los mismo resultados que la función `length()`.
+* _**nrow()**_: Retorna el número de individuos de un `data.frame`.
+* _**head()**_: Retorna, por defecto, los primeros 6 individuos de un `data.frame`. El número de individuos a visualizar puede ser ajustado acudiendo a uno de los argumentos de esta función.
+* _**tail()**_: Retorna, por defecto, los últimos 6 individuos de un `data.frame`. El número de individuos a visualizar puede ser ajustado acudiendo a uno de los argumentos de esta función.
+* _**str()**_: Retorna un resumen descriptivo del contenido de un `data.frame`: total de variables e individuos, nombres de las variables, tipología de las variables y primeros elementos de cada una de las variables. 
+* _**summary()**_: Retorna un resumen descriptivo de tipo estadístico de un `data.frame`. Para las variables de tipo continuo o numérico, retorna el valor mínimo, el primer cuartil, la mediana, la media, el tercer cuartil y el valor máximo; para las variables de tipo nominal o categórico, retorna las cantidad de individuos (frecuencias absolutas) por modalidad de respuesta.
+
+A continuación, haciendo uso del marco de datos `iris`, se presenta la aplicación de las anteriores funciones en el contexto de la gestión de marcos de datos o `data.frame` en R. Se invita al lector a explorar y analizar la forma como operan en R cada una de estas funciones.
+
+
+```{r, eval=TRUE}
+# Verificar el tipo de estructura de datos del conjunto de datos iris
+# Función class()
+class(iris)
+
+# Retornar el nombre de las variables contenidas en el conjunto de datos iris
+# Función names()
+names(iris)
+
+# Retornar el total de individuos y de variables contenidas en el conjunto de datos iris
+# Función dim()
+dim(iris)
+
+# Retornar la cantidad de variables que conforman el conjunto de datos iris - opción 1
+# Función length()
+length(iris)
+
+# Retornar la cantidad de variables que conforman el conjunto de datos iris - opción 2
+# Función ncol()
+ncol(iris)
+
+# Retornar la cantidad de individuos (flores) que conforman el conjunto de datos iris
+# Función nrow()
+nrow(iris)
+
+# Imprimir la información de los primeros 6 individuos (flores) del conjunto de datos iris
+# Función head()
+head(iris)
+
+# Imprimir la información de los últimos 6 individuos (flores) del conjunto de datos iris
+# Función tail()
+tail(iris)
+
+# Presentar un resumen general de las características del conjunto de datos iris
+# Función str()
+str(iris)
+
+# Retornar un resumen descriptivo estadístico de las variables del conjunto de datos iris
+# Función summary
+summary(iris)
+```
+
+
+### Listas {#Listas}
+
+### Factores {#Factores}
+
