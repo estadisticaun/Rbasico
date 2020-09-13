@@ -36,4 +36,57 @@ _**Nota: Los elementos de la variable `Var` no pueden ser ingresados desde el te
 
 13. Cree la variable `Nueva` y asigne a esta los elementos del vector `c(11, 20, 15, 10)`; cree la variable `Nombres` y asigne a esta los elementos del vector `c('xyz', 'c%2', 'mno', 'for')`. Asigne a los elementos de la variable `Nueva` los nombres contenidos en la variable `Nombres` e imprima los resultados. Seleccione los elementos del vector contenido en la variable `Nueva` cuyos nombres son `xyz` y `for`. ¿Por qué cree que R no genera un error en los nombres de los elementos contenidos en el vector `Nombres` a pesar de que dos de ellos usan caracteres especiales del lenguaje R o palabras reservadas (`c%2` y `for`)? 
 
+## Trabajo 2
 
+1. Cree en R una matriz de 5 `filas` y 4 `columnas`, ingrese los datos por filas a través de un vector que contenga los numeros 10, 20, 30, ..., 200. Cree el vector previamente mencionado haciendo uso de la función `seq()`. Guarde e imprimar los resultados de la matriz en una variable/objeto llamada `Matriz_Ejer`.
+
+2. Haciendo uso de la funciones `rownames()` y `colnames()` asígnele a la matriz creada en el ejercicio 1 `Matriz_Ejer` los nombres a las filas y a las columnas. Los nombres de las filas están contenidas en el vector `c('Fila1',	'Fila2',	'Fila3',	'Fila4',	'Fila5')` y los de las columnas en el vector `c('Colum1',	'Colum2',	'Colum3',	'Colum4')`. Imprima los resultados de la matriz `Matriz_Ejer` con los nombres asignados.
+
+3. Adicione a la matriz creada en el ejercicio 2 `Matriz_Ejer`, haciendo uso de la función `rbind()`, una nueva fila con los elementos `c(210, 220, 230, 240)`. Luego, a la matriz resultante con la nueva fila, asígnele una nueva columna con los elementos `c(50, 90, 130, 170, 210, 250)`. La matriz `Matriz_Ejer` ahora cuenta con 6 filas y 5 columnas; no obstante, la fila 6 y la columna 5 no tienen asignado un nombre. ¿Qué debemos hacer para asignarle el nombre `Fila5` a la fila 5 y el nombre `Colum5'` a la columna 5 de la matriz `Matriz_Ejer`.
+
+4. Cree en R una matriz de 4 `filas` y 4 `columnas`, ingrese los datos por columnas a través de un vector construido haciendo uso de la función `rep()` de tal manera que la primera columna esté compuesta por unos (1), la segunda por doses (2), la tercera por treses (3) y la cuarta, por cuatros (4). Ingrese, al crear la anterior matriz y haciendo uso del argumento `dimnames` de la función `matrix()`, los nombres de las filas y las columnas los cuales deben ser, respectivamente, `c('Fil1', 'Fil2', 'Fil3' y 'Fil4')` y `c('Co1', 'Col2', 'Col3' y 'Col4')`. Almacene los resultados en una variable/objeto llamada `Matriz_Rep`.
+
+A partir de la matriz previamente creada `Matriz_Rep`, desarrolle las siguientes actividades.
+
++ Seleccione la totalidad de elementos de la fila 1.
+
++ Seleccione la totalidad de elementos de la columna 3.
+
++ Seleccione el elemento ubicado en la fila 3 columna 4.
+
++ Seleccione, haciendo uso de vectores con enteros positivos, las columnas 3 y 4.
+
++ Seleccione, haciendo uso de vectores con elementos lógicos, los elementos ubicados en las filas 2 y 4.
+
++ Seleccione, a través de una única consulta, los elementos ubicados en las intersecciones de las filas 1 y 3 y las columnas 1 y 4. Para el caso de las filas hacer uso de un vector con enteros negativos y para el caso de las columnas hacer uso de un vector de tipo caracter (textual).
+
+5. El conjunto de datos `mtcars`, al igual que el conjunto de datos `iris` y que se trabajó a lo largo del documento, hace parte de los marcos de datos `data.frame` que vienen incluidos por defecto en R desde el momento de su instalación^[Estos conjuntos de datos hacen parte de una librería llamada `datasets` cuyos conjuntos de datos pueden ser explorados haciendo uso de la función `data()`. De igual manera, estos pueden ser descargados en formatos CSV desde la siguiente [página web](https://vincentarelbundock.github.io/Rdatasets/datasets.html)]. Haciendo uso de las funciones `class()`, `names()`, `dim()`, `length()`, `ncol()`, `nrow()`, `head()`, `tail()`, `str()` y `summary()`, explorar el contenido del marco de datos **`mtcars`**.
+
+6. Selecionar la variable `carb` del conjunto de datos (data.frame) `mtcars` haciendo uso de los operadores `[]`, `[ , ]`, `[[ ]]` y `$`. ¿Existe alguna diferencia en el resultado al usar alguna de estas formas de extracción de una variable en R?
+
+7. Seleccionar las variables `mpg`, `disp`, `drat`, `qsec`, `am` y `carb` del conjunto de datos `mtcars`. El proceso de selección de estas variables debe realizarse a través de cuatro vías: haciendo uso de vectores con _enteros positivos_, haciendo uso de vectores con _enteros negativos_, haciendo uso de vectores con _elementos lógicos_ y haciendo uso de vectores con datos de tipo _caracter o textuales_.
+
+8. Seleccionar, del conjunto de datos `mtcars`, los  individuos con valores 4 o 6 en la variable `cyl` y cuyos valores en la variable `mpg` son mayores o iguales `>=` a 25. Para estos individuos, retener la información de las variables `mpg`, `cyl` y `carb`. Guardar/almacenar e imprimir los resultados de este ejercicio en un objeto/variable llamado `mtcars_new`. 
+
+9. Tomando como referencia el conjunto de datos `mtcars`, realizar las siguientes actividades. Cada uno de los ejercicios **debe** partir del conjunto de datos original; es decir, sin manipulaciones o ajustes previos del marco de datos `mtcars`. Para ello, iniciar el desarrollo de los siguientes ítems limpiando el **Environment** de **Rstudio**.<br>
+
+**Recomendación**. 
+*Al inicio de cada uno de los ejercicios cree, a partir del conjunto de datos `mtcars`, el nuevo conjunto de datos con el nombre requerido.  Por ejemplo, para el primero de los ejercicios que se presenta a continuación, se podrá crear el nuevo conjunto de datos haciendo uso de la línea de código `mtcars_name <- mtcars` y sobre este nuevo set de datos realizar el ejercicio requerido. La misma recomendación aplica para el desarrollo de los demás ejercicios del presente numeral. Si presenta problemas en alguno de los ejercicios, limpiar el **Environment** de **Rstudio** y  reiniciar su desarrollo.* 
+<br>
+
++ Cambiar los nombres de las variables  `hp`, `wt` y `am` por los nombres `hp_new`, `wt_new` y `am_new`. Guarde e imprima los resultados con los nuevos nombres de las variables en un objeto llamado `mtcars_name`.
+
++ Eliminar, haciendo uso de vectores, las variables `drat`, `wt`, `qsec`, `vs`, `am`, `gear` y `carb`. Guardar e imprimir los últimos 5 resultados del nuevo conjunto de datos en un objeto llamado `mtcars_vec`. 
+
++ Eliminar, haciendo uso del dato `NULL`, las variables `mpg`, `cyl`,  `disp` y   `hp`. Guardar e imprimir los resultados en un objeto `data.frame` llamado `mtcars_nulos`. 
+
++ Modificar/cambiar por 3000 el valor de la variable `wt` del individuo ubicado en la posición 1 (fila 1). Guardar e imprimir los resultados de los primeros 5 individuos en un objeto llamado `mtcars_modif`.
+
++ Eliminar, haciendo uso de vectores, los primeros 5 individuos. Guardar y presentar los primeros 10 resultados en un nuevo conjunto de datos llamado `mtcars_ind2`.
+
++ Adicionar una nueva variable llamada `New_Var` con los valores 2, 4, 6, 8, ... Guardar e imprimir los primeros 10 individuos en un objeto llamado `mtcars_var_new`.
+
++ Adicionar un nuevo individuo al conjunto de datos `mtcars`. Seleccione los valores que a bien considere (aleatorios) para las 11 variables que conforman este conjunto de datos y requeridas para adicionar este nuevo individuo. Guardar e imprimir los resultados desde un objeto llamado `mtcars_new_ind`.  
+
+
+10. Explorar, en la web, la utilidad de la función **`subset()`** de R e indagar si esta puede ser empleada para extraer, del conjunto de datos `iris`, las variables `Sepal.Length`, `Petal.Length` y  `Species` de las flores cuya especie `Species` es igual a `setosa`. Si no es posible realizar la anterior consulta, explicar por qué?

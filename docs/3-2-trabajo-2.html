@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Personalizar Rstudio | Un Primer Curso de R</title>
-  <meta name="description" content="1.3 Personalizar Rstudio | Un Primer Curso de R" />
+  <title>3.2 Trabajo 2 | Un Primer Curso de R</title>
+  <meta name="description" content="3.2 Trabajo 2 | Un Primer Curso de R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Personalizar Rstudio | Un Primer Curso de R" />
+  <meta property="og:title" content="3.2 Trabajo 2 | Un Primer Curso de R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Personalizar Rstudio | Un Primer Curso de R" />
+  <meta name="twitter:title" content="3.2 Trabajo 2 | Un Primer Curso de R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="1-2-instalar-rstudio.html"/>
-<link rel="next" href="2-Fund.html"/>
+<link rel="prev" href="3-1-trabajo-1.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -199,24 +199,98 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="personalizar-rstudio" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Personalizar Rstudio</h2>
-<p>Una vez hemos instalado de manera correcta <strong>R</strong> y <strong>Rstudio</strong>, el último paso a seguir es el de la personalización de Rstudio de acuerdo a cada una de nuestras necesidades o preferencias (este paso es opcional). Para ello, iniciamos <strong>Rstudio</strong> desde nuestro equipos y una vez abra, vamos a la pestaña <strong>Tools</strong> y damos clic en la opción <strong>Global Options</strong> (ver figura de abajo).</p>
+<div id="trabajo-2" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Trabajo 2</h2>
+<ol style="list-style-type: decimal">
+<li><p>Cree en R una matriz de 5 <code>filas</code> y 4 <code>columnas</code>, ingrese los datos por filas a través de un vector que contenga los numeros 10, 20, 30, …, 200. Cree el vector previamente mencionado haciendo uso de la función <code>seq()</code>. Guarde e imprimar los resultados de la matriz en una variable/objeto llamada <code>Matriz_Ejer</code>.</p></li>
+<li><p>Haciendo uso de la funciones <code>rownames()</code> y <code>colnames()</code> asígnele a la matriz creada en el ejercicio 1 <code>Matriz_Ejer</code> los nombres a las filas y a las columnas. Los nombres de las filas están contenidas en el vector <code>c('Fila1',    'Fila2',    'Fila3',    'Fila4',    'Fila5')</code> y los de las columnas en el vector <code>c('Colum1',   'Colum2',   'Colum3',   'Colum4')</code>. Imprima los resultados de la matriz <code>Matriz_Ejer</code> con los nombres asignados.</p></li>
+<li><p>Adicione a la matriz creada en el ejercicio 2 <code>Matriz_Ejer</code>, haciendo uso de la función <code>rbind()</code>, una nueva fila con los elementos <code>c(210, 220, 230, 240)</code>. Luego, a la matriz resultante con la nueva fila, asígnele una nueva columna con los elementos <code>c(50, 90, 130, 170, 210, 250)</code>. La matriz <code>Matriz_Ejer</code> ahora cuenta con 6 filas y 5 columnas; no obstante, la fila 6 y la columna 5 no tienen asignado un nombre. ¿Qué debemos hacer para asignarle el nombre <code>Fila5</code> a la fila 5 y el nombre <code>Colum5'</code> a la columna 5 de la matriz <code>Matriz_Ejer</code>.</p></li>
+<li><p>Cree en R una matriz de 4 <code>filas</code> y 4 <code>columnas</code>, ingrese los datos por columnas a través de un vector construido haciendo uso de la función <code>rep()</code> de tal manera que la primera columna esté compuesta por unos (1), la segunda por doses (2), la tercera por treses (3) y la cuarta, por cuatros (4). Ingrese, al crear la anterior matriz y haciendo uso del argumento <code>dimnames</code> de la función <code>matrix()</code>, los nombres de las filas y las columnas los cuales deben ser, respectivamente, <code>c('Fil1', 'Fil2', 'Fil3' y 'Fil4')</code> y <code>c('Co1', 'Col2', 'Col3' y 'Col4')</code>. Almacene los resultados en una variable/objeto llamada <code>Matriz_Rep</code>.</p></li>
+</ol>
+<p>A partir de la matriz previamente creada <code>Matriz_Rep</code>, desarrolle las siguientes actividades.</p>
 <ul>
-<li><em><strong>Paso 1</strong></em></li>
+<li><p>Seleccione la totalidad de elementos de la fila 1.</p></li>
+<li><p>Seleccione la totalidad de elementos de la columna 3.</p></li>
+<li><p>Seleccione el elemento ubicado en la fila 3 columna 4.</p></li>
+<li><p>Seleccione, haciendo uso de vectores con enteros positivos, las columnas 3 y 4.</p></li>
+<li><p>Seleccione, haciendo uso de vectores con elementos lógicos, los elementos ubicados en las filas 2 y 4.</p></li>
+<li><p>Seleccione, a través de una única consulta, los elementos ubicados en las intersecciones de las filas 1 y 3 y las columnas 1 y 4. Para el caso de las filas hacer uso de un vector con enteros negativos y para el caso de las columnas hacer uso de un vector de tipo caracter (textual).</p></li>
 </ul>
-<p><img src="Imagenes/Personaliza1.png" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>El conjunto de datos <code>mtcars</code>, al igual que el conjunto de datos <code>iris</code> y que se trabajó a lo largo del documento, hace parte de los marcos de datos <code>data.frame</code> que vienen incluidos por defecto en R desde el momento de su instalación<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>. Haciendo uso de las funciones <code>class()</code>, <code>names()</code>, <code>dim()</code>, <code>length()</code>, <code>ncol()</code>, <code>nrow()</code>, <code>head()</code>, <code>tail()</code>, <code>str()</code> y <code>summary()</code>, explorar el contenido del marco de datos <strong><code>mtcars</code></strong>.</p></li>
+<li><p>Selecionar la variable <code>carb</code> del conjunto de datos (data.frame) <code>mtcars</code> haciendo uso de los operadores <code>[]</code>, <code>[ , ]</code>, <code>[[ ]]</code> y <code>$</code>. ¿Existe alguna diferencia en el resultado al usar alguna de estas formas de extracción de una variable en R?</p></li>
+<li><p>Seleccionar las variables <code>mpg</code>, <code>disp</code>, <code>drat</code>, <code>qsec</code>, <code>am</code> y <code>carb</code> del conjunto de datos <code>mtcars</code>. El proceso de selección de estas variables debe realizarse a través de cuatro vías: haciendo uso de vectores con <em>enteros positivos</em>, haciendo uso de vectores con <em>enteros negativos</em>, haciendo uso de vectores con <em>elementos lógicos</em> y haciendo uso de vectores con datos de tipo <em>caracter o textuales</em>.</p></li>
+<li><p>Seleccionar, del conjunto de datos <code>mtcars</code>, los individuos con valores 4 o 6 en la variable <code>cyl</code> y cuyos valores en la variable <code>mpg</code> son mayores o iguales <code>&gt;=</code> a 25. Para estos individuos, retener la información de las variables <code>mpg</code>, <code>cyl</code> y <code>carb</code>. Guardar/almacenar e imprimir los resultados de este ejercicio en un objeto/variable llamado <code>mtcars_new</code>.</p></li>
+<li><p>Tomando como referencia el conjunto de datos <code>mtcars</code>, realizar las siguientes actividades. Cada uno de los ejercicios <strong>debe</strong> partir del conjunto de datos original; es decir, sin manipulaciones o ajustes previos del marco de datos <code>mtcars</code>. Para ello, iniciar el desarrollo de los siguientes ítems limpiando el <strong>Environment</strong> de <strong>Rstudio</strong>.<br></p></li>
+</ol>
+<p><strong>Recomendación</strong>.
+<em>Al inicio de cada uno de los ejercicios cree, a partir del conjunto de datos <code>mtcars</code>, el nuevo conjunto de datos con el nombre requerido. Por ejemplo, para el primero de los ejercicios que se presenta a continuación, se podrá crear el nuevo conjunto de datos haciendo uso de la línea de código <code>mtcars_name &lt;- mtcars</code> y sobre este nuevo set de datos realizar el ejercicio requerido. La misma recomendación aplica para el desarrollo de los demás ejercicios del presente numeral. Si presenta problemas en alguno de los ejercicios, limpiar el <strong>Environment</strong> de <strong>Rstudio</strong> y reiniciar su desarrollo.</em>
+<br></p>
 <ul>
-<li><em><strong>Paso 2</strong></em></li>
+<li><p>Cambiar los nombres de las variables <code>hp</code>, <code>wt</code> y <code>am</code> por los nombres <code>hp_new</code>, <code>wt_new</code> y <code>am_new</code>. Guarde e imprima los resultados con los nuevos nombres de las variables en un objeto llamado <code>mtcars_name</code>.</p></li>
+<li><p>Eliminar, haciendo uso de vectores, las variables <code>drat</code>, <code>wt</code>, <code>qsec</code>, <code>vs</code>, <code>am</code>, <code>gear</code> y <code>carb</code>. Guardar e imprimir los últimos 5 resultados del nuevo conjunto de datos en un objeto llamado <code>mtcars_vec</code>.</p></li>
+<li><p>Eliminar, haciendo uso del dato <code>NULL</code>, las variables <code>mpg</code>, <code>cyl</code>, <code>disp</code> y <code>hp</code>. Guardar e imprimir los resultados en un objeto <code>data.frame</code> llamado <code>mtcars_nulos</code>.</p></li>
+<li><p>Modificar/cambiar por 3000 el valor de la variable <code>wt</code> del individuo ubicado en la posición 1 (fila 1). Guardar e imprimir los resultados de los primeros 5 individuos en un objeto llamado <code>mtcars_modif</code>.</p></li>
+<li><p>Eliminar, haciendo uso de vectores, los primeros 5 individuos. Guardar y presentar los primeros 10 resultados en un nuevo conjunto de datos llamado <code>mtcars_ind2</code>.</p></li>
+<li><p>Adicionar una nueva variable llamada <code>New_Var</code> con los valores 2, 4, 6, 8, … Guardar e imprimir los primeros 10 individuos en un objeto llamado <code>mtcars_var_new</code>.</p></li>
+<li><p>Adicionar un nuevo individuo al conjunto de datos <code>mtcars</code>. Seleccione los valores que a bien considere (aleatorios) para las 11 variables que conforman este conjunto de datos y requeridas para adicionar este nuevo individuo. Guardar e imprimir los resultados desde un objeto llamado <code>mtcars_new_ind</code>.</p></li>
 </ul>
-<p>En la ventana emergente, como se ilustra en la figura de abajo y, entre otras opciones, podemos personalizar el tamaño de la letra a usar <strong>Rstudio</strong> así como el color de fondo del mismo. Yo, por ejemplo, uso el tamaño de letra asignado por defecto (11) y como color de fondo uso la opción <strong>Cobalt</strong>.</p>
-<p><img src="Imagenes/Personaliza2.png" /></p>
+<ol start="10" style="list-style-type: decimal">
+<li>Explorar, en la web, la utilidad de la función <strong><code>subset()</code></strong> de R e indagar si esta puede ser empleada para extraer, del conjunto de datos <code>iris</code>, las variables <code>Sepal.Length</code>, <code>Petal.Length</code> y <code>Species</code> de las flores cuya especie <code>Species</code> es igual a <code>setosa</code>. Si no es posible realizar la anterior consulta, explicar por qué?</li>
+</ol>
 
 </div>
 <!-- </div> -->
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="39">
+<li id="fn39"><p>Estos conjuntos de datos hacen parte de una librería llamada <code>datasets</code> cuyos conjuntos de datos pueden ser explorados haciendo uso de la función <code>data()</code>. De igual manera, estos pueden ser descargados en formatos CSV desde la siguiente <a href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">página web</a><a href="3-2-trabajo-2.html#fnref39" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
 <h2 style="color:#2ca25f;">Comentarios</h2>
 
 <div id="disqus_thread"></div>
@@ -246,8 +320,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="1-2-instalar-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-Fund.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3-1-trabajo-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
