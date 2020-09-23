@@ -2626,5 +2626,518 @@ summary(iris)
 
 ### Listas {#Listas}
 
+La quinta estructura de datos empleada por R son las listas. Estas estructura de datos, como se ilustra en la siguiente imagen, son estructura de tipo multidimensional que permite en su interior la disposición de otras estructuras de datos. 
+
+![Representación gráfica de una lista](Imagenes/Lista.png)
+
+Las listas, a diferencia de los vectores, las matrices, los arreglos y los marcos de datos `data.frame`, no exigen ningún requisito para su conformación. En ellas pueden ser almacenadas objetos de diversas tipologías como, por ejemplo, los hasta hora vistos. Es decir, una lista puede estar compuesta por vectores, matrices, `data.frame` e incluso, otras listas. A continuación, se presenta la regla general para la construcción de listas en R.
+
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Construcción de listas en R</p></strong><br>
+En R, las **listas** se construyen haciendo uso de la función `list()`. Dentro de la función `list()`, se definen los objetos que esta contendrá los cuales pueden ser de cualquier naturaleza, incluso otras listas.
+</p>
+</blockquote>
+<br>
+
+Aunque las listas no se usan de manera frecuente en los análisis de datos convencionales^[Además, las listas presentan algunas limitaciones y ciertos rasgos característicos frente a las demás estructuras de datos que se han presentado en este capítulo. Por ejemplo, en las listas, no aplica la regla de **coerción** de elementos la cual sí aplica para los `vectores`, las `matrices`, los `arreglos` y las variables de un `data.frame`], estas resultan de amplia utilidad para la conformación del lenguaje y para la construcción de paquetes o librerías en R a los cuales acudimos de manera regular para ciertos propósitos. A continuación, se presenta un ejemplo de creación de  una lista en R y que hemos decidio guardar/almacenar dentro de un objeto llamado `Mi_primera_lista`.
+
+<p style="color:#e6550d";><i>Ejemplo. Creación de listas en R </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Creación de objetos/variables que contendrá la lista
+vector_1 <- c(1, 2, 3, 4)
+matriz_1 <- matrix(c(1:4), nrow=2, byrow = TRUE)
+marco_1 <- head(iris)
+vector_2 <- c(TRUE, FALSE, TRUE)
+marco_2 <- tail(mtcars)
+lista_1 <- list(Letras = LETTERS[c(1:5)], Matriz = matrix(c(1:9), nrow=3))
+
+# Creación de la lista a partir de los objetos previamente creados  
+Mi_primera_lista <- list(Elemento1 = vector_1, Elemento2 = matriz_1, 
+                         Elemento3 = marco_1, Elemento4 = vector_2, 
+                         Elememnto5 = marco_2, Elemento6 = lista_1)
+# Impresión/presentación de los resultados de la lista
+Mi_primera_lista
+```
+
+En el ejemplo anterior hemos creado, haciendo uso de la función `list()`, una lista llamada `Mi_primera_lista` la cual está conformada por 6 elementos^[Desde una perspectiva filosófica, una lista es equivamente a un vector compuesto por elementos los cuales, a diferencia de los vectores hasta ahora vistos que exigen una misma tipología, pueden ser de diversos tipos. De hecho en R, desde una pespectiva conceptual, el conjunto de los vectores está conformado por dos subconjuntos: el de los vectores de naturaleza **atómica** y el de las **listas**. El subconjunto de los vectores atómicos está conformado por los vectores presentados en la sección de [vectores](#Vectores) de este capítulo]. El primer elemento de esta lista, identificado  como `Elemento1`^[En el el caso de que no se le asigne un nombre a los elementos de una lista, las posiciones de estos en el output de R pueden ser identificados a través de corchetes dobles. Por ejemplo, el primero de los elementos se ubica en la posición `[[1]]`, el segundo en la posición `[[2]]`, y así sucesivamente.] en el resultado anterior, está conformato por por el vector `c(1, 2, 3, 4)`. El segundo elemento, nombrado como `Elemento2`, está conformado por una matriz de 2 filas y dos columnas con datos que se han ingresado por filas (`byrow = TRUE`). El tercer elemento, identificado como `Elemento3`, está conformado por un  `data.frame` con los primeros 6 individuos del marco de datos `iris`. El cuarto elemento, nombrado como `Elemento4`, está compuesto por el vector lógico `c(TRUE, FALSE, TRUE)`. El quinto elemento, identificado como `Elemento5`, está conformado por un `data.frame` con los últimos 6 individuos del marco de datos `mtcars`. Finalmente, el sexto elemento del la lista `Mi_primera_lista` está conformado a su vez por otra lista identificada en la consola o salida de R como `Elemento6` la cua está compuesta por dos elementos: un vector de tipo caracter o textual con las primeras 5 letras mayúsculas del alfabeto romano `LETTERS[c(1:5)]` e identificado como `Letras` y una matriz de 3 filas y 3 columnas `matrix(c(1:9), nrow=3)` identificada como `Matriz`.
+
+#### _Indexación/subconjuntos en listas_ {#IndexaLS}
+
+Al igual que el caso de vectores, matrices y marcos de datos o `data.frame`, una de las actividades que más se usa a la hora gestionar listas en R es la indexación o extracción de subconjuntos de elementos. En R, al igual que en el caso de `data.frame`, existen tres operadores o formas (`[]`, `[[ ]]` y `$`) para la selección de los elementos de una lista. A continuación, se presenta la regla del lenguaje asociada a la indexación de `listas` en R.
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla. Subconjuntos de elementos en listas</p></strong><br>
+El proceso de extracción de elementos de una lista en R implica el uso de tres operadores: **`[]`**, **`[[]]`** o **`$`**. El operador **`$`** exige que los elementos de las listas tengan asignado un nombre.
+
+</p>
+</blockquote>
+<br>
+
+En las listas, al igual que en los marcos de datos o `data.frame`, el uso de los anteriores operadores para la selección de elementos dependerá si se desea seleccionar uno o más de sus elementos. Mientras que los operadores `[]`, `[[ ]]` y `$` pueden ser usados para la selección de un único elemento de una lista, para el caso  de la selección de más de un elemento, únicamente puede ser usado el operador `[]`.  
+
+##### Selección de un elemento de una lista
+
+Como se acaba de presentar, la selección de un elemento contenido en una lista de R se puede dar a través de tres formas: haciendo uso de los operadores `[]`, `[[ ]]` y `$`. A continuación, se presenta el desarrollo de cada una de estas formas de selección. 
+
++ Selección de un elemento de una lista haciendo uso del operador `[]`.
+
+La selección de un elemento de una lista haciendo uso del operador `[]` exige la inclusión, dentro de los corchetes, del nombre o la posición del elemento que será seleccionado. El objeto resultante de este mecanismo de selección **conserva** la estructura del objeto original; es decir, continúa siendo una lista.
+
++ Selección de un elemento de una lista haciendo uso del operador `[[ ]]`.
+
+La selección de un elemento de una lista haciendo uso del operador `[[ ]]` exige la inclusión, dentro de los dobles corchetes, del nombre o la posición del elemento que será seleccionado. El objeto resultante de este mecanismo, a diferencia del caso anterior, **no conserva** la estructura del objeto original; es decir, no continúa siendo una lista a menos que el elemento seleccionado sea a su vez una lista.
+
++ Selección de un elemento de una lista haciendo uso del operador `$`.
+
+La selección de un elemento de una lista haciendo uso del operador `$` exige el nombre o la posición del elemento que será seleccionado. El objeto resultante de este mecanismo, al que en el caso del operador `[[ ]]`, **no conserva** la estructura del objeto original; es decir, no continúa siendo una lista a menos que el elemento seleccionado sea a su vez una lista.
+
+A continuación, haciendo uso de la lista creada previamente y llamada `Mi_primera_lista`, se presentan algunos ejemplos de selección de un único elemento a partir de una lista disponible en R.
+
+<p style="color:#e6550d";><i>Ejemplo. Selección de un elemento de una lista de R </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Creación de variables/elementos para la lista
+vector_1 <- c(1, 2, 3, 4)
+matriz_1 <- matrix(c(1:4), nrow=2, byrow = TRUE)
+marco_1 <- head(iris)
+vector_2 <- c(TRUE, FALSE, TRUE)
+marco_2 <- tail(mtcars)
+lista_1 <- list(Letras = LETTERS[c(1:5)], Matriz = matrix(c(1:9), nrow=3))
+
+# Creación de la lista 
+Mi_primera_lista <- list(Elemento1 = vector_1, Elemento2 = matriz_1, 
+                         Elemento3 = marco_1, Elemento4 = vector_2, 
+                         Elemento5 = marco_2, Elemento6 = lista_1)
+
+# Visualización de la lista 
+Mi_primera_lista 
+```
+
+<p style="color:#e6550d";><i>Haciendo uso del operador [ ] </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Selección del segundo elemento haciendo uso del operador [] - por posición
+Mi_primera_lista[2]
+
+# Selección del segundo elemento haciendo uso del operador [] - por nombre
+# Guardar e imprimir los resultados a partir de un objeto llamado 'Elemento_2'
+Elemento_2 <- Mi_primera_lista[c('Elemento2')]
+Elemento_2
+
+# Verificar la estructura de datos del elemento seleccionado - función class()
+class(Elemento_2)
+```
+
+<p style="color:#e6550d";><i>Haciendo uso del operador [[ ]] </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Selección del quinto elemento haciendo uso del operador [[ ]] - por posición
+Mi_primera_lista[5]
+
+# Selección del quinto elemento haciendo uso del operador [[ ]] - por nombre
+# Guardar e imprimir los resultados a partir de un objeto llamado 'Elemento_5'
+Elemento_5 <- Mi_primera_lista[['Elemento5']]
+Elemento_5
+
+# Verificar la estructura de datos del elemento seleccionado - función class()
+class(Elemento_5)
+```
+
+<p style="color:#e6550d";><i>Haciendo uso del operador $ </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Selección del sexto elemento haciendo uso del operador $ - por nombre
+# Guardar e imprimir los resultados a partir de un objeto llamado 'Elemento_6'
+Elemento_6 <- Mi_primera_lista$Elemento6
+Elemento_6
+
+# Verificar la estructura de datos del objeto Elemento_6 - función class()
+# ¿Por qué el objeto resultante (Elemento_6) es una lista?
+class(Elemento_6)
+```
+
+##### Selección de más de un elemento de una lista
+
+La selección de más de un elemento contenido en una lista en R se da a través del uso del operador`[]` y dentro de este, acudiendo a vectores cuyos elementos pueden ser _enteros positivos_, _enteros negativos_, _lógicos_ o de tipo _caracter_. Así mismo, la selección de más de un elemento de una lista, implica una lista como objeto resultante. Es decir, en una lista de R, a diferencia de lo que puede ocurrir al seleccionar un elemento, la selección de más de un elemento **siempre** arrojará como resultado una nueva lista. A continuación, haciendo uso de la lista Mi_primera_lista`, se presentan algunos ejemplos con la selección de dos o más elementos  de una lista haciendo uso de vectores con diversas tipologías.
+
+<p style="color:#e6550d";><i>Ejemplo. Selección de más de un elemento de una lista de R </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Creación de variables/elementos para la lista
+vector_1 <- c(1, 2, 3, 4)
+matriz_1 <- matrix(c(1:4), nrow=2, byrow = TRUE)
+marco_1 <- head(iris)
+vector_2 <- c(TRUE, FALSE, TRUE)
+marco_2 <- tail(mtcars)
+lista_1 <- list(Letras = LETTERS[c(1:5)], Matriz = matrix(c(1:9), nrow=3))
+
+# Creación de la lista 
+Mi_primera_lista <- list(Elemento1 = vector_1, Elemento2 = matriz_1, 
+                         Elemento3 = marco_1, Elemento4 = vector_2, 
+                         Elemento5 = marco_2, Elemento6 = lista_1)
+
+# Visualización de la lista 
+Mi_primera_lista 
+```
+
+<p style="color:#e6550d";><i>Haciendo uso de vectores con enteros negativos </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Selección del primer elemento 
+Mi_primera_lista[-c(2:6)]
+
+# Selección del segundo y del cuarto elemento
+# Guardar e imprimir los resultados a partir de un objeto llamado 'Negativos_1'
+Negativos_1 <- Mi_primera_lista[c(-1, -3, -5, -6)]
+Negativos_1 
+
+# Verificar la estructura de datos del objeto Negativos_1 - función class()
+class(Negativos_1)
+```
+
+<p style="color:#e6550d";><i>Haciendo uso de vectores con enteros positivos </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Selección de los elementos 3 y 5
+Mi_primera_lista[c(3, 5)]
+
+# Selección de los elementos 1, 4 y 6.
+# Guardar e imprimir los resultados a partir de un objeto llamado 'Positivos_1'
+Positivos_1 <- Mi_primera_lista[c(1, 4, 6)]
+Positivos_1 
+
+# Verificar la estructura de datos del objeto Positivos_1 - función class()
+class(Positivos_1)
+```
+
+<p style="color:#e6550d";><i>Haciendo uso de vectores con elementos lógicos </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Selección de los elementos 2, 4 y 5
+Mi_primera_lista[c(FALSE, TRUE, FALSE, TRUE, TRUE, FALSE)]
+
+# Selección de los elementos 1, 3 y 5.
+# Guardar e imprimir los resultados a partir de un objeto llamado 'Logicos_1'
+# Aplicando la regla de reciclaje de elementos
+Logicos_1 <- Mi_primera_lista[c(TRUE, FALSE)]
+Logicos_1 
+
+# Verificar la estructura de datos del objeto Logicos_1 - función class()
+class(Logicos_1)
+```
+
+<p style="color:#e6550d";><i>Haciendo uso de vectores con elementos textuales (cadena o caracter) </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Selección de los elementos cuyos nombres son Elemento2 y Elemento5
+Mi_primera_lista[c('Elemento2', 'Elemento5')]
+
+# Selección de los elementos cuyos nombres son Elemento1, Elemento2 y Elemento6.
+# Guardar e imprimir los resultados a partir de un objeto llamado 'Textos_1'
+Textos_1 <- Mi_primera_lista[c('Elemento1', 'Elemento2', 'Elemento6')]
+Textos_1 
+
+# Verificar la estructura de datos del objeto Textos_1 - función class()
+class(Textos_1)
+```
+
+#### _Otras actividades con listas_ {#OtrasLS}
+
+La gestión de listas en R, al igual que los marcos de datos o `data.frame`, implican la realización de un número importante de actividades sobre sus elementos entre las que se destacan, entre otras, la asignación o el cambio de los nombres, la modificación del contenido y la adición y eliminación de los mismos. A continuación, se presentan algunos ejemplos con parte de las principales actividades aplicables a la gestión de listas las cuales, dado el alcance de este documento, se presentan de manera general. El desarrollo de estos ejemplos, como se puede deducir, se soportan en el conocimiento requerido para la gestión de marcos de datos o `data.frame` y que se presentó en la [sección](#DataFrames) anterior. Si se considera necesario, invitamos al lector a explorar nuevamente este contenido y, en especial, a revisar los apartados relacionadas con la [modificación y eliminación](#EliminaDF) de variables en `data.frame` y con la [adición de elementos](#AdicionaDF) en estas estructuras de datos.
+
+<p style="color:#e6550d";><i>Ejemplo. Actividades frecuentes en la gestión de listas con R</i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Crear lista llamada Milista_2
+# No se le asignó nombres a los elementos
+Milista_2 <- list(c(1, 2, 3, 4, 6), 
+                 matrix(c(1:9), byrow = TRUE, nrow= 3, ncol = 3),
+                 head(mtcars, n = 5))
+# Visualizar elementos de Milista_2
+# Revisar como identifica R, en el output, cada uno de los elementos de Milista_2
+Milista_2
+```
+
+<p style="color:#e6550d";><i>Asignar o modificar nombres de elementos de una lista </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Asignar nombres a la lista Milista_2
+# Hacer uso de la función names()
+names(Milista_2) <- c('Nomb_1', 'Nomb_2', 'Nomb3')
+# Mostrar lista con nombres asignados
+Milista_2
+# modificar el nombre del tercer elemento (Nomb3) por Nomb_3
+names(Milista_2)[3] <- c('Nomb_3')
+# Mostrar lista con el nombre del tercer elemento modificado
+Milista_2
+```
+
+<p style="color:#e6550d";><i>Modificar contenido de elementos de una lista </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Modificar contenido de elementos (reemplazar)
+# cambiar el elemento de la lista llamado 'Nomb_1' por el vector c(5, 7:9, 11)
+# ¿Por qué se necesita usar corchetes dobles?
+Milista_2[[c('Nomb_1')]] <- c(5, 7:9, 11)
+# Mostrar lista con elemento reemplazado
+Milista_2
+
+# Modificar contenido de elementos (modificar)
+# Modificar los elementos 1 y 5 del elemento Nomb_1 de la lista 
+# Analizar cómo R desarrolla este ejercicio
+Milista_2[[c('Nomb_1')]][c(1, 5)] <- c(6, 10)
+# Mostrar lista con elemento modificado
+Milista_2
+```
+
+<p style="color:#e6550d";><i> Adicionar elementos a una lista </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Adiciconar un nuevo elemento llamado Nomb_4 a la lista
+# La lista ahora cuenta con 4 elementos
+# ¿Qué tiene de especial este nuevo elemento
+Milista_2$Nomb_4 <- list(a = seq(1, 10, 2), b = matrix(c(1:4), ncol = 2))
+# Mostrar lista con nuevo elemento
+Milista_2
+```
+
+<p style="color:#e6550d";><i> Eliminar elementos de una lista </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Eliminar los elementos de la lista llamados 'Nomb_1' y 'Nomb_2'
+Milista_2[c('Nomb_1', 'Nomb_2')] <- NULL
+# Mostrar lista con elementos modificados
+Milista_2
+```
+
+Los anteriores ejemplos, que hacen parte de la cotidianidad de la gestión con listas en R, en un principio pueden resultar complejos de entender y desarrollar dado el tiempo de comprensión que probablemente estos exigen de cada uno de nosotros. Por lo anterior, invitamos a los lectores a complementar el conocimiento de lo expuesto en esta sección dadas las limitaciones anunciadas y el alcance esperado con el desarrollo del presente documento.
+
 ### Factores {#Factores}
+
+A lo largo de esta sección del documento hemos presentado, con menor o mayor profundidad, las características de las principales [estructuras de datos](#Edatos) que conforman la base del lenguaje de programación estadístico R ([vectores](#Vectores), [matrices](#Matrices), [marcos de datos](#DataFrames) o `data.frame` y [listas](#Listas)). En R base, existe una sexta característica del lenguaje la cual resulta de alta útilidad en la gestión y análisis de datos, conocida como factores. Los factores, aunque no son considerados como una estructuta de datos propia del lenguaje, están orientados a facilitar el trabajo con variables de tipo categórico o nominal y de tipo ordinal.
+
+Aunque este texto no está orientado a la metodología de la investigación, en la práctiva investigativa e incluso en el contexto de la gestión empresarial a nivel público o privado, es común el trabajo con variables las cuales pueden ser clasificadas, desde una perspectiva metodológica, en tres categorías^[Esta propuesta de clasificación de las tipologías de las variables es una de varias existentes en el contexto de la metodología de la la investigación. En nuestro criterio, esta forma de clasificar variables, es una de las más empleadas y de mayor utilidad para la gestión de datos y el análisis estadístico]: **continuas** (intervalo o razón), **nominales** o categóricas y **ordinales**. Las **variables de intervalo** hacen parte del subconjunto de variables continuas y se diferencian de las **variables de razón**, que también pertenecen a este  subconjunto, en la inexistencia de un cero absoluto. Por ejemplo, la temperatura del ambiente es un ejemplo de variable de intervalo porque 0 grados no significa ausencia de temperatura. En contraste, la velocidad de un vehículo, es un ejemplo de una variable de razón porque 0 sí significa ausencia de velocidad -el vehículo se encuentra detenido-. 
+
+Las **variables nominales** o categóricas se caracterizan por "medir" las cualidades de un atributo de interés -un número limitado-. Estas pueden hacer uso o no de números, pero carece de sentido realizar con estos las operaciones aritméticas básicas pues los mismos juegan un rol exclusivo de identificación. Las **variables ordinales**, de manera semejante y a diferencia de las nominales, permiten la identificación de una o más cualidades de un individuo pero a diferencia de las nominales, en estas existe un orden entre las modalidades de la variable. Por ejemplo, el sexo o el estado civil de una persona son ejemplos de varaibles de tipo nominal pues estas están conformadas por cualidades en donde el orden de las mismas carece de sentido. El _status_ social  de una persona (bajo, medio o alto) o el nivel de satisfacción de un usuario con un servicio (malo, regular, bueno o excelente) son ejemplos de variales de tipo ordinal en donde las cualidades, además de representar una característica de interés, presentan un orden en su magnitud: malo es peor que regular, regular es peor que bueno y bueno es peor que excelente, por ejemplo.
+
+Para una gestión correcta de variables de tipo nominal u ordinal en R, es aconsejable el uso de factores. A continuación, se presenta la regla general para la construcción de factores en R.
+
+<br>
+<blockquote>
+<p><strong><p style="color:red;">Regla: Construcción de factores en R</p></strong><br>
+En R, los **factores** se construyen haciendo uso de la función `factor()`. Esta función está compuesta por un conjunto de argumentos requeridos para una correcta gestión de variables nominales u ordinales.
+</p>
+</blockquote>
+<br>
+
+A continuación, a través del desarrollo de un ejemplo, se presentan las principales características asociadas a la gestión de factores en R. Para ello, supongamos que estamos interesados en conocer el total de personas que pertenecen a cada uno de los grupos sanguíneos existentes `(O, A, B Y AB)` a partir de los resultados observados en una muestra de 10 individuos. El grupo sanguíneo al que pertenece cada uno de los individuos del ejemplo está contenido en un vector llamado `Grupo_S` cuyos valores son `c('O', 'A', 'B', 'O', 'A', 'O', 'O', 'A', 'B', 'O')` y la tabla con el total de los individuos que conforman cada grupo será calculada a través del uso de una función disponible en R llamada `table()`^[A través de esta función es posible calcular en R el número de individuos que pertenecen a cada una de las modalidades de una variable de tipo categórico, nominal u ordinal]. Los resultados de los grupos sanguíneos^[Una función de R que resulta útil para explorar el contenido de una variable categórica es la función `unique()`. A través de esta función es posible explorar la cantidad de opciones de respuesta disponibles dentro de una variable nominal o categórica.] al que pertenecen cada uno de los individuos del ejemplo están contenidos dentro de un vector de tipo cadena o caracter y a partir de estos, sin el uso de factores, se puede dar respuesta a la pregunta de interés: ¿cuántos individuos pertenecen acada uno de los grupos sanguíneos actualmente existentes? A continuación, se presenta el desarrollo del ejercicio sin acudir al uso de factores. 
+
+<p style="color:#e6550d";><i>Ejemplo. Construcción de tablas a partir de vectores de tipo cadena o caracter (textuales).</i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Definir el vector con información de grupos sanguíneos
+Grupo_S <- c('O', 'A', 'B', 'O', 'A', 'O', 'O', 'A', 'B', 'O')
+
+# Visualizar los resultados
+Grupo_S
+
+# Verificar el tipo de vector que contiene los resultados
+class(Grupo_S)
+
+# Construir una tabla con el total de invividuos por grupo sanguíneo
+table(Grupo_S)
+```
+
+Al observar los resultados del ejemplo anterior podemos concluir que existen tres individuos que pertenecen al grupo sanguíneo `A`, 2 al grupo sanguíneo `B` y 5 al grupo sanguíneo `O`. Con esta forma de proceder, desde luego, estamos dando una respuesta a la pregunta de interés. No obstante, si quisieramos ser más precisos en nuestra respuesta, ninguno de los individuos pertenece al grupo sanguíneo AB y en la tabla de respuesta esta característica no fue tenida en cuenta. En esta situación y en otras como: el caso en el que deseemos renombrar las opciones de respuesta de una variable categórica, ordenar la presentación de los resultados de una variable categórica o señalar que sus opciones tienen un orden natural definido (variables ordinales), resulta de alta utilidad gestionar este tipo de variables acudiendo al uso de de factores.
+
+#### Crear factores en R
+
+La primera forma disponible para crear factores en R es haciendo uso de la función `factor()` sin argumentos; es decir, únicamente con la variable que se desea transformar como un factor. A continuación, se presenta la creación de un factor a través de esta vía a partir de la variable disponible con el ejemplo de los grupos sanguíneos. 
+
+<p style="color:#e6550d";><i>Ejemplo. Creación de factores por defecto en R</i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Definir el vector con información de grupos sanguíneos
+Grupo_S <- c('O', 'A', 'B', 'O', 'A', 'O', 'O', 'A', 'B', 'O')
+
+# Crear la variable como un factor a través del uso de la función factor()
+# Almacenar los resultados en una variable llamada Grupo_S_factor
+Grupo_S_factor <- factor(Grupo_S)
+
+# Visualizar los resultados del objeto Grupo_S_factor
+Grupo_S_factor
+
+# Verificar el tipo de objeto que contiene los resultados
+class(Grupo_S_factor)
+
+# Ver las características de la variable transformada - función str()
+str(Grupo_S_factor)
+
+# Construir una tabla con el total de invividuos por grupo sanguíneo
+# Haciendo uso de una variable convertida en factor
+table(Grupo_S_factor)
+```
+
+Al analizar los resultados anteriores podemos observar varios aspectos de suma importancia a la hora de gestionar variables en R haciendo uso de factores. En primer lugar, al visualizar los resultados del objeto `Grupo_S_factor` este, además de presentar los resultados del vector, viene acompañado de una nueva línea `Levels: A B O` en donde se nos anuncia que nuestra variable es de tipo factor y que esta está conformada por tres niveles (A, B y O) los cuales se presentan, por defecto, en **orden alfabético**. En segundo lugar, al aplicar la función `class()` al objeto creado, se corrobora que este es de naturaleza/tipo _factor_. En tercer lugar, la función `str()` nos presenta una perspectiva más elaborada de las características del factor en cuestión: es un factor (Factor), está conformado por tres niveles ("A","B","O")  e internamente se están representando los niveles/modalidades a través de números enteros (1 para `A`, 2 para `B` y 3 para `O`). En cuarto lugar, la tabla de frecuencias extraida a partir d ela función `table()` nos presenta los mismos resultados obtenidos en el ejercicio anterior: 3 individuos pertenecen al grupo sanguíneo `A`, 2 al grupo sanguíneo `B` y 5 al grupo sanguíneo `O`.
+
+En términos generales, más allá del uso de factores, no se observa una diferencia importante aún entre la representación de variables categóricas como vectores de tipo caracter o la representación de estas haciendo uso de factores. No obstante, como veremos a continuación, el uso de factores resulta de suma importancia cuando una opción de respuesta de una variable categórica no se encuentra contenida en ninguno de los individuos bajo estudio pero aún así deseamos informar de esta condición o cuando se desea que los resultados (niveles) se presenten en un orden particular. Por ejemplo, en el caso de los grupos sanguíneos, estamos interesados que el resultado despliegue una respuesta para el grupo sanguíneo `AB` a pesar de que ninguno de los individuos de la muestra pertecene a este grupo. Así mismo, resulta de interés que estos se deslieguen/presenten de acuerdo a la prevalencia mundial existente: el grupo sanguíneo más frecuente es el `O`, luego el `A`, luego el `B` y, finalmente, el grupo sanguíneo más escaso es el `AB`^[Aproximadamente un 44% de la población mundial pertenece al grupo sanguieneo `O`, un 42% al grupo sanguíneo `A`, un 10% al grupo sanguíneo `B` y un 4% al grupo sanguíneo `AB`. Estas proporporciones cambian de manera importante si se incluye el `RH`; de hecho, se estima que el tipo de sangre `AB-` tan solo está presente en 1 de cada 67 personas (0.6%)]. A continuación, se presenta la forma como R nos permite obtener estos dos propósitos acudiendo al uso de factores. 
+
+#### Ajustar la cantidad y el orden de los niveles de un factor
+
+Para ajustar la cantidad de niveles o modalidades existentes en una variable categórica a través del uso de factores en R o para ordenar la forma como estos deben ser presentados en los resultados, acudimos al uso, dentro de la función `factor()` del argumento `levels`. A continuación, haciendo uso del ejemplo de grupos sanguíneos, se presenta la forma como R permite adicionar niveles/modalidades a una variable categórica así como reordenar el orden de estos. 
+
+<p style="color:#e6550d";><i>Ejemplo. Ajustar la cantidad y el orden de los niveles de un factor</i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Definir el vector con información de grupos sanguíneos
+Grupo_S <- c('O', 'A', 'B', 'O', 'A', 'O', 'O', 'A', 'B', 'O')
+
+# Crear la variable como un factor a través del uso de la función factor()
+# Hacer uso del argumento levels
+# Almacenar los resultados en una variable llamada Grupo_S_factor_1
+Grupo_S_factor_1 <- factor(Grupo_S, levels = c('O', 'A', 'B', 'AB'))
+
+# Visualizar los resultados del objeto Grupo_S_factor_1
+Grupo_S_factor_1
+
+# Verificar el tipo de objeto que contiene los resultados
+class(Grupo_S_factor_1)
+
+# Ver las características de la variable transformada - función str()
+str(Grupo_S_factor_1)
+
+# Construir una tabla con el total de invividuos por grupo sanguíneo
+# Hacer uso de la función table()
+table(Grupo_S_factor_1)
+```
+
+Al observar los resultados del ejemplo anterior podemos constatar que se han cumplido las pretensiones buscadas y en ellas a resultado fundamental el uso de factores. En primer lugar, se ha creado una variable con el total de niveles existentes en la realidad sin importar que estos no estén disponibles en la muestra de individuos hecho que permitió mostrar que no existe ningún individuo (cero) perteneciente al grupo sanguíneo `AB`; así mismo, se ingresó de manera manual y no por defecto el orden de presentación de los niveles de una variable categórica hecho que permitió, en el ejemplo de grupos sanguíneos, disponer/presentar los resultados de acuerdo a la prevalencia mundial `(O, A, B y AB)`.
+
+#### Renombrar los niveles de un factor
+
+La última característica útil para la gestión de variables nominales o categóricas a través de la disposición/uso de factores en R es la capacidad disponible en esta función para renombrar los niveles/modalidades existentes. Por ejemplo, supongamos que estamos interesados en usar una etiqueta alternativa (renombrar) para cada uno de los grupos sanguíneos del ejemplo de tal manera que el grupo sanguíneo `O` se llame `Grupo O`, el grupo sanguíneo `A` se llame `Grupo A`, el grupo sanguíneo `B` se llame `Grupo B` y, finalmente, el grupo sanguíneo `AB` se llame `Grupo AB`. Para ello, en R existen dos alternativas de solución: haciendo uso del argumento `labels` dentro de la función `factor()` o acuendiendo a la función `levels` cuando se dispone de un factor y se desean modificar sus niveles. A continuación, se presenta un ejemplo para cada una de las alternativas que ofrece este lenguaje para renombrar los niveles de un factor. 
+
+<p style="color:#e6550d";><i>Ejemplo. Renombrar niveles de un factor en R - primera alternativa </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Definir el vector con información de grupos sanguíneos
+Grupo_S <- c('O', 'A', 'B', 'O', 'A', 'O', 'O', 'A', 'B', 'O')
+
+# Crear la variable como un factor a través del uso de la función factor()
+# Hacer uso del argumento levels y labels
+# Almacenar los resultados en una variable llamada Grupo_S_factor
+Grupo_S_factor <- factor(Grupo_S, levels = c('O', 'A', 'B', 'AB'), 
+                         labels = c('Grupo A', 'Grupo B', 'Grupo O', 'Grupo AB'))
+
+# Visualizar los resultados del objeto Grupo_S_factor
+Grupo_S_factor
+
+# Ver las características de la variable transformada - función str()
+str(Grupo_S_factor)
+
+# Construir una tabla con el total de invividuos por grupo sanguíneo
+# Hacer uso de la función table()
+table(Grupo_S_factor)
+```
+
+<p style="color:#e6550d";><i>Ejemplo. Renombrar niveles de un factor en R - segunda alternativa </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Definir el vector con información de grupos sanguíneos
+Grupo_S <- c('O', 'A', 'B', 'O', 'A', 'O', 'O', 'A', 'B', 'O')
+
+# Crear la variable como un factor a través del uso de la función factor()
+# Hacer uso del argumento levels
+# Almacenar los resultados en una variable llamada Grupo_S_factor_1
+Grupo_S_factor_1 <- factor(Grupo_S, levels = c('O', 'A', 'B', 'AB'))
+
+# Visualizar los resultados del objeto Grupo_S_factor_1
+Grupo_S_factor_1 
+
+# Renombrar los niveles del factor Grupo_S_factor_1 
+# Hacer uso de la función levels
+levels(Grupo_S_factor_1) <- c('Grupo O', 'Grupo A', 'Grupo B', 'Grupo AB')
+
+# Visualizar los resultados del objeto Grupo_S_factor_1 modificado - renombrado
+Grupo_S_factor_1 
+
+# Ver las características de la variable modificada - función str()
+str(Grupo_S_factor_1)
+
+# Construir una tabla con el total de invividuos por grupo sanguíneo
+# Hacer uso de la función table()
+table(Grupo_S_factor_1)
+```
+
+En la primera alternativa, se partió de un vector de tipo cadena o caracter, se hizo uso de la función `factor()` y dentro de esta, de los argumentos `levels` y `labels` para definir, respectivamente, los niveles requeridos con su respectivo orden y el renombramiento de estos. En contraste, la alternativa 2, partió de un factor creado haciendo uso de la función `factor()` y, dentro de esta, acudiendo al argumento `levels`; paso seguido, se procedió a modificar el contenido de los niveles previamente creados a través del uso de la función `levels()`^[En R, existe una función llamada `levels()` y este nombre (levels) a su vez hace parte de uno de los argumentos de la función `factor()`. Es decir, en este lenguaje no existe ninguna restricción entre los nombres empleados para nombrar una variable y los empleados para nombrar sus argumentos. Como se acabá de presentar, estos pueden ser iguales (levels como función y levels como argumento)].  
+
+#### Variables ordinales
+
+Las variables nominales o categóricas, por su naturaleza, no presentan un orden natural entre sus modalidades u opciones de respuesta. Este hecho implica que carezca de sentido y sea imposible comparar si una condición observada en una variable para un individuo es menor o mayor que la misma condición observada en otro individuo. Por ejemplo, si retomamos el ejercicio que hemos venido trabajando a lo largo de este numeral del documento, el de la información de grupos sanguíneos para una muestra de 10 individuos y si estamos interesados en comparar, por ejemplo, si el grupo sanguíneo del individuo ubicado en la posición 1 es menor `(<)` que el grupo sanguíneo del individuo ubicado en la posición 2 el lenguaje, como se muestra a continuación, retornará un dato faltante. Es decir, R no reconoce si esta condición es verdadera o falta y por este motivo retorna el dato `NA`.
+ 
+<p style="color:#e6550d";><i>Ejemplo. Orden en variables nominales haciendo uso de factores  </i></p>
+
+```{r, eval=TRUE}
+# Definir el vector con información de grupos sanguíneos
+Grupo_S <- c('O', 'A', 'B', 'O', 'A', 'O', 'O', 'A', 'B', 'O')
+
+# Crear la variable como un factor a través del uso de la función factor()
+# Hacer uso del argumento levels
+# Almacenar los resultados en una variable llamada Grupo_S_factor_1
+Grupo_S_factor <- factor(Grupo_S, levels = c('O', 'A', 'B', 'AB'))
+
+# Verificar si el grupo sanguíneo del individuo 1 (O) es menor que 
+# el grupo sanguíneo del individuo 2 (A)
+Grupo_S_factor[1] < Grupo_S_factor[2]
+```
+
+Al observar los resultados del ejemplo anterior el lenguaje, ante la comparación requerida, retornó un _Warning_ o mensaje de advertencia e imprimió un `NA` como respuesta. Es decir, no existe información suficiente para poder decir que el grupo sanguíneo del individuo 1 es menor que el grupo sanguíneo del individuo 2. Desde luego, este resultado era esperable dado que estamos ante la presencia de una variable de tipo nominal o categórico y en estas carece de sentido definir un orden entre sus modalidades. 
+
+Como se mencionó al inicio de esta sección, desde una perspectiva de la metología de la investigación, un subconjunto de las variables existentes está constituido por las variables ordinales. Es decir, aquellas que están conformadas por modalidades de respuesta *-igual que las variables categóricas-*, pero que presentan un orden natural entre sus modalidades: bajo, medio, alto; poco, regular, mucho; pequeño, mediano, grande; etc.
+
+Para gestionar variables de naturaleza ordinal en R, se debe definir en el código del lenguaje que la variable que estamos gestionando es de tipo ordinal y esto se logra haciendo uso, dentro de la función `factor()`, del argumento `ordered = TRUE`. Por ejemplo, supongamos que contamos con la información del peso de 7 individuos clasificado en **bajo**, **medio** y **alto** y que esta se encuentra contenida en un vector llamado `Peso` cuyo contenido es `c('Bajo', 'Bajo', 'Medio', 'Alto', 'Alto', 'Medio', 'Alto')`. Así mismo, supongamos que estamos interesados en construir una tabla de frecuencias con la cantidad de individuos por cada opción de respuesta y comparar si el peso del individuo 4 es mayor al del individuo 1. A continuación, se presenta el desarrollo de este ejercicio.
+
+<p style="color:#e6550d";><i>Ejemplo. Factores y variables ordinales en R  </i></p>
+
+```{r, eval=TRUE, warning=FALSE}
+# Definir el vector con información de pesos de personas
+Peso <- c('Bajo', 'Bajo', 'Medio', 'Alto', 'Alto', 'Medio', 'Alto')
+
+# Crear la variable Peso como un factor - renombrar
+# Hacer uso del argumento levels para definir el orden de los niveles
+# Hacer uso del argumento ordered para anunciar que es de tipo ordinal
+Peso <- factor(Peso, levels = c('Bajo', 'Medio', 'Alto'), ordered = TRUE)
+
+# Visualizar los resultados del objeto Peso
+Peso
+
+# Verificar el tipo de objeto que contiene los resultados
+class(Peso)
+
+# Ver las características de la variable Peso - función str()
+str(Peso)
+
+# Construir una tabla con el total de invividuos por grupos de peso
+# Hacer uso de la función table()
+table(Peso)
+
+# Verificar si el peso del individuo 4 (Alto) es mayor que el peso del individuo 1 (Bajo)
+Peso[4] > Peso[1]
+```
+
+Los resultados del ejemplo anterior muestran la forma y las características de la gestión de variables ordinales en R. A través del ejemplo expuesto es posible determinar que la variable analizada es de tipo ordinal hecho que se corrobora al observar varios aspectos. En primer lugar, los niveles de la variable ordinal `Peso`, a diferencia del caso de variables categóricas, ahora presenta un orden `Levels: Bajo < Medio < Alto`, así mismo, las funciones `class()` y `str()` nos permiten corroborar que la variable bajo estudio es de tipo ordinal `"ordered" "factor"` y `Ord.factor w/ 3 levels "Bajo"<"Medio"<`, respectivamente. En segundo lugar, la tabla de frecuencias construida con la función `table()` presenta la información de manera ordenada de acuerdo al orden definido para los respectivos niveles `levels = c('Bajo', 'Medio', 'Alto')`. Finalmente y a diferencia de lo observado en el caso de variables categóricas, en el escenario de las variables ordinales, es posible comparar si el valor observado en un individuo es mayor o menor que el observado en otro. Por ejemplo, el peso del individuo 4 del ejemplo anterior es mayor que el peso del individuo 1 -`TRUE` como respuesta a la instrucción `Peso[4] > Peso[1]`-.    
+
+
+
+
+
+
+
+
+
+
 

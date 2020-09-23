@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Seleccione, a través de una única consulta, los elementos ubicados en las intersecciones de las filas 1 y 3 y las columnas 1 y 4. Para el caso de las filas hacer uso de un vector con enteros negativos y para el caso de las columnas hacer uso de un vector de tipo caracter (textual).</p></li>
 </ul>
 <ol start="5" style="list-style-type: decimal">
-<li><p>El conjunto de datos <code>mtcars</code>, al igual que el conjunto de datos <code>iris</code> y que se trabajó a lo largo del documento, hace parte de los marcos de datos <code>data.frame</code> que vienen incluidos por defecto en R desde el momento de su instalación<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>. Haciendo uso de las funciones <code>class()</code>, <code>names()</code>, <code>dim()</code>, <code>length()</code>, <code>ncol()</code>, <code>nrow()</code>, <code>head()</code>, <code>tail()</code>, <code>str()</code> y <code>summary()</code>, explorar el contenido del marco de datos <strong><code>mtcars</code></strong>.</p></li>
+<li><p>El conjunto de datos <code>mtcars</code>, al igual que el conjunto de datos <code>iris</code> y que se trabajó a lo largo del documento, hace parte de los marcos de datos <code>data.frame</code> que vienen incluidos por defecto en R desde el momento de su instalación<a href="#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a>. Haciendo uso de las funciones <code>class()</code>, <code>names()</code>, <code>dim()</code>, <code>length()</code>, <code>ncol()</code>, <code>nrow()</code>, <code>head()</code>, <code>tail()</code>, <code>str()</code> y <code>summary()</code>, explorar el contenido del marco de datos <strong><code>mtcars</code></strong>.</p></li>
 <li><p>Selecionar la variable <code>carb</code> del conjunto de datos (data.frame) <code>mtcars</code> haciendo uso de los operadores <code>[]</code>, <code>[ , ]</code>, <code>[[ ]]</code> y <code>$</code>. ¿Existe alguna diferencia en el resultado al usar alguna de estas formas de extracción de una variable en R?</p></li>
 <li><p>Seleccionar las variables <code>mpg</code>, <code>disp</code>, <code>drat</code>, <code>qsec</code>, <code>am</code> y <code>carb</code> del conjunto de datos <code>mtcars</code>. El proceso de selección de estas variables debe realizarse a través de cuatro vías: haciendo uso de vectores con <em>enteros positivos</em>, haciendo uso de vectores con <em>enteros negativos</em>, haciendo uso de vectores con <em>elementos lógicos</em> y haciendo uso de vectores con datos de tipo <em>caracter o textuales</em>.</p></li>
 <li><p>Seleccionar, del conjunto de datos <code>mtcars</code>, los individuos con valores 4 o 6 en la variable <code>cyl</code> y cuyos valores en la variable <code>mpg</code> son mayores o iguales <code>&gt;=</code> a 25. Para estos individuos, retener la información de las variables <code>mpg</code>, <code>cyl</code> y <code>carb</code>. Guardar/almacenar e imprimir los resultados de este ejercicio en un objeto/variable llamado <code>mtcars_new</code>.</p></li>
@@ -230,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Cambiar los nombres de las variables <code>hp</code>, <code>wt</code> y <code>am</code> por los nombres <code>hp_new</code>, <code>wt_new</code> y <code>am_new</code>. Guarde e imprima los resultados con los nuevos nombres de las variables en un objeto llamado <code>mtcars_name</code>.</p></li>
 <li><p>Eliminar, haciendo uso de vectores, las variables <code>drat</code>, <code>wt</code>, <code>qsec</code>, <code>vs</code>, <code>am</code>, <code>gear</code> y <code>carb</code>. Guardar e imprimir los últimos 5 resultados del nuevo conjunto de datos en un objeto llamado <code>mtcars_vec</code>.</p></li>
 <li><p>Eliminar, haciendo uso del dato <code>NULL</code>, las variables <code>mpg</code>, <code>cyl</code>, <code>disp</code> y <code>hp</code>. Guardar e imprimir los resultados en un objeto <code>data.frame</code> llamado <code>mtcars_nulos</code>.</p></li>
-<li><p>Modificar/cambiar por 3000 el valor de la variable <code>wt</code> del individuo ubicado en la posición 1 (fila 1). Guardar e imprimir los resultados de los primeros 5 individuos en un objeto llamado <code>mtcars_modif</code>.</p></li>
+<li><p>Modificar/cambiar por 3.000 el valor de la variable <code>wt</code> del individuo ubicado en la posición 1 (fila 1). Guardar e imprimir los resultados de los primeros 5 individuos en un objeto llamado <code>mtcars_modif</code>.</p></li>
 <li><p>Eliminar, haciendo uso de vectores, los primeros 5 individuos. Guardar y presentar los primeros 10 resultados en un nuevo conjunto de datos llamado <code>mtcars_ind2</code>.</p></li>
 <li><p>Adicionar una nueva variable llamada <code>New_Var</code> con los valores 2, 4, 6, 8, … Guardar e imprimir los primeros 10 individuos en un objeto llamado <code>mtcars_var_new</code>.</p></li>
 <li><p>Adicionar un nuevo individuo al conjunto de datos <code>mtcars</code>. Seleccione los valores que a bien considere (aleatorios) para las 11 variables que conforman este conjunto de datos y requeridas para adicionar este nuevo individuo. Guardar e imprimir los resultados desde un objeto llamado <code>mtcars_new_ind</code>.</p></li>
@@ -285,10 +285,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+
+
+
+
+
+
+
+
 <div class="footnotes">
 <hr />
-<ol start="39">
-<li id="fn39"><p>Estos conjuntos de datos hacen parte de una librería llamada <code>datasets</code> cuyos conjuntos de datos pueden ser explorados haciendo uso de la función <code>data()</code>. De igual manera, estos pueden ser descargados en formatos CSV desde la siguiente <a href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">página web</a><a href="3-2-trabajo-2.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<ol start="47">
+<li id="fn47"><p>Estos conjuntos de datos hacen parte de una librería llamada <code>datasets</code> cuyos conjuntos de datos pueden ser explorados haciendo uso de la función <code>data()</code>. De igual manera, estos pueden ser descargados en formatos CSV desde la siguiente <a href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">página web</a><a href="3-2-trabajo-2.html#fnref47" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 <h2 style="color:#2ca25f;">Comentarios</h2>

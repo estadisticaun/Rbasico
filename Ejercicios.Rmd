@@ -80,7 +80,7 @@ A partir de la matriz previamente creada `Matriz_Rep`, desarrolle las siguientes
 
 + Eliminar, haciendo uso del dato `NULL`, las variables `mpg`, `cyl`,  `disp` y   `hp`. Guardar e imprimir los resultados en un objeto `data.frame` llamado `mtcars_nulos`. 
 
-+ Modificar/cambiar por 3000 el valor de la variable `wt` del individuo ubicado en la posición 1 (fila 1). Guardar e imprimir los resultados de los primeros 5 individuos en un objeto llamado `mtcars_modif`.
++ Modificar/cambiar por 3.000 el valor de la variable `wt` del individuo ubicado en la posición 1 (fila 1). Guardar e imprimir los resultados de los primeros 5 individuos en un objeto llamado `mtcars_modif`.
 
 + Eliminar, haciendo uso de vectores, los primeros 5 individuos. Guardar y presentar los primeros 10 resultados en un nuevo conjunto de datos llamado `mtcars_ind2`.
 

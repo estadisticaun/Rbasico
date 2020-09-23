@@ -2795,12 +2795,12 @@ Para extraer variables e/o individuos de un marco de datos (data.frame) en R se 
 <span id="cb731-6"><a href="2-6-Edatos.html#cb731-6"></a>Curso[, <span class="kw">c</span>(<span class="dv">5</span>)] &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Nueva3 =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>))</span>
 <span id="cb731-7"><a href="2-6-Edatos.html#cb731-7"></a>Curso</span></code></pre></div>
 <pre><code>##   Edad   Sexo Discapacidad Nota     Nueva3
-## 1   17  Mujer         TRUE  4.3 -0.5498499
-## 2   26 Hombre        FALSE  1.5  1.6353887
-## 3   19 Hombre        FALSE  3.0  2.3937007
-## 4   20  Mujer         TRUE  3.7 -1.3657003
-## 5   15 Hombre        FALSE  4.0  0.4552187
-## 6   22  Mujer        FALSE  3.5 -0.8631285</code></pre>
+## 1   17  Mujer         TRUE  4.3  0.1629587
+## 2   26 Hombre        FALSE  1.5 -1.0285941
+## 3   19 Hombre        FALSE  3.0 -0.3677632
+## 4   20  Mujer         TRUE  3.7 -0.0446224
+## 5   15 Hombre        FALSE  4.0 -0.4196392
+## 6   22  Mujer        FALSE  3.5 -0.5294600</code></pre>
 <div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="2-6-Edatos.html#cb733-1"></a><span class="co"># Ejemplo 3</span></span>
 <span id="cb733-2"><a href="2-6-Edatos.html#cb733-2"></a><span class="co"># Haciendo uso de la función list()</span></span>
 <span id="cb733-3"><a href="2-6-Edatos.html#cb733-3"></a><span class="co"># Adicionar, al marco de datos del ejemplo 2, dos nuevas variables (Nueva4 y Nueva5)</span></span>
@@ -2809,13 +2809,13 @@ Para extraer variables e/o individuos de un marco de datos (data.frame) en R se 
 <span id="cb733-6"><a href="2-6-Edatos.html#cb733-6"></a>Normal &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">6</span>)</span>
 <span id="cb733-7"><a href="2-6-Edatos.html#cb733-7"></a>Curso[, <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">7</span>)] &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Nueva4 =</span> Normal, <span class="dt">Nueva5 =</span> <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">6</span>))</span>
 <span id="cb733-8"><a href="2-6-Edatos.html#cb733-8"></a>Curso</span></code></pre></div>
-<pre><code>##   Edad   Sexo Discapacidad Nota     Nueva3     Nueva4 Nueva5
-## 1   17  Mujer         TRUE  4.3 -0.5498499 0.06310450      1
-## 2   26 Hombre        FALSE  1.5  1.6353887 0.07187628      1
-## 3   19 Hombre        FALSE  3.0  2.3937007 0.55949171      1
-## 4   20  Mujer         TRUE  3.7 -1.3657003 1.09789891      1
-## 5   15 Hombre        FALSE  4.0  0.4552187 1.14551536      1
-## 6   22  Mujer        FALSE  3.5 -0.8631285 1.45062537      1</code></pre>
+<pre><code>##   Edad   Sexo Discapacidad Nota     Nueva3      Nueva4 Nueva5
+## 1   17  Mujer         TRUE  4.3  0.1629587 -0.01206117      1
+## 2   26 Hombre        FALSE  1.5 -1.0285941 -0.13958290      1
+## 3   19 Hombre        FALSE  3.0 -0.3677632 -0.31280836      1
+## 4   20  Mujer         TRUE  3.7 -0.0446224  0.58742206      1
+## 5   15 Hombre        FALSE  4.0 -0.4196392 -0.74239609      1
+## 6   22  Mujer        FALSE  3.5 -0.5294600  0.10720165      1</code></pre>
 </div>
 <div id="adicionar-individuos-a-un-data.frame" class="section level5" number="2.6.3.4.2">
 <h5><span class="header-section-number">2.6.3.4.2</span> Adicionar individuos a un data.frame</h5>
@@ -2987,10 +2987,811 @@ Para extraer variables e/o individuos de un marco de datos (data.frame) en R se 
 </div>
 <div id="Listas" class="section level3" number="2.6.4">
 <h3><span class="header-section-number">2.6.4</span> Listas</h3>
+<p>La quinta estructura de datos empleada por R son las listas. Estas estructura de datos, como se ilustra en la siguiente imagen, son estructura de tipo multidimensional que permite en su interior la disposición de otras estructuras de datos.</p>
+<div class="figure">
+<img src="Imagenes/Lista.png" alt="" />
+<p class="caption">Representación gráfica de una lista</p>
+</div>
+<p>Las listas, a diferencia de los vectores, las matrices, los arreglos y los marcos de datos <code>data.frame</code>, no exigen ningún requisito para su conformación. En ellas pueden ser almacenadas objetos de diversas tipologías como, por ejemplo, los hasta hora vistos. Es decir, una lista puede estar compuesta por vectores, matrices, <code>data.frame</code> e incluso, otras listas. A continuación, se presenta la regla general para la construcción de listas en R.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla: Construcción de listas en R
+</p>
+</strong><br>
+En R, las <strong>listas</strong> se construyen haciendo uso de la función <code>list()</code>. Dentro de la función <code>list()</code>, se definen los objetos que esta contendrá los cuales pueden ser de cualquier naturaleza, incluso otras listas.
+</p>
+</blockquote>
+<p><br></p>
+<p>Aunque las listas no se usan de manera frecuente en los análisis de datos convencionales<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>, estas resultan de amplia utilidad para la conformación del lenguaje y para la construcción de paquetes o librerías en R a los cuales acudimos de manera regular para ciertos propósitos. A continuación, se presenta un ejemplo de creación de una lista en R y que hemos decidio guardar/almacenar dentro de un objeto llamado <code>Mi_primera_lista</code>.</p>
+<p style="color:#e6550d";><i>Ejemplo. Creación de listas en R </i></p>
+<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb763-1"><a href="2-6-Edatos.html#cb763-1"></a><span class="co"># Creación de objetos/variables que contendrá la lista</span></span>
+<span id="cb763-2"><a href="2-6-Edatos.html#cb763-2"></a>vector_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb763-3"><a href="2-6-Edatos.html#cb763-3"></a>matriz_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>), <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb763-4"><a href="2-6-Edatos.html#cb763-4"></a>marco_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">head</span>(iris)</span>
+<span id="cb763-5"><a href="2-6-Edatos.html#cb763-5"></a>vector_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb763-6"><a href="2-6-Edatos.html#cb763-6"></a>marco_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">tail</span>(mtcars)</span>
+<span id="cb763-7"><a href="2-6-Edatos.html#cb763-7"></a>lista_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Letras =</span> LETTERS[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)], <span class="dt">Matriz =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow=</span><span class="dv">3</span>))</span>
+<span id="cb763-8"><a href="2-6-Edatos.html#cb763-8"></a></span>
+<span id="cb763-9"><a href="2-6-Edatos.html#cb763-9"></a><span class="co"># Creación de la lista a partir de los objetos previamente creados  </span></span>
+<span id="cb763-10"><a href="2-6-Edatos.html#cb763-10"></a>Mi_primera_lista &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Elemento1 =</span> vector_<span class="dv">1</span>, <span class="dt">Elemento2 =</span> matriz_<span class="dv">1</span>, </span>
+<span id="cb763-11"><a href="2-6-Edatos.html#cb763-11"></a>                         <span class="dt">Elemento3 =</span> marco_<span class="dv">1</span>, <span class="dt">Elemento4 =</span> vector_<span class="dv">2</span>, </span>
+<span id="cb763-12"><a href="2-6-Edatos.html#cb763-12"></a>                         <span class="dt">Elememnto5 =</span> marco_<span class="dv">2</span>, <span class="dt">Elemento6 =</span> lista_<span class="dv">1</span>)</span>
+<span id="cb763-13"><a href="2-6-Edatos.html#cb763-13"></a><span class="co"># Impresión/presentación de los resultados de la lista</span></span>
+<span id="cb763-14"><a href="2-6-Edatos.html#cb763-14"></a>Mi_primera_lista</span></code></pre></div>
+<pre><code>## $Elemento1
+## [1] 1 2 3 4
+## 
+## $Elemento2
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## 
+## $Elemento3
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+## 
+## $Elemento4
+## [1]  TRUE FALSE  TRUE
+## 
+## $Elememnto5
+##                 mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2
+## 
+## $Elemento6
+## $Elemento6$Letras
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;
+## 
+## $Elemento6$Matriz
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<p>En el ejemplo anterior hemos creado, haciendo uso de la función <code>list()</code>, una lista llamada <code>Mi_primera_lista</code> la cual está conformada por 6 elementos<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>. El primer elemento de esta lista, identificado como <code>Elemento1</code><a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a> en el resultado anterior, está conformato por por el vector <code>c(1, 2, 3, 4)</code>. El segundo elemento, nombrado como <code>Elemento2</code>, está conformado por una matriz de 2 filas y dos columnas con datos que se han ingresado por filas (<code>byrow = TRUE</code>). El tercer elemento, identificado como <code>Elemento3</code>, está conformado por un <code>data.frame</code> con los primeros 6 individuos del marco de datos <code>iris</code>. El cuarto elemento, nombrado como <code>Elemento4</code>, está compuesto por el vector lógico <code>c(TRUE, FALSE, TRUE)</code>. El quinto elemento, identificado como <code>Elemento5</code>, está conformado por un <code>data.frame</code> con los últimos 6 individuos del marco de datos <code>mtcars</code>. Finalmente, el sexto elemento del la lista <code>Mi_primera_lista</code> está conformado a su vez por otra lista identificada en la consola o salida de R como <code>Elemento6</code> la cua está compuesta por dos elementos: un vector de tipo caracter o textual con las primeras 5 letras mayúsculas del alfabeto romano <code>LETTERS[c(1:5)]</code> e identificado como <code>Letras</code> y una matriz de 3 filas y 3 columnas <code>matrix(c(1:9), nrow=3)</code> identificada como <code>Matriz</code>.</p>
+<div id="IndexaLS" class="section level4" number="2.6.4.1">
+<h4><span class="header-section-number">2.6.4.1</span> <em>Indexación/subconjuntos en listas</em></h4>
+<p>Al igual que el caso de vectores, matrices y marcos de datos o <code>data.frame</code>, una de las actividades que más se usa a la hora gestionar listas en R es la indexación o extracción de subconjuntos de elementos. En R, al igual que en el caso de <code>data.frame</code>, existen tres operadores o formas (<code>[]</code>, <code>[[ ]]</code> y <code>$</code>) para la selección de los elementos de una lista. A continuación, se presenta la regla del lenguaje asociada a la indexación de <code>listas</code> en R.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla. Subconjuntos de elementos en listas
+</p>
+<p></strong><br>
+El proceso de extracción de elementos de una lista en R implica el uso de tres operadores: <strong><code>[]</code></strong>, <strong><code>[[]]</code></strong> o <strong><code>$</code></strong>. El operador <strong><code>$</code></strong> exige que los elementos de las listas tengan asignado un nombre.</p>
+</p>
+</blockquote>
+<p><br></p>
+<p>En las listas, al igual que en los marcos de datos o <code>data.frame</code>, el uso de los anteriores operadores para la selección de elementos dependerá si se desea seleccionar uno o más de sus elementos. Mientras que los operadores <code>[]</code>, <code>[[ ]]</code> y <code>$</code> pueden ser usados para la selección de un único elemento de una lista, para el caso de la selección de más de un elemento, únicamente puede ser usado el operador <code>[]</code>.</p>
+<div id="selección-de-un-elemento-de-una-lista" class="section level5" number="2.6.4.1.1">
+<h5><span class="header-section-number">2.6.4.1.1</span> Selección de un elemento de una lista</h5>
+<p>Como se acaba de presentar, la selección de un elemento contenido en una lista de R se puede dar a través de tres formas: haciendo uso de los operadores <code>[]</code>, <code>[[ ]]</code> y <code>$</code>. A continuación, se presenta el desarrollo de cada una de estas formas de selección.</p>
+<ul>
+<li>Selección de un elemento de una lista haciendo uso del operador <code>[]</code>.</li>
+</ul>
+<p>La selección de un elemento de una lista haciendo uso del operador <code>[]</code> exige la inclusión, dentro de los corchetes, del nombre o la posición del elemento que será seleccionado. El objeto resultante de este mecanismo de selección <strong>conserva</strong> la estructura del objeto original; es decir, continúa siendo una lista.</p>
+<ul>
+<li>Selección de un elemento de una lista haciendo uso del operador <code>[[ ]]</code>.</li>
+</ul>
+<p>La selección de un elemento de una lista haciendo uso del operador <code>[[ ]]</code> exige la inclusión, dentro de los dobles corchetes, del nombre o la posición del elemento que será seleccionado. El objeto resultante de este mecanismo, a diferencia del caso anterior, <strong>no conserva</strong> la estructura del objeto original; es decir, no continúa siendo una lista a menos que el elemento seleccionado sea a su vez una lista.</p>
+<ul>
+<li>Selección de un elemento de una lista haciendo uso del operador <code>$</code>.</li>
+</ul>
+<p>La selección de un elemento de una lista haciendo uso del operador <code>$</code> exige el nombre o la posición del elemento que será seleccionado. El objeto resultante de este mecanismo, al que en el caso del operador <code>[[ ]]</code>, <strong>no conserva</strong> la estructura del objeto original; es decir, no continúa siendo una lista a menos que el elemento seleccionado sea a su vez una lista.</p>
+<p>A continuación, haciendo uso de la lista creada previamente y llamada <code>Mi_primera_lista</code>, se presentan algunos ejemplos de selección de un único elemento a partir de una lista disponible en R.</p>
+<p style="color:#e6550d";><i>Ejemplo. Selección de un elemento de una lista de R </i></p>
+<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb765-1"><a href="2-6-Edatos.html#cb765-1"></a><span class="co"># Creación de variables/elementos para la lista</span></span>
+<span id="cb765-2"><a href="2-6-Edatos.html#cb765-2"></a>vector_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb765-3"><a href="2-6-Edatos.html#cb765-3"></a>matriz_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>), <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb765-4"><a href="2-6-Edatos.html#cb765-4"></a>marco_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">head</span>(iris)</span>
+<span id="cb765-5"><a href="2-6-Edatos.html#cb765-5"></a>vector_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb765-6"><a href="2-6-Edatos.html#cb765-6"></a>marco_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">tail</span>(mtcars)</span>
+<span id="cb765-7"><a href="2-6-Edatos.html#cb765-7"></a>lista_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Letras =</span> LETTERS[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)], <span class="dt">Matriz =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow=</span><span class="dv">3</span>))</span>
+<span id="cb765-8"><a href="2-6-Edatos.html#cb765-8"></a></span>
+<span id="cb765-9"><a href="2-6-Edatos.html#cb765-9"></a><span class="co"># Creación de la lista </span></span>
+<span id="cb765-10"><a href="2-6-Edatos.html#cb765-10"></a>Mi_primera_lista &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Elemento1 =</span> vector_<span class="dv">1</span>, <span class="dt">Elemento2 =</span> matriz_<span class="dv">1</span>, </span>
+<span id="cb765-11"><a href="2-6-Edatos.html#cb765-11"></a>                         <span class="dt">Elemento3 =</span> marco_<span class="dv">1</span>, <span class="dt">Elemento4 =</span> vector_<span class="dv">2</span>, </span>
+<span id="cb765-12"><a href="2-6-Edatos.html#cb765-12"></a>                         <span class="dt">Elemento5 =</span> marco_<span class="dv">2</span>, <span class="dt">Elemento6 =</span> lista_<span class="dv">1</span>)</span>
+<span id="cb765-13"><a href="2-6-Edatos.html#cb765-13"></a></span>
+<span id="cb765-14"><a href="2-6-Edatos.html#cb765-14"></a><span class="co"># Visualización de la lista </span></span>
+<span id="cb765-15"><a href="2-6-Edatos.html#cb765-15"></a>Mi_primera_lista </span></code></pre></div>
+<pre><code>## $Elemento1
+## [1] 1 2 3 4
+## 
+## $Elemento2
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## 
+## $Elemento3
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+## 
+## $Elemento4
+## [1]  TRUE FALSE  TRUE
+## 
+## $Elemento5
+##                 mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2
+## 
+## $Elemento6
+## $Elemento6$Letras
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;
+## 
+## $Elemento6$Matriz
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<p style="color:#e6550d";><i>Haciendo uso del operador [ ] </i></p>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb767-1"><a href="2-6-Edatos.html#cb767-1"></a><span class="co"># Selección del segundo elemento haciendo uso del operador [] - por posición</span></span>
+<span id="cb767-2"><a href="2-6-Edatos.html#cb767-2"></a>Mi_primera_lista[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## $Elemento2
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4</code></pre>
+<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb769-1"><a href="2-6-Edatos.html#cb769-1"></a><span class="co"># Selección del segundo elemento haciendo uso del operador [] - por nombre</span></span>
+<span id="cb769-2"><a href="2-6-Edatos.html#cb769-2"></a><span class="co"># Guardar e imprimir los resultados a partir de un objeto llamado &#39;Elemento_2&#39;</span></span>
+<span id="cb769-3"><a href="2-6-Edatos.html#cb769-3"></a>Elemento_<span class="dv">2</span> &lt;-<span class="st"> </span>Mi_primera_lista[<span class="kw">c</span>(<span class="st">&#39;Elemento2&#39;</span>)]</span>
+<span id="cb769-4"><a href="2-6-Edatos.html#cb769-4"></a>Elemento_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## $Elemento2
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4</code></pre>
+<div class="sourceCode" id="cb771"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb771-1"><a href="2-6-Edatos.html#cb771-1"></a><span class="co"># Verificar la estructura de datos del elemento seleccionado - función class()</span></span>
+<span id="cb771-2"><a href="2-6-Edatos.html#cb771-2"></a><span class="kw">class</span>(Elemento_<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p style="color:#e6550d";><i>Haciendo uso del operador [[ ]] </i></p>
+<div class="sourceCode" id="cb773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb773-1"><a href="2-6-Edatos.html#cb773-1"></a><span class="co"># Selección del quinto elemento haciendo uso del operador [[ ]] - por posición</span></span>
+<span id="cb773-2"><a href="2-6-Edatos.html#cb773-2"></a>Mi_primera_lista[<span class="dv">5</span>]</span></code></pre></div>
+<pre><code>## $Elemento5
+##                 mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
+<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="2-6-Edatos.html#cb775-1"></a><span class="co"># Selección del quinto elemento haciendo uso del operador [[ ]] - por nombre</span></span>
+<span id="cb775-2"><a href="2-6-Edatos.html#cb775-2"></a><span class="co"># Guardar e imprimir los resultados a partir de un objeto llamado &#39;Elemento_5&#39;</span></span>
+<span id="cb775-3"><a href="2-6-Edatos.html#cb775-3"></a>Elemento_<span class="dv">5</span> &lt;-<span class="st"> </span>Mi_primera_lista[[<span class="st">&#39;Elemento5&#39;</span>]]</span>
+<span id="cb775-4"><a href="2-6-Edatos.html#cb775-4"></a>Elemento_<span class="dv">5</span></span></code></pre></div>
+<pre><code>##                 mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
+<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="2-6-Edatos.html#cb777-1"></a><span class="co"># Verificar la estructura de datos del elemento seleccionado - función class()</span></span>
+<span id="cb777-2"><a href="2-6-Edatos.html#cb777-2"></a><span class="kw">class</span>(Elemento_<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<p style="color:#e6550d";><i>Haciendo uso del operador $ </i></p>
+<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb779-1"><a href="2-6-Edatos.html#cb779-1"></a><span class="co"># Selección del sexto elemento haciendo uso del operador $ - por nombre</span></span>
+<span id="cb779-2"><a href="2-6-Edatos.html#cb779-2"></a><span class="co"># Guardar e imprimir los resultados a partir de un objeto llamado &#39;Elemento_6&#39;</span></span>
+<span id="cb779-3"><a href="2-6-Edatos.html#cb779-3"></a>Elemento_<span class="dv">6</span> &lt;-<span class="st"> </span>Mi_primera_lista<span class="op">$</span>Elemento6</span>
+<span id="cb779-4"><a href="2-6-Edatos.html#cb779-4"></a>Elemento_<span class="dv">6</span></span></code></pre></div>
+<pre><code>## $Letras
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;
+## 
+## $Matriz
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<div class="sourceCode" id="cb781"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb781-1"><a href="2-6-Edatos.html#cb781-1"></a><span class="co"># Verificar la estructura de datos del objeto Elemento_6 - función class()</span></span>
+<span id="cb781-2"><a href="2-6-Edatos.html#cb781-2"></a><span class="co"># ¿Por qué el objeto resultante (Elemento_6) es una lista?</span></span>
+<span id="cb781-3"><a href="2-6-Edatos.html#cb781-3"></a><span class="kw">class</span>(Elemento_<span class="dv">6</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+</div>
+<div id="selección-de-más-de-un-elemento-de-una-lista" class="section level5" number="2.6.4.1.2">
+<h5><span class="header-section-number">2.6.4.1.2</span> Selección de más de un elemento de una lista</h5>
+<p>La selección de más de un elemento contenido en una lista en R se da a través del uso del operador<code>[]</code> y dentro de este, acudiendo a vectores cuyos elementos pueden ser <em>enteros positivos</em>, <em>enteros negativos</em>, <em>lógicos</em> o de tipo <em>caracter</em>. Así mismo, la selección de más de un elemento de una lista, implica una lista como objeto resultante. Es decir, en una lista de R, a diferencia de lo que puede ocurrir al seleccionar un elemento, la selección de más de un elemento <strong>siempre</strong> arrojará como resultado una nueva lista. A continuación, haciendo uso de la lista Mi_primera_lista`, se presentan algunos ejemplos con la selección de dos o más elementos de una lista haciendo uso de vectores con diversas tipologías.</p>
+<p style="color:#e6550d";><i>Ejemplo. Selección de más de un elemento de una lista de R </i></p>
+<div class="sourceCode" id="cb783"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb783-1"><a href="2-6-Edatos.html#cb783-1"></a><span class="co"># Creación de variables/elementos para la lista</span></span>
+<span id="cb783-2"><a href="2-6-Edatos.html#cb783-2"></a>vector_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb783-3"><a href="2-6-Edatos.html#cb783-3"></a>matriz_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>), <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb783-4"><a href="2-6-Edatos.html#cb783-4"></a>marco_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">head</span>(iris)</span>
+<span id="cb783-5"><a href="2-6-Edatos.html#cb783-5"></a>vector_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb783-6"><a href="2-6-Edatos.html#cb783-6"></a>marco_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">tail</span>(mtcars)</span>
+<span id="cb783-7"><a href="2-6-Edatos.html#cb783-7"></a>lista_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Letras =</span> LETTERS[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)], <span class="dt">Matriz =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">nrow=</span><span class="dv">3</span>))</span>
+<span id="cb783-8"><a href="2-6-Edatos.html#cb783-8"></a></span>
+<span id="cb783-9"><a href="2-6-Edatos.html#cb783-9"></a><span class="co"># Creación de la lista </span></span>
+<span id="cb783-10"><a href="2-6-Edatos.html#cb783-10"></a>Mi_primera_lista &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Elemento1 =</span> vector_<span class="dv">1</span>, <span class="dt">Elemento2 =</span> matriz_<span class="dv">1</span>, </span>
+<span id="cb783-11"><a href="2-6-Edatos.html#cb783-11"></a>                         <span class="dt">Elemento3 =</span> marco_<span class="dv">1</span>, <span class="dt">Elemento4 =</span> vector_<span class="dv">2</span>, </span>
+<span id="cb783-12"><a href="2-6-Edatos.html#cb783-12"></a>                         <span class="dt">Elemento5 =</span> marco_<span class="dv">2</span>, <span class="dt">Elemento6 =</span> lista_<span class="dv">1</span>)</span>
+<span id="cb783-13"><a href="2-6-Edatos.html#cb783-13"></a></span>
+<span id="cb783-14"><a href="2-6-Edatos.html#cb783-14"></a><span class="co"># Visualización de la lista </span></span>
+<span id="cb783-15"><a href="2-6-Edatos.html#cb783-15"></a>Mi_primera_lista </span></code></pre></div>
+<pre><code>## $Elemento1
+## [1] 1 2 3 4
+## 
+## $Elemento2
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## 
+## $Elemento3
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+## 
+## $Elemento4
+## [1]  TRUE FALSE  TRUE
+## 
+## $Elemento5
+##                 mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2
+## 
+## $Elemento6
+## $Elemento6$Letras
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;
+## 
+## $Elemento6$Matriz
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<p style="color:#e6550d";><i>Haciendo uso de vectores con enteros negativos </i></p>
+<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="2-6-Edatos.html#cb785-1"></a><span class="co"># Selección del primer elemento </span></span>
+<span id="cb785-2"><a href="2-6-Edatos.html#cb785-2"></a>Mi_primera_lista[<span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>)]</span></code></pre></div>
+<pre><code>## $Elemento1
+## [1] 1 2 3 4</code></pre>
+<div class="sourceCode" id="cb787"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb787-1"><a href="2-6-Edatos.html#cb787-1"></a><span class="co"># Selección del segundo y del cuarto elemento</span></span>
+<span id="cb787-2"><a href="2-6-Edatos.html#cb787-2"></a><span class="co"># Guardar e imprimir los resultados a partir de un objeto llamado &#39;Negativos_1&#39;</span></span>
+<span id="cb787-3"><a href="2-6-Edatos.html#cb787-3"></a>Negativos_<span class="dv">1</span> &lt;-<span class="st"> </span>Mi_primera_lista[<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">-3</span>, <span class="dv">-5</span>, <span class="dv">-6</span>)]</span>
+<span id="cb787-4"><a href="2-6-Edatos.html#cb787-4"></a>Negativos_<span class="dv">1</span> </span></code></pre></div>
+<pre><code>## $Elemento2
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## 
+## $Elemento4
+## [1]  TRUE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb789"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb789-1"><a href="2-6-Edatos.html#cb789-1"></a><span class="co"># Verificar la estructura de datos del objeto Negativos_1 - función class()</span></span>
+<span id="cb789-2"><a href="2-6-Edatos.html#cb789-2"></a><span class="kw">class</span>(Negativos_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p style="color:#e6550d";><i>Haciendo uso de vectores con enteros positivos </i></p>
+<div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb791-1"><a href="2-6-Edatos.html#cb791-1"></a><span class="co"># Selección de los elementos 3 y 5</span></span>
+<span id="cb791-2"><a href="2-6-Edatos.html#cb791-2"></a>Mi_primera_lista[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">5</span>)]</span></code></pre></div>
+<pre><code>## $Elemento3
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+## 
+## $Elemento5
+##                 mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
+<div class="sourceCode" id="cb793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb793-1"><a href="2-6-Edatos.html#cb793-1"></a><span class="co"># Selección de los elementos 1, 4 y 6.</span></span>
+<span id="cb793-2"><a href="2-6-Edatos.html#cb793-2"></a><span class="co"># Guardar e imprimir los resultados a partir de un objeto llamado &#39;Positivos_1&#39;</span></span>
+<span id="cb793-3"><a href="2-6-Edatos.html#cb793-3"></a>Positivos_<span class="dv">1</span> &lt;-<span class="st"> </span>Mi_primera_lista[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>)]</span>
+<span id="cb793-4"><a href="2-6-Edatos.html#cb793-4"></a>Positivos_<span class="dv">1</span> </span></code></pre></div>
+<pre><code>## $Elemento1
+## [1] 1 2 3 4
+## 
+## $Elemento4
+## [1]  TRUE FALSE  TRUE
+## 
+## $Elemento6
+## $Elemento6$Letras
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;
+## 
+## $Elemento6$Matriz
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb795-1"><a href="2-6-Edatos.html#cb795-1"></a><span class="co"># Verificar la estructura de datos del objeto Positivos_1 - función class()</span></span>
+<span id="cb795-2"><a href="2-6-Edatos.html#cb795-2"></a><span class="kw">class</span>(Positivos_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p style="color:#e6550d";><i>Haciendo uso de vectores con elementos lógicos </i></p>
+<div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb797-1"><a href="2-6-Edatos.html#cb797-1"></a><span class="co"># Selección de los elementos 2, 4 y 5</span></span>
+<span id="cb797-2"><a href="2-6-Edatos.html#cb797-2"></a>Mi_primera_lista[<span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</span></code></pre></div>
+<pre><code>## $Elemento2
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## 
+## $Elemento4
+## [1]  TRUE FALSE  TRUE
+## 
+## $Elemento5
+##                 mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
+<div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="2-6-Edatos.html#cb799-1"></a><span class="co"># Selección de los elementos 1, 3 y 5.</span></span>
+<span id="cb799-2"><a href="2-6-Edatos.html#cb799-2"></a><span class="co"># Guardar e imprimir los resultados a partir de un objeto llamado &#39;Logicos_1&#39;</span></span>
+<span id="cb799-3"><a href="2-6-Edatos.html#cb799-3"></a><span class="co"># Aplicando la regla de reciclaje de elementos</span></span>
+<span id="cb799-4"><a href="2-6-Edatos.html#cb799-4"></a>Logicos_<span class="dv">1</span> &lt;-<span class="st"> </span>Mi_primera_lista[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</span>
+<span id="cb799-5"><a href="2-6-Edatos.html#cb799-5"></a>Logicos_<span class="dv">1</span> </span></code></pre></div>
+<pre><code>## $Elemento1
+## [1] 1 2 3 4
+## 
+## $Elemento3
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+## 
+## $Elemento5
+##                 mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
+<div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb801-1"><a href="2-6-Edatos.html#cb801-1"></a><span class="co"># Verificar la estructura de datos del objeto Logicos_1 - función class()</span></span>
+<span id="cb801-2"><a href="2-6-Edatos.html#cb801-2"></a><span class="kw">class</span>(Logicos_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p style="color:#e6550d";><i>Haciendo uso de vectores con elementos textuales (cadena o caracter) </i></p>
+<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="2-6-Edatos.html#cb803-1"></a><span class="co"># Selección de los elementos cuyos nombres son Elemento2 y Elemento5</span></span>
+<span id="cb803-2"><a href="2-6-Edatos.html#cb803-2"></a>Mi_primera_lista[<span class="kw">c</span>(<span class="st">&#39;Elemento2&#39;</span>, <span class="st">&#39;Elemento5&#39;</span>)]</span></code></pre></div>
+<pre><code>## $Elemento2
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## 
+## $Elemento5
+##                 mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
+<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb805-1"><a href="2-6-Edatos.html#cb805-1"></a><span class="co"># Selección de los elementos cuyos nombres son Elemento1, Elemento2 y Elemento6.</span></span>
+<span id="cb805-2"><a href="2-6-Edatos.html#cb805-2"></a><span class="co"># Guardar e imprimir los resultados a partir de un objeto llamado &#39;Textos_1&#39;</span></span>
+<span id="cb805-3"><a href="2-6-Edatos.html#cb805-3"></a>Textos_<span class="dv">1</span> &lt;-<span class="st"> </span>Mi_primera_lista[<span class="kw">c</span>(<span class="st">&#39;Elemento1&#39;</span>, <span class="st">&#39;Elemento2&#39;</span>, <span class="st">&#39;Elemento6&#39;</span>)]</span>
+<span id="cb805-4"><a href="2-6-Edatos.html#cb805-4"></a>Textos_<span class="dv">1</span> </span></code></pre></div>
+<pre><code>## $Elemento1
+## [1] 1 2 3 4
+## 
+## $Elemento2
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## 
+## $Elemento6
+## $Elemento6$Letras
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;
+## 
+## $Elemento6$Matriz
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb807-1"><a href="2-6-Edatos.html#cb807-1"></a><span class="co"># Verificar la estructura de datos del objeto Textos_1 - función class()</span></span>
+<span id="cb807-2"><a href="2-6-Edatos.html#cb807-2"></a><span class="kw">class</span>(Textos_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+</div>
+</div>
+<div id="OtrasLS" class="section level4" number="2.6.4.2">
+<h4><span class="header-section-number">2.6.4.2</span> <em>Otras actividades con listas</em></h4>
+<p>La gestión de listas en R, al igual que los marcos de datos o <code>data.frame</code>, implican la realización de un número importante de actividades sobre sus elementos entre las que se destacan, entre otras, la asignación o el cambio de los nombres, la modificación del contenido y la adición y eliminación de los mismos. A continuación, se presentan algunos ejemplos con parte de las principales actividades aplicables a la gestión de listas las cuales, dado el alcance de este documento, se presentan de manera general. El desarrollo de estos ejemplos, como se puede deducir, se soportan en el conocimiento requerido para la gestión de marcos de datos o <code>data.frame</code> y que se presentó en la <a href="2-6-Edatos.html#DataFrames">sección</a> anterior. Si se considera necesario, invitamos al lector a explorar nuevamente este contenido y, en especial, a revisar los apartados relacionadas con la <a href="2-6-Edatos.html#EliminaDF">modificación y eliminación</a> de variables en <code>data.frame</code> y con la <a href="2-6-Edatos.html#AdicionaDF">adición de elementos</a> en estas estructuras de datos.</p>
+<p style="color:#e6550d";><i>Ejemplo. Actividades frecuentes en la gestión de listas con R</i></p>
+<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb809-1"><a href="2-6-Edatos.html#cb809-1"></a><span class="co"># Crear lista llamada Milista_2</span></span>
+<span id="cb809-2"><a href="2-6-Edatos.html#cb809-2"></a><span class="co"># No se le asignó nombres a los elementos</span></span>
+<span id="cb809-3"><a href="2-6-Edatos.html#cb809-3"></a>Milista_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">6</span>), </span>
+<span id="cb809-4"><a href="2-6-Edatos.html#cb809-4"></a>                 <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dt">byrow =</span> <span class="ot">TRUE</span>, <span class="dt">nrow=</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>),</span>
+<span id="cb809-5"><a href="2-6-Edatos.html#cb809-5"></a>                 <span class="kw">head</span>(mtcars, <span class="dt">n =</span> <span class="dv">5</span>))</span>
+<span id="cb809-6"><a href="2-6-Edatos.html#cb809-6"></a><span class="co"># Visualizar elementos de Milista_2</span></span>
+<span id="cb809-7"><a href="2-6-Edatos.html#cb809-7"></a><span class="co"># Revisar como identifica R, en el output, cada uno de los elementos de Milista_2</span></span>
+<span id="cb809-8"><a href="2-6-Edatos.html#cb809-8"></a>Milista_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1 2 3 4 6
+## 
+## [[2]]
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## 
+## [[3]]
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+<p style="color:#e6550d";><i>Asignar o modificar nombres de elementos de una lista </i></p>
+<div class="sourceCode" id="cb811"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb811-1"><a href="2-6-Edatos.html#cb811-1"></a><span class="co"># Asignar nombres a la lista Milista_2</span></span>
+<span id="cb811-2"><a href="2-6-Edatos.html#cb811-2"></a><span class="co"># Hacer uso de la función names()</span></span>
+<span id="cb811-3"><a href="2-6-Edatos.html#cb811-3"></a><span class="kw">names</span>(Milista_<span class="dv">2</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Nomb_1&#39;</span>, <span class="st">&#39;Nomb_2&#39;</span>, <span class="st">&#39;Nomb3&#39;</span>)</span>
+<span id="cb811-4"><a href="2-6-Edatos.html#cb811-4"></a><span class="co"># Mostrar lista con nombres asignados</span></span>
+<span id="cb811-5"><a href="2-6-Edatos.html#cb811-5"></a>Milista_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## $Nomb_1
+## [1] 1 2 3 4 6
+## 
+## $Nomb_2
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## 
+## $Nomb3
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+<div class="sourceCode" id="cb813"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb813-1"><a href="2-6-Edatos.html#cb813-1"></a><span class="co"># modificar el nombre del tercer elemento (Nomb3) por Nomb_3</span></span>
+<span id="cb813-2"><a href="2-6-Edatos.html#cb813-2"></a><span class="kw">names</span>(Milista_<span class="dv">2</span>)[<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Nomb_3&#39;</span>)</span>
+<span id="cb813-3"><a href="2-6-Edatos.html#cb813-3"></a><span class="co"># Mostrar lista con el nombre del tercer elemento modificado</span></span>
+<span id="cb813-4"><a href="2-6-Edatos.html#cb813-4"></a>Milista_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## $Nomb_1
+## [1] 1 2 3 4 6
+## 
+## $Nomb_2
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## 
+## $Nomb_3
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+<p style="color:#e6550d";><i>Modificar contenido de elementos de una lista </i></p>
+<div class="sourceCode" id="cb815"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb815-1"><a href="2-6-Edatos.html#cb815-1"></a><span class="co"># Modificar contenido de elementos (reemplazar)</span></span>
+<span id="cb815-2"><a href="2-6-Edatos.html#cb815-2"></a><span class="co"># cambiar el elemento de la lista llamado &#39;Nomb_1&#39; por el vector c(5, 7:9, 11)</span></span>
+<span id="cb815-3"><a href="2-6-Edatos.html#cb815-3"></a><span class="co"># ¿Por qué se necesita usar corchetes dobles?</span></span>
+<span id="cb815-4"><a href="2-6-Edatos.html#cb815-4"></a>Milista_<span class="dv">2</span>[[<span class="kw">c</span>(<span class="st">&#39;Nomb_1&#39;</span>)]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span><span class="op">:</span><span class="dv">9</span>, <span class="dv">11</span>)</span>
+<span id="cb815-5"><a href="2-6-Edatos.html#cb815-5"></a><span class="co"># Mostrar lista con elemento reemplazado</span></span>
+<span id="cb815-6"><a href="2-6-Edatos.html#cb815-6"></a>Milista_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## $Nomb_1
+## [1]  5  7  8  9 11
+## 
+## $Nomb_2
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## 
+## $Nomb_3
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+<div class="sourceCode" id="cb817"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb817-1"><a href="2-6-Edatos.html#cb817-1"></a><span class="co"># Modificar contenido de elementos (modificar)</span></span>
+<span id="cb817-2"><a href="2-6-Edatos.html#cb817-2"></a><span class="co"># Modificar los elementos 1 y 5 del elemento Nomb_1 de la lista </span></span>
+<span id="cb817-3"><a href="2-6-Edatos.html#cb817-3"></a><span class="co"># Analizar cómo R desarrolla este ejercicio</span></span>
+<span id="cb817-4"><a href="2-6-Edatos.html#cb817-4"></a>Milista_<span class="dv">2</span>[[<span class="kw">c</span>(<span class="st">&#39;Nomb_1&#39;</span>)]][<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">10</span>)</span>
+<span id="cb817-5"><a href="2-6-Edatos.html#cb817-5"></a><span class="co"># Mostrar lista con elemento modificado</span></span>
+<span id="cb817-6"><a href="2-6-Edatos.html#cb817-6"></a>Milista_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## $Nomb_1
+## [1]  6  7  8  9 10
+## 
+## $Nomb_2
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## 
+## $Nomb_3
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+<p style="color:#e6550d";><i> Adicionar elementos a una lista </i></p>
+<div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb819-1"><a href="2-6-Edatos.html#cb819-1"></a><span class="co"># Adiciconar un nuevo elemento llamado Nomb_4 a la lista</span></span>
+<span id="cb819-2"><a href="2-6-Edatos.html#cb819-2"></a><span class="co"># La lista ahora cuenta con 4 elementos</span></span>
+<span id="cb819-3"><a href="2-6-Edatos.html#cb819-3"></a><span class="co"># ¿Qué tiene de especial este nuevo elemento</span></span>
+<span id="cb819-4"><a href="2-6-Edatos.html#cb819-4"></a>Milista_<span class="dv">2</span><span class="op">$</span>Nomb_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>), <span class="dt">b =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>), <span class="dt">ncol =</span> <span class="dv">2</span>))</span>
+<span id="cb819-5"><a href="2-6-Edatos.html#cb819-5"></a><span class="co"># Mostrar lista con nuevo elemento</span></span>
+<span id="cb819-6"><a href="2-6-Edatos.html#cb819-6"></a>Milista_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## $Nomb_1
+## [1]  6  7  8  9 10
+## 
+## $Nomb_2
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## 
+## $Nomb_3
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## 
+## $Nomb_4
+## $Nomb_4$a
+## [1] 1 3 5 7 9
+## 
+## $Nomb_4$b
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</code></pre>
+<p style="color:#e6550d";><i> Eliminar elementos de una lista </i></p>
+<div class="sourceCode" id="cb821"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb821-1"><a href="2-6-Edatos.html#cb821-1"></a><span class="co"># Eliminar los elementos de la lista llamados &#39;Nomb_1&#39; y &#39;Nomb_2&#39;</span></span>
+<span id="cb821-2"><a href="2-6-Edatos.html#cb821-2"></a>Milista_<span class="dv">2</span>[<span class="kw">c</span>(<span class="st">&#39;Nomb_1&#39;</span>, <span class="st">&#39;Nomb_2&#39;</span>)] &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb821-3"><a href="2-6-Edatos.html#cb821-3"></a><span class="co"># Mostrar lista con elementos modificados</span></span>
+<span id="cb821-4"><a href="2-6-Edatos.html#cb821-4"></a>Milista_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## $Nomb_3
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## 
+## $Nomb_4
+## $Nomb_4$a
+## [1] 1 3 5 7 9
+## 
+## $Nomb_4$b
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</code></pre>
+<p>Los anteriores ejemplos, que hacen parte de la cotidianidad de la gestión con listas en R, en un principio pueden resultar complejos de entender y desarrollar dado el tiempo de comprensión que probablemente estos exigen de cada uno de nosotros. Por lo anterior, invitamos a los lectores a complementar el conocimiento de lo expuesto en esta sección dadas las limitaciones anunciadas y el alcance esperado con el desarrollo del presente documento.</p>
+</div>
 </div>
 <div id="Factores" class="section level3" number="2.6.5">
 <h3><span class="header-section-number">2.6.5</span> Factores</h3>
+<p>A lo largo de esta sección del documento hemos presentado, con menor o mayor profundidad, las características de las principales <a href="2-6-Edatos.html#Edatos">estructuras de datos</a> que conforman la base del lenguaje de programación estadístico R (<a href="2-6-Edatos.html#Vectores">vectores</a>, <a href="2-6-Edatos.html#Matrices">matrices</a>, <a href="2-6-Edatos.html#DataFrames">marcos de datos</a> o <code>data.frame</code> y <a href="2-6-Edatos.html#Listas">listas</a>). En R base, existe una sexta característica del lenguaje la cual resulta de alta útilidad en la gestión y análisis de datos, conocida como factores. Los factores, aunque no son considerados como una estructuta de datos propia del lenguaje, están orientados a facilitar el trabajo con variables de tipo categórico o nominal y de tipo ordinal.</p>
+<p>Aunque este texto no está orientado a la metodología de la investigación, en la práctiva investigativa e incluso en el contexto de la gestión empresarial a nivel público o privado, es común el trabajo con variables las cuales pueden ser clasificadas, desde una perspectiva metodológica, en tres categorías<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a>: <strong>continuas</strong> (intervalo o razón), <strong>nominales</strong> o categóricas y <strong>ordinales</strong>. Las <strong>variables de intervalo</strong> hacen parte del subconjunto de variables continuas y se diferencian de las <strong>variables de razón</strong>, que también pertenecen a este subconjunto, en la inexistencia de un cero absoluto. Por ejemplo, la temperatura del ambiente es un ejemplo de variable de intervalo porque 0 grados no significa ausencia de temperatura. En contraste, la velocidad de un vehículo, es un ejemplo de una variable de razón porque 0 sí significa ausencia de velocidad -el vehículo se encuentra detenido-.</p>
+<p>Las <strong>variables nominales</strong> o categóricas se caracterizan por “medir” las cualidades de un atributo de interés -un número limitado-. Estas pueden hacer uso o no de números, pero carece de sentido realizar con estos las operaciones aritméticas básicas pues los mismos juegan un rol exclusivo de identificación. Las <strong>variables ordinales</strong>, de manera semejante y a diferencia de las nominales, permiten la identificación de una o más cualidades de un individuo pero a diferencia de las nominales, en estas existe un orden entre las modalidades de la variable. Por ejemplo, el sexo o el estado civil de una persona son ejemplos de varaibles de tipo nominal pues estas están conformadas por cualidades en donde el orden de las mismas carece de sentido. El <em>status</em> social de una persona (bajo, medio o alto) o el nivel de satisfacción de un usuario con un servicio (malo, regular, bueno o excelente) son ejemplos de variales de tipo ordinal en donde las cualidades, además de representar una característica de interés, presentan un orden en su magnitud: malo es peor que regular, regular es peor que bueno y bueno es peor que excelente, por ejemplo.</p>
+<p>Para una gestión correcta de variables de tipo nominal u ordinal en R, es aconsejable el uso de factores. A continuación, se presenta la regla general para la construcción de factores en R.</p>
+<br>
+<blockquote>
+<p>
+<strong>
+<p style="color:red;">
+Regla: Construcción de factores en R
+</p>
+</strong><br>
+En R, los <strong>factores</strong> se construyen haciendo uso de la función <code>factor()</code>. Esta función está compuesta por un conjunto de argumentos requeridos para una correcta gestión de variables nominales u ordinales.
+</p>
+</blockquote>
+<p><br></p>
+<p>A continuación, a través del desarrollo de un ejemplo, se presentan las principales características asociadas a la gestión de factores en R. Para ello, supongamos que estamos interesados en conocer el total de personas que pertenecen a cada uno de los grupos sanguíneos existentes <code>(O, A, B Y AB)</code> a partir de los resultados observados en una muestra de 10 individuos. El grupo sanguíneo al que pertenece cada uno de los individuos del ejemplo está contenido en un vector llamado <code>Grupo_S</code> cuyos valores son <code>c('O', 'A', 'B', 'O', 'A', 'O', 'O', 'A', 'B', 'O')</code> y la tabla con el total de los individuos que conforman cada grupo será calculada a través del uso de una función disponible en R llamada <code>table()</code><a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a>. Los resultados de los grupos sanguíneos<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a> al que pertenecen cada uno de los individuos del ejemplo están contenidos dentro de un vector de tipo cadena o caracter y a partir de estos, sin el uso de factores, se puede dar respuesta a la pregunta de interés: ¿cuántos individuos pertenecen acada uno de los grupos sanguíneos actualmente existentes? A continuación, se presenta el desarrollo del ejercicio sin acudir al uso de factores.</p>
+<p style="color:#e6550d";><i>Ejemplo. Construcción de tablas a partir de vectores de tipo cadena o caracter (textuales).</i></p>
+<div class="sourceCode" id="cb823"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb823-1"><a href="2-6-Edatos.html#cb823-1"></a><span class="co"># Definir el vector con información de grupos sanguíneos</span></span>
+<span id="cb823-2"><a href="2-6-Edatos.html#cb823-2"></a>Grupo_S &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>)</span>
+<span id="cb823-3"><a href="2-6-Edatos.html#cb823-3"></a></span>
+<span id="cb823-4"><a href="2-6-Edatos.html#cb823-4"></a><span class="co"># Visualizar los resultados</span></span>
+<span id="cb823-5"><a href="2-6-Edatos.html#cb823-5"></a>Grupo_S</span></code></pre></div>
+<pre><code>##  [1] &quot;O&quot; &quot;A&quot; &quot;B&quot; &quot;O&quot; &quot;A&quot; &quot;O&quot; &quot;O&quot; &quot;A&quot; &quot;B&quot; &quot;O&quot;</code></pre>
+<div class="sourceCode" id="cb825"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb825-1"><a href="2-6-Edatos.html#cb825-1"></a><span class="co"># Verificar el tipo de vector que contiene los resultados</span></span>
+<span id="cb825-2"><a href="2-6-Edatos.html#cb825-2"></a><span class="kw">class</span>(Grupo_S)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb827"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb827-1"><a href="2-6-Edatos.html#cb827-1"></a><span class="co"># Construir una tabla con el total de invividuos por grupo sanguíneo</span></span>
+<span id="cb827-2"><a href="2-6-Edatos.html#cb827-2"></a><span class="kw">table</span>(Grupo_S)</span></code></pre></div>
+<pre><code>## Grupo_S
+## A B O 
+## 3 2 5</code></pre>
+<p>Al observar los resultados del ejemplo anterior podemos concluir que existen tres individuos que pertenecen al grupo sanguíneo <code>A</code>, 2 al grupo sanguíneo <code>B</code> y 5 al grupo sanguíneo <code>O</code>. Con esta forma de proceder, desde luego, estamos dando una respuesta a la pregunta de interés. No obstante, si quisieramos ser más precisos en nuestra respuesta, ninguno de los individuos pertenece al grupo sanguíneo AB y en la tabla de respuesta esta característica no fue tenida en cuenta. En esta situación y en otras como: el caso en el que deseemos renombrar las opciones de respuesta de una variable categórica, ordenar la presentación de los resultados de una variable categórica o señalar que sus opciones tienen un orden natural definido (variables ordinales), resulta de alta utilidad gestionar este tipo de variables acudiendo al uso de de factores.</p>
+<div id="crear-factores-en-r" class="section level4" number="2.6.5.1">
+<h4><span class="header-section-number">2.6.5.1</span> Crear factores en R</h4>
+<p>La primera forma disponible para crear factores en R es haciendo uso de la función <code>factor()</code> sin argumentos; es decir, únicamente con la variable que se desea transformar como un factor. A continuación, se presenta la creación de un factor a través de esta vía a partir de la variable disponible con el ejemplo de los grupos sanguíneos.</p>
+<p style="color:#e6550d";><i>Ejemplo. Creación de factores por defecto en R</i></p>
+<div class="sourceCode" id="cb829"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb829-1"><a href="2-6-Edatos.html#cb829-1"></a><span class="co"># Definir el vector con información de grupos sanguíneos</span></span>
+<span id="cb829-2"><a href="2-6-Edatos.html#cb829-2"></a>Grupo_S &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>)</span>
+<span id="cb829-3"><a href="2-6-Edatos.html#cb829-3"></a></span>
+<span id="cb829-4"><a href="2-6-Edatos.html#cb829-4"></a><span class="co"># Crear la variable como un factor a través del uso de la función factor()</span></span>
+<span id="cb829-5"><a href="2-6-Edatos.html#cb829-5"></a><span class="co"># Almacenar los resultados en una variable llamada Grupo_S_factor</span></span>
+<span id="cb829-6"><a href="2-6-Edatos.html#cb829-6"></a>Grupo_S_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(Grupo_S)</span>
+<span id="cb829-7"><a href="2-6-Edatos.html#cb829-7"></a></span>
+<span id="cb829-8"><a href="2-6-Edatos.html#cb829-8"></a><span class="co"># Visualizar los resultados del objeto Grupo_S_factor</span></span>
+<span id="cb829-9"><a href="2-6-Edatos.html#cb829-9"></a>Grupo_S_factor</span></code></pre></div>
+<pre><code>##  [1] O A B O A O O A B O
+## Levels: A B O</code></pre>
+<div class="sourceCode" id="cb831"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb831-1"><a href="2-6-Edatos.html#cb831-1"></a><span class="co"># Verificar el tipo de objeto que contiene los resultados</span></span>
+<span id="cb831-2"><a href="2-6-Edatos.html#cb831-2"></a><span class="kw">class</span>(Grupo_S_factor)</span></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb833-1"><a href="2-6-Edatos.html#cb833-1"></a><span class="co"># Ver las características de la variable transformada - función str()</span></span>
+<span id="cb833-2"><a href="2-6-Edatos.html#cb833-2"></a><span class="kw">str</span>(Grupo_S_factor)</span></code></pre></div>
+<pre><code>##  Factor w/ 3 levels &quot;A&quot;,&quot;B&quot;,&quot;O&quot;: 3 1 2 3 1 3 3 1 2 3</code></pre>
+<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb835-1"><a href="2-6-Edatos.html#cb835-1"></a><span class="co"># Construir una tabla con el total de invividuos por grupo sanguíneo</span></span>
+<span id="cb835-2"><a href="2-6-Edatos.html#cb835-2"></a><span class="co"># Haciendo uso de una variable convertida en factor</span></span>
+<span id="cb835-3"><a href="2-6-Edatos.html#cb835-3"></a><span class="kw">table</span>(Grupo_S_factor)</span></code></pre></div>
+<pre><code>## Grupo_S_factor
+## A B O 
+## 3 2 5</code></pre>
+<p>Al analizar los resultados anteriores podemos observar varios aspectos de suma importancia a la hora de gestionar variables en R haciendo uso de factores. En primer lugar, al visualizar los resultados del objeto <code>Grupo_S_factor</code> este, además de presentar los resultados del vector, viene acompañado de una nueva línea <code>Levels: A B O</code> en donde se nos anuncia que nuestra variable es de tipo factor y que esta está conformada por tres niveles (A, B y O) los cuales se presentan, por defecto, en <strong>orden alfabético</strong>. En segundo lugar, al aplicar la función <code>class()</code> al objeto creado, se corrobora que este es de naturaleza/tipo <em>factor</em>. En tercer lugar, la función <code>str()</code> nos presenta una perspectiva más elaborada de las características del factor en cuestión: es un factor (Factor), está conformado por tres niveles (“A”,“B”,“O”) e internamente se están representando los niveles/modalidades a través de números enteros (1 para <code>A</code>, 2 para <code>B</code> y 3 para <code>O</code>). En cuarto lugar, la tabla de frecuencias extraida a partir d ela función <code>table()</code> nos presenta los mismos resultados obtenidos en el ejercicio anterior: 3 individuos pertenecen al grupo sanguíneo <code>A</code>, 2 al grupo sanguíneo <code>B</code> y 5 al grupo sanguíneo <code>O</code>.</p>
+<p>En términos generales, más allá del uso de factores, no se observa una diferencia importante aún entre la representación de variables categóricas como vectores de tipo caracter o la representación de estas haciendo uso de factores. No obstante, como veremos a continuación, el uso de factores resulta de suma importancia cuando una opción de respuesta de una variable categórica no se encuentra contenida en ninguno de los individuos bajo estudio pero aún así deseamos informar de esta condición o cuando se desea que los resultados (niveles) se presenten en un orden particular. Por ejemplo, en el caso de los grupos sanguíneos, estamos interesados que el resultado despliegue una respuesta para el grupo sanguíneo <code>AB</code> a pesar de que ninguno de los individuos de la muestra pertecene a este grupo. Así mismo, resulta de interés que estos se deslieguen/presenten de acuerdo a la prevalencia mundial existente: el grupo sanguíneo más frecuente es el <code>O</code>, luego el <code>A</code>, luego el <code>B</code> y, finalmente, el grupo sanguíneo más escaso es el <code>AB</code><a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>. A continuación, se presenta la forma como R nos permite obtener estos dos propósitos acudiendo al uso de factores.</p>
+</div>
+<div id="ajustar-la-cantidad-y-el-orden-de-los-niveles-de-un-factor" class="section level4" number="2.6.5.2">
+<h4><span class="header-section-number">2.6.5.2</span> Ajustar la cantidad y el orden de los niveles de un factor</h4>
+<p>Para ajustar la cantidad de niveles o modalidades existentes en una variable categórica a través del uso de factores en R o para ordenar la forma como estos deben ser presentados en los resultados, acudimos al uso, dentro de la función <code>factor()</code> del argumento <code>levels</code>. A continuación, haciendo uso del ejemplo de grupos sanguíneos, se presenta la forma como R permite adicionar niveles/modalidades a una variable categórica así como reordenar el orden de estos.</p>
+<p style="color:#e6550d";><i>Ejemplo. Ajustar la cantidad y el orden de los niveles de un factor</i></p>
+<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb837-1"><a href="2-6-Edatos.html#cb837-1"></a><span class="co"># Definir el vector con información de grupos sanguíneos</span></span>
+<span id="cb837-2"><a href="2-6-Edatos.html#cb837-2"></a>Grupo_S &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>)</span>
+<span id="cb837-3"><a href="2-6-Edatos.html#cb837-3"></a></span>
+<span id="cb837-4"><a href="2-6-Edatos.html#cb837-4"></a><span class="co"># Crear la variable como un factor a través del uso de la función factor()</span></span>
+<span id="cb837-5"><a href="2-6-Edatos.html#cb837-5"></a><span class="co"># Hacer uso del argumento levels</span></span>
+<span id="cb837-6"><a href="2-6-Edatos.html#cb837-6"></a><span class="co"># Almacenar los resultados en una variable llamada Grupo_S_factor_1</span></span>
+<span id="cb837-7"><a href="2-6-Edatos.html#cb837-7"></a>Grupo_S_factor_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">factor</span>(Grupo_S, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;AB&#39;</span>))</span>
+<span id="cb837-8"><a href="2-6-Edatos.html#cb837-8"></a></span>
+<span id="cb837-9"><a href="2-6-Edatos.html#cb837-9"></a><span class="co"># Visualizar los resultados del objeto Grupo_S_factor_1</span></span>
+<span id="cb837-10"><a href="2-6-Edatos.html#cb837-10"></a>Grupo_S_factor_<span class="dv">1</span></span></code></pre></div>
+<pre><code>##  [1] O A B O A O O A B O
+## Levels: O A B AB</code></pre>
+<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb839-1"><a href="2-6-Edatos.html#cb839-1"></a><span class="co"># Verificar el tipo de objeto que contiene los resultados</span></span>
+<span id="cb839-2"><a href="2-6-Edatos.html#cb839-2"></a><span class="kw">class</span>(Grupo_S_factor_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb841-1"><a href="2-6-Edatos.html#cb841-1"></a><span class="co"># Ver las características de la variable transformada - función str()</span></span>
+<span id="cb841-2"><a href="2-6-Edatos.html#cb841-2"></a><span class="kw">str</span>(Grupo_S_factor_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##  Factor w/ 4 levels &quot;O&quot;,&quot;A&quot;,&quot;B&quot;,&quot;AB&quot;: 1 2 3 1 2 1 1 2 3 1</code></pre>
+<div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="2-6-Edatos.html#cb843-1"></a><span class="co"># Construir una tabla con el total de invividuos por grupo sanguíneo</span></span>
+<span id="cb843-2"><a href="2-6-Edatos.html#cb843-2"></a><span class="co"># Hacer uso de la función table()</span></span>
+<span id="cb843-3"><a href="2-6-Edatos.html#cb843-3"></a><span class="kw">table</span>(Grupo_S_factor_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Grupo_S_factor_1
+##  O  A  B AB 
+##  5  3  2  0</code></pre>
+<p>Al observar los resultados del ejemplo anterior podemos constatar que se han cumplido las pretensiones buscadas y en ellas a resultado fundamental el uso de factores. En primer lugar, se ha creado una variable con el total de niveles existentes en la realidad sin importar que estos no estén disponibles en la muestra de individuos hecho que permitió mostrar que no existe ningún individuo (cero) perteneciente al grupo sanguíneo <code>AB</code>; así mismo, se ingresó de manera manual y no por defecto el orden de presentación de los niveles de una variable categórica hecho que permitió, en el ejemplo de grupos sanguíneos, disponer/presentar los resultados de acuerdo a la prevalencia mundial <code>(O, A, B y AB)</code>.</p>
+</div>
+<div id="renombrar-los-niveles-de-un-factor" class="section level4" number="2.6.5.3">
+<h4><span class="header-section-number">2.6.5.3</span> Renombrar los niveles de un factor</h4>
+<p>La última característica útil para la gestión de variables nominales o categóricas a través de la disposición/uso de factores en R es la capacidad disponible en esta función para renombrar los niveles/modalidades existentes. Por ejemplo, supongamos que estamos interesados en usar una etiqueta alternativa (renombrar) para cada uno de los grupos sanguíneos del ejemplo de tal manera que el grupo sanguíneo <code>O</code> se llame <code>Grupo O</code>, el grupo sanguíneo <code>A</code> se llame <code>Grupo A</code>, el grupo sanguíneo <code>B</code> se llame <code>Grupo B</code> y, finalmente, el grupo sanguíneo <code>AB</code> se llame <code>Grupo AB</code>. Para ello, en R existen dos alternativas de solución: haciendo uso del argumento <code>labels</code> dentro de la función <code>factor()</code> o acuendiendo a la función <code>levels</code> cuando se dispone de un factor y se desean modificar sus niveles. A continuación, se presenta un ejemplo para cada una de las alternativas que ofrece este lenguaje para renombrar los niveles de un factor.</p>
+<p style="color:#e6550d";><i>Ejemplo. Renombrar niveles de un factor en R - primera alternativa </i></p>
+<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="2-6-Edatos.html#cb845-1"></a><span class="co"># Definir el vector con información de grupos sanguíneos</span></span>
+<span id="cb845-2"><a href="2-6-Edatos.html#cb845-2"></a>Grupo_S &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>)</span>
+<span id="cb845-3"><a href="2-6-Edatos.html#cb845-3"></a></span>
+<span id="cb845-4"><a href="2-6-Edatos.html#cb845-4"></a><span class="co"># Crear la variable como un factor a través del uso de la función factor()</span></span>
+<span id="cb845-5"><a href="2-6-Edatos.html#cb845-5"></a><span class="co"># Hacer uso del argumento levels y labels</span></span>
+<span id="cb845-6"><a href="2-6-Edatos.html#cb845-6"></a><span class="co"># Almacenar los resultados en una variable llamada Grupo_S_factor</span></span>
+<span id="cb845-7"><a href="2-6-Edatos.html#cb845-7"></a>Grupo_S_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(Grupo_S, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;AB&#39;</span>), </span>
+<span id="cb845-8"><a href="2-6-Edatos.html#cb845-8"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;Grupo A&#39;</span>, <span class="st">&#39;Grupo B&#39;</span>, <span class="st">&#39;Grupo O&#39;</span>, <span class="st">&#39;Grupo AB&#39;</span>))</span>
+<span id="cb845-9"><a href="2-6-Edatos.html#cb845-9"></a></span>
+<span id="cb845-10"><a href="2-6-Edatos.html#cb845-10"></a><span class="co"># Visualizar los resultados del objeto Grupo_S_factor</span></span>
+<span id="cb845-11"><a href="2-6-Edatos.html#cb845-11"></a>Grupo_S_factor</span></code></pre></div>
+<pre><code>##  [1] Grupo A Grupo B Grupo O Grupo A Grupo B Grupo A Grupo A Grupo B Grupo O
+## [10] Grupo A
+## Levels: Grupo A Grupo B Grupo O Grupo AB</code></pre>
+<div class="sourceCode" id="cb847"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb847-1"><a href="2-6-Edatos.html#cb847-1"></a><span class="co"># Ver las características de la variable transformada - función str()</span></span>
+<span id="cb847-2"><a href="2-6-Edatos.html#cb847-2"></a><span class="kw">str</span>(Grupo_S_factor)</span></code></pre></div>
+<pre><code>##  Factor w/ 4 levels &quot;Grupo A&quot;,&quot;Grupo B&quot;,..: 1 2 3 1 2 1 1 2 3 1</code></pre>
+<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb849-1"><a href="2-6-Edatos.html#cb849-1"></a><span class="co"># Construir una tabla con el total de invividuos por grupo sanguíneo</span></span>
+<span id="cb849-2"><a href="2-6-Edatos.html#cb849-2"></a><span class="co"># Hacer uso de la función table()</span></span>
+<span id="cb849-3"><a href="2-6-Edatos.html#cb849-3"></a><span class="kw">table</span>(Grupo_S_factor)</span></code></pre></div>
+<pre><code>## Grupo_S_factor
+##  Grupo A  Grupo B  Grupo O Grupo AB 
+##        5        3        2        0</code></pre>
+<p style="color:#e6550d";><i>Ejemplo. Renombrar niveles de un factor en R - segunda alternativa </i></p>
+<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb851-1"><a href="2-6-Edatos.html#cb851-1"></a><span class="co"># Definir el vector con información de grupos sanguíneos</span></span>
+<span id="cb851-2"><a href="2-6-Edatos.html#cb851-2"></a>Grupo_S &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>)</span>
+<span id="cb851-3"><a href="2-6-Edatos.html#cb851-3"></a></span>
+<span id="cb851-4"><a href="2-6-Edatos.html#cb851-4"></a><span class="co"># Crear la variable como un factor a través del uso de la función factor()</span></span>
+<span id="cb851-5"><a href="2-6-Edatos.html#cb851-5"></a><span class="co"># Hacer uso del argumento levels</span></span>
+<span id="cb851-6"><a href="2-6-Edatos.html#cb851-6"></a><span class="co"># Almacenar los resultados en una variable llamada Grupo_S_factor_1</span></span>
+<span id="cb851-7"><a href="2-6-Edatos.html#cb851-7"></a>Grupo_S_factor_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">factor</span>(Grupo_S, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;AB&#39;</span>))</span>
+<span id="cb851-8"><a href="2-6-Edatos.html#cb851-8"></a></span>
+<span id="cb851-9"><a href="2-6-Edatos.html#cb851-9"></a><span class="co"># Visualizar los resultados del objeto Grupo_S_factor_1</span></span>
+<span id="cb851-10"><a href="2-6-Edatos.html#cb851-10"></a>Grupo_S_factor_<span class="dv">1</span> </span></code></pre></div>
+<pre><code>##  [1] O A B O A O O A B O
+## Levels: O A B AB</code></pre>
+<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="2-6-Edatos.html#cb853-1"></a><span class="co"># Renombrar los niveles del factor Grupo_S_factor_1 </span></span>
+<span id="cb853-2"><a href="2-6-Edatos.html#cb853-2"></a><span class="co"># Hacer uso de la función levels</span></span>
+<span id="cb853-3"><a href="2-6-Edatos.html#cb853-3"></a><span class="kw">levels</span>(Grupo_S_factor_<span class="dv">1</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Grupo O&#39;</span>, <span class="st">&#39;Grupo A&#39;</span>, <span class="st">&#39;Grupo B&#39;</span>, <span class="st">&#39;Grupo AB&#39;</span>)</span>
+<span id="cb853-4"><a href="2-6-Edatos.html#cb853-4"></a></span>
+<span id="cb853-5"><a href="2-6-Edatos.html#cb853-5"></a><span class="co"># Visualizar los resultados del objeto Grupo_S_factor_1 modificado - renombrado</span></span>
+<span id="cb853-6"><a href="2-6-Edatos.html#cb853-6"></a>Grupo_S_factor_<span class="dv">1</span> </span></code></pre></div>
+<pre><code>##  [1] Grupo O Grupo A Grupo B Grupo O Grupo A Grupo O Grupo O Grupo A Grupo B
+## [10] Grupo O
+## Levels: Grupo O Grupo A Grupo B Grupo AB</code></pre>
+<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb855-1"><a href="2-6-Edatos.html#cb855-1"></a><span class="co"># Ver las características de la variable modificada - función str()</span></span>
+<span id="cb855-2"><a href="2-6-Edatos.html#cb855-2"></a><span class="kw">str</span>(Grupo_S_factor_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##  Factor w/ 4 levels &quot;Grupo O&quot;,&quot;Grupo A&quot;,..: 1 2 3 1 2 1 1 2 3 1</code></pre>
+<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="2-6-Edatos.html#cb857-1"></a><span class="co"># Construir una tabla con el total de invividuos por grupo sanguíneo</span></span>
+<span id="cb857-2"><a href="2-6-Edatos.html#cb857-2"></a><span class="co"># Hacer uso de la función table()</span></span>
+<span id="cb857-3"><a href="2-6-Edatos.html#cb857-3"></a><span class="kw">table</span>(Grupo_S_factor_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Grupo_S_factor_1
+##  Grupo O  Grupo A  Grupo B Grupo AB 
+##        5        3        2        0</code></pre>
+<p>En la primera alternativa, se partió de un vector de tipo cadena o caracter, se hizo uso de la función <code>factor()</code> y dentro de esta, de los argumentos <code>levels</code> y <code>labels</code> para definir, respectivamente, los niveles requeridos con su respectivo orden y el renombramiento de estos. En contraste, la alternativa 2, partió de un factor creado haciendo uso de la función <code>factor()</code> y, dentro de esta, acudiendo al argumento <code>levels</code>; paso seguido, se procedió a modificar el contenido de los niveles previamente creados a través del uso de la función <code>levels()</code><a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>.</p>
+</div>
+<div id="variables-ordinales" class="section level4" number="2.6.5.4">
+<h4><span class="header-section-number">2.6.5.4</span> Variables ordinales</h4>
+<p>Las variables nominales o categóricas, por su naturaleza, no presentan un orden natural entre sus modalidades u opciones de respuesta. Este hecho implica que carezca de sentido y sea imposible comparar si una condición observada en una variable para un individuo es menor o mayor que la misma condición observada en otro individuo. Por ejemplo, si retomamos el ejercicio que hemos venido trabajando a lo largo de este numeral del documento, el de la información de grupos sanguíneos para una muestra de 10 individuos y si estamos interesados en comparar, por ejemplo, si el grupo sanguíneo del individuo ubicado en la posición 1 es menor <code>(&lt;)</code> que el grupo sanguíneo del individuo ubicado en la posición 2 el lenguaje, como se muestra a continuación, retornará un dato faltante. Es decir, R no reconoce si esta condición es verdadera o falta y por este motivo retorna el dato <code>NA</code>.</p>
+<p style="color:#e6550d";><i>Ejemplo. Orden en variables nominales haciendo uso de factores  </i></p>
+<div class="sourceCode" id="cb859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb859-1"><a href="2-6-Edatos.html#cb859-1"></a><span class="co"># Definir el vector con información de grupos sanguíneos</span></span>
+<span id="cb859-2"><a href="2-6-Edatos.html#cb859-2"></a>Grupo_S &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;O&#39;</span>)</span>
+<span id="cb859-3"><a href="2-6-Edatos.html#cb859-3"></a></span>
+<span id="cb859-4"><a href="2-6-Edatos.html#cb859-4"></a><span class="co"># Crear la variable como un factor a través del uso de la función factor()</span></span>
+<span id="cb859-5"><a href="2-6-Edatos.html#cb859-5"></a><span class="co"># Hacer uso del argumento levels</span></span>
+<span id="cb859-6"><a href="2-6-Edatos.html#cb859-6"></a><span class="co"># Almacenar los resultados en una variable llamada Grupo_S_factor_1</span></span>
+<span id="cb859-7"><a href="2-6-Edatos.html#cb859-7"></a>Grupo_S_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(Grupo_S, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&#39;O&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;AB&#39;</span>))</span>
+<span id="cb859-8"><a href="2-6-Edatos.html#cb859-8"></a></span>
+<span id="cb859-9"><a href="2-6-Edatos.html#cb859-9"></a><span class="co"># Verificar si el grupo sanguíneo del individuo 1 (O) es menor que </span></span>
+<span id="cb859-10"><a href="2-6-Edatos.html#cb859-10"></a><span class="co"># el grupo sanguíneo del individuo 2 (A)</span></span>
+<span id="cb859-11"><a href="2-6-Edatos.html#cb859-11"></a>Grupo_S_factor[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>Grupo_S_factor[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## Warning in Ops.factor(Grupo_S_factor[1], Grupo_S_factor[2]): &#39;&lt;&#39; not meaningful
+## for factors</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>Al observar los resultados del ejemplo anterior el lenguaje, ante la comparación requerida, retornó un <em>Warning</em> o mensaje de advertencia e imprimió un <code>NA</code> como respuesta. Es decir, no existe información suficiente para poder decir que el grupo sanguíneo del individuo 1 es menor que el grupo sanguíneo del individuo 2. Desde luego, este resultado era esperable dado que estamos ante la presencia de una variable de tipo nominal o categórico y en estas carece de sentido definir un orden entre sus modalidades.</p>
+<p>Como se mencionó al inicio de esta sección, desde una perspectiva de la metología de la investigación, un subconjunto de las variables existentes está constituido por las variables ordinales. Es decir, aquellas que están conformadas por modalidades de respuesta <em>-igual que las variables categóricas-</em>, pero que presentan un orden natural entre sus modalidades: bajo, medio, alto; poco, regular, mucho; pequeño, mediano, grande; etc.</p>
+<p>Para gestionar variables de naturaleza ordinal en R, se debe definir en el código del lenguaje que la variable que estamos gestionando es de tipo ordinal y esto se logra haciendo uso, dentro de la función <code>factor()</code>, del argumento <code>ordered = TRUE</code>. Por ejemplo, supongamos que contamos con la información del peso de 7 individuos clasificado en <strong>bajo</strong>, <strong>medio</strong> y <strong>alto</strong> y que esta se encuentra contenida en un vector llamado <code>Peso</code> cuyo contenido es <code>c('Bajo', 'Bajo', 'Medio', 'Alto', 'Alto', 'Medio', 'Alto')</code>. Así mismo, supongamos que estamos interesados en construir una tabla de frecuencias con la cantidad de individuos por cada opción de respuesta y comparar si el peso del individuo 4 es mayor al del individuo 1. A continuación, se presenta el desarrollo de este ejercicio.</p>
+<p style="color:#e6550d";><i>Ejemplo. Factores y variables ordinales en R  </i></p>
+<div class="sourceCode" id="cb862"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb862-1"><a href="2-6-Edatos.html#cb862-1"></a><span class="co"># Definir el vector con información de pesos de personas</span></span>
+<span id="cb862-2"><a href="2-6-Edatos.html#cb862-2"></a>Peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Bajo&#39;</span>, <span class="st">&#39;Bajo&#39;</span>, <span class="st">&#39;Medio&#39;</span>, <span class="st">&#39;Alto&#39;</span>, <span class="st">&#39;Alto&#39;</span>, <span class="st">&#39;Medio&#39;</span>, <span class="st">&#39;Alto&#39;</span>)</span>
+<span id="cb862-3"><a href="2-6-Edatos.html#cb862-3"></a></span>
+<span id="cb862-4"><a href="2-6-Edatos.html#cb862-4"></a><span class="co"># Crear la variable Peso como un factor - renombrar</span></span>
+<span id="cb862-5"><a href="2-6-Edatos.html#cb862-5"></a><span class="co"># Hacer uso del argumento levels para definir el orden de los niveles</span></span>
+<span id="cb862-6"><a href="2-6-Edatos.html#cb862-6"></a><span class="co"># Hacer uso del argumento ordered para anunciar que es de tipo ordinal</span></span>
+<span id="cb862-7"><a href="2-6-Edatos.html#cb862-7"></a>Peso &lt;-<span class="st"> </span><span class="kw">factor</span>(Peso, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&#39;Bajo&#39;</span>, <span class="st">&#39;Medio&#39;</span>, <span class="st">&#39;Alto&#39;</span>), <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb862-8"><a href="2-6-Edatos.html#cb862-8"></a></span>
+<span id="cb862-9"><a href="2-6-Edatos.html#cb862-9"></a><span class="co"># Visualizar los resultados del objeto Peso</span></span>
+<span id="cb862-10"><a href="2-6-Edatos.html#cb862-10"></a>Peso</span></code></pre></div>
+<pre><code>## [1] Bajo  Bajo  Medio Alto  Alto  Medio Alto 
+## Levels: Bajo &lt; Medio &lt; Alto</code></pre>
+<div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb864-1"><a href="2-6-Edatos.html#cb864-1"></a><span class="co"># Verificar el tipo de objeto que contiene los resultados</span></span>
+<span id="cb864-2"><a href="2-6-Edatos.html#cb864-2"></a><span class="kw">class</span>(Peso)</span></code></pre></div>
+<pre><code>## [1] &quot;ordered&quot; &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb866-1"><a href="2-6-Edatos.html#cb866-1"></a><span class="co"># Ver las características de la variable Peso - función str()</span></span>
+<span id="cb866-2"><a href="2-6-Edatos.html#cb866-2"></a><span class="kw">str</span>(Peso)</span></code></pre></div>
+<pre><code>##  Ord.factor w/ 3 levels &quot;Bajo&quot;&lt;&quot;Medio&quot;&lt;..: 1 1 2 3 3 2 3</code></pre>
+<div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb868-1"><a href="2-6-Edatos.html#cb868-1"></a><span class="co"># Construir una tabla con el total de invividuos por grupos de peso</span></span>
+<span id="cb868-2"><a href="2-6-Edatos.html#cb868-2"></a><span class="co"># Hacer uso de la función table()</span></span>
+<span id="cb868-3"><a href="2-6-Edatos.html#cb868-3"></a><span class="kw">table</span>(Peso)</span></code></pre></div>
+<pre><code>## Peso
+##  Bajo Medio  Alto 
+##     2     2     3</code></pre>
+<div class="sourceCode" id="cb870"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb870-1"><a href="2-6-Edatos.html#cb870-1"></a><span class="co"># Verificar si el peso del individuo 4 (Alto) es mayor que el peso del individuo 1 (Bajo)</span></span>
+<span id="cb870-2"><a href="2-6-Edatos.html#cb870-2"></a>Peso[<span class="dv">4</span>] <span class="op">&gt;</span><span class="st"> </span>Peso[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Los resultados del ejemplo anterior muestran la forma y las características de la gestión de variables ordinales en R. A través del ejemplo expuesto es posible determinar que la variable analizada es de tipo ordinal hecho que se corrobora al observar varios aspectos. En primer lugar, los niveles de la variable ordinal <code>Peso</code>, a diferencia del caso de variables categóricas, ahora presenta un orden <code>Levels: Bajo &lt; Medio &lt; Alto</code>, así mismo, las funciones <code>class()</code> y <code>str()</code> nos permiten corroborar que la variable bajo estudio es de tipo ordinal <code>"ordered" "factor"</code> y <code>Ord.factor w/ 3 levels "Bajo"&lt;"Medio"&lt;</code>, respectivamente. En segundo lugar, la tabla de frecuencias construida con la función <code>table()</code> presenta la información de manera ordenada de acuerdo al orden definido para los respectivos niveles <code>levels = c('Bajo', 'Medio', 'Alto')</code>. Finalmente y a diferencia de lo observado en el caso de variables categóricas, en el escenario de las variables ordinales, es posible comparar si el valor observado en un individuo es mayor o menor que el observado en otro. Por ejemplo, el peso del individuo 4 del ejemplo anterior es mayor que el peso del individuo 1 -<code>TRUE</code> como respuesta a la instrucción <code>Peso[4] &gt; Peso[1]</code>-.</p>
 
+</div>
 </div>
 </div>
 <!-- </div> -->
@@ -3026,6 +3827,14 @@ Para extraer variables e/o individuos de un marco de datos (data.frame) en R se 
 <li id="fn36"><p>En el caso de modificación de elementos ubicados en diferentes variables, como se muestra en uno de los ejemplos, se debe acudir al uso de <code>listas</code> en R. Las características y la conformación de estas estructuras de datos se presenta en la sección de <a href="2-6-Edatos.html#Listas">Listas</a> de este documento.<a href="2-6-Edatos.html#fnref36" class="footnote-back">↩︎</a></p></li>
 <li id="fn37"><p>Los elementos de estos vectores pueden ser <em>enteros positivos</em>, <em>enteros negativos</em> o <em>lógicos</em><a href="2-6-Edatos.html#fnref37" class="footnote-back">↩︎</a></p></li>
 <li id="fn38"><p>Estas funciones, como se mencionó en la sección de matrices, hacen parte de los paquetes instalados por defecto en el lenguaje. Es decir, no requieren invocar o instalar nuevas librerías pues ellas se cargaron al momento de instalar por primera vez R en nuestras computadoras.<a href="2-6-Edatos.html#fnref38" class="footnote-back">↩︎</a></p></li>
+<li id="fn39"><p>Además, las listas presentan algunas limitaciones y ciertos rasgos característicos frente a las demás estructuras de datos que se han presentado en este capítulo. Por ejemplo, en las listas, no aplica la regla de <strong>coerción</strong> de elementos la cual sí aplica para los <code>vectores</code>, las <code>matrices</code>, los <code>arreglos</code> y las variables de un <code>data.frame</code><a href="2-6-Edatos.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<li id="fn40"><p>Desde una perspectiva filosófica, una lista es equivamente a un vector compuesto por elementos los cuales, a diferencia de los vectores hasta ahora vistos que exigen una misma tipología, pueden ser de diversos tipos. De hecho en R, desde una pespectiva conceptual, el conjunto de los vectores está conformado por dos subconjuntos: el de los vectores de naturaleza <strong>atómica</strong> y el de las <strong>listas</strong>. El subconjunto de los vectores atómicos está conformado por los vectores presentados en la sección de <a href="2-6-Edatos.html#Vectores">vectores</a> de este capítulo<a href="2-6-Edatos.html#fnref40" class="footnote-back">↩︎</a></p></li>
+<li id="fn41"><p>En el el caso de que no se le asigne un nombre a los elementos de una lista, las posiciones de estos en el output de R pueden ser identificados a través de corchetes dobles. Por ejemplo, el primero de los elementos se ubica en la posición <code>[[1]]</code>, el segundo en la posición <code>[[2]]</code>, y así sucesivamente.<a href="2-6-Edatos.html#fnref41" class="footnote-back">↩︎</a></p></li>
+<li id="fn42"><p>Esta propuesta de clasificación de las tipologías de las variables es una de varias existentes en el contexto de la metodología de la la investigación. En nuestro criterio, esta forma de clasificar variables, es una de las más empleadas y de mayor utilidad para la gestión de datos y el análisis estadístico<a href="2-6-Edatos.html#fnref42" class="footnote-back">↩︎</a></p></li>
+<li id="fn43"><p>A través de esta función es posible calcular en R el número de individuos que pertenecen a cada una de las modalidades de una variable de tipo categórico, nominal u ordinal<a href="2-6-Edatos.html#fnref43" class="footnote-back">↩︎</a></p></li>
+<li id="fn44"><p>Una función de R que resulta útil para explorar el contenido de una variable categórica es la función <code>unique()</code>. A través de esta función es posible explorar la cantidad de opciones de respuesta disponibles dentro de una variable nominal o categórica.<a href="2-6-Edatos.html#fnref44" class="footnote-back">↩︎</a></p></li>
+<li id="fn45"><p>Aproximadamente un 44% de la población mundial pertenece al grupo sanguieneo <code>O</code>, un 42% al grupo sanguíneo <code>A</code>, un 10% al grupo sanguíneo <code>B</code> y un 4% al grupo sanguíneo <code>AB</code>. Estas proporporciones cambian de manera importante si se incluye el <code>RH</code>; de hecho, se estima que el tipo de sangre <code>AB-</code> tan solo está presente en 1 de cada 67 personas (0.6%)<a href="2-6-Edatos.html#fnref45" class="footnote-back">↩︎</a></p></li>
+<li id="fn46"><p>En R, existe una función llamada <code>levels()</code> y este nombre (levels) a su vez hace parte de uno de los argumentos de la función <code>factor()</code>. Es decir, en este lenguaje no existe ninguna restricción entre los nombres empleados para nombrar una variable y los empleados para nombrar sus argumentos. Como se acabá de presentar, estos pueden ser iguales (levels como función y levels como argumento)<a href="2-6-Edatos.html#fnref46" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 <h2 style="color:#2ca25f;">Comentarios</h2>

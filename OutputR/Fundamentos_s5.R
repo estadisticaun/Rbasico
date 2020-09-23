@@ -9,6 +9,8 @@ Curso_A1 <- data.frame(Edad = c(17L, 26L, 19L, 20L, 15L, 22L),
                        Nota = c(4.3, 1.5, 3.0, 3.7, 4.0, 3.5)
                        )
 Curso_A1
+
+
 # Alternativa 2 - Creación de data.frame a través de variables
 # Definiendo las variables
 Edad <- c(17L, 26L, 19L, 20L, 15L, 22L)
@@ -37,17 +39,19 @@ tail(iris)
 # SELCCIÓN DE UNA VARIABLE EN data.frames ----
 # HACIENDO USO DE [] ----
 
+data()
+
 # Ejemplo 1
 # Selección de la variable ubicada en la posición 1 - 
 # Se conserva la estructura del conjunto de datos original (data.frame)
 
-iris[1]
+class(iris[1])
 
 # Ejemplo 2
 # Selección de la variable ubicada en la posición 1 
 # No se conserva la estructura original (se cambia a vector).
 
-iris[, 1]
+class(iris[ ,1])
 
 # Ejemplo 3
 # Selección de la variable con nombre Petal.Length y creación de una variable
@@ -97,7 +101,7 @@ class(Petal_Width)
 
 # Ejemplo 1
 # Selección de la variable llamada Sepal.Width
-iris$Sepal.Width
+iris$Sepal.Length
 
 # Ejemplo 2
 # Selección de la variable llamada Species
@@ -118,6 +122,8 @@ class(Petal_Length)
 # Selección de las primeras dos variables (posiciones 1 y 2)
 # Sin hacer uso de la coma
 head(iris[c(1,2)])
+
+names(iris)
 
 # Ejemplo 2
 # Selección de las primeras dos variables (posiciones 1 y 2)
@@ -171,7 +177,7 @@ head(iris[ , c(TRUE, FALSE, FALSE, FALSE, TRUE)])
 # Aplicando la regla de reciclaje 
 head(iris[ , c(TRUE, FALSE)])
 
-
+names(iris)
 # VECTORES DE TIPO CARACTER----
 
 # Ejemplo 1
@@ -620,7 +626,7 @@ Curso
 # Almacenar la información de la variable Nueva4 en una variable previa llamada Normal
 # Analizar la forma como R procesa este ejemplo
 Normal <- rnorm(6)
-Curso[, c(6, 7)] <- list(Nueva4 = Normal, Nueva5 = rep(1, 6))
+Curso[, c(5, 6)] <- list(Nueva4 = Normal, Nueva5 = rep(1, 6))
 Curso
 
 # ADICIONAR INDIVIDUOS ----
