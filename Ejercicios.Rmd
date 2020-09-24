@@ -90,3 +90,66 @@ A partir de la matriz previamente creada `Matriz_Rep`, desarrolle las siguientes
 
 
 10. Explorar, en la web, la utilidad de la función **`subset()`** de R e indagar si esta puede ser empleada para extraer, del conjunto de datos `iris`, las variables `Sepal.Length`, `Petal.Length` y  `Species` de las flores cuya especie `Species` es igual a `setosa`. Si no es posible realizar la anterior consulta, explicar por qué?
+
+## Trabajo 3
+
+1. Creen e imprima/visualice en R una lista llamada `Lista` que contenga los elementos contenidos en las siguientes variables.
+
+```{r, eval=FALSE}
+vec_1 <- c(1:4, rep(1,3), 8:10)
+mat_1 <- matrix(seq(0, 30, 2), nrow=4, ncol = 4)
+df_1 <- tail(iris)
+df_2 <- head(mtcars)
+lis_1 <- list(Letras = LETTERS[c(1:5)], df_3 = data.frame(x = c(1:5),
+                                                          y = c('a', 'b', 'c', 'd', 'e')))
+```
+A partir de la lista previamente creada y llamada `Lista`, realice las siguientes actividades.
+
++ Asigne los nombres a sus elementos. Los nombres de la lista están contenidos en el vector de tipo caracter `c('vec_n1', 'mat_n1', 'df_n1', 'dfn2', 'lis_n1')`.
+
++ Cambie el nombre del elemento llamado `'dfn2'` por `'df_n2'`.
+
++ Adicione un nuevo elemento a la lista llamado `mat_n2` con la matriz `matrix(c(TRUE, FALSE, TRUE, FALSE), ncol = 2, dimnames = list(c('F1', 'F2'), c('C1', 'C2')))`. Imprima, haciendo uso de la función `names()`, los nombres de la lista resultante.
+
++ Seleccione los elementos ubicados en las posiciones 1 y 3 haciendo uso de vectores con _enteros negativos_, _enteros positivos_, _elementos lógicos_ y elementos de tipo _caracter_ o textuales.
+
++ Seleccione el elemento llamado `'df_n1'` a través de dos formas. La primera, debe garantizar que se conserve la tipología original de la estructura de datos fuente; es decir, el elemento seleccionado debe continuar siendo una lista. La segunda, debe conservar la estructura del elemento seleccionado, es decir, un marco de datos o `data.frame`. Corrobore los resultados haciendo uso de la función `class()`
+
++ Extraiga/seleccione la fila llamada `F1` de la matriz `mat_n2`. Analizar detenidamente cómo obtener el resultado deseado. Este ejercicio presenta un nivel importante de complejidad.
+
++ Extraiga/seleccione la variable `y` del marco de datos `df_3` contenido dentro del elemento `lis_1` de la lista; el contenido de la variable `y` debe estar alojado dentro de un `data.frame` conformado por 1 variable y 5 individuos. Analizar detenidamente cómo obtener el resultado deseado. Este ejercicio presenta un nivel importante de complejidad.
+
++ Cambiar por 4 el valor actual del indiviudo 1 `Mazda RX4` en la variable `cyl` ubicado dentro del elemento `df_2` de la lista. Analizar detenidamente cómo obtener el resultado deseado. Este ejercicio presenta un nivel importante de complejidad.
+
++ Eliminar los elementos de la lista llamados `mat_n2` y `vec_n1`. Guarde los resultados en una nueva lista sin los elementos eliminados llamada `Lista_Nueva`   
+
+2. El objetivo central del trabajo con factores, como se mencionó en la guía, es la gestión de variables de naturaleza categórica o nominal y ordinal. En general, estas variables se encuentran contenidas dentro de marcos de datos `data.frame `en R y a partir de la información contenida en estas estructuras, se deben gestionar las variables categóricas u ordinales de acuerdo a los intereses deseados. A continuación, se presentan un conjunto de datos `data.frame` hipotético conformado por 10 individuos y 5 variables. La primera de las variables, llamada `Nombre`, contiene los nombres de cada uno de los individuos; la segunda variable, llamada `Edad`, contiene la edad de los individuos; la tercera variable, llamada `Social`, contiene la condición social de cada individuo; la cuarta variable, llamada `Sexo`, contienen el sexo biológico de cada uno de los individuos y finalmentene, la quinta variable, llamada `Ecivil`, contiene la información del estado civil de cada uno de los individuos bajo observación.
+
+```{r, eval=FALSE}
+Pacientes_1 <- data.frame(Nombre = c('Pedro', 'Ana', 'Luisa', 'Eva', 'Juan Carlos', 
+                                     'Raul', 'Andrés', 'Juan', 'Ana Maria', 'Juana'),
+                        Edad = c(35, 43, 34, 32, 34, 28, 23, 22, 25, 32),
+                        Social = c(1, 1, 1, 1, 2, 1, 1, 2, 2, 1),
+                        Sexo = c('H', 'M', 'M', 'M', 'H', 'H', 'H', 'H', 'M', 'M'),
+                        ECivil = c('UL', 'C', 'S', 'UL', 'UL', 'C', 'UL', 'S', 'S', 'C'))
+```
+
+En R, cuando se crea un marco de datos a través de la función `data.frame`, las variables que contienen información textual -vectores cadena o caracter- son importadas dentro del lenguaje, **por defecto**, como factores y los niveles `levels` de los mismos son conformados teniendo en cuenta un orden alfabético. **Teniendo en cuenta lo anterior y los propósitos buscados con la creación de factores en R, realizar las siguientes actividades a partir del marco de datos hipotético `Pacientes_1`.**
+
++ Cree el marco de datos `data.frame` Pacientes_1 con las 5 variables de interés (Nombre, Edad, Social, Sexo y Ecivil). Imprima/presente los resultados y haga uso de la función `str()` para explorar el contenido de este marco de datos. ¿Qué características presentan las variables contenidas dentro de vectores de tipo cadena o caracter (Nombre, Sexo y Ecivil)?
+
++ Renombre haciendo uso de la función `factor()` y el argumento `levels` los niveles/modalidades de la variable `Ecivil` de acuerdo a los siguientes criterios: `Hombre = H` y `Mujer = M`. Con la variable `Sexo` modificada, haciendo uso de la función `table()`, cree una tabla de frecuencias con la cantidad de Hombres y de Mujeres existente en el marco de datos `Pacientes_1`. 
+
+**Nota**. 
+*Recuerde que para seleccionar o modificar el contenido una variable de un `data.frame` se debe hacer uso del operador `$`. Por ejemplo, la instrucción `Pacientes_1$Sexo`, nos permite seleccionar la variable `Sexo` del conjunto de datos  `Pacientes_1`. Cualquier modificación al contenido de una variable dentro de un marco de datos debe tener en cuenta la anterior característica.* 
+
++ Ordene y renombre, haciendo uso de la función `factor()` y los argumentos `levels` y `labels`, los niveles/modalidades de la variable `Ecivil` de acuerdo a los siguientes criterios: para `levels` usar las opciones `UL`, `C` y  `S` y para `labels` las opciones `Unión Libre`, `Casado` y `Soltero`. Con la variable `Ecivil` ordenada y modificada, haciendo uso de la función `table()`, cree una tabla de frecuencias con la cantidad de individuos para cada uno de los estados civiles.
+
++ Defina/cree en R, haciendo uso de la función `factor()`, un factor para representar la variable ordinal `Social` del conjunto de datos `Pacientes_1`. Los niveles `(levels o/y labels)` de  esta variable son: `1 = Baja`, `2 = Media` y `3 = Alta` en donde baja hace referencia a una condición social baja, media a una condición social media y alta, una condición social alta. Verifique, haciendo uso de la función `str()` o `class()`, la nueva condición de la variable `Social` la cual debe ser un factor de tipo ordinal. Así mismo, haciendo uso de la función `table()`, cree una tabla de frecuencias con la cantidad de individuos existente en cada una de las clases sociales. 
+
+**Nota**. 
+*Ninguno de los individuos del `data.frame` bajo estudio (Pacientes_1) pertenece a la condición social alta (valor 3 en la variable `Social`). Es decir, esta condición debe aparacer con 0 individuos en la tabla de frecuencias.*
+
+
+
+

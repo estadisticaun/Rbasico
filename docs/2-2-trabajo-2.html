@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="2-1-trabajo-1.html"/>
-
+<link rel="next" href="2-3-trabajo-3.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,6 +55,69 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -117,6 +180,7 @@
 <ul>
 <li class="chapter" data-level="2.1" data-path="2-1-trabajo-1.html"><a href="2-1-trabajo-1.html"><i class="fa fa-check"></i><b>2.1</b> Trabajo 1</a></li>
 <li class="chapter" data-level="2.2" data-path="2-2-trabajo-2.html"><a href="2-2-trabajo-2.html"><i class="fa fa-check"></i><b>2.2</b> Trabajo 2</a></li>
+<li class="chapter" data-level="2.3" data-path="2-3-trabajo-3.html"><a href="2-3-trabajo-3.html"><i class="fa fa-check"></i><b>2.3</b> Trabajo 3</a></li>
 </ul></li>
 </ul>
 
@@ -157,7 +221,7 @@
 <li><p>Selecionar la variable <code>carb</code> del conjunto de datos (data.frame) <code>mtcars</code> haciendo uso de los operadores <code>[]</code>, <code>[ , ]</code>, <code>[[ ]]</code> y <code>$</code>. ¿Existe alguna diferencia en el resultado al usar alguna de estas formas de extracción de una variable en R?</p></li>
 <li><p>Seleccionar las variables <code>mpg</code>, <code>disp</code>, <code>drat</code>, <code>qsec</code>, <code>am</code> y <code>carb</code> del conjunto de datos <code>mtcars</code>. El proceso de selección de estas variables debe realizarse a través de cuatro vías: haciendo uso de vectores con <em>enteros positivos</em>, haciendo uso de vectores con <em>enteros negativos</em>, haciendo uso de vectores con <em>elementos lógicos</em> y haciendo uso de vectores con datos de tipo <em>caracter o textuales</em>.</p></li>
 <li><p>Seleccionar, del conjunto de datos <code>mtcars</code>, los individuos con valores 4 o 6 en la variable <code>cyl</code> y cuyos valores en la variable <code>mpg</code> son mayores o iguales <code>&gt;=</code> a 25. Para estos individuos, retener la información de las variables <code>mpg</code>, <code>cyl</code> y <code>carb</code>. Guardar/almacenar e imprimir los resultados de este ejercicio en un objeto/variable llamado <code>mtcars_new</code>.</p></li>
-<li><p>Tomando como referencia el conjunto de datos <code>mtcars</code>, realizar las siguientes actividades. Cada uno de los ejercicios <strong>debe</strong> partir del conjunto de datos original; es decir, sin manipulaciones o ajustes previos del marco de datos <code>mtcars</code>. Para ello, iniciar el desarrollo de los siguientes ejercicios limpiando el <strong>Environment</strong> de <strong>Rstudio</strong>.<br></p></li>
+<li><p>Tomando como referencia el conjunto de datos <code>mtcars</code>, realizar las siguientes actividades. Cada uno de los ejercicios <strong>debe</strong> partir del conjunto de datos original; es decir, sin manipulaciones o ajustes previos del marco de datos <code>mtcars</code>. Para ello, iniciar el desarrollo de los siguientes ítems limpiando el <strong>Environment</strong> de <strong>Rstudio</strong>.<br></p></li>
 </ol>
 <p><strong>Recomendación</strong>.
 <em>Al inicio de cada uno de los ejercicios cree, a partir del conjunto de datos <code>mtcars</code>, el nuevo conjunto de datos con el nombre requerido. Por ejemplo, para el primero de los ejercicios que se presenta a continuación, se podrá crear el nuevo conjunto de datos haciendo uso de la línea de código <code>mtcars_name &lt;- mtcars</code> y sobre este nuevo set de datos realizar el ejercicio requerido. La misma recomendación aplica para el desarrollo de los demás ejercicios del presente numeral. Si presenta problemas en alguno de los ejercicios, limpiar el <strong>Environment</strong> de <strong>Rstudio</strong> y reiniciar su desarrollo.</em>
@@ -166,23 +230,15 @@
 <li><p>Cambiar los nombres de las variables <code>hp</code>, <code>wt</code> y <code>am</code> por los nombres <code>hp_new</code>, <code>wt_new</code> y <code>am_new</code>. Guarde e imprima los resultados con los nuevos nombres de las variables en un objeto llamado <code>mtcars_name</code>.</p></li>
 <li><p>Eliminar, haciendo uso de vectores, las variables <code>drat</code>, <code>wt</code>, <code>qsec</code>, <code>vs</code>, <code>am</code>, <code>gear</code> y <code>carb</code>. Guardar e imprimir los últimos 5 resultados del nuevo conjunto de datos en un objeto llamado <code>mtcars_vec</code>.</p></li>
 <li><p>Eliminar, haciendo uso del dato <code>NULL</code>, las variables <code>mpg</code>, <code>cyl</code>, <code>disp</code> y <code>hp</code>. Guardar e imprimir los resultados en un objeto <code>data.frame</code> llamado <code>mtcars_nulos</code>.</p></li>
-<li><p>Modificar/cambiar por 3000 el valor de la variable <code>wt</code> del individuo ubicado en la posición 1 (fila 1). Guardar e imprimir los resultados de los primeros 5 individuos en un objeto llamado <code>mtcars_modif</code>.</p></li>
+<li><p>Modificar/cambiar por 3.000 el valor de la variable <code>wt</code> del individuo ubicado en la posición 1 (fila 1). Guardar e imprimir los resultados de los primeros 5 individuos en un objeto llamado <code>mtcars_modif</code>.</p></li>
 <li><p>Eliminar, haciendo uso de vectores, los primeros 5 individuos. Guardar y presentar los primeros 10 resultados en un nuevo conjunto de datos llamado <code>mtcars_ind2</code>.</p></li>
 <li><p>Adicionar una nueva variable llamada <code>New_Var</code> con los valores 2, 4, 6, 8, … Guardar e imprimir los primeros 10 individuos en un objeto llamado <code>mtcars_var_new</code>.</p></li>
 <li><p>Adicionar un nuevo individuo al conjunto de datos <code>mtcars</code>. Seleccione los valores que a bien considere (aleatorios) para las 11 variables que conforman este conjunto de datos y requeridas para adicionar este nuevo individuo. Guardar e imprimir los resultados desde un objeto llamado <code>mtcars_new_ind</code>.</p></li>
 </ul>
 <ol start="10" style="list-style-type: decimal">
-<li>Explorar, en la web, la utilidad de la función <code>subset()</code> de R e indagar si esta puede ser empleada para extraer, del conjunto de datos <code>iris</code>, las variables <code>Sepal.Length</code>, <code>Petal.Length</code> y <code>Species</code> de las flores cuya especie <code>Species</code> es igual a <code>setosa</code>. Si no es posible realizar la anterior consulta, explicar por qué?</li>
+<li>Explorar, en la web, la utilidad de la función <strong><code>subset()</code></strong> de R e indagar si esta puede ser empleada para extraer, del conjunto de datos <code>iris</code>, las variables <code>Sepal.Length</code>, <code>Petal.Length</code> y <code>Species</code> de las flores cuya especie <code>Species</code> es igual a <code>setosa</code>. Si no es posible realizar la anterior consulta, explicar por qué?</li>
 </ol>
-
 </div>
-<!-- </div> -->
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
 <ol start="1">
@@ -218,8 +274,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="2-1-trabajo-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="2-1-trabajo-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="2-3-trabajo-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

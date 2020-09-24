@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.1 Instalar R | Un Primer Curso de R</title>
-  <meta name="description" content="1.1 Instalar R | Un Primer Curso de R" />
+  <title>3.3 Trabajo 3 | Un Primer Curso de R</title>
+  <meta name="description" content="3.3 Trabajo 3 | Un Primer Curso de R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.1 Instalar R | Un Primer Curso de R" />
+  <meta property="og:title" content="3.3 Trabajo 3 | Un Primer Curso de R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.1 Instalar R | Un Primer Curso de R" />
+  <meta name="twitter:title" content="3.3 Trabajo 3 | Un Primer Curso de R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="1-Instalar.html"/>
-<link rel="next" href="1-2-instalar-rstudio.html"/>
+<link rel="prev" href="3-2-trabajo-2.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -200,70 +200,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="instalar-r" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Instalar R</h2>
-<p>A continuación, se presentan los pasos para la instalación de R.</p>
+<div id="trabajo-3" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Trabajo 3</h2>
+<ol style="list-style-type: decimal">
+<li>Creen e imprima/visualice en R una lista llamada <code>Lista</code> que contenga los elementos contenidos en las siguientes variables.</li>
+</ol>
+<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="3-3-trabajo-3.html#cb872-1"></a>vec_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">8</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb872-2"><a href="3-3-trabajo-3.html#cb872-2"></a>mat_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">2</span>), <span class="dt">nrow=</span><span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb872-3"><a href="3-3-trabajo-3.html#cb872-3"></a>df_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">tail</span>(iris)</span>
+<span id="cb872-4"><a href="3-3-trabajo-3.html#cb872-4"></a>df_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">head</span>(mtcars)</span>
+<span id="cb872-5"><a href="3-3-trabajo-3.html#cb872-5"></a>lis_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Letras =</span> LETTERS[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)], <span class="dt">df_3 =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>),</span>
+<span id="cb872-6"><a href="3-3-trabajo-3.html#cb872-6"></a>                                                          <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)))</span></code></pre></div>
+<p>A partir de la lista previamente creada y llamada <code>Lista</code>, realice las siguientes actividades.</p>
 <ul>
-<li><em><strong>Paso 1</strong></em></li>
+<li><p>Asigne los nombres a sus elementos. Los nombres de la lista están contenidos en el vector de tipo caracter <code>c('vec_n1', 'mat_n1', 'df_n1', 'dfn2', 'lis_n1')</code>.</p></li>
+<li><p>Cambie el nombre del elemento llamado <code>'dfn2'</code> por <code>'df_n2'</code>.</p></li>
+<li><p>Adicione un nuevo elemento a la lista llamado <code>mat_n2</code> con la matriz <code>matrix(c(TRUE, FALSE, TRUE, FALSE), ncol = 2, dimnames = list(c('F1', 'F2'), c('C1', 'C2')))</code>. Imprima, haciendo uso de la función <code>names()</code>, los nombres de la lista resultante.</p></li>
+<li><p>Seleccione los elementos ubicados en las posiciones 1 y 3 haciendo uso de vectores con <em>enteros negativos</em>, <em>enteros positivos</em>, <em>elementos lógicos</em> y elementos de tipo <em>caracter</em> o textuales.</p></li>
+<li><p>Seleccione el elemento llamado <code>'df_n1'</code> a través de dos formas. La primera, debe garantizar que se conserve la tipología original de la estructura de datos fuente; es decir, el elemento seleccionado debe continuar siendo una lista. La segunda, debe conservar la estructura del elemento seleccionado, es decir, un marco de datos o <code>data.frame</code>. Corrobore los resultados haciendo uso de la función <code>class()</code></p></li>
+<li><p>Extraiga/seleccione la fila llamada <code>F1</code> de la matriz <code>mat_n2</code>. Analizar detenidamente cómo obtener el resultado deseado. Este ejercicio presenta un nivel importante de complejidad.</p></li>
+<li><p>Extraiga/seleccione la variable <code>y</code> del marco de datos <code>df_3</code> contenido dentro del elemento <code>lis_1</code> de la lista; el contenido de la variable <code>y</code> debe estar alojado dentro de un <code>data.frame</code> conformado por 1 variable y 5 individuos. Analizar detenidamente cómo obtener el resultado deseado. Este ejercicio presenta un nivel importante de complejidad.</p></li>
+<li><p>Cambiar por 4 el valor actual del indiviudo 1 <code>Mazda RX4</code> en la variable <code>cyl</code> ubicado dentro del elemento <code>df_2</code> de la lista. Analizar detenidamente cómo obtener el resultado deseado. Este ejercicio presenta un nivel importante de complejidad.</p></li>
+<li><p>Eliminar los elementos de la lista llamados <code>mat_n2</code> y <code>vec_n1</code>. Guarde los resultados en una nueva lista sin los elementos eliminados llamada <code>Lista_Nueva</code></p></li>
 </ul>
-<p>El primer paso, como se ilustra en la Figura de abajo, consiste en buscar <strong>R</strong> en google. Para ello, en la barra de google se ingresa la siguiente palabra “R project”.</p>
-<p><img src="Imagenes/R1.png" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>El objetivo central del trabajo con factores, como se mencionó en la guía, es la gestión de variables de naturaleza categórica o nominal y ordinal. En general, estas variables se encuentran contenidas dentro de marcos de datos <code>data.frame</code>en R y a partir de la información contenida en estas estructuras, se deben gestionar las variables categóricas u ordinales de acuerdo a los intereses deseados. A continuación, se presentan un conjunto de datos <code>data.frame</code> hipotético conformado por 10 individuos y 5 variables. La primera de las variables, llamada <code>Nombre</code>, contiene los nombres de cada uno de los individuos; la segunda variable, llamada <code>Edad</code>, contiene la edad de los individuos; la tercera variable, llamada <code>Social</code>, contiene la condición social de cada individuo; la cuarta variable, llamada <code>Sexo</code>, contienen el sexo biológico de cada uno de los individuos y finalmentene, la quinta variable, llamada <code>Ecivil</code>, contiene la información del estado civil de cada uno de los individuos bajo observación.</li>
+</ol>
+<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="3-3-trabajo-3.html#cb873-1"></a>Pacientes_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Nombre =</span> <span class="kw">c</span>(<span class="st">&#39;Pedro&#39;</span>, <span class="st">&#39;Ana&#39;</span>, <span class="st">&#39;Luisa&#39;</span>, <span class="st">&#39;Eva&#39;</span>, <span class="st">&#39;Juan Carlos&#39;</span>, </span>
+<span id="cb873-2"><a href="3-3-trabajo-3.html#cb873-2"></a>                                     <span class="st">&#39;Raul&#39;</span>, <span class="st">&#39;Andrés&#39;</span>, <span class="st">&#39;Juan&#39;</span>, <span class="st">&#39;Ana Maria&#39;</span>, <span class="st">&#39;Juana&#39;</span>),</span>
+<span id="cb873-3"><a href="3-3-trabajo-3.html#cb873-3"></a>                        <span class="dt">Edad =</span> <span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">43</span>, <span class="dv">34</span>, <span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">28</span>, <span class="dv">23</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">32</span>),</span>
+<span id="cb873-4"><a href="3-3-trabajo-3.html#cb873-4"></a>                        <span class="dt">Social =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb873-5"><a href="3-3-trabajo-3.html#cb873-5"></a>                        <span class="dt">Sexo =</span> <span class="kw">c</span>(<span class="st">&#39;H&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;M&#39;</span>),</span>
+<span id="cb873-6"><a href="3-3-trabajo-3.html#cb873-6"></a>                        <span class="dt">ECivil =</span> <span class="kw">c</span>(<span class="st">&#39;UL&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;S&#39;</span>, <span class="st">&#39;UL&#39;</span>, <span class="st">&#39;UL&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;UL&#39;</span>, <span class="st">&#39;S&#39;</span>, <span class="st">&#39;S&#39;</span>, <span class="st">&#39;C&#39;</span>))</span></code></pre></div>
+<p>En R, cuando se crea un marco de datos a través de la función <code>data.frame</code>, las variables que contienen información textual -vectores cadena o caracter- son importadas dentro del lenguaje, <strong>por defecto</strong>, como factores y los niveles <code>levels</code> de los mismos son conformados teniendo en cuenta un orden alfabético. <strong>Teniendo en cuenta lo anterior y los propósitos buscados con la creación de factores en R, realizar las siguientes actividades a partir del marco de datos hipotético <code>Pacientes_1</code>.</strong></p>
 <ul>
-<li><em><strong>Paso 2</strong></em></li>
+<li><p>Cree el marco de datos <code>data.frame</code> Pacientes_1 con las 5 variables de interés (Nombre, Edad, Social, Sexo y Ecivil). Imprima/presente los resultados y haga uso de la función <code>str()</code> para explorar el contenido de este marco de datos. ¿Qué características presentan las variables contenidas dentro de vectores de tipo cadena o caracter (Nombre, Sexo y Ecivil)?</p></li>
+<li><p>Renombre haciendo uso de la función <code>factor()</code> y el argumento <code>levels</code> los niveles/modalidades de la variable <code>Ecivil</code> de acuerdo a los siguientes criterios: <code>Hombre = H</code> y <code>Mujer = M</code>. Con la variable <code>Sexo</code> modificada, haciendo uso de la función <code>table()</code>, cree una tabla de frecuencias con la cantidad de Hombres y de Mujeres existente en el marco de datos <code>Pacientes_1</code>.</p></li>
 </ul>
-<p>El segundo lugar, como se ilustra en la Figura de abajo, se debe dar clic en la opción “Download R”</p>
-<p><img src="Imagenes/R2.png" /></p>
+<p><strong>Nota</strong>.
+<em>Recuerde que para seleccionar o modificar el contenido una variable de un <code>data.frame</code> se debe hacer uso del operador <code>$</code>. Por ejemplo, la instrucción <code>Pacientes_1$Sexo</code>, nos permite seleccionar la variable <code>Sexo</code> del conjunto de datos <code>Pacientes_1</code>. Cualquier modificación al contenido de una variable dentro de un marco de datos debe tener en cuenta la anterior característica.</em></p>
 <ul>
-<li><em><strong>Paso 3</strong></em></li>
+<li><p>Ordene y renombre, haciendo uso de la función <code>factor()</code> y los argumentos <code>levels</code> y <code>labels</code>, los niveles/modalidades de la variable <code>Ecivil</code> de acuerdo a los siguientes criterios: para <code>levels</code> usar las opciones <code>UL</code>, <code>C</code> y <code>S</code> y para <code>labels</code> las opciones <code>Unión Libre</code>, <code>Casado</code> y <code>Soltero</code>. Con la variable <code>Ecivil</code> ordenada y modificada, haciendo uso de la función <code>table()</code>, cree una tabla de frecuencias con la cantidad de individuos para cada uno de los estados civiles.</p></li>
+<li><p>Defina/cree en R, haciendo uso de la función <code>factor()</code>, un factor para representar la variable ordinal <code>Social</code> del conjunto de datos <code>Pacientes_1</code>. Los niveles <code>(levels o/y labels)</code> de esta variable son: <code>1 = Baja</code>, <code>2 = Media</code> y <code>3 = Alta</code> en donde baja hace referencia a una condición social baja, media a una condición social media y alta, una condición social alta. Verifique, haciendo uso de la función <code>str()</code> o <code>class()</code>, la nueva condición de la variable <code>Social</code> la cual debe ser un factor de tipo ordinal. Así mismo, haciendo uso de la función <code>table()</code>, cree una tabla de frecuencias con la cantidad de individuos existente en cada una de las clases sociales.</p></li>
 </ul>
-<p>En tercer lugar, como se ilustra en la Figura de abajo, se abre una ventana con las diferentes opciones disponibles para descargar <strong>R</strong></p>
-<p><img src="Imagenes/R3.png" /></p>
-<ul>
-<li><em><strong>Paso 4</strong></em></li>
-</ul>
-<p>En cuarto lugar, como se ilustra en la Figura de abajo, se debe seleccinar <strong>R</strong> de acuerdo al sistema operativo disponible en nuestros computadores. La gran mayoría de nuestros PCs tienen instalado Windows.</p>
-<p><img src="Imagenes/R4.png" /></p>
-<ul>
-<li><em><strong>Paso 5</strong></em></li>
-</ul>
-<p>El quinto lugar, como se ilustra en la Figura de abajo, se debe dar clic en la opción <strong>base</strong>.</p>
-<p><img src="Imagenes/R5.png" /></p>
-<ul>
-<li><em><strong>Paso 6</strong></em></li>
-</ul>
-<p>En sexto lugar, como se ilustra en la Figura de abajo, se debe dar clic en la opción <strong>Download R 4.0.2 for Windows (32/64 bit)</strong></p>
-<p><img src="Imagenes/R6.png" /></p>
-<ul>
-<li><em><strong>Paso 7</strong></em></li>
-</ul>
-<p>En septimo lugar, como se ilustra en la Figura de abajo, se debe dar <strong>sí</strong> en la ventana emergente. Esta ventana, según los esquemas de seguridad instalados en nuestros computadores, puede o no emerger. Si no emerge, pasa directamente al paso 8.</p>
-<p><img src="Imagenes/R7.png" /></p>
-<ul>
-<li><em><strong>Paso 8</strong></em></li>
-</ul>
-<p>En octavo lugar, como se ilustra en la Figura de abajo, se debe seleccionar la opción instalar y luego dar clic en <strong>Aceptar</strong>.</p>
-<p><img src="Imagenes/R8.png" /></p>
-<ul>
-<li><em><strong>Paso 9</strong></em></li>
-</ul>
-<p>En noveno lugar, como se ilustra en la Figura de abajo, se debe dar clic en <strong>Siguiente</strong> en la totalidad de pestañas que aparecen a continuación.</p>
-<p><img src="Imagenes/R9.png" /></p>
-<ul>
-<li><em><strong>Paso 10</strong></em></li>
-</ul>
-<p>En decimo lugar, como se ilustra en la Figura de abajo, se debe esperar a que termine la instalación de <strong>R</strong>. Este paso puede tardar algunos minutos.</p>
-<p><img src="Imagenes/R10.png" /></p>
-<ul>
-<li><em><strong>Paso 11</strong></em></li>
-</ul>
-<p>En onceavo lugar, como se ilustra en la Figura de abajo, una vez se ha instalado el programa, se debe dar clic en la opción “Finalizar”.</p>
-<p><img src="Imagenes/R11.png" /></p>
-<ul>
-<li><em><strong>Paso 12</strong></em></li>
-</ul>
-<p>En doceavo lugar, como se ilustra en la Figura de abajo, se debe verificar que <strong>R</strong> quedó instalado en nuestros equipos. Esto se puede hacer a través de la barra de opciones de programas.</p>
-<p><img src="Imagenes/R12.png" /></p>
+<p><strong>Nota</strong>.
+<em>Ninguno de los individuos del <code>data.frame</code> bajo estudio (Pacientes_1) pertenece a la condición social alta (valor 3 en la variable <code>Social</code>). Es decir, esta condición debe aparacer con 0 individuos en la tabla de frecuencias.</em></p>
+
 </div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2 style="color:#2ca25f;">Comentarios</h2>
 
 <div id="disqus_thread"></div>
@@ -293,8 +329,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="1-Instalar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="1-2-instalar-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3-2-trabajo-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

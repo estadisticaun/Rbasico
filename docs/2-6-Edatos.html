@@ -181,6 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1" data-path="3-1-trabajo-1.html"><a href="3-1-trabajo-1.html"><i class="fa fa-check"></i><b>3.1</b> Trabajo 1</a></li>
 <li class="chapter" data-level="3.2" data-path="3-2-trabajo-2.html"><a href="3-2-trabajo-2.html"><i class="fa fa-check"></i><b>3.2</b> Trabajo 2</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-trabajo-3.html"><a href="3-3-trabajo-3.html"><i class="fa fa-check"></i><b>3.3</b> Trabajo 3</a></li>
 </ul></li>
 </ul>
 
@@ -2795,12 +2796,12 @@ Para extraer variables e/o individuos de un marco de datos (data.frame) en R se 
 <span id="cb731-6"><a href="2-6-Edatos.html#cb731-6"></a>Curso[, <span class="kw">c</span>(<span class="dv">5</span>)] &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Nueva3 =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>))</span>
 <span id="cb731-7"><a href="2-6-Edatos.html#cb731-7"></a>Curso</span></code></pre></div>
 <pre><code>##   Edad   Sexo Discapacidad Nota     Nueva3
-## 1   17  Mujer         TRUE  4.3  0.1629587
-## 2   26 Hombre        FALSE  1.5 -1.0285941
-## 3   19 Hombre        FALSE  3.0 -0.3677632
-## 4   20  Mujer         TRUE  3.7 -0.0446224
-## 5   15 Hombre        FALSE  4.0 -0.4196392
-## 6   22  Mujer        FALSE  3.5 -0.5294600</code></pre>
+## 1   17  Mujer         TRUE  4.3  0.3142315
+## 2   26 Hombre        FALSE  1.5 -0.7208735
+## 3   19 Hombre        FALSE  3.0 -1.0607445
+## 4   20  Mujer         TRUE  3.7  0.6541960
+## 5   15 Hombre        FALSE  4.0  0.0979505
+## 6   22  Mujer        FALSE  3.5 -1.4353098</code></pre>
 <div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="2-6-Edatos.html#cb733-1"></a><span class="co"># Ejemplo 3</span></span>
 <span id="cb733-2"><a href="2-6-Edatos.html#cb733-2"></a><span class="co"># Haciendo uso de la función list()</span></span>
 <span id="cb733-3"><a href="2-6-Edatos.html#cb733-3"></a><span class="co"># Adicionar, al marco de datos del ejemplo 2, dos nuevas variables (Nueva4 y Nueva5)</span></span>
@@ -2809,13 +2810,13 @@ Para extraer variables e/o individuos de un marco de datos (data.frame) en R se 
 <span id="cb733-6"><a href="2-6-Edatos.html#cb733-6"></a>Normal &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">6</span>)</span>
 <span id="cb733-7"><a href="2-6-Edatos.html#cb733-7"></a>Curso[, <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">7</span>)] &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Nueva4 =</span> Normal, <span class="dt">Nueva5 =</span> <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">6</span>))</span>
 <span id="cb733-8"><a href="2-6-Edatos.html#cb733-8"></a>Curso</span></code></pre></div>
-<pre><code>##   Edad   Sexo Discapacidad Nota     Nueva3      Nueva4 Nueva5
-## 1   17  Mujer         TRUE  4.3  0.1629587 -0.01206117      1
-## 2   26 Hombre        FALSE  1.5 -1.0285941 -0.13958290      1
-## 3   19 Hombre        FALSE  3.0 -0.3677632 -0.31280836      1
-## 4   20  Mujer         TRUE  3.7 -0.0446224  0.58742206      1
-## 5   15 Hombre        FALSE  4.0 -0.4196392 -0.74239609      1
-## 6   22  Mujer        FALSE  3.5 -0.5294600  0.10720165      1</code></pre>
+<pre><code>##   Edad   Sexo Discapacidad Nota     Nueva3     Nueva4 Nueva5
+## 1   17  Mujer         TRUE  4.3  0.3142315 -0.4986171      1
+## 2   26 Hombre        FALSE  1.5 -0.7208735  0.1202771      1
+## 3   19 Hombre        FALSE  3.0 -1.0607445  0.6425142      1
+## 4   20  Mujer         TRUE  3.7  0.6541960  1.0608351      1
+## 5   15 Hombre        FALSE  4.0  0.0979505  0.1018791      1
+## 6   22  Mujer        FALSE  3.5 -1.4353098  0.6331869      1</code></pre>
 </div>
 <div id="adicionar-individuos-a-un-data.frame" class="section level5" number="2.6.3.4.2">
 <h5><span class="header-section-number">2.6.3.4.2</span> Adicionar individuos a un data.frame</h5>

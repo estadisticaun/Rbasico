@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.1 Trabajo 1 | Un Primer Curso de R</title>
-  <meta name="description" content="2.1 Trabajo 1 | Un Primer Curso de R" />
+  <title>2.3 Trabajo 3 | Un Primer Curso de R</title>
+  <meta name="description" content="2.3 Trabajo 3 | Un Primer Curso de R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.1 Trabajo 1 | Un Primer Curso de R" />
+  <meta property="og:title" content="2.3 Trabajo 3 | Un Primer Curso de R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.1 Trabajo 1 | Un Primer Curso de R" />
+  <meta name="twitter:title" content="2.3 Trabajo 3 | Un Primer Curso de R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="2-Ejercicios.html"/>
-<link rel="next" href="2-2-trabajo-2.html"/>
+<link rel="prev" href="2-2-trabajo-2.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -199,29 +199,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="trabajo-1" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Trabajo 1</h2>
+<div id="trabajo-3" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Trabajo 3</h2>
 <ol style="list-style-type: decimal">
-<li><p>¿Qué regla aplica R para evaluar/desarrollar la operación aritmética compuesta <code>(6/2*(2+1 + 2^3) + 24/(2*3 + 0^3) + 3)/8</code>? Explicar, paso a paso y mediante varias líneas de comando, ¿cómo este lenguaje genera el resultado de la anterior operación?</p></li>
-<li><p>Escriba el número pi haciendo uso de la constante integrada <code>pi</code>, guarde su valor dentro de una variable llamada <code>longitud circunferencia vs radio</code> e imprima su resultado. <br>
-<em><strong>Nota: el nombre de la variable debe respetar los espacios existentes entre las diferentes palabras.</strong></em></p></li>
-<li><p>Escribra un dato de tipo lógico, almacene/guarde su contenido en una variable llamada <code>Var%_1</code> e imprima su resultado. ¿Qué pasó al imprimir el resultado en R?, ¿Cómo arreglaría el problema generado para que imprima el resultado de manera correcta?</p></li>
-<li><p>Crear dos vectores en R con los números de 5 en 5: uno iniciando en 5 y terminando en 100 y el otro iniciando en 100 y terminando en 5. Es decir, <code>c(5, 10, 15, 20, ... 100)</code> y <code>c(100, 95, 90, 85, ... 5)</code>.</p></li>
-<li><p>Cree en R, a partir de las funciones vistas para generar vectores de manera rápida (<code>:, seq() o rep()</code>), el siguiente vector c(“a”, “b”, “b”, “c”, “c”, “c”, “d”, “d”, “d”, “d”).</p></li>
-<li><p>Cree la variable <code>var_1</code> y asigne a esta los elementos del vector <code>c(1:10)</code>; luego cree la variable <code>var_2</code> y asigne los elementos contenidos en el vector <code>c(1, 0)</code>. Una vez se hayan creado los anteriores dos vectores, cree una nueva variable <code>Rta</code> y almacene allí la división entre los vectores <code>var_1</code> y <code>var_2</code>. ¿Qué regla aplica R para realizar esta operación dado que los vectores son de diferente longitud? ¿Qué le llama la atención de los tipos de datos que genera esta división? ¿Qué explicación podría dar a los datos “raros” que esta operación genera?</p></li>
-<li><p>Cree la variable <code>x</code> y asigne a esta los elementos del vector <code>c(10, 15, 20 , '30')</code>; luego cree la variable <code>y</code> y asigne los elementos contenidos en el vector <code>c(2, 5, '2', 10)</code>. Una vez se hayan creado los anteriores dos vectores, cree una nueva variable <code>z</code> y almacene allí la multiplicación entre los vectores <code>x</code> e <code>y</code>. ¿Por qué se genera un error al realizar la multiplicación entre los vectores <code>x</code> e <code>y</code>?, ¿qué regla está aplicando R a los elementos que conforman los vectores <code>x</code> e <code>y</code> antes de realizar la multiplicación? ¿Cómo solucionaria el problema generado por R para que se pueda implementar la multiplicación deseada? <br>
-<em><strong>Nota: Copie el contenido de los vectores <code>x</code> e <code>y</code> directamente desde el ejercicio; es decir, no los ingrese manualmente a través del teclado.</strong></em></p></li>
-<li><p>Cree en R un vector con los números del 1 al 100 y almacene el resultado en una variable llamada <code>m</code>. Haciendo uso de operadores relacionales, genere un vector lógico en donde TRUE contenga las posiciones de los elementos menores o iguales a 10 (<code>&lt;= 10</code>) que hacen parte del vector <code>m</code>.</p></li>
-<li><p>Cree la variable <code>Números</code> y asigne a esta los elementos del vector <code>c('uno', 'tres', 'uno ', 'cuatro', ' uno', 'cinco', 'uno')</code>. Haciendo uso de operadores lógicos de tipo relacional, cree una variable llamada <code>Resultado</code> y almacene allí un vector lógico con las posiciones en donde la variable <code>Números</code> es <strong>igual</strong> a la palabra <code>uno</code>, imprima los resultados contenidos en la variable <code>Resultado</code>. ¿Por qué algunos elementos del vector contenido en la variable <code>Números</code>, que tienen la palabra <code>uno</code>, no aparecen como <code>TRUE</code> en el vector lógico contenido en la variable <code>Resultado</code>? Realice los ajustes que considere pertinentes al vector <code>Números</code> para que la totalidad de los elementos que contienen la palabra <code>uno</code> aparezcan como <code>TRUE</code> en el vector lógico contenido en la variable <code>Resultado</code>.<br>
-<em><strong>Nota: Copie el contenido del vector <code>Números</code> directamente desde el ejercicio; es decir, no los ingrese manualmente a través del teclado.</strong></em></p></li>
-<li><p>Cree la variable <code>var_1</code> y asigne a esta los elementos del vector <code>seq(-5, 5, 1)</code>; luego cree la variable <code>var_2</code> y asigne los elementos contenidos en el vector <code>c(-5, 1, 2, -5, 3, 1, 0, -4, -5, 3, 1, -5)</code>. Implemente en R una expresión lógica que contenga las posiciones en donde los elementos de la variable <code>var_1</code> son menores o iguales a cero <strong>y</strong> los elementos del vector <code>var_2</code> son iguales a <code>-5</code>, <code>2</code> o <code>-4</code>.<br>
-<em><strong>Nota: Investigue en la web el operador <code>%in%</code> en R y úselo si lo considera útil para desarrollar este ejercicio</strong></em></p></li>
-<li><p>Cree la variable <code>Serie</code> y asigne a esta los números del 1 al 99 de dos en 2 (<code>1, 3, 5, 7, ... , 99</code>). Seleccione, haciendo uso del operador <code>[ ]</code> (corchetes), los elementos múltiplos de 5 contenidos en el vector <code>Serie</code> y almacene el resultado en una variable llamada <code>Multiplo5</code>. Imprima los resultados contenidos en la variable <code>Multiplo5</code>. ¿Por qué la variable <code>Multiplo5</code> no genera un conflicto en R a pesar de que esta contiene un número en su nombre?</p></li>
-<li><p>Cree la variable <code>Var</code> en R y almacene en ella las primeras 5 letras del abecedario romano a partir de la constante integrada <code>LETTERS</code>. Cree, a partir de los elementos almacenados en la variable <code>Var</code>, una variable llamada <code>Rep_Var</code> con cada uno de los elementos contenidos en la variable <code>Var</code> de manera duplicada; es decir, <code>"A" "A" "B" "B" "C" "C" "D" "D" "E" "E"</code>. Imprima los resultados de la variable <code>Rep_Var</code>.<br>
-<em><strong>Nota: Los elementos de la variable <code>Var</code> no pueden ser ingresados desde el teclado; estos deben ser extraidos (un subconjunto) a partir del uso de la constante integrada <code>LETTERS</code>.</strong></em></p></li>
-<li><p>Cree la variable <code>Nueva</code> y asigne a esta los elementos del vector <code>c(11, 20, 15, 10)</code>; cree la variable <code>Nombres</code> y asigne a esta los elementos del vector <code>c('xyz', 'c%2', 'mno', 'for')</code>. Asigne a los elementos de la variable <code>Nueva</code> los nombres contenidos en la variable <code>Nombres</code> e imprima los resultados. Seleccione los elementos del vector contenido en la variable <code>Nueva</code> cuyos nombres son <code>xyz</code> y <code>for</code>. ¿Por qué cree que R no genera un error en los nombres de los elementos contenidos en el vector <code>Nombres</code> a pesar de que dos de ellos usan caracteres especiales del lenguaje R o palabras reservadas (<code>c%2</code> y <code>for</code>)?</p></li>
+<li>Creen e imprima/visualice en R una lista llamada <code>Lista</code> que contenga los elementos contenidos en las siguientes variables.</li>
 </ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="2-3-trabajo-3.html#cb1-1"></a>vec_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">8</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb1-2"><a href="2-3-trabajo-3.html#cb1-2"></a>mat_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">2</span>), <span class="dt">nrow=</span><span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb1-3"><a href="2-3-trabajo-3.html#cb1-3"></a>df_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">tail</span>(iris)</span>
+<span id="cb1-4"><a href="2-3-trabajo-3.html#cb1-4"></a>df_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">head</span>(mtcars)</span>
+<span id="cb1-5"><a href="2-3-trabajo-3.html#cb1-5"></a>lis_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Letras =</span> LETTERS[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)], <span class="dt">df_3 =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>),</span>
+<span id="cb1-6"><a href="2-3-trabajo-3.html#cb1-6"></a>                                                          <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)))</span></code></pre></div>
+<p>A partir de la lista previamente creada y llamada <code>Lista</code>, realice las siguientes actividades.</p>
+<ul>
+<li><p>Asigne los nombres a sus elementos. Los nombres de la lista están contenidos en el vector de tipo caracter <code>c('vec_n1', 'mat_n1', 'df_n1', 'dfn2', 'lis_n1')</code>.</p></li>
+<li><p>Cambie el nombre del elemento llamado <code>'dfn2'</code> por <code>'df_n2'</code>.</p></li>
+<li><p>Adicione un nuevo elemento a la lista llamado <code>mat_n2</code> con la matriz <code>matrix(c(TRUE, FALSE, TRUE, FALSE), ncol = 2, dimnames = list(c('F1', 'F2'), c('C1', 'C2')))</code>. Imprima, haciendo uso de la función <code>names()</code>, los nombres de la lista resultante.</p></li>
+<li><p>Seleccione los elementos ubicados en las posiciones 1 y 3 haciendo uso de vectores con <em>enteros negativos</em>, <em>enteros positivos</em>, <em>elementos lógicos</em> y elementos de tipo <em>caracter</em> o textuales.</p></li>
+<li><p>Seleccione el elemento llamado <code>'df_n1'</code> a través de dos formas. La primera, debe garantizar que se conserve la tipología original de la estructura de datos fuente; es decir, el elemento seleccionado debe continuar siendo una lista. La segunda, debe conservar la estructura del elemento seleccionado, es decir, un marco de datos o <code>data.frame</code>. Corrobore los resultados haciendo uso de la función <code>class()</code></p></li>
+<li><p>Extraiga/seleccione la fila llamada <code>F1</code> de la matriz <code>mat_n2</code>. Analizar detenidamente cómo obtener el resultado deseado.</p></li>
+<li><p>Extraiga/seleccione la variable <code>y</code> del marco de datos <code>df_3</code> contenido dentro del elemento <code>lis_1</code> de la lista. Analizar detenidamente cómo obtener el resultado deseado. Este ejercicio presenta un nivel importante de complejidad.</p></li>
+<li><p>Cambiar por 4 el valor actual del indiviudo 1 <code>Mazda RX4</code> en la variable <code>cyl</code> ubicado dentro del elemento <code>df_2</code> de la lista. Analizar detenidamente cómo obtener el resultado deseado.</p></li>
+<li><p>Eliminar los elementos de la lista llamados <code>mat_n2</code> y <code>vec_n1</code>. Guarde los resultados en una nueva lista sin los elementos eliminados llamada <code>Lista_Nueva</code></p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>El objetivo central del trabajo con factores, como se mencionó en la guía, es la gestión de variables de naturaleza categórica o nominal y ordinal. En general, estas variables se encuentran contenidas dentro de marcos de datos <code>data.frame</code>en R y a partir de la información contenida en estas estructuras, se deben gestionar las variables categóricas u ordinales de acuerdo a los intereses deseados. A continuación, se presentan un conjunto de datos <code>data.frame</code> hipotético conformado por 10 individuos y 5 variables. La primera de las variables, llamada <code>Nombre</code>, contiene los nombres de cada uno de los individuos; la segunda variable, llamada <code>Edad</code>, contiene la edad de los individuos; la tercera variable, llamada <code>Social</code>, contiene la condición social de cada individuo; la cuarta variable, llamada <code>Sexo</code>, contienen el sexo biológico de cada uno de los individuos y finalmentene, la quinta variable, llamada <code>Ecivil</code>, contiene la información del estado civil de cada uno de los individuos bajo observación.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="2-3-trabajo-3.html#cb2-1"></a>Pacientes_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Nombre =</span> <span class="kw">c</span>(<span class="st">&#39;Pedro&#39;</span>, <span class="st">&#39;Ana&#39;</span>, <span class="st">&#39;Luisa&#39;</span>, <span class="st">&#39;Eva&#39;</span>, <span class="st">&#39;Juan Carlos&#39;</span>, </span>
+<span id="cb2-2"><a href="2-3-trabajo-3.html#cb2-2"></a>                                     <span class="st">&#39;Raul&#39;</span>, <span class="st">&#39;Andrés&#39;</span>, <span class="st">&#39;Juan&#39;</span>, <span class="st">&#39;Ana Maria&#39;</span>, <span class="st">&#39;Juana&#39;</span>),</span>
+<span id="cb2-3"><a href="2-3-trabajo-3.html#cb2-3"></a>                        <span class="dt">Edad =</span> <span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">43</span>, <span class="dv">34</span>, <span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">28</span>, <span class="dv">23</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">32</span>),</span>
+<span id="cb2-4"><a href="2-3-trabajo-3.html#cb2-4"></a>                        <span class="dt">Social =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb2-5"><a href="2-3-trabajo-3.html#cb2-5"></a>                        <span class="dt">Sexo =</span> <span class="kw">c</span>(<span class="st">&#39;H&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;M&#39;</span>),</span>
+<span id="cb2-6"><a href="2-3-trabajo-3.html#cb2-6"></a>                        <span class="dt">ECivil =</span> <span class="kw">c</span>(<span class="st">&#39;UL&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;S&#39;</span>, <span class="st">&#39;UL&#39;</span>, <span class="st">&#39;UL&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;UL&#39;</span>, <span class="st">&#39;S&#39;</span>, <span class="st">&#39;S&#39;</span>, <span class="st">&#39;C&#39;</span>))</span></code></pre></div>
+<p>En R, cuando se crea un marco de datos a través de la función <code>data.frame</code>, las variables que contienen información textual -vectores cadena o caracter- son importadas dentro del lenguaje, <strong>por defecto</strong>, como factores y los niveles <code>levels</code> de los mismos son conformados teniendo en cuenta un orden alfabético. <strong>Teniendo en cuenta lo anterior y los propósitos buscados con la creación de factores en R, realizar las siguientes actividades a partir del marco de datos hipotético <code>Pacientes_1</code>.</strong></p>
+<ul>
+<li><p>Cree el marco de datos <code>data.frame</code> Pacientes_1 con las 5 variables de interés (Nombre, Edad, Social, Sexo y Ecivil). Imprima/presente los resultados y haga uso de la función <code>str()</code> para explorar el contenido de este marco de datos. ¿Qué características presentan las variables contenidas dentro de vectores de tipo cadena o caracter (Nombre, Sexo y Ecivil)?</p></li>
+<li><p>Renombre haciendo uso de la función <code>factor()</code> y el argumento <code>levels</code> los niveles/modalidades de la variable <code>Ecivil</code> de acuerdo a los siguientes criterios: <code>Hombre = H</code> y <code>Mujer = M</code>. Con la variable <code>Sexo</code> modificada, haciendo uso de la función <code>table()</code>, cree una tabla de frecuencias con la cantidad de Hombres y de Mujeres existente en el marco de datos <code>Pacientes_1</code>.</p></li>
+</ul>
+<p><strong>Nota</strong>.
+<em>Recuerde que para seleccionar o modificar el contenido una variable de un <code>data.frame</code> se debe hacer uso del operador <code>$</code>. Por ejemplo, la instrucción <code>Pacientes_1$Sexo</code>, nos permite seleccionar la variable <code>Sexo</code> del conjunto de datos <code>Pacientes_1</code>. Cualquier modificación al contenido de una variable dentro de un marco de datos debe tener en cuenta la anterior característica.</em></p>
+<ul>
+<li><p>Ordene y renombre, haciendo uso de la función <code>factor()</code> y los argumentos <code>levels</code> y <code>labels</code>, los niveles/modalidades de la variable <code>Ecivil</code> de acuerdo a los siguientes criterios: para <code>levels</code> usar las opciones <code>UL</code>, <code>C</code> y <code>S</code> y para <code>labels</code> las opciones <code>Unión Libre</code>, <code>Casado</code> y <code>Soltero</code>. Con la variable <code>Ecivil</code> ordenada y modificada, haciendo uso de la función <code>table()</code>, cree una tabla de frecuencias con la cantidad de individuos para cada uno de los estados civiles.</p></li>
+<li><p>Defina/cree en R, haciendo uso de la función <code>factor()</code>, un factor para representar la variable ordinal <code>Social</code> del conjunto de datos <code>Pacientes_1</code>. Los niveles <code>(levels o/y labels)</code> de esta variable son: <code>1 = Baja</code>, <code>2 = Media</code> y <code>3 = Alta</code> en donde baja hace referencia a una condición social baja, media a una condición social media y alta, una condición social alta. Verifique, haciendo uso de la función <code>str()</code> o <code>class()</code>, la nueva condición de la variable <code>Social</code> la cual debe ser un factor de tipo ordinal. Así mismo, haciendo uso de la función <code>table()</code>, cree una tabla de frecuencias con la cantidad de individuos existente en cada una de las clases sociales.</p></li>
+</ul>
+<p><strong>Nota</strong>.
+<em>Ninguno de los individuos del <code>data.frame</code> bajo estudio (Pacientes_1) pertenece a la condición social alta (valor 3 en la variable <code>Social</code>). Es decir, esta condición debe aparacer con 0 individuos en la tabla de frecuencias.</em></p>
+
 </div>
+<!-- </div> -->
+
+
+
+
+
+
 <h2 style="color:#2ca25f;">Comentarios</h2>
 
 <div id="disqus_thread"></div>
@@ -251,8 +282,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="2-Ejercicios.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-2-trabajo-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="2-2-trabajo-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
