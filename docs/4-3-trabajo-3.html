@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.3 Trabajo 3 | Un Primer Curso de R</title>
+  <meta name="description" content="4.3 Trabajo 3 | Un Primer Curso de R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.3 Trabajo 3 | Un Primer Curso de R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.3 Trabajo 3 | Un Primer Curso de R" />
+  
+  
+  
+
+<meta name="author" content="Alberto Rodríguez Rodríguez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="4-2-trabajo-2.html"/>
+
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/unal/css/style.css" rel="stylesheet" />
+<link href="libs/unal/css/bootstrap-buttons.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="https://ih0.redbubble.net/image.522698608.2413/flat,550x550,075,f.u4.jpg"  height=50 width="50"> <a href="./">Primer Curso de R</a></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Portada</a></li>
+<li class="chapter" data-level="" data-path="Presenta.html"><a href="Presenta.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="chapter" data-level="1" data-path="1-Instalar.html"><a href="1-Instalar.html"><i class="fa fa-check"></i><b>1</b> Instalar R y Rstudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1-1-instalar-r.html"><a href="1-1-instalar-r.html"><i class="fa fa-check"></i><b>1.1</b> Instalar R</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-instalar-rstudio.html"><a href="1-2-instalar-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> Instalar Rstudio</a></li>
+<li class="chapter" data-level="1.3" data-path="1-3-personalizar-rstudio.html"><a href="1-3-personalizar-rstudio.html"><i class="fa fa-check"></i><b>1.3</b> Personalizar Rstudio</a></li>
+</ul></li>
+<li class="part"><span><b>I Fundamentos</b></span></li>
+<li class="chapter" data-level="2" data-path="2-Fund.html"><a href="2-Fund.html"><i class="fa fa-check"></i><b>2</b> Fundamentos del lenguaje R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-1-introR.html"><a href="2-1-introR.html"><i class="fa fa-check"></i><b>2.1</b> Primeros pasos</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html"><i class="fa fa-check"></i><b>2.2</b> Tipos de datos</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html#Tdatos1"><i class="fa fa-check"></i><b>2.2.1</b> Tipos de datos en R</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html#Constantes"><i class="fa fa-check"></i><b>2.2.2</b> Constantes integradas en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html"><i class="fa fa-check"></i><b>2.3</b> Operaciones aritméticas</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html#operaciones-aritméticas-en-r"><i class="fa fa-check"></i><b>2.3.1</b> Operaciones aritméticas en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="2-4-Variables.html"><a href="2-4-Variables.html"><i class="fa fa-check"></i><b>2.4</b> Variables</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="2-4-Variables.html"><a href="2-4-Variables.html#NombreV"><i class="fa fa-check"></i><b>2.4.1</b> Nombre de variables</a></li>
+<li class="chapter" data-level="2.4.2" data-path="2-4-Variables.html"><a href="2-4-Variables.html#tipos-de-variables"><i class="fa fa-check"></i><b>2.4.2</b> Tipos de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html"><i class="fa fa-check"></i><b>2.5</b> Expresiones lógicas</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#operadores-relacionales"><i class="fa fa-check"></i><b>2.5.1</b> Operadores Relacionales</a></li>
+<li class="chapter" data-level="2.5.2" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#operadores-lógicos"><i class="fa fa-check"></i><b>2.5.2</b> Operadores Lógicos</a></li>
+<li class="chapter" data-level="2.5.3" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#combinando-operadores"><i class="fa fa-check"></i><b>2.5.3</b> Combinando operadores</a></li>
+<li class="chapter" data-level="2.5.4" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#coerción-en-expresiones-lógicas"><i class="fa fa-check"></i><b>2.5.4</b> Coerción en expresiones lógicas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html"><i class="fa fa-check"></i><b>2.6</b> Estructuras de datos</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#Vectores"><i class="fa fa-check"></i><b>2.6.1</b> Vectores</a></li>
+<li class="chapter" data-level="2.6.2" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#Matrices"><i class="fa fa-check"></i><b>2.6.2</b> Matrices</a></li>
+<li class="chapter" data-level="2.6.3" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#DataFrames"><i class="fa fa-check"></i><b>2.6.3</b> Data.frames</a></li>
+<li class="chapter" data-level="2.6.4" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#Listas"><i class="fa fa-check"></i><b>2.6.4</b> Listas</a></li>
+<li class="chapter" data-level="2.6.5" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#Factores"><i class="fa fa-check"></i><b>2.6.5</b> Factores</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Limpieza y Transformación</b></span></li>
+<li class="chapter" data-level="3" data-path="3-Trans.html"><a href="3-Trans.html"><i class="fa fa-check"></i><b>3</b> Transformación de datos con R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-1-paquetes-en-r.html"><a href="3-1-paquetes-en-r.html"><i class="fa fa-check"></i><b>3.1</b> Paquetes en R</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="3-1-paquetes-en-r.html"><a href="3-1-paquetes-en-r.html#filosofía-de-un-paquete"><i class="fa fa-check"></i><b>3.1.1</b> Filosofía de un paquete</a></li>
+<li class="chapter" data-level="3.1.2" data-path="3-1-paquetes-en-r.html"><a href="3-1-paquetes-en-r.html#importar-paquetes"><i class="fa fa-check"></i><b>3.1.2</b> Importar paquetes</a></li>
+<li class="chapter" data-level="3.1.3" data-path="3-1-paquetes-en-r.html"><a href="3-1-paquetes-en-r.html#usar-paquetes"><i class="fa fa-check"></i><b>3.1.3</b> Usar paquetes</a></li>
+<li class="chapter" data-level="3.1.4" data-path="3-1-paquetes-en-r.html"><a href="3-1-paquetes-en-r.html#explorar-paquetes"><i class="fa fa-check"></i><b>3.1.4</b> Explorar paquetes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="3-2-importarexportar-datos.html"><a href="3-2-importarexportar-datos.html"><i class="fa fa-check"></i><b>3.2</b> Importar/exportar datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-Ejercicios.html"><a href="4-Ejercicios.html"><i class="fa fa-check"></i><b>4</b> Ejercicios</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4-1-trabajo-1.html"><a href="4-1-trabajo-1.html"><i class="fa fa-check"></i><b>4.1</b> Trabajo 1</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-trabajo-2.html"><a href="4-2-trabajo-2.html"><i class="fa fa-check"></i><b>4.2</b> Trabajo 2</a></li>
+<li class="chapter" data-level="4.3" data-path="4-3-trabajo-3.html"><a href="4-3-trabajo-3.html"><i class="fa fa-check"></i><b>4.3</b> Trabajo 3</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Un Primer Curso de R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="trabajo-3" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Trabajo 3</h2>
+<ol style="list-style-type: decimal">
+<li>Creen e imprima/visualice en R una lista llamada <code>Lista</code> que contenga los elementos contenidos en las siguientes variables.</li>
+</ol>
+<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb890-1"><a href="4-3-trabajo-3.html#cb890-1"></a>vec_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">8</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb890-2"><a href="4-3-trabajo-3.html#cb890-2"></a>mat_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">2</span>), <span class="dt">nrow=</span><span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb890-3"><a href="4-3-trabajo-3.html#cb890-3"></a>df_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">tail</span>(iris)</span>
+<span id="cb890-4"><a href="4-3-trabajo-3.html#cb890-4"></a>df_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">head</span>(mtcars)</span>
+<span id="cb890-5"><a href="4-3-trabajo-3.html#cb890-5"></a>lis_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Letras =</span> LETTERS[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)], <span class="dt">df_3 =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>),</span>
+<span id="cb890-6"><a href="4-3-trabajo-3.html#cb890-6"></a>                                                          <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)))</span></code></pre></div>
+<p>A partir de la lista previamente creada y llamada <code>Lista</code>, realice las siguientes actividades.</p>
+<ul>
+<li><p>Asigne los nombres a sus elementos. Los nombres de la lista están contenidos en el vector de tipo caracter <code>c('vec_n1', 'mat_n1', 'df_n1', 'dfn2', 'lis_n1')</code>.</p></li>
+<li><p>Cambie el nombre del elemento llamado <code>'dfn2'</code> por <code>'df_n2'</code>.</p></li>
+<li><p>Adicione un nuevo elemento a la lista llamado <code>mat_n2</code> con la matriz <code>matrix(c(TRUE, FALSE, TRUE, FALSE), ncol = 2, dimnames = list(c('F1', 'F2'), c('C1', 'C2')))</code>. Imprima, haciendo uso de la función <code>names()</code>, los nombres de la lista resultante.</p></li>
+<li><p>Seleccione los elementos ubicados en las posiciones 1 y 3 haciendo uso de vectores con <em>enteros negativos</em>, <em>enteros positivos</em>, <em>elementos lógicos</em> y elementos de tipo <em>caracter</em> o textuales.</p></li>
+<li><p>Seleccione el elemento llamado <code>'df_n1'</code> a través de dos formas. La primera, debe garantizar que se conserve la tipología original de la estructura de datos fuente; es decir, el elemento seleccionado debe continuar siendo una lista. La segunda, debe conservar la estructura del elemento seleccionado, es decir, un marco de datos o <code>data.frame</code>. Corrobore los resultados haciendo uso de la función <code>class()</code></p></li>
+<li><p>Extraiga/seleccione la fila llamada <code>F1</code> de la matriz <code>mat_n2</code>. Analizar detenidamente cómo obtener el resultado deseado. Este ejercicio presenta un nivel importante de complejidad.</p></li>
+<li><p>Extraiga/seleccione la variable <code>y</code> del marco de datos <code>df_3</code> contenido dentro del elemento <code>lis_1</code> de la lista; el contenido de la variable <code>y</code> debe estar alojado dentro de un <code>data.frame</code> conformado por 1 variable y 5 individuos. Analizar detenidamente cómo obtener el resultado deseado. Este ejercicio presenta un nivel importante de complejidad.</p></li>
+<li><p>Cambiar por 4 el valor actual del indiviudo 1 <code>Mazda RX4</code> en la variable <code>cyl</code> ubicado dentro del elemento <code>df_2</code> de la lista. Analizar detenidamente cómo obtener el resultado deseado. Este ejercicio presenta un nivel importante de complejidad.</p></li>
+<li><p>Eliminar los elementos de la lista llamados <code>mat_n2</code> y <code>vec_n1</code>. Guarde los resultados en una nueva lista sin los elementos eliminados llamada <code>Lista_Nueva</code></p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>El objetivo central del trabajo con factores, como se mencionó en la guía, es la gestión de variables de naturaleza categórica o nominal y ordinal. En general, estas variables se encuentran contenidas dentro de marcos de datos <code>data.frame</code>en R y a partir de la información contenida en estas estructuras, se deben gestionar las variables categóricas u ordinales de acuerdo a los intereses deseados. A continuación, se presentan un conjunto de datos <code>data.frame</code> hipotético conformado por 10 individuos y 5 variables. La primera de las variables, llamada <code>Nombre</code>, contiene los nombres de cada uno de los individuos; la segunda variable, llamada <code>Edad</code>, contiene la edad de los individuos; la tercera variable, llamada <code>Social</code>, contiene la condición social de cada individuo; la cuarta variable, llamada <code>Sexo</code>, contienen el sexo biológico de cada uno de los individuos y finalmentene, la quinta variable, llamada <code>Ecivil</code>, contiene la información del estado civil de cada uno de los individuos bajo observación.</li>
+</ol>
+<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb891-1"><a href="4-3-trabajo-3.html#cb891-1"></a>Pacientes_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Nombre =</span> <span class="kw">c</span>(<span class="st">&#39;Pedro&#39;</span>, <span class="st">&#39;Ana&#39;</span>, <span class="st">&#39;Luisa&#39;</span>, <span class="st">&#39;Eva&#39;</span>, <span class="st">&#39;Juan Carlos&#39;</span>, </span>
+<span id="cb891-2"><a href="4-3-trabajo-3.html#cb891-2"></a>                                     <span class="st">&#39;Raul&#39;</span>, <span class="st">&#39;Andrés&#39;</span>, <span class="st">&#39;Juan&#39;</span>, <span class="st">&#39;Ana Maria&#39;</span>, <span class="st">&#39;Juana&#39;</span>),</span>
+<span id="cb891-3"><a href="4-3-trabajo-3.html#cb891-3"></a>                        <span class="dt">Edad =</span> <span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">43</span>, <span class="dv">34</span>, <span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">28</span>, <span class="dv">23</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">32</span>),</span>
+<span id="cb891-4"><a href="4-3-trabajo-3.html#cb891-4"></a>                        <span class="dt">Social =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb891-5"><a href="4-3-trabajo-3.html#cb891-5"></a>                        <span class="dt">Sexo =</span> <span class="kw">c</span>(<span class="st">&#39;H&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;M&#39;</span>),</span>
+<span id="cb891-6"><a href="4-3-trabajo-3.html#cb891-6"></a>                        <span class="dt">ECivil =</span> <span class="kw">c</span>(<span class="st">&#39;UL&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;S&#39;</span>, <span class="st">&#39;UL&#39;</span>, <span class="st">&#39;UL&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;UL&#39;</span>, <span class="st">&#39;S&#39;</span>, <span class="st">&#39;S&#39;</span>, <span class="st">&#39;C&#39;</span>))</span></code></pre></div>
+<p>En R, cuando se crea un marco de datos a través de la función <code>data.frame</code>, las variables que contienen información textual -vectores cadena o caracter- son importadas dentro del lenguaje, <strong>por defecto</strong>, como factores y los niveles <code>levels</code> de los mismos son conformados teniendo en cuenta un orden alfabético. <strong>Teniendo en cuenta lo anterior y los propósitos buscados con la creación de factores en R, realizar las siguientes actividades a partir del marco de datos hipotético <code>Pacientes_1</code>.</strong></p>
+<ul>
+<li><p>Cree el marco de datos <code>data.frame</code> Pacientes_1 con las 5 variables de interés (Nombre, Edad, Social, Sexo y Ecivil). Imprima/presente los resultados y haga uso de la función <code>str()</code> para explorar el contenido de este marco de datos. ¿Qué características presentan las variables contenidas dentro de vectores de tipo cadena o caracter (Nombre, Sexo y Ecivil)?</p></li>
+<li><p>Renombre haciendo uso de la función <code>factor()</code> y el argumento <code>levels</code> los niveles/modalidades de la variable <code>Ecivil</code> de acuerdo a los siguientes criterios: <code>Hombre = H</code> y <code>Mujer = M</code>. Con la variable <code>Sexo</code> modificada, haciendo uso de la función <code>table()</code>, cree una tabla de frecuencias con la cantidad de Hombres y de Mujeres existente en el marco de datos <code>Pacientes_1</code>.</p></li>
+</ul>
+<p><strong>Nota</strong>.
+<em>Recuerde que para seleccionar o modificar el contenido una variable de un <code>data.frame</code> se debe hacer uso del operador <code>$</code>. Por ejemplo, la instrucción <code>Pacientes_1$Sexo</code>, nos permite seleccionar la variable <code>Sexo</code> del conjunto de datos <code>Pacientes_1</code>. Cualquier modificación al contenido de una variable dentro de un marco de datos debe tener en cuenta la anterior característica.</em></p>
+<ul>
+<li><p>Ordene y renombre, haciendo uso de la función <code>factor()</code> y los argumentos <code>levels</code> y <code>labels</code>, los niveles/modalidades de la variable <code>Ecivil</code> de acuerdo a los siguientes criterios: para <code>levels</code> usar las opciones <code>UL</code>, <code>C</code> y <code>S</code> y para <code>labels</code> las opciones <code>Unión Libre</code>, <code>Casado</code> y <code>Soltero</code>. Con la variable <code>Ecivil</code> ordenada y modificada, haciendo uso de la función <code>table()</code>, cree una tabla de frecuencias con la cantidad de individuos para cada uno de los estados civiles.</p></li>
+<li><p>Defina/cree en R, haciendo uso de la función <code>factor()</code>, un factor para representar la variable ordinal <code>Social</code> del conjunto de datos <code>Pacientes_1</code>. Los niveles <code>(levels o/y labels)</code> de esta variable son: <code>1 = Baja</code>, <code>2 = Media</code> y <code>3 = Alta</code> en donde baja hace referencia a una condición social baja, media a una condición social media y alta, una condición social alta. Verifique, haciendo uso de la función <code>str()</code> o <code>class()</code>, la nueva condición de la variable <code>Social</code> la cual debe ser un factor de tipo ordinal. Así mismo, haciendo uso de la función <code>table()</code>, cree una tabla de frecuencias con la cantidad de individuos existente en cada una de las clases sociales.</p></li>
+</ul>
+<p><strong>Nota</strong>.
+<em>Ninguno de los individuos del <code>data.frame</code> bajo estudio (Pacientes_1) pertenece a la condición social alta (valor 3 en la variable <code>Social</code>). Es decir, esta condición debe aparacer con 0 individuos en la tabla de frecuencias.</em></p>
+
+</div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 style="color:#2ca25f;">Comentarios</h2>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-rbasico-netlify-app-2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script src="libs/unal/js/widgets.js"></script>
+<script src="libs/unal/js/full-screen-helper.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="4-2-trabajo-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
