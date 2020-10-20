@@ -216,6 +216,62 @@ length(lsf.str("package:dplyr"))
 
 ## Importar/exportar datos
 
+En esta sección del documento se presentan los procesos de importación a R de microdatos (bases de datos) almacenados en fuentes archivos externos, así como el ejercicio de exportación de resultados provenientes de la gestión de los datos o los análisis estadísticos hechos en este lenguaje de programación.
+
+### Importar datos en R
+
+La primera tarea a la hora de gestionar/analizar datos en R es el proceso de importación de los microdatos requeridos para los propósitos deseados. Las fuentes de disposición/almacenamiento/captura de los datos, en la actualidad, son diversas y con tendencia a crecer: datos provenientes de fuentes no estructuradas (**Big Data**); datos provenientes de fuentes semi-estructuradas en archivos **JSON** (JavaScript Object Notation) o **XML** (Extensible Markup Language); datos provenientes de fuentes estructuradas en archivos de texto simple, **CSV** (Comma Separated Values), **Excel** o provenientes de otros softwares estadísticos como **SAS**, **SPSS**, **MATLAB**, etc.; datos almacenados en **repositorios locales**, en **sitios web** (**Github**  o **GitLab**, por ejemplo) o en **Cloud** (DRIVE de google, Dropbox o Amazon, por ejemplo); datos almacenados en bases de datos relacionales tipo **SQL** (MySQL, Oracle, PosgreSQL, SAP, SQL server, IBM, etc.) o **NoSQL** (Mongo DB, Cassandra, Redis, CouchDB, Neo4j, etc.), hacen parte del abanico de fuentes de almacenamiento de microdatos las cuales requieren ser importadas a R y para las cuales existe una variedad importante de funciones y paquetes especializados para estos propósitos.
+
+En este documento, dado el alcance y los propósitos buscados con el mismo, se abordará el proceso de importación de un pequeño número de fuentes de datos a R; aún así, como se ilustró en el párrafo anterior, es importante reiterar que estas son múltiples y diversas y que demandan el conocimiento y el dominio de procesos particulares requeridos en los ejercicios de importación de los datos allí almacenados al lenguaje bajo estudio. Las fuentes seleccionadas y trabajadas en este documento, en nuestro criterio, son las más populares a nivel general y de más amplio uso por parte de los investigadores de las ciencias sociales y humanas. A contionuación, se presenta una primera aproximación al proceso de importación de bases de datos a R provenientes de archivos de texto plano, separados por comas o disponibles en archivos de Excel.  
+
+#### Archivos de texto simple
+
+Una de las fuentes de datos 
+
+"Un archivo de texto simple, texto sencillo o texto sin formato (también llamado texto llano o texto simple; en inglés «plain text»), es un archivo informático que contiene únicamente texto formado solo por caracteres que son legibles por humanos, careciendo de cualquier tipo de formato tipográfico."^[Extraído de  https://es.wikipedia.org/wiki/Archivo_de_texto] 
+
+```{r, eval=TRUE}
+# Importar archivos txt
+file_txt <- read.table(file = "Datos/Archivo1.txt", header = TRUE, sep = "")
+file_txt
+```
+
+#### Texto separado por comas (CSV)
+
+El segundo tipo de dato que importaremos a R es
+
+```{r, eval=TRUE}
+# Importar archivos csv
+# Forma general 
+file1_csv <- read.table(file = "Datos/Archivo2.csv", header = TRUE, sep = ",")
+head(file1_csv)
+```
+
+```{r, eval=TRUE}
+# Importar archivos csv
+# Haciendo uso de la función csv
+file2_csv <- read.csv(file = "Datos/Archivo2.csv")
+tail(file2_csv)
+```
+
+```{r, eval=TRUE}
+# Haciendo uso de la función csv2
+file3_csv <- read.csv2(file = "Datos/Archivo3.csv", header = TRUE)
+head(file3_csv)
+```
+
+#### Importar archivos desde Excel
+
+El tercer tipo de dato que importaremos a R es
+
+```{r, eval=TRUE}
+# Importar archivos desde Excel
+library(readxl)
+file_xlsx <- read_excel("Datos/Archivo4.xlsx", sheet = "Archivo")
+file_xlsx
+```
+
+### Exportar datos en R
 
 <!-- ## Tibbles vs Data Frames -->
 <!-- ## Datos ordenados - Tidy Data -->
