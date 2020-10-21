@@ -222,19 +222,24 @@ En esta sección del documento se presentan los procesos de importación a R de 
 
 La primera tarea a la hora de gestionar/analizar datos en R es el proceso de importación de los microdatos requeridos para los propósitos deseados. Las fuentes de disposición/almacenamiento/captura de los datos, en la actualidad, son diversas y con tendencia a crecer: datos provenientes de fuentes no estructuradas (**Big Data**); datos provenientes de fuentes semi-estructuradas en archivos **JSON** (JavaScript Object Notation) o **XML** (Extensible Markup Language); datos provenientes de fuentes estructuradas en archivos de texto simple, **CSV** (Comma Separated Values), **Excel** o provenientes de otros softwares estadísticos como **SAS**, **SPSS**, **MATLAB**, etc.; datos almacenados en **repositorios locales**, en **sitios web** (**Github**  o **GitLab**, por ejemplo) o en **Cloud** (DRIVE de google, Dropbox o Amazon, por ejemplo); datos almacenados en bases de datos relacionales tipo **SQL** (MySQL, Oracle, PosgreSQL, SAP, SQL server, IBM, etc.) o **NoSQL** (Mongo DB, Cassandra, Redis, CouchDB, Neo4j, etc.), hacen parte del abanico de fuentes de almacenamiento de microdatos las cuales requieren ser importadas a R y para las cuales existe una variedad importante de funciones y paquetes especializados para estos propósitos.
 
-En este documento, dado el alcance y los propósitos buscados con el mismo, se abordará el proceso de importación de un pequeño número de fuentes de datos a R; aún así, como se ilustró en el párrafo anterior, es importante reiterar que estas son múltiples y diversas y que demandan el conocimiento y el dominio de procesos particulares requeridos en los ejercicios de importación de los datos allí almacenados al lenguaje bajo estudio. Las fuentes seleccionadas y trabajadas en este documento, en nuestro criterio, son las más populares a nivel general y de más amplio uso por parte de los investigadores de las ciencias sociales y humanas. A contionuación, se presenta una primera aproximación al proceso de importación de bases de datos a R provenientes de archivos de texto plano, separados por comas o disponibles en archivos de Excel.  
+En este documento, dado el alcance y los propósitos buscados con el mismo, se abordará el proceso de importación de un pequeño número de fuentes de datos a R; aún así, como se ilustró en el párrafo anterior, es importante reiterar que estas son múltiples y diversas y que demandan el conocimiento y el dominio de procesos particulares requeridos en los ejercicios de importación de los datos allí almacenados al lenguaje bajo estudio^[Para aquellos interesados en profundizar sobre divresas alternativas de importación de datos en R, los invitamos a explorar el siguiente manual dando click en el enlace que se presenta a continuación https://www.datacamp.com/community/tutorials/r-data-import-tutorial#txt]. Las fuentes seleccionadas y trabajadas en este documento, en nuestro criterio, son las más populares a nivel general y de más amplio uso por parte de los investigadores de las ciencias sociales y humanas. A contionuación, se presenta una primera aproximación al proceso de importación de bases de datos a R provenientes de archivos de texto plano, separados por comas o disponibles en archivos de Excel.  
 
 #### Archivos de texto simple
 
-Una de las fuentes de datos 
+Una de las fuentes de datos más básica es aquella en donde los datos son almacenados o se encuentran disponibles en archivos de texto simple. "Un archivo de texto simple, texto sencillo o texto sin formato (también llamado texto llano o texto simple; en inglés «plain text»), es un archivo informático que contiene únicamente texto formado solo por caracteres que son legibles por humanos, careciendo de cualquier tipo de formato tipográfico."^[Extraído de  https://es.wikipedia.org/wiki/Archivo_de_texto]. Los datos almacenados en formatos de texto simple, en la práctica, se almacenan generalmente en archivos con formato *.txt. Para importar datos a R desde archivos en formato _txt_ podemos acudir al uso de la función  `read.table()` contenida en la base de R. A continuación, se presenta a través de un ejemplo, la forma como R permite importar datos contenidos en archivos de texto simple.
 
-"Un archivo de texto simple, texto sencillo o texto sin formato (también llamado texto llano o texto simple; en inglés «plain text»), es un archivo informático que contiene únicamente texto formado solo por caracteres que son legibles por humanos, careciendo de cualquier tipo de formato tipográfico."^[Extraído de  https://es.wikipedia.org/wiki/Archivo_de_texto] 
+Para ello, supongamos que contamos con la información de 5 individuos para los cuales se cuenta con la información de 3 variables `ID`, `X` e `Y` separadas por espacios y que se encuentra contenida en un archivo llamado `Archivo1.txt`^[El contenido de este archivo puede ser explorado en el enlace https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/Archivo1.txt]. Este archivo, por ejemplo, puede estar almacenado en un repositorio en la web o en alguna carpeta dentro de cada uno de nuestros equipos. Para el presente documento, supongamos que este archivo se encuentra almacenado en una carpeta llamada **Datos** la cual hace parte integral del proyecto de Rstudio que contiene este libro web^[El ejercicio de importación de datos a R, desde archivos almacenados en nuestros equipos, exige el conocimiento y el diligenciamiento de la ruta en la cual estos se encuentran contenidos. Por ejemplo, si tenemos un archivo almacenado en nuestro disco D y este a su vez se encuentra contenido en una carpeta llamada Estudiantes, la ruta de almacenamiento de dicho archivo será: `D:/Cifras/Estudiantes`.]. A continuación, se presenta la forma como R permite importar el archivo `Archivo1.txt` haciendo uso de la función `read.table()`.
+
+<p style="color:#e6550d";><i>Ejemplo. Importación de archivos de texto simple (*.txt) en R</i></p> 
 
 ```{r, eval=TRUE}
 # Importar archivos txt
 file_txt <- read.table(file = "Datos/Archivo1.txt", header = TRUE, sep = "")
 file_txt
 ```
+
+En el código anterior, la función `read.table()` nos permite importar un archivo simple en formato txt y para este caso particular, hemos hecho uso de tres de sus argumentos^[Esta función, como otras funciones de R, cuentan con argumentos adicionales los cuales invitamos a explorar haciendo uso de la línea de código `help(read.table)`]: `file = "Datos/Archivo1.txt"`, para indicar el lugar/ruta en donde se encuentra almacenado el archivo a importar ("Datos/Archivo1.txt"); `header = TRUE`, para indicar que nuestro archivo cuenta con un encabezado, es decir, que la primera fila contiene el nombre de las variables y `sep = ""`, para indicar que las columnas/variables del archivo a importar están separadas por un espacio.  Finalmente, el archivo `Archivo1.txt` es almacenado en un objeto llamado `file_txt` el cual, como podrá ser verificado por los lectores, es un `data.frame` el cual se encuentra cargado y disponible en el **Environment** de **Rstudio**.
+
 
 #### Texto separado por comas (CSV)
 
@@ -243,7 +248,7 @@ El segundo tipo de dato que importaremos a R es
 ```{r, eval=TRUE}
 # Importar archivos csv
 # Forma general 
-file1_csv <- read.table(file = "Datos/Archivo2.csv", header = TRUE, sep = ",")
+file1_csv <- read.table(file = "https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/Archivo2.csv", header = TRUE, sep = ",")
 head(file1_csv)
 ```
 
@@ -256,7 +261,7 @@ tail(file2_csv)
 
 ```{r, eval=TRUE}
 # Haciendo uso de la función csv2
-file3_csv <- read.csv2(file = "Datos/Archivo3.csv", header = TRUE)
+file3_csv <- read.csv2(file = "https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/Archivo3.csv", header = TRUE)
 head(file3_csv)
 ```
 
@@ -267,9 +272,14 @@ El tercer tipo de dato que importaremos a R es
 ```{r, eval=TRUE}
 # Importar archivos desde Excel
 library(readxl)
+# file_xlsx <- read_excel("Datos/Archivo4.xlsx", sheet = "Archivo")
 file_xlsx <- read_excel("Datos/Archivo4.xlsx", sheet = "Archivo")
 file_xlsx
 ```
+
+<!-- Enlace para descargar -->
+<!-- https://github.com/estadisticaun/Rbasico/blob/master/Datos/Archivo4.xlsx -->
+
 
 ### Exportar datos en R
 
