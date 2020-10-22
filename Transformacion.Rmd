@@ -4,7 +4,7 @@
 
 La segunda parte del curso de **R básico** se concentra en la gestión de paquetes en R, la importación y exportación de archivos, el ordenamiento de los datos y la gestión  de estos a través del uso de un conjunto de paquetes/librerías que facilitan el trabajo con este lenguaje. Buena parte de este componente del curso se soporta en un universo llamado `tidyverse` el cual está conformado por un subconjunto de [paquetes en R](https://www.tidyverse.org/) que se complementan de manera eficiente a través de un enfoque conocido como **ciencia de datos**.
 
-## Paquetes en R
+## Paquetes en R {#Paquetes}
 
 Hasta ahora, a lo largo de este curso, hemos acudido al uso de un conjunto de funciones -cada vez con más frecuencia- que hacen parte del lenguaje desde el momento de su instalación. Estas librerías se les conoce como librerías básicas del lenguaje y su gestión y manipulación se encuentra a cargo del equipo que soporta R a nivel mundial; es decir, no pueden ser manipuldos por ninguno de nosostros. No obstante, a partir de estos paquetes y de otras herramientas disponibles, la comunidad de usuarios de R ha venido creando, desde inicios del año 2000, nuevos paquetes de R para diversos propósitos los cuales, en buena medida, han sido los grandes responsables del creciemiento y el auge que hoy ha alcanzado este lenguaje en el contexto mundial.
 
@@ -243,7 +243,9 @@ En el código anterior, la función `read.table()` nos permite importar un archi
 
 #### Texto separado por comas (CSV)
 
-El segundo tipo de dato que importaremos a R es
+Uno de las tipologías de archivos empleada para el almacenamiento/disposición de datos y de amplio uso en el contexto de la investigación, por ejemplo, son los archivos de texto separados por comas (CSV)^[Del inglés Comma Separated Values (CSV)]. A continuación, se presenta la alternativa general que emplea R para la importación de datos provenientes de archivos de tipo CSV haciendo uso de la función `read.table()` la cual se presentó y empleó previamente. Para ello, supondremos que el archivo a importar contiene la información del conjunto de datos `iris` el cual se trabajó de manera frecuente en el capítulo anterior de este documento. Así mismo, supondrémos que este archivo se encuentra almacenado en algún lugar de la web; es decir, fuera de nuestros ordenadores/computadores.
+
+<p style="color:#e6550d";><i>Ejemplo. Importación de archivos de texto con valores separados por comas (CSV) en R - función read.table()</i></p> 
 
 ```{r, eval=TRUE}
 # Importar archivos csv
@@ -252,6 +254,14 @@ file1_csv <- read.table(file = "https://raw.githubusercontent.com/estadisticaun/
 head(file1_csv)
 ```
 
+Al hacer uso de la función `read.table()` para importar un archivo de tipo CSV, como se muestra en el ejemplo anterior, se hace uso de tres alrgumentos: `file`, `header` y `sep`. El argumento `file` nos permite indicarle a R la ruta en donde se encuentra disponible el archivo con los datos a importar; en nuestro caso este se encuentra en la web en la ruta previamente especificada la cual puede ser explorada dando click en el siguiente [link.](https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/Archivo2.csv)^[Las variables de los elementos/individuos contenidos en este archivo, como puede ser corroborado, están separadas por comas y la parte decimal de las variable numéricas está separada por puntos]. El argumento `header = TRUE` le indica al lenguage que la primera fila del conjunto de datos está conformada por los nombres de las variables y, por último, el argumento `sep = ","` nos indica que las variables del conjunto de datos `Archivo2.csv` se encuentran separadas por comas. Finalmente, el resultado del proceso de importación del archivo CSV en mención es almacenado en R dentro de un objeto llamado `file1_csv` el cual se encontrará disponible en el Environment de Rstudio una vez las anteriores líneas de código han sido compiladas en nuestros computadores.
+
+la función `read.table()`, como se acaba de mostrar, exige el uso de los argumentos `header` y `sep`. No obatante, en la base de R existe una función alternativa de amplio uso para los procesos de importación de datos almacenados en archivos de tipo CSV llamada `read.csv` la cual permite omitir los anteriores dos argumentos y sólo exige que se le indique al lenguaje la ruta en donde se encuentra almacenado el archivo que deseamos importar. A continuación, se presenta un ejemplo de importación de datos almacenados en un archivo CSV el cual, al igual que en el ejemplo anterior, contiene la información del conjunto de datos `iris`; no obstante, esta vez, este conjunto de datos no se encuentra almacenado en la web sino en la carpeta llamada Datos la cual, como se ilustró al inicio de este apartado, hace parte integral del repositorio/proyecto de Rstudio que contiene la información que sirve de base para la construcción del presente documento.
+
+El resultado del proceso de importación del conjunto de datos `iris` haciendo uso de la función `read.csv()`, como se muestra en este ejemplo, es almacenado en un objeto llamado `file2_csv` el cual se encontrará disponible en el Environment de Rstudio una vez se compilen las siguientes líneas de código en nuestros computadores. Una vez importados los datos a R, como se muestra en el ejemplo, podemos hacer uso de las funciones hasta ahora conocidas para explorar y conocer el contenido de los datos importados; en el ejemplo, se presentan las primeras 6 líneas del conjunto de datos importado desde un archivo CSV haciendo uso de la función `head()`.
+
+<p style="color:#e6550d";><i>Ejemplo. Importación de archivos de texto con valores separados por comas (CSV) en R - función read.csv()</i></p> 
+
 ```{r, eval=TRUE}
 # Importar archivos csv
 # Haciendo uso de la función csv
@@ -259,29 +269,64 @@ file2_csv <- read.csv(file = "Datos/Archivo2.csv")
 tail(file2_csv)
 ```
 
+La característica central de un archivo tipo CSV, como lo indican sus siglas en inglés -*Comma Separated Values*-, es que las variables se encuentran separadas por comas y los números decimales por puntos, característica/estándar empleada por los países de habla inglesa. No obstante, en los países de habla hispana los softwares están configurados de tal manera que las cifras de los números que contienen decimales, a diferencia de los americanos, están separadas por comas y no por puntos^[Invitamos a los lectores a que, por ejemplo, habran una hoja de excel y escriban un número que contenga una parte decimal con el fin de corroborar que dicha cifra será separada por una coma y no por un punto como en el caso inglés.]. Esta característica, propia de la cultura latina, impide que pueda ser usada la función `read.csv()` a menos que configuremos nuestras fuentes de datos o que las mismas no contengan variables que hagan uso de cifras decimales. Ante esta situación, existe en R una función llamada `read.csv2()` la cual permite importar archivos de tipo CSV los cuales, en el contexto latino, se caracterizan porque las cifras decimales se encuentran separadas por comas (,) y las variables por punto y coma (;)^[En sentido estricto, en Latinoamérica un archivo CSV no debería llamarse separado por comas sino por puntos y comas]. 
+
+A continuación, se persenta un ejemplo de importación de un archivo de tipo CSV haciendo uso de la función `read.csv2()`. Este archivo, además de almacenarse en un objeto llamado `file3_csv`, se encuentra disponible en una fuente externa ubicada en la web la cual puede ser explorada copiando la URL del ejemplo e ingresando la misma de manera directa en nuestros navegadores de internet.
+
+<p style="color:#e6550d";><i>Ejemplo. Importación de archivos de texto con valores separados por comas (CSV) en R - función read.csv2()</i></p> 
+
 ```{r, eval=TRUE}
 # Haciendo uso de la función csv2
-file3_csv <- read.csv2(file = "https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/Archivo3.csv", header = TRUE)
+file3_csv <- read.csv2(file = "https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/Archivo3.csv")
 head(file3_csv)
 ```
 
 #### Importar archivos desde Excel
 
-El tercer tipo de dato que importaremos a R es
+El tercer y último tipo de archivo de almacenamiento de datos y que exploraremos en este documento, es la fuente más popular y de mayor uso a nivel mundial; esta es, los datos almacenados en archivos de Excel. Aunque no existen funciones populares en la base de R que permitan importar datos provenientes e incluidos en archivos de Excel, sí existe un número importante de paquetes/librerías orientadas a gestionar e importar datos contenidos en este tipo de estructuras. Entre los paquetes existentes y de mayor uso por parte de la comunidad para importar archivos de Excel, existe uno llamado `readxl` al cual acudiremos en este documento para presentar una de las formas a través de la cual podemos importar archivos de Excel a R.
+
+Para ello, como se presentó en la sección de [Paquetes](#Paquetes), el primer paso que debemos garantizar/realizar es el proceso de importación del paquete desde CRAN a nuestros equipos haciendo uso de la función o línea de comando `install.packages("readxl", dependencies = TRUE) `. Una vez el paquete es importado a nuestros computadores, el mismo debe ser cargado a nuestros entornos de trabajo a través de la línea de comando `library(readxl)` para que podamos usar las fucniones que este contiene y que resultan de interés para los propósitos deseados: en nuestro caso, importar un archivo de Excel a R.
+
+A continuación, se presenta un ejemplo de importación de un conjunto de datos contenido en un archivo de Excel llamado `Archivo4.xlsx`^[Para los lectores interesados, el archivo de Excel llamado `Archivo4.xlsx`, puede ser descargado dando click en el siguiente [link.](https://github.com/estadisticaun/Rbasico/raw/master/Datos/Archivo4.xlsx)] el cual se encuentra disponible en la carpera Datos del repositorio que contiene este documento web^[Como se mencionó previamente, cada uno de los lectores, a la hora de importar un conjunto de datos que se encuentra disponible de manera local, le debe indicar al lenguaje la ruta exacta en donde este se encuentra alojado.]. 
+
+<p style="color:#e6550d";><i>Ejemplo. Importación de archivos de Excel en R - función read_excel() del paquete readxl</i></p> 
 
 ```{r, eval=TRUE}
 # Importar archivos desde Excel
 library(readxl)
-# file_xlsx <- read_excel("Datos/Archivo4.xlsx", sheet = "Archivo")
-file_xlsx <- read_excel("Datos/Archivo4.xlsx", sheet = "Archivo")
+file_xlsx <- read_excel(path ="Datos/Archivo4.xlsx", sheet = "Archivo")
 file_xlsx
 ```
 
-<!-- Enlace para descargar -->
-<!-- https://github.com/estadisticaun/Rbasico/blob/master/Datos/Archivo4.xlsx -->
-
+En el ejemplo anterior, hemos importado y almacenado en un objeto llamado `file_xlsx` un conjunto de datos proveniente de un archivo Excel^[Este conjunto de datos consta de una muestra de 15 individuo del conjunto de datos iris.] y para ello hemos tenido que realizar varios pasos. En primer lugar, disponer/conocer un paquete que nos permitiera importar archivos de Excel (`readxl`); en segundo lugar, descargar a nuestros equipos y cargar a nuetsros entrornos de trabajo el paquete requerido haciendo uso de la funciones `install.packages()` y `library()`, respectivamente. En tercer lugar, acudir a la función `read_excel()` que hace parte del paquete `readxl` para importar el archivo de Excel requerido. Finalmente, dentro de la función `read_excel()`, acudir a los argumentos `path` y `sheet`, para indicar respectivamente la ruta y el nombre de la hoja de cálculo en Excel en donde se encuentra almacenada la información que será importada a R. 
 
 ### Exportar datos en R
+
+Una tarea frecuente a la hora de gestionar datos y realizar análisis a través de R es la necesidad de exportar los resultados de nuestros trabajos a formatos externos para su posterior gestión. Aunque R ofrece una importante diversidad/ecosistema de herramientas e instrumentos orientados a la entregra/divulgación de los resultados de nuestros trabajos (presentaciones, documentos pdf, documentos en word, documentos en html, libros web, aplicaciones, sitios web, etc.) y que ho hacen parte del contenido de este documento, una demanda frecuente es la necesidad de exportar parte de nuestros resultados en textos con formatos planos. Para ello, a continuación se presentan dos funciones (`write.csv` y `write.csv2`) que resultan de alta utilidad a la hora de exportar datos/resultados obtenidos en R a archivos externos para su posterior gestión.
+
+El ejemplo que se presenta a continuación y que hace uso de la función `write.csv`, nos permite exportar los datos ubicados en las lineas/filas 100 a 109 del conjunto de datos `iris` a un archivo externo de tipo CSV el cual será almacenado en la carpera Datos del repositorio/proyecto de trabajo de este curso. La función `write.csv`, como se ilustra en el ejemplo, hace uso de dos argumentos: `x` para indicar el nombre del objeto que será exportado y `file` con la ruta del lugar en donde será almacenado el archivo de tipo CSV. Finalmente, al exportar un objeto de R haciendo uso de la función `write.csv`, el objeto resultante/exportado cumple con el estandar inglés: variables/valores separadas por comas y puntos para trabajar con números que presentan decimales. Invitamos a los lectores a explorar el contenido y las características del archivo resultante al hacer uso de la función `write.csv`.
+
+<p style="color:#e6550d";><i>Ejemplo. Exportación de objetos de R haciendo uso de la función write.csv</i></p> 
+
+```{r}
+# Exportar datos a formato csv haciendo uso de la función write.csv
+# Separado por comas y con puntos para separar decimales
+iris_exp <- iris[100:109, ]
+write.csv(x = iris_exp, file = "Datos/iris_exp.csv")
+iris_exp
+```
+
+Finalmente, dado que el contexto de aplicación del presente texto se ubica en el ámbito de latinoamérica, resulta útil que los archivos exportados cumplan con los requisitos definidos en los softwares de uso en esta región. Para ello, R nos ofrece la función `write.csv2` la cual, además de hacer uso de los mismos argumentos de la función `write.csv`, nos permite generar un archivo externo de tipo plano con extensión CSV el cual cumple con los estándares de nuestra región: variables/valores separados por puntos y comas y número decimales separados por comas. Invitamos a los lectores a explorar el contenido y las características del archivo resultante al hacer uso de la función `write.csv2` y a contrastarlo contra el archivo generado al hacer uso de la función `write.csv`.
+
+<p style="color:#e6550d";><i>Ejemplo. Exportación de objetos de R haciendo uso de la función write.csv2</i></p> 
+
+```{r}
+# Exportar datos a formato csv haciendo uso de la función write.csv2
+# Separado por puntos y comas y con comas para separar decimales
+iris_exp1 <- iris[50:55, ]
+write.csv2(x = iris_exp, file = "Datos/iris_exp1.csv")
+iris_exp1
+```
 
 <!-- ## Tibbles vs Data Frames -->
 <!-- ## Datos ordenados - Tidy Data -->
