@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.1 Instalar R | Un Primer Curso de R</title>
-  <meta name="description" content="1.1 Instalar R | Un Primer Curso de R" />
+  <title>4.4 Trabajo 4 | Un Primer Curso de R</title>
+  <meta name="description" content="4.4 Trabajo 4 | Un Primer Curso de R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.1 Instalar R | Un Primer Curso de R" />
+  <meta property="og:title" content="4.4 Trabajo 4 | Un Primer Curso de R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.1 Instalar R | Un Primer Curso de R" />
+  <meta name="twitter:title" content="4.4 Trabajo 4 | Un Primer Curso de R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="1-Instalar.html"/>
-<link rel="next" href="1-2-instalar-rstudio.html"/>
+<link rel="prev" href="4-3-trabajo-3.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,70 +222,170 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="instalar-r" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Instalar R</h2>
-<p>A continuación, se presentan los pasos para la instalación de R.</p>
+<div id="trabajo-4" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Trabajo 4</h2>
+<ol style="list-style-type: decimal">
+<li><p>Cree en Rstudio un proyecto llamado <strong>Trabajo3</strong> y almacene en un script/programa llamado <strong>trabajo-4</strong> el desarrollo de este trabajo.</p></li>
+<li><p>El programa que se presenta a continuación, como puede ser verificado, compila sin errores en R. No obstante, este presenta importantes problemas de estilo -buenas prácticas- en su codificación <em>mala ortografía</em>. Teniendo en cuenta la guía de buenas prácticas para la codificación en R, que se presentó en una de las sesiones de trabajo y que se encuentra disponible dando click en el siguiente <a href="http://adv-r.had.co.nz/Style.html">link</a>, realice las siguientes actividades:</p></li>
+</ol>
 <ul>
-<li><em><strong>Paso 1</strong></em></li>
+<li>Construya/presente una lista con los errores de codificación/estilo que se están cometiendo en el programa adjunto.</li>
+<li>Construya y presente una nueva propuesta para el programa de tal manera que esta cumpla con las buenas prácticas de estilo en su codificación <em>buena ortografía</em>.</li>
 </ul>
-<p>El primer paso, como se ilustra en la Figura de abajo, consiste en buscar <strong>R</strong> en google. Para ello, en la barra de google se ingresa la siguiente palabra “R project”.</p>
-<p><img src="Imagenes/R1.png" /></p>
+<p><strong>Nota</strong>.
+<em>Los resultados que arroja el programa no deben cambiar con la nueva propuesta de codificación</em></p>
+<div class="sourceCode" id="cb906"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb906-1"><a href="4-4-trabajo-4.html#cb906-1"></a><span class="co">#        Una linea de código bien escrita----------</span></span>
+<span id="cb906-2"><a href="4-4-trabajo-4.html#cb906-2"></a>Var<span class="fl">.1</span>=<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>)</span>
+<span id="cb906-3"><a href="4-4-trabajo-4.html#cb906-3"></a>VarDos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">:</span><span class="st"> </span><span class="dv">5</span>)</span>
+<span id="cb906-4"><a href="4-4-trabajo-4.html#cb906-4"></a>F =<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb906-5"><a href="4-4-trabajo-4.html#cb906-5"></a>c&lt;-<span class="dv">2</span></span>
+<span id="cb906-6"><a href="4-4-trabajo-4.html#cb906-6"></a>RESULTADO1&lt;-Var<span class="fl">.1</span><span class="op">/</span>VarDos<span class="op">+</span>F<span class="op">+</span>c</span>
+<span id="cb906-7"><a href="4-4-trabajo-4.html#cb906-7"></a>RESULTADO1</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Se desea realizar un análisis descriptivo de las variables que conforman el marco de datos <code>data.frame</code> llamado <code>trees</code> y que se encuentra disponible en la base de R. Este marco de datos, como puede ser verificado haciendo uso de la funciones <code>class(trees)</code>, <code>nrow(trees)</code>, <code>names(trees)</code>, <code>head(trees)</code>, entre otras, cuenta con información de 31 arboles para los cuales se dispone de tres variables: volumen (Volume), altura (Height) y longitud de su circunferencia (Girth).</li>
+</ol>
+<p>El análisis descriptivo que se desea realizar a este conjunto de datos se potencia a través del uso del paquete <strong>psych</strong>. Teniendo en cuenta esta información, realizar las siguientes actividades.</p>
 <ul>
-<li><em><strong>Paso 2</strong></em></li>
+<li><p>Descargar desde el repositorio oficial de <a href="https://cran.r-project.org/">CRAN</a> el paquete <strong>psych</strong>.</p></li>
+<li><p>Haciendo uso de las funciones <code>.libPaths()</code>, <code>browseVignettes()</code>, <code>packageDescription()</code> y <code>lsf.str()</code> explorar la ruta de nuestros computadores en la que fue instalado este paquete, los manuales disponibles para este paquete, la descripción general de las principales características de este paquete así como el listado de las funciones que este posee, respectivamente.</p></li>
+<li><p>Una vez que el paquete <strong>psych</strong> fue descargado, verificar que este se encuentra disponible en la pestaña <strong>Packages</strong> de Rstudio y cargar este al ambiente de trabajo (Environment) a través de la función <code>library()</code>.</p></li>
+<li><p>Para realizar el análisis descriptivo requerido al <code>data.frame</code> <strong>trees</strong>, el paquete <strong>psych</strong>, dispone de la función <code>pairs.panels</code>. Hacer uso de esta función de tal manera que se obtenga el siguiente resultado el cual presenta una panorámica rápida del comportamiento de las variables que hacen parte de este set de datos.</p></li>
 </ul>
-<p>El segundo lugar, como se ilustra en la Figura de abajo, se debe dar clic en la opción “Download R”</p>
-<p><img src="Imagenes/R2.png" /></p>
+<p><img src="Rbasico_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
 <ul>
-<li><em><strong>Paso 3</strong></em></li>
+<li>Acudiendo a las funciones que nos ofrece el paquete <strong>psych</strong> y tomando como referente el conjunto de datos <code>iris</code>, explorar la función <code>violinBy()</code>, revisar sus argumentos y hacer uso de esta de tal manera que se obtenga el siguinte resultado (gráfico). ¿Qué conclusiones puedo extraer sobre las variables del conjunto de datos <code>iris</code> a partir del comportamiento observado en esta figura?</li>
 </ul>
-<p>En tercer lugar, como se ilustra en la Figura de abajo, se abre una ventana con las diferentes opciones disponibles para descargar <strong>R</strong></p>
-<p><img src="Imagenes/R3.png" /></p>
+<p><strong>Nota</strong>.
+<em>El gráfico construido por cada uno de ustedes debe ser exacto al que se presenta a continuación</em></p>
+<p><img src="Rbasico_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Se desea construir una tabla web con los registros/individuos que conforman el <code>data.frame</code> <strong>mtcars</strong>. Esta tabla es posible de construir acudiendo a la función <code>datatable(mtcars)</code> la cual hace parte del paquete <strong>DT</strong>. Teniendo en cuenta esta información, desarrollar las siguientes actividades:</li>
+</ol>
 <ul>
-<li><em><strong>Paso 4</strong></em></li>
+<li><p>Instalar, desde <strong>GitHub</strong>, el paquete <strong>DT</strong>. Este se encuentra disponible dentro del usuario llamado <code>rstudio/DT</code>.</p></li>
+<li><p>Una vez instalado y cargado el paquete <strong>DT</strong> dentro del Environment de Rstudio haciendo uso de la función <code>library()</code>, hacer uso de la función <code>datatable()</code> disponible en este paquete de tal manera que se genere la tabla web requerida. Esta tabla deberá tener la siguiente apariencia.</p></li>
 </ul>
-<p>En cuarto lugar, como se ilustra en la Figura de abajo, se debe seleccinar <strong>R</strong> de acuerdo al sistema operativo disponible en nuestros computadores. La gran mayoría de nuestros PCs tienen instalado Windows.</p>
-<p><img src="Imagenes/R4.png" /></p>
+<p><br></p>
+<div id="htmlwidget-fa4e0eea3be66cbd3ff3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fa4e0eea3be66cbd3ff3">{"x":{"filter":"none","data":[["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant","Duster 360","Merc 240D","Merc 230","Merc 280","Merc 280C","Merc 450SE","Merc 450SL","Merc 450SLC","Cadillac Fleetwood","Lincoln Continental","Chrysler Imperial","Fiat 128","Honda Civic","Toyota Corolla","Toyota Corona","Dodge Challenger","AMC Javelin","Camaro Z28","Pontiac Firebird","Fiat X1-9","Porsche 914-2","Lotus Europa","Ford Pantera L","Ferrari Dino","Maserati Bora","Volvo 142E"],[21,21,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,16.4,17.3,15.2,10.4,10.4,14.7,32.4,30.4,33.9,21.5,15.5,15.2,13.3,19.2,27.3,26,30.4,15.8,19.7,15,21.4],[6,6,4,6,8,6,8,4,4,6,6,8,8,8,8,8,8,4,4,4,4,8,8,8,8,4,4,4,8,6,8,4],[160,160,108,258,360,225,360,146.7,140.8,167.6,167.6,275.8,275.8,275.8,472,460,440,78.7,75.7,71.1,120.1,318,304,350,400,79,120.3,95.1,351,145,301,121],[110,110,93,110,175,105,245,62,95,123,123,180,180,180,205,215,230,66,52,65,97,150,150,245,175,66,91,113,264,175,335,109],[3.9,3.9,3.85,3.08,3.15,2.76,3.21,3.69,3.92,3.92,3.92,3.07,3.07,3.07,2.93,3,3.23,4.08,4.93,4.22,3.7,2.76,3.15,3.73,3.08,4.08,4.43,3.77,4.22,3.62,3.54,4.11],[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,4.07,3.73,3.78,5.25,5.424,5.345,2.2,1.615,1.835,2.465,3.52,3.435,3.84,3.845,1.935,2.14,1.513,3.17,2.77,3.57,2.78],[16.46,17.02,18.61,19.44,17.02,20.22,15.84,20,22.9,18.3,18.9,17.4,17.6,18,17.98,17.82,17.42,19.47,18.52,19.9,20.01,16.87,17.3,15.41,17.05,18.9,16.7,16.9,14.5,15.5,14.6,18.6],[0,0,1,1,0,1,0,1,1,1,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,1,0,1,0,0,0,1],[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1],[4,4,4,3,3,3,3,4,4,4,4,3,3,3,3,3,3,4,4,4,3,3,3,3,3,4,5,5,5,5,5,4],[4,4,1,1,2,1,4,2,2,4,4,3,3,3,4,4,4,1,2,1,1,2,2,4,2,1,2,2,4,6,8,2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>mpg<\/th>\n      <th>cyl<\/th>\n      <th>disp<\/th>\n      <th>hp<\/th>\n      <th>drat<\/th>\n      <th>wt<\/th>\n      <th>qsec<\/th>\n      <th>vs<\/th>\n      <th>am<\/th>\n      <th>gear<\/th>\n      <th>carb<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><br></p>
 <ul>
-<li><em><strong>Paso 5</strong></em></li>
+<li>Adicionar los argumentos requeridos a la función <code>datatable()</code> de tal manera que se elimine la columna con los nombres de los carros y la nueva tabla tenga la siguiente estructura.</li>
 </ul>
-<p>El quinto lugar, como se ilustra en la Figura de abajo, se debe dar clic en la opción <strong>base</strong>.</p>
-<p><img src="Imagenes/R5.png" /></p>
+<p><strong>Nota</strong>.
+<em>Para ajustar los argumentos de esta función, revisar el manual del paquete DT disponible en la siguiente URL <a href="https://rstudio.github.io/DT/" class="uri">https://rstudio.github.io/DT/</a></em></p>
+<p><br></p>
+<div id="htmlwidget-ee41d19f5887e5bde6bc" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ee41d19f5887e5bde6bc">{"x":{"filter":"none","data":[[21,21,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,16.4,17.3,15.2,10.4,10.4,14.7,32.4,30.4,33.9,21.5,15.5,15.2,13.3,19.2,27.3,26,30.4,15.8,19.7,15,21.4],[6,6,4,6,8,6,8,4,4,6,6,8,8,8,8,8,8,4,4,4,4,8,8,8,8,4,4,4,8,6,8,4],[160,160,108,258,360,225,360,146.7,140.8,167.6,167.6,275.8,275.8,275.8,472,460,440,78.7,75.7,71.1,120.1,318,304,350,400,79,120.3,95.1,351,145,301,121],[110,110,93,110,175,105,245,62,95,123,123,180,180,180,205,215,230,66,52,65,97,150,150,245,175,66,91,113,264,175,335,109],[3.9,3.9,3.85,3.08,3.15,2.76,3.21,3.69,3.92,3.92,3.92,3.07,3.07,3.07,2.93,3,3.23,4.08,4.93,4.22,3.7,2.76,3.15,3.73,3.08,4.08,4.43,3.77,4.22,3.62,3.54,4.11],[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,4.07,3.73,3.78,5.25,5.424,5.345,2.2,1.615,1.835,2.465,3.52,3.435,3.84,3.845,1.935,2.14,1.513,3.17,2.77,3.57,2.78],[16.46,17.02,18.61,19.44,17.02,20.22,15.84,20,22.9,18.3,18.9,17.4,17.6,18,17.98,17.82,17.42,19.47,18.52,19.9,20.01,16.87,17.3,15.41,17.05,18.9,16.7,16.9,14.5,15.5,14.6,18.6],[0,0,1,1,0,1,0,1,1,1,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,1,0,1,0,0,0,1],[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1],[4,4,4,3,3,3,3,4,4,4,4,3,3,3,3,3,3,4,4,4,3,3,3,3,3,4,5,5,5,5,5,4],[4,4,1,1,2,1,4,2,2,4,4,3,3,3,4,4,4,1,2,1,1,2,2,4,2,1,2,2,4,6,8,2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>mpg<\/th>\n      <th>cyl<\/th>\n      <th>disp<\/th>\n      <th>hp<\/th>\n      <th>drat<\/th>\n      <th>wt<\/th>\n      <th>qsec<\/th>\n      <th>vs<\/th>\n      <th>am<\/th>\n      <th>gear<\/th>\n      <th>carb<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1,2,3,4,5,6,7,8,9,10]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><br></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Se cuenta con la información disponible del conjunto de datos <code>mtcars</code> en dos rutas en la web. Estos conjuntos de datos están conformados por archivos de tipo CSV (Comma Separated Values) y se encuentran ubicados en las siguientes direcciones.</li>
+</ol>
 <ul>
-<li><em><strong>Paso 6</strong></em></li>
+<li><a href="https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv">Archivo 1</a></li>
+<li><a href="https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/mtcars.csv">Archivo 2</a></li>
 </ul>
-<p>En sexto lugar, como se ilustra en la Figura de abajo, se debe dar clic en la opción <strong>Download R 4.0.2 for Windows (32/64 bit)</strong></p>
-<p><img src="Imagenes/R6.png" /></p>
+<p>Teniendo en cuenta los anteriores dos archivos, realizar las siguientes actividades.</p>
 <ul>
-<li><em><strong>Paso 7</strong></em></li>
+<li><p>Explorar el contenido de cada uno de los dos archivos de datos tipo CSV disponibles en las rutas mencionadas. ¿En qué se diferencia el contenido de estos dos tipos de archivos?</p></li>
+<li><p>Haciendo uso de las funciones <code>read.table()</code>, <code>read.csv()</code> o <code>read.csv2()</code>, importar a R los archivos en cuestion. El archivo 1 debe ser guardado dentro de un objeto llamado <strong>mtcars_1</strong> y el archivo 2 dentro de un objeto llamado <strong>mtcars_2</strong>.</p></li>
 </ul>
-<p>En septimo lugar, como se ilustra en la Figura de abajo, se debe dar <strong>sí</strong> en la ventana emergente. Esta ventana, según los esquemas de seguridad instalados en nuestros computadores, puede o no emerger. Si no emerge, pasa directamente al paso 8.</p>
-<p><img src="Imagenes/R7.png" /></p>
+<ol start="6" style="list-style-type: decimal">
+<li>Se cuenta con la información de 505 estudiantes graduados de una universidad colombiana. Esta información se encuentra almacenada en un archivo de Excel el cual puede ser descargado dando click en el siguiente enlace.</li>
+</ol>
 <ul>
-<li><em><strong>Paso 8</strong></em></li>
+<li><a href="https://github.com/estadisticaun/Rbasico/raw/master/Datos/Graduados.xlsx">Descargar información de graduados</a></li>
 </ul>
-<p>En octavo lugar, como se ilustra en la Figura de abajo, se debe seleccionar la opción instalar y luego dar clic en <strong>Aceptar</strong>.</p>
-<p><img src="Imagenes/R8.png" /></p>
+<p>Teniendo en cuenta lo anterio, realizar las siguientes actividades.</p>
 <ul>
-<li><em><strong>Paso 9</strong></em></li>
+<li><p>Descargar y guardar en algún lugar/carpera de su computador o del proyecto empleado en el desarrollo de este trabajo, la base de datos de Excel que contiene la información de los estudiantes graduados.</p></li>
+<li><p>Importar a R la base de datos de los estudiantes graduados. Almacenar los resultados del proceso de importación en un objeto llamado <strong>graduados</strong>.</p></li>
+<li><p>Con las funciones aprendidas en este curso y disponibles en la sección <a href="2-6-Edatos.html#FunDF">Funciones útiles para la gestión de data.frame</a> de este documento, explorar el contenido del <code>data.frame</code> (base de datos) <strong>graduados</strong>.</p></li>
+<li><p>Con lo aprendido hasta ahora, seleccionar los estudiantes graduados nacidos en el departamento de Antioquia (DEP_NAC) y que son mujeres (SEXO). Guardar los resultados de esta selección en un objeto llamado <strong>graduados_ant</strong>. ¿Cuántos graduados cumplen las condiciones definidas?</p></li>
+<li><p>Exportar en un archivo CSV, al lugar/carperta que se desee dentro de nuestros computadores, el contenido del objeto <strong>graduados_ant</strong>.</p></li>
 </ul>
-<p>En noveno lugar, como se ilustra en la Figura de abajo, se debe dar clic en <strong>Siguiente</strong> en la totalidad de pestañas que aparecen a continuación.</p>
-<p><img src="Imagenes/R9.png" /></p>
-<ul>
-<li><em><strong>Paso 10</strong></em></li>
-</ul>
-<p>En decimo lugar, como se ilustra en la Figura de abajo, se debe esperar a que termine la instalación de <strong>R</strong>. Este paso puede tardar algunos minutos.</p>
-<p><img src="Imagenes/R10.png" /></p>
-<ul>
-<li><em><strong>Paso 11</strong></em></li>
-</ul>
-<p>En onceavo lugar, como se ilustra en la Figura de abajo, una vez se ha instalado el programa, se debe dar clic en la opción “Finalizar”.</p>
-<p><img src="Imagenes/R11.png" /></p>
-<ul>
-<li><em><strong>Paso 12</strong></em></li>
-</ul>
-<p>En doceavo lugar, como se ilustra en la Figura de abajo, se debe verificar que <strong>R</strong> quedó instalado en nuestros equipos. Esto se puede hacer a través de la barra de opciones de programas.</p>
-<p><img src="Imagenes/R12.png" /></p>
+
 </div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2 style="color:#2ca25f;">Comentarios</h2>
 
 <div id="disqus_thread"></div>
@@ -313,8 +413,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="1-Instalar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="1-2-instalar-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4-3-trabajo-3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
