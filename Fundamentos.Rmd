@@ -946,7 +946,7 @@ n
 
 La función `seq()`, permite la creación de un vector con una secuencia de datos. No obstante, esta función, a diferencia de la función `:`, permite que el usuario defina el incremento o múltiplo que será tenido en cuenta dentro de la secuencia. Por ejemplo, la instrucción `seq(from = 0, to = 30, by = 2)`, permite la creación de una secuencia de números que inicia en 1 (_from_), va hasta 30 (_to_) y se incrementa de dos en dos (_by_).
 
-En la función `seq(from = 0, to = 30, by = 2)`, las palabras _from_, _to_ y _by_, se conocen con el nombre de *parámetros* de la función `seq()`. Los parámetros de una función en R, como se verá en la sección de funciones, pueden ser o no incluidos^[hasta tanto el usuario no disponga de experiencia y conocimiento sobre ciertas funciones de R, se recomienta que al invocar estas siempre se coloque el nombre de cada uno de los parámetros utilizados] al momento de invocar una función dependiendo del orden en el que estos fueron definidos por dicha función. Por el momento, como se corrobora en los ejemplos que se presentan a continuación, la instrucción `seq(from = 0, to = 30, by = 2)` es equivalente en R a la instrucción `seq(0, 30, 2)`, sin el nombre de los parámetros.  
+En la función `seq(from = 0, to = 30, by = 2)`, las palabras _from_, _to_ y _by_, se conocen con el nombre de *argumentos* o parámetros de la función `seq()`. Los argumentos de una función en R, como se verá en la sección de funciones, pueden ser o no incluidos^[hasta tanto el usuario no disponga de experiencia y conocimiento sobre ciertas funciones de R, se recomienta que al invocar estas siempre se coloque el nombre de cada uno de los parámetros utilizados] al momento de invocar una función dependiendo del orden en el que estos fueron definidos por dicha función. Por el momento, como se corrobora en los ejemplos que se presentan a continuación, la instrucción `seq(from = 0, to = 30, by = 2)` es equivalente en R a la instrucción `seq(0, 30, 2)`, sin el nombre de los parámetros.  
 
 
 <p style="color:#e6550d";><i>Ejemplo. Creación de vectores haciendo uso de la función `seq()`</i></p>
@@ -958,7 +958,9 @@ seq(0, 30, 2)
 # Ejemplo 2. Secuencia descendente
 seq(from = 20, to = 0, by = -5)
 seq(20, 0, -5)
-# Ejemplo 3. Secuencias dentro de variables
+# Ejemplo 3. Secuencia distribuida uniformemente
+seq(from = 0, to = 10, length = 20)
+# Ejemplo 4. Secuencias dentro de variables
 p <- seq(1, 10, 2)
 p
 ```

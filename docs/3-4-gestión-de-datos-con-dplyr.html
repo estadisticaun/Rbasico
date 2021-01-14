@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.4 Gestión de datos con dplyr | Un Primer Curso de R</title>
+  <meta name="description" content="3.4 Gestión de datos con dplyr | Un Primer Curso de R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.4 Gestión de datos con dplyr | Un Primer Curso de R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.4 Gestión de datos con dplyr | Un Primer Curso de R" />
+  
+  
+  
+
+<meta name="author" content="Alberto Rodríguez Rodríguez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="3-3-datos-ordenados-tidy-data.html"/>
+<link rel="next" href="4-Ejercicios.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="https://ih0.redbubble.net/image.522698608.2413/flat,550x550,075,f.u4.jpg"  height=50 width="50"> <a href="./">Primer Curso de R</a></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Portada</a></li>
+<li class="chapter" data-level="" data-path="Presenta.html"><a href="Presenta.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="chapter" data-level="1" data-path="1-Instalar.html"><a href="1-Instalar.html"><i class="fa fa-check"></i><b>1</b> Instalar R y Rstudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1-1-instalar-r.html"><a href="1-1-instalar-r.html"><i class="fa fa-check"></i><b>1.1</b> Instalar R</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-instalar-rstudio.html"><a href="1-2-instalar-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> Instalar Rstudio</a></li>
+<li class="chapter" data-level="1.3" data-path="1-3-personalizar-rstudio.html"><a href="1-3-personalizar-rstudio.html"><i class="fa fa-check"></i><b>1.3</b> Personalizar Rstudio</a></li>
+</ul></li>
+<li class="part"><span><b>I Fundamentos</b></span></li>
+<li class="chapter" data-level="2" data-path="2-Fund.html"><a href="2-Fund.html"><i class="fa fa-check"></i><b>2</b> Fundamentos del lenguaje R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-1-introR.html"><a href="2-1-introR.html"><i class="fa fa-check"></i><b>2.1</b> Primeros pasos</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html"><i class="fa fa-check"></i><b>2.2</b> Tipos de datos</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html#Tdatos1"><i class="fa fa-check"></i><b>2.2.1</b> Tipos de datos en R</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-2-Tdatos.html"><a href="2-2-Tdatos.html#Constantes"><i class="fa fa-check"></i><b>2.2.2</b> Constantes integradas en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html"><i class="fa fa-check"></i><b>2.3</b> Operaciones aritméticas</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="2-3-Aritmet.html"><a href="2-3-Aritmet.html#operaciones-aritméticas-en-r"><i class="fa fa-check"></i><b>2.3.1</b> Operaciones aritméticas en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="2-4-Variables.html"><a href="2-4-Variables.html"><i class="fa fa-check"></i><b>2.4</b> Variables</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="2-4-Variables.html"><a href="2-4-Variables.html#NombreV"><i class="fa fa-check"></i><b>2.4.1</b> Nombre de variables</a></li>
+<li class="chapter" data-level="2.4.2" data-path="2-4-Variables.html"><a href="2-4-Variables.html#tipos-de-variables"><i class="fa fa-check"></i><b>2.4.2</b> Tipos de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html"><i class="fa fa-check"></i><b>2.5</b> Expresiones lógicas</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#operadores-relacionales"><i class="fa fa-check"></i><b>2.5.1</b> Operadores Relacionales</a></li>
+<li class="chapter" data-level="2.5.2" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#operadores-lógicos"><i class="fa fa-check"></i><b>2.5.2</b> Operadores Lógicos</a></li>
+<li class="chapter" data-level="2.5.3" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#combinando-operadores"><i class="fa fa-check"></i><b>2.5.3</b> Combinando operadores</a></li>
+<li class="chapter" data-level="2.5.4" data-path="2-5-Elogicas.html"><a href="2-5-Elogicas.html#coerción-en-expresiones-lógicas"><i class="fa fa-check"></i><b>2.5.4</b> Coerción en expresiones lógicas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html"><i class="fa fa-check"></i><b>2.6</b> Estructuras de datos</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#Vectores"><i class="fa fa-check"></i><b>2.6.1</b> Vectores</a></li>
+<li class="chapter" data-level="2.6.2" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#Matrices"><i class="fa fa-check"></i><b>2.6.2</b> Matrices</a></li>
+<li class="chapter" data-level="2.6.3" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#DataFrames"><i class="fa fa-check"></i><b>2.6.3</b> Data.frames</a></li>
+<li class="chapter" data-level="2.6.4" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#Listas"><i class="fa fa-check"></i><b>2.6.4</b> Listas</a></li>
+<li class="chapter" data-level="2.6.5" data-path="2-6-Edatos.html"><a href="2-6-Edatos.html#Factores"><i class="fa fa-check"></i><b>2.6.5</b> Factores</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Limpieza y Transformación</b></span></li>
+<li class="chapter" data-level="3" data-path="3-Trans.html"><a href="3-Trans.html"><i class="fa fa-check"></i><b>3</b> Transformación de datos con R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-1-Paquetes.html"><a href="3-1-Paquetes.html"><i class="fa fa-check"></i><b>3.1</b> Paquetes en R</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="3-1-Paquetes.html"><a href="3-1-Paquetes.html#filosofía-de-un-paquete"><i class="fa fa-check"></i><b>3.1.1</b> Filosofía de un paquete</a></li>
+<li class="chapter" data-level="3.1.2" data-path="3-1-Paquetes.html"><a href="3-1-Paquetes.html#importar-paquetes"><i class="fa fa-check"></i><b>3.1.2</b> Importar paquetes</a></li>
+<li class="chapter" data-level="3.1.3" data-path="3-1-Paquetes.html"><a href="3-1-Paquetes.html#usar-paquetes"><i class="fa fa-check"></i><b>3.1.3</b> Usar paquetes</a></li>
+<li class="chapter" data-level="3.1.4" data-path="3-1-Paquetes.html"><a href="3-1-Paquetes.html#explorar-paquetes"><i class="fa fa-check"></i><b>3.1.4</b> Explorar paquetes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="3-2-importarexportar-datos.html"><a href="3-2-importarexportar-datos.html"><i class="fa fa-check"></i><b>3.2</b> Importar/exportar datos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="3-2-importarexportar-datos.html"><a href="3-2-importarexportar-datos.html#importar-datos-en-r"><i class="fa fa-check"></i><b>3.2.1</b> Importar datos en R</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-importarexportar-datos.html"><a href="3-2-importarexportar-datos.html#exportar-datos-en-r"><i class="fa fa-check"></i><b>3.2.2</b> Exportar datos en R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="3-3-datos-ordenados-tidy-data.html"><a href="3-3-datos-ordenados-tidy-data.html"><i class="fa fa-check"></i><b>3.3</b> Datos ordenados - Tidy Data</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html"><i class="fa fa-check"></i><b>3.4</b> Gestión de datos con dplyr</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-1.-seleccionar"><i class="fa fa-check"></i><b>3.4.1</b> Verbo 1. Seleccionar</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-2.-renombrar"><i class="fa fa-check"></i><b>3.4.2</b> Verbo 2. Renombrar</a></li>
+<li class="chapter" data-level="3.4.3" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-3.-reubicar"><i class="fa fa-check"></i><b>3.4.3</b> Verbo 3. Reubicar</a></li>
+<li class="chapter" data-level="3.4.4" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-4.-adicionar"><i class="fa fa-check"></i><b>3.4.4</b> Verbo 4. Adicionar</a></li>
+<li class="chapter" data-level="3.4.5" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-5.-filtrar"><i class="fa fa-check"></i><b>3.4.5</b> Verbo 5. Filtrar</a></li>
+<li class="chapter" data-level="3.4.6" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-6.-agrupar"><i class="fa fa-check"></i><b>3.4.6</b> Verbo 6. Agrupar</a></li>
+<li class="chapter" data-level="3.4.7" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-7.-resumir"><i class="fa fa-check"></i><b>3.4.7</b> Verbo 7. Resumir</a></li>
+<li class="chapter" data-level="3.4.8" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#el-operador-pipe"><i class="fa fa-check"></i><b>3.4.8</b> El operador pipe %&gt;%</a></li>
+<li class="chapter" data-level="3.4.9" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#combinar-conjuntos-de-datos"><i class="fa fa-check"></i><b>3.4.9</b> Combinar conjuntos de datos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-Ejercicios.html"><a href="4-Ejercicios.html"><i class="fa fa-check"></i><b>4</b> Ejercicios</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4-1-trabajo-1.html"><a href="4-1-trabajo-1.html"><i class="fa fa-check"></i><b>4.1</b> Trabajo 1</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-trabajo-2.html"><a href="4-2-trabajo-2.html"><i class="fa fa-check"></i><b>4.2</b> Trabajo 2</a></li>
+<li class="chapter" data-level="4.3" data-path="4-3-trabajo-3.html"><a href="4-3-trabajo-3.html"><i class="fa fa-check"></i><b>4.3</b> Trabajo 3</a></li>
+<li class="chapter" data-level="4.4" data-path="4-4-trabajo-4.html"><a href="4-4-trabajo-4.html"><i class="fa fa-check"></i><b>4.4</b> Trabajo 4</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Un Primer Curso de R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="gestión-de-datos-con-dplyr" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Gestión de datos con dplyr</h2>
+<p>En la primera parte de este documento se presentaron diversas formas para la manipulación de objetos en R a partir de la base que nos ofrece el lenguaje. En la segunda parte de este texto, hemos incursionado en el escenario de la gestión de paquetes en R y para ello nos hemos concentrado en un subconjunto de estos los cuales, además de encontrarsen interrelacioandos, nos facilitan el trabajo con este lenguaje: paquetes y funciones orientados a la importación de datos así como al ordenamiento de estos han sido parte del trabajo/estudio en las últimas semanas. En este apartado, se presenta un conjunto de funciones contenidas en el paquete <code>dplyr</code> las cuales están orientadas a la gestión moderna y eficiente de datos en R.</p>
+<p>El paquete <code>dplyr</code>, en términos generales, no proporciona ninguna nueva funcionalidad a R por sí mismo, en el sentido que todo aquello que podemos hacer con este paquete lo podríamos hacer con la sintaxis básica de R y que se trabajo en la primera parte de este curso. No obstante, este proporciona una gramática para la gestión de datos que facilita el trabajo con este lenguaje: indexación de datos, transformación de variables, filtrado de registros, agrupamiento de resultados, resúmenes estadísticos, etc. hacen parte de las funcionalidades que nos ofrece <code>dplyr</code> y, lo mejor, de una manera integrada.</p>
+<p>El conjunto de funciones que conforman <code>dplyr</code>, además de encontrarse entre las más usadas a nivel mundial, se corresponden a través de lo que los autores han llamado verbos. En este sentido, <code>dplyr</code> nos ofrece 7 verbos/funciones que resultan trascendentales para la gestión moderna de los datos desde R: <em>seleccionar</em>, <em>renombrar</em>, <em>reubicar</em>, <em>adicionar</em>, <em>filtrar</em>, <em>agrupar</em> y <em>resumir</em>. Cualquier ejercicio de gestión de datos en R implica, por ejemplo, seleccionar variables, renombrar variables, cambiar las posiciones de ciertas variables, adicionar o transformar variables, filtrar los resultados de acuerdo a ciertas características de interés de los individuos bajo estudio, agrupar los resultados según características de interés así como presentar cifras agragedas derivadas de conteos o del uso de funciones de naturaleza matemática o estadística, por ejemplo. En este contexto, y en otros escenarios, es donde las funciones que nos ofrece este paquete resultan de alta utilidad para la gestión de datos. A continuación, se presentan las 7 funciones/verbos que en mi criterio son las principales funciones disponibles dentro del paquete <code>dplyr</code> de R.</p>
+<p>Para ello, en primer lugar, debemos instalar el paquete <code>dplyr</code> en nuestros entornos de trabajo haciendo uso de la línea de comando <code>install.packages("dplyr", dependencies = TRUE)</code> y, una vez este ha sido instalado, invocandolo a través de la función <code>library(dplyr)</code>.</p>
+<div id="verbo-1.-seleccionar" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Verbo 1. Seleccionar</h3>
+<p>La primera función/verbo que estudiaremos del paquete <code>dplyr</code> es la función orientada a la selección o indexación de variable contenidas en un marco de datos <code>data.frame</code> o <code>tibble()</code> de R; es decir, cómo seleccionar variables de un conjunto de datos de una manera rápida y alterna a las formas de selección que aprendimos en la primera parte de este curso acudiento a los operadores <code>[ ]</code>, <code>[[ ]]</code> y <code>$</code>.</p>
+<p>La selección de variables a través de <code>dplyr</code> se hace a través de la función <code>select()</code> la cual requiere/exige, como argumentos, la definición del objeto del cuál serán extraídas las variables de interés y las variables que serán seleccionadas las cuales pueden ser definidas según sus nombres, con o sin commillas, o de acuerdo a la posición en la que estas se encuentran ubicadas<a href="#fn74" class="footnote-ref" id="fnref74"><sup>74</sup></a>. Por ejemplo, supongamos que estamos interesados en la selección de las variables <strong>Petal.Length</strong> y <strong>Species</strong> del conjunto de datos <code>iris</code> y que los resultados de esta selección sean almacenados el un objeto llamado <code>sel_iris</code>. Para ello, bastará con hacer uso de la función <code>select()</code> y definir dentro de esta los argumentos requeridos de acuerdo a la línea de comando que se presenta a continuación.</p>
+<div class="sourceCode" id="cb906"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb906-1"><a href="3-4-gestión-de-datos-con-dplyr.html#cb906-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb906-2"><a href="3-4-gestión-de-datos-con-dplyr.html#cb906-2"></a>sel_iris &lt;-<span class="st"> </span><span class="kw">select</span>(iris, Petal.Length, Species)</span>
+<span id="cb906-3"><a href="3-4-gestión-de-datos-con-dplyr.html#cb906-3"></a>sel_iris</span></code></pre></div>
+<pre><code>##     Petal.Length    Species
+## 1            1.4     setosa
+## 2            1.4     setosa
+## 3            1.3     setosa
+## 4            1.5     setosa
+## 5            1.4     setosa
+## 6            1.7     setosa
+## 7            1.4     setosa
+## 8            1.5     setosa
+## 9            1.4     setosa
+## 10           1.5     setosa
+## 11           1.5     setosa
+## 12           1.6     setosa
+## 13           1.4     setosa
+## 14           1.1     setosa
+## 15           1.2     setosa
+## 16           1.5     setosa
+## 17           1.3     setosa
+## 18           1.4     setosa
+## 19           1.7     setosa
+## 20           1.5     setosa
+## 21           1.7     setosa
+## 22           1.5     setosa
+## 23           1.0     setosa
+## 24           1.7     setosa
+## 25           1.9     setosa
+## 26           1.6     setosa
+## 27           1.6     setosa
+## 28           1.5     setosa
+## 29           1.4     setosa
+## 30           1.6     setosa
+## 31           1.6     setosa
+## 32           1.5     setosa
+## 33           1.5     setosa
+## 34           1.4     setosa
+## 35           1.5     setosa
+## 36           1.2     setosa
+## 37           1.3     setosa
+## 38           1.4     setosa
+## 39           1.3     setosa
+## 40           1.5     setosa
+## 41           1.3     setosa
+## 42           1.3     setosa
+## 43           1.3     setosa
+## 44           1.6     setosa
+## 45           1.9     setosa
+## 46           1.4     setosa
+## 47           1.6     setosa
+## 48           1.4     setosa
+## 49           1.5     setosa
+## 50           1.4     setosa
+## 51           4.7 versicolor
+## 52           4.5 versicolor
+## 53           4.9 versicolor
+## 54           4.0 versicolor
+## 55           4.6 versicolor
+## 56           4.5 versicolor
+## 57           4.7 versicolor
+## 58           3.3 versicolor
+## 59           4.6 versicolor
+## 60           3.9 versicolor
+## 61           3.5 versicolor
+## 62           4.2 versicolor
+## 63           4.0 versicolor
+## 64           4.7 versicolor
+## 65           3.6 versicolor
+## 66           4.4 versicolor
+## 67           4.5 versicolor
+## 68           4.1 versicolor
+## 69           4.5 versicolor
+## 70           3.9 versicolor
+## 71           4.8 versicolor
+## 72           4.0 versicolor
+## 73           4.9 versicolor
+## 74           4.7 versicolor
+## 75           4.3 versicolor
+## 76           4.4 versicolor
+## 77           4.8 versicolor
+## 78           5.0 versicolor
+## 79           4.5 versicolor
+## 80           3.5 versicolor
+## 81           3.8 versicolor
+## 82           3.7 versicolor
+## 83           3.9 versicolor
+## 84           5.1 versicolor
+## 85           4.5 versicolor
+## 86           4.5 versicolor
+## 87           4.7 versicolor
+## 88           4.4 versicolor
+## 89           4.1 versicolor
+## 90           4.0 versicolor
+## 91           4.4 versicolor
+## 92           4.6 versicolor
+## 93           4.0 versicolor
+## 94           3.3 versicolor
+## 95           4.2 versicolor
+## 96           4.2 versicolor
+## 97           4.2 versicolor
+## 98           4.3 versicolor
+## 99           3.0 versicolor
+## 100          4.1 versicolor
+## 101          6.0  virginica
+## 102          5.1  virginica
+## 103          5.9  virginica
+## 104          5.6  virginica
+## 105          5.8  virginica
+## 106          6.6  virginica
+## 107          4.5  virginica
+## 108          6.3  virginica
+## 109          5.8  virginica
+## 110          6.1  virginica
+## 111          5.1  virginica
+## 112          5.3  virginica
+## 113          5.5  virginica
+## 114          5.0  virginica
+## 115          5.1  virginica
+## 116          5.3  virginica
+## 117          5.5  virginica
+## 118          6.7  virginica
+## 119          6.9  virginica
+## 120          5.0  virginica
+## 121          5.7  virginica
+## 122          4.9  virginica
+## 123          6.7  virginica
+## 124          4.9  virginica
+## 125          5.7  virginica
+## 126          6.0  virginica
+## 127          4.8  virginica
+## 128          4.9  virginica
+## 129          5.6  virginica
+## 130          5.8  virginica
+## 131          6.1  virginica
+## 132          6.4  virginica
+## 133          5.6  virginica
+## 134          5.1  virginica
+## 135          5.6  virginica
+## 136          6.1  virginica
+## 137          5.6  virginica
+## 138          5.5  virginica
+## 139          4.8  virginica
+## 140          5.4  virginica
+## 141          5.6  virginica
+## 142          5.1  virginica
+## 143          5.1  virginica
+## 144          5.9  virginica
+## 145          5.7  virginica
+## 146          5.2  virginica
+## 147          5.0  virginica
+## 148          5.2  virginica
+## 149          5.4  virginica
+## 150          5.1  virginica</code></pre>
+<p>En el ejemplo anterior, se ha invocado la librería llamada <code>dplyr</code> y hemos hecho uso de la función <code>select()</code> para indicar que deseamos seleccionar las variables <strong>Petal.Length</strong> y <strong>Species</strong> del conjunto de datos <code>iris()</code>. Como se puede observar, dentro de la función <code>select()</code> se ha definido, en primer lugar, el nombre del objeto del cual se desean seleccionar las variables de interés; en nuestro caso, el conjunto de datos <code>iris()</code>. Paso seguido, se han definido las variables que deseamos seleccionar: <strong>Petal.Length</strong> y <strong>Species</strong>. Como se puede observar, a diferencia de lo que ocurre en los ejercicios de indexación/selección estudiados a partir de la base del lenguaje, la función <code>select()</code> no exige que las variables estén contenidas dentro de un vector <code>c()</code> o que estas estén entre comillas sencillas o dobles, aunque podrían estarlo. Es decir, el uso de la función <code>select()</code> para la selección de variables contenidas en un <code>data.frame</code> o <code>tibble</code> es menos restrictiva que sus contrapartes ubicadas en la base del lenguaje R y estudiadas en la primera parte de este curso. A continuación, se presentan algunos ejemplos para la selección de variables por nombre en R haciendo uso de la función <code>select()</code> en donde, los tres primeros ejemplos, son equivalentes al ejemplo presentado previamente.</p>
+<div class="sourceCode" id="cb908"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb908-1"><a href="3-4-gestión-de-datos-con-dplyr.html#cb908-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb908-2"><a href="3-4-gestión-de-datos-con-dplyr.html#cb908-2"></a></span>
+<span id="cb908-3"><a href="3-4-gestión-de-datos-con-dplyr.html#cb908-3"></a><span class="co"># Selección de variables por nombres</span></span>
+<span id="cb908-4"><a href="3-4-gestión-de-datos-con-dplyr.html#cb908-4"></a></span>
+<span id="cb908-5"><a href="3-4-gestión-de-datos-con-dplyr.html#cb908-5"></a><span class="co"># Ejemplo 1 </span></span>
+<span id="cb908-6"><a href="3-4-gestión-de-datos-con-dplyr.html#cb908-6"></a><span class="co"># Selección de variables Petal.Length y Species.</span></span>
+<span id="cb908-7"><a href="3-4-gestión-de-datos-con-dplyr.html#cb908-7"></a><span class="co"># Variables entre commillas sin vector</span></span>
+<span id="cb908-8"><a href="3-4-gestión-de-datos-con-dplyr.html#cb908-8"></a>sel_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">select</span>(iris, <span class="st">&quot;Petal.Length&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb908-9"><a href="3-4-gestión-de-datos-con-dplyr.html#cb908-9"></a><span class="kw">head</span>(sel_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##   Petal.Length Species
+## 1          1.4  setosa
+## 2          1.4  setosa
+## 3          1.3  setosa
+## 4          1.5  setosa
+## 5          1.4  setosa
+## 6          1.7  setosa</code></pre>
+<div class="sourceCode" id="cb910"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb910-1"><a href="3-4-gestión-de-datos-con-dplyr.html#cb910-1"></a><span class="co"># Ejemplo 2 </span></span>
+<span id="cb910-2"><a href="3-4-gestión-de-datos-con-dplyr.html#cb910-2"></a><span class="co"># Selección de variables Petal.Length y Species.</span></span>
+<span id="cb910-3"><a href="3-4-gestión-de-datos-con-dplyr.html#cb910-3"></a><span class="co"># Variables entre commillas con vector</span></span>
+<span id="cb910-4"><a href="3-4-gestión-de-datos-con-dplyr.html#cb910-4"></a>sel_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">select</span>(iris, <span class="kw">c</span>(<span class="st">&quot;Petal.Length&quot;</span>, <span class="st">&quot;Species&quot;</span>))</span>
+<span id="cb910-5"><a href="3-4-gestión-de-datos-con-dplyr.html#cb910-5"></a><span class="kw">head</span>(sel_<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##   Petal.Length Species
+## 1          1.4  setosa
+## 2          1.4  setosa
+## 3          1.3  setosa
+## 4          1.5  setosa
+## 5          1.4  setosa
+## 6          1.7  setosa</code></pre>
+<div class="sourceCode" id="cb912"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb912-1"><a href="3-4-gestión-de-datos-con-dplyr.html#cb912-1"></a><span class="co"># Ejemplo 3</span></span>
+<span id="cb912-2"><a href="3-4-gestión-de-datos-con-dplyr.html#cb912-2"></a><span class="co"># Selección de variables Petal.Length y Species.</span></span>
+<span id="cb912-3"><a href="3-4-gestión-de-datos-con-dplyr.html#cb912-3"></a><span class="co"># Variables sin commillas con vector</span></span>
+<span id="cb912-4"><a href="3-4-gestión-de-datos-con-dplyr.html#cb912-4"></a>sel_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">select</span>(iris, <span class="kw">c</span>(Petal.Length, Species))</span>
+<span id="cb912-5"><a href="3-4-gestión-de-datos-con-dplyr.html#cb912-5"></a><span class="kw">head</span>(sel_<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##   Petal.Length Species
+## 1          1.4  setosa
+## 2          1.4  setosa
+## 3          1.3  setosa
+## 4          1.5  setosa
+## 5          1.4  setosa
+## 6          1.7  setosa</code></pre>
+<div class="sourceCode" id="cb914"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb914-1"><a href="3-4-gestión-de-datos-con-dplyr.html#cb914-1"></a><span class="co"># Ejemplo 4</span></span>
+<span id="cb914-2"><a href="3-4-gestión-de-datos-con-dplyr.html#cb914-2"></a><span class="co"># Selección de variables diferentes de Petal.Length y Species.</span></span>
+<span id="cb914-3"><a href="3-4-gestión-de-datos-con-dplyr.html#cb914-3"></a><span class="co"># Variables con vector y sin comillas</span></span>
+<span id="cb914-4"><a href="3-4-gestión-de-datos-con-dplyr.html#cb914-4"></a><span class="co"># Opción 1 (operador -)</span></span>
+<span id="cb914-5"><a href="3-4-gestión-de-datos-con-dplyr.html#cb914-5"></a>sel_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">select</span>(iris, <span class="op">-</span><span class="kw">c</span>(Petal.Length, Species))</span>
+<span id="cb914-6"><a href="3-4-gestión-de-datos-con-dplyr.html#cb914-6"></a><span class="kw">head</span>(sel_<span class="dv">4</span>)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Width
+## 1          5.1         3.5         0.2
+## 2          4.9         3.0         0.2
+## 3          4.7         3.2         0.2
+## 4          4.6         3.1         0.2
+## 5          5.0         3.6         0.2
+## 6          5.4         3.9         0.4</code></pre>
+<div class="sourceCode" id="cb916"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb916-1"><a href="3-4-gestión-de-datos-con-dplyr.html#cb916-1"></a><span class="co"># Ejemplo 5</span></span>
+<span id="cb916-2"><a href="3-4-gestión-de-datos-con-dplyr.html#cb916-2"></a><span class="co"># Selección de variables diferentes de Petal.Length y Species.</span></span>
+<span id="cb916-3"><a href="3-4-gestión-de-datos-con-dplyr.html#cb916-3"></a><span class="co"># Variables con vector y sin comillas</span></span>
+<span id="cb916-4"><a href="3-4-gestión-de-datos-con-dplyr.html#cb916-4"></a><span class="co"># Opción 2 (operador !)</span></span>
+<span id="cb916-5"><a href="3-4-gestión-de-datos-con-dplyr.html#cb916-5"></a>sel_<span class="dv">5</span> &lt;-<span class="st"> </span><span class="kw">select</span>(iris, <span class="op">!</span><span class="kw">c</span>(Petal.Length, Species))</span>
+<span id="cb916-6"><a href="3-4-gestión-de-datos-con-dplyr.html#cb916-6"></a><span class="kw">head</span>(sel_<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Width
+## 1          5.1         3.5         0.2
+## 2          4.9         3.0         0.2
+## 3          4.7         3.2         0.2
+## 4          4.6         3.1         0.2
+## 5          5.0         3.6         0.2
+## 6          5.4         3.9         0.4</code></pre>
+<div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb918-1"><a href="3-4-gestión-de-datos-con-dplyr.html#cb918-1"></a><span class="co"># Ejemplo 5</span></span>
+<span id="cb918-2"><a href="3-4-gestión-de-datos-con-dplyr.html#cb918-2"></a><span class="co"># Selección de variables - desde Petal.Length hasta Species.</span></span>
+<span id="cb918-3"><a href="3-4-gestión-de-datos-con-dplyr.html#cb918-3"></a><span class="co"># Variables con vector y sin comillas</span></span>
+<span id="cb918-4"><a href="3-4-gestión-de-datos-con-dplyr.html#cb918-4"></a>sel_<span class="dv">6</span> &lt;-<span class="st"> </span><span class="kw">select</span>(iris, Petal.Length<span class="op">:</span>Species)</span>
+<span id="cb918-5"><a href="3-4-gestión-de-datos-con-dplyr.html#cb918-5"></a><span class="kw">head</span>(sel_<span class="dv">6</span>)</span></code></pre></div>
+<pre><code>##   Petal.Length Petal.Width Species
+## 1          1.4         0.2  setosa
+## 2          1.4         0.2  setosa
+## 3          1.3         0.2  setosa
+## 4          1.5         0.2  setosa
+## 5          1.4         0.2  setosa
+## 6          1.7         0.4  setosa</code></pre>
+<ul>
+<li>starts_with()</li>
+<li>ends_with()</li>
+<li>contains()</li>
+<li>matches()</li>
+<li>any_of()</li>
+<li>num_range()</li>
+<li>everything()</li>
+</ul>
+</div>
+<div id="verbo-2.-renombrar" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Verbo 2. Renombrar</h3>
+</div>
+<div id="verbo-3.-reubicar" class="section level3" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Verbo 3. Reubicar</h3>
+</div>
+<div id="verbo-4.-adicionar" class="section level3" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Verbo 4. Adicionar</h3>
+<!-- case_when() -->
+</div>
+<div id="verbo-5.-filtrar" class="section level3" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> Verbo 5. Filtrar</h3>
+</div>
+<div id="verbo-6.-agrupar" class="section level3" number="3.4.6">
+<h3><span class="header-section-number">3.4.6</span> Verbo 6. Agrupar</h3>
+</div>
+<div id="verbo-7.-resumir" class="section level3" number="3.4.7">
+<h3><span class="header-section-number">3.4.7</span> Verbo 7. Resumir</h3>
+</div>
+<div id="el-operador-pipe" class="section level3" number="3.4.8">
+<h3><span class="header-section-number">3.4.8</span> El operador pipe %&gt;%</h3>
+</div>
+<div id="combinar-conjuntos-de-datos" class="section level3" number="3.4.9">
+<h3><span class="header-section-number">3.4.9</span> Combinar conjuntos de datos</h3>
+
+</div>
+</div>
+<!-- </div> -->
+<div class="footnotes">
+<hr />
+<ol start="74">
+<li id="fn74"><p>En <code>dplyr</code>, a diferencia de la base del lenguaje, no es posible seleccionar/indexar variables acudiendo al uso de vectores lógicos, así mismo, la selección de variables a partir de enteros exige que estos sean entéros en sentido estricto -no acepta decimales-<a href="3-4-gestión-de-datos-con-dplyr.html#fnref74" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+<h2 style="color:#2ca25f;">Comentarios</h2>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-rbasico-netlify-app-2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="3-3-datos-ordenados-tidy-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-Ejercicios.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

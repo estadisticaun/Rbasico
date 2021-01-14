@@ -197,6 +197,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="3-2-importarexportar-datos.html"><a href="3-2-importarexportar-datos.html#importar-datos-en-r"><i class="fa fa-check"></i><b>3.2.1</b> Importar datos en R</a></li>
 <li class="chapter" data-level="3.2.2" data-path="3-2-importarexportar-datos.html"><a href="3-2-importarexportar-datos.html#exportar-datos-en-r"><i class="fa fa-check"></i><b>3.2.2</b> Exportar datos en R</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="3-3-datos-ordenados-tidy-data.html"><a href="3-3-datos-ordenados-tidy-data.html"><i class="fa fa-check"></i><b>3.3</b> Datos ordenados - Tidy Data</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html"><i class="fa fa-check"></i><b>3.4</b> Gestión de datos con dplyr</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-1.-seleccionar"><i class="fa fa-check"></i><b>3.4.1</b> Verbo 1. Seleccionar</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-2.-renombrar"><i class="fa fa-check"></i><b>3.4.2</b> Verbo 2. Renombrar</a></li>
+<li class="chapter" data-level="3.4.3" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-3.-reubicar"><i class="fa fa-check"></i><b>3.4.3</b> Verbo 3. Reubicar</a></li>
+<li class="chapter" data-level="3.4.4" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-4.-adicionar"><i class="fa fa-check"></i><b>3.4.4</b> Verbo 4. Adicionar</a></li>
+<li class="chapter" data-level="3.4.5" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-5.-filtrar"><i class="fa fa-check"></i><b>3.4.5</b> Verbo 5. Filtrar</a></li>
+<li class="chapter" data-level="3.4.6" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-6.-agrupar"><i class="fa fa-check"></i><b>3.4.6</b> Verbo 6. Agrupar</a></li>
+<li class="chapter" data-level="3.4.7" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-7.-resumir"><i class="fa fa-check"></i><b>3.4.7</b> Verbo 7. Resumir</a></li>
+<li class="chapter" data-level="3.4.8" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#el-operador-pipe"><i class="fa fa-check"></i><b>3.4.8</b> El operador pipe %&gt;%</a></li>
+<li class="chapter" data-level="3.4.9" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#combinar-conjuntos-de-datos"><i class="fa fa-check"></i><b>3.4.9</b> Combinar conjuntos de datos</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-Ejercicios.html"><a href="4-Ejercicios.html"><i class="fa fa-check"></i><b>4</b> Ejercicios</a>
 <ul>
@@ -240,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Seleccione, a través de una única consulta, los elementos ubicados en las intersecciones de las filas 1 y 3 y las columnas 1 y 4. Para el caso de las filas hacer uso de un vector con enteros negativos y para el caso de las columnas hacer uso de un vector de tipo caracter (textual).</p></li>
 </ul>
 <ol start="5" style="list-style-type: decimal">
-<li><p>El conjunto de datos <code>mtcars</code>, al igual que el conjunto de datos <code>iris</code> y que se trabajó a lo largo del documento, hace parte de los marcos de datos <code>data.frame</code> que vienen incluidos por defecto en R desde el momento de su instalación<a href="#fn74" class="footnote-ref" id="fnref74"><sup>74</sup></a>. Haciendo uso de las funciones <code>class()</code>, <code>names()</code>, <code>dim()</code>, <code>length()</code>, <code>ncol()</code>, <code>nrow()</code>, <code>head()</code>, <code>tail()</code>, <code>str()</code> y <code>summary()</code>, explorar el contenido del marco de datos <strong><code>mtcars</code></strong>.</p></li>
+<li><p>El conjunto de datos <code>mtcars</code>, al igual que el conjunto de datos <code>iris</code> y que se trabajó a lo largo del documento, hace parte de los marcos de datos <code>data.frame</code> que vienen incluidos por defecto en R desde el momento de su instalación<a href="#fn75" class="footnote-ref" id="fnref75"><sup>75</sup></a>. Haciendo uso de las funciones <code>class()</code>, <code>names()</code>, <code>dim()</code>, <code>length()</code>, <code>ncol()</code>, <code>nrow()</code>, <code>head()</code>, <code>tail()</code>, <code>str()</code> y <code>summary()</code>, explorar el contenido del marco de datos <strong><code>mtcars</code></strong>.</p></li>
 <li><p>Selecionar la variable <code>carb</code> del conjunto de datos (data.frame) <code>mtcars</code> haciendo uso de los operadores <code>[]</code>, <code>[ , ]</code>, <code>[[ ]]</code> y <code>$</code>. ¿Existe alguna diferencia en el resultado al usar alguna de estas formas de extracción de una variable en R?</p></li>
 <li><p>Seleccionar las variables <code>mpg</code>, <code>disp</code>, <code>drat</code>, <code>qsec</code>, <code>am</code> y <code>carb</code> del conjunto de datos <code>mtcars</code>. El proceso de selección de estas variables debe realizarse a través de cuatro vías: haciendo uso de vectores con <em>enteros positivos</em>, haciendo uso de vectores con <em>enteros negativos</em>, haciendo uso de vectores con <em>elementos lógicos</em> y haciendo uso de vectores con datos de tipo <em>caracter o textuales</em>.</p></li>
 <li><p>Seleccionar, del conjunto de datos <code>mtcars</code>, los individuos con valores 4 o 6 en la variable <code>cyl</code> y cuyos valores en la variable <code>mpg</code> son mayores o iguales <code>&gt;=</code> a 25. Para estos individuos, retener la información de las variables <code>mpg</code>, <code>cyl</code> y <code>carb</code>. Guardar/almacenar e imprimir los resultados de este ejercicio en un objeto/variable llamado <code>mtcars_new</code>.</p></li>
@@ -264,8 +277,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="footnotes">
 <hr />
-<ol start="74">
-<li id="fn74"><p>Estos conjuntos de datos hacen parte de una librería llamada <code>datasets</code> cuyos conjuntos de datos pueden ser explorados haciendo uso de la función <code>data()</code>. De igual manera, estos pueden ser descargados en formatos CSV desde la siguiente <a href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">página web</a><a href="4-2-trabajo-2.html#fnref74" class="footnote-back">↩︎</a></p></li>
+<ol start="75">
+<li id="fn75"><p>Estos conjuntos de datos hacen parte de una librería llamada <code>datasets</code> cuyos conjuntos de datos pueden ser explorados haciendo uso de la función <code>data()</code>. De igual manera, estos pueden ser descargados en formatos CSV desde la siguiente <a href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">página web</a><a href="4-2-trabajo-2.html#fnref75" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 <h2 style="color:#2ca25f;">Comentarios</h2>

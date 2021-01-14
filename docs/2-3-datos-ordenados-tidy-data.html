@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="2-2-tibbles-vs-data-frames.html"/>
-<link rel="next" href="2-4-verbos-seleccionar-reubicar-mutar-y-filtrar.html"/>
+<link rel="prev" href="2-2-importarexportar-datos.html"/>
+<link rel="next" href="2-4-gestión-de-datos-con-dplyr.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,9 +50,6 @@
 
 
 
-<link href="libs/unal/css/style.css" rel="stylesheet" />
-<link href="libs/unal/css/bootstrap-buttons.css" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 
 <style type="text/css">
@@ -137,78 +134,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Portada</a></li>
 <li class="chapter" data-level="" data-path="Presenta.html"><a href="Presenta.html"><i class="fa fa-check"></i>Presentación</a></li>
-<li class="part"><span><b>I Fundamentos</b></span></li>
-<li class="chapter" data-level="1" data-path="1-Fund.html"><a href="1-Fund.html"><i class="fa fa-check"></i><b>1</b> Fundamentos del lenguaje R</a>
+<li class="chapter" data-level="1" data-path="1-Instalar.html"><a href="1-Instalar.html"><i class="fa fa-check"></i><b>1</b> Instalar R y Rstudio</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="1-1-introR.html"><a href="1-1-introR.html"><i class="fa fa-check"></i><b>1.1</b> Introducción a R</a></li>
-<li class="chapter" data-level="1.2" data-path="1-2-Tdatos.html"><a href="1-2-Tdatos.html"><i class="fa fa-check"></i><b>1.2</b> Tipos de datos en R</a></li>
-<li class="chapter" data-level="1.3" data-path="1-3-Aritmet.html"><a href="1-3-Aritmet.html"><i class="fa fa-check"></i><b>1.3</b> Operaciones aritméticas y variables en R</a>
+<li class="chapter" data-level="1.1" data-path="1-1-instalar-r.html"><a href="1-1-instalar-r.html"><i class="fa fa-check"></i><b>1.1</b> Instalar R</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-instalar-rstudio.html"><a href="1-2-instalar-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> Instalar Rstudio</a></li>
+<li class="chapter" data-level="1.3" data-path="1-3-personalizar-rstudio.html"><a href="1-3-personalizar-rstudio.html"><i class="fa fa-check"></i><b>1.3</b> Personalizar Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#part-fundamentos"><i class="fa fa-check"></i>(PART) Fundamentos</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="1-3-Aritmet.html"><a href="1-3-Aritmet.html#operaciones-aritméticas-en-r"><i class="fa fa-check"></i><b>1.3.1</b> Operaciones aritméticas en R</a></li>
-<li class="chapter" data-level="1.3.2" data-path="1-3-Aritmet.html"><a href="1-3-Aritmet.html#variables-en-r"><i class="fa fa-check"></i><b>1.3.2</b> Variables en R</a></li>
-<li class="chapter" data-level="1.3.3" data-path="1-3-Aritmet.html"><a href="1-3-Aritmet.html#identificando-el-tipo-de-variables---primera-función"><i class="fa fa-check"></i><b>1.3.3</b> Identificando el tipo de variables - Primera función</a></li>
-</ul></li>
-<li class="chapter" data-level="1.4" data-path="1-4-Elogicas.html"><a href="1-4-Elogicas.html"><i class="fa fa-check"></i><b>1.4</b> Expresiones lógicas en R</a>
+<li class="chapter" data-level="1.4" data-path="1-4-introR.html"><a href="1-4-introR.html"><i class="fa fa-check"></i><b>1.4</b> Primeros pasos</a></li>
+<li class="chapter" data-level="1.5" data-path="1-5-Tdatos.html"><a href="1-5-Tdatos.html"><i class="fa fa-check"></i><b>1.5</b> Tipos de datos</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="1-4-Elogicas.html"><a href="1-4-Elogicas.html#operadores-relacionales"><i class="fa fa-check"></i><b>1.4.1</b> Operadores Relacionales</a></li>
-<li class="chapter" data-level="1.4.2" data-path="1-4-Elogicas.html"><a href="1-4-Elogicas.html#operadores-lógicos"><i class="fa fa-check"></i><b>1.4.2</b> Operadores Lógicos</a></li>
-<li class="chapter" data-level="1.4.3" data-path="1-4-Elogicas.html"><a href="1-4-Elogicas.html#combinando-operadores"><i class="fa fa-check"></i><b>1.4.3</b> Combinando operadores</a></li>
+<li class="chapter" data-level="1.5.1" data-path="1-5-Tdatos.html"><a href="1-5-Tdatos.html#Tdatos1"><i class="fa fa-check"></i><b>1.5.1</b> Tipos de datos en R</a></li>
+<li class="chapter" data-level="1.5.2" data-path="1-5-Tdatos.html"><a href="1-5-Tdatos.html#Constantes"><i class="fa fa-check"></i><b>1.5.2</b> Constantes integradas en R</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="1-5-Edatos.html"><a href="1-5-Edatos.html"><i class="fa fa-check"></i><b>1.5</b> Estructuras de datos</a>
+<li class="chapter" data-level="1.6" data-path="1-6-Aritmet.html"><a href="1-6-Aritmet.html"><i class="fa fa-check"></i><b>1.6</b> Operaciones aritméticas</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="1-5-Edatos.html"><a href="1-5-Edatos.html#vectores"><i class="fa fa-check"></i><b>1.5.1</b> Vectores</a></li>
-<li class="chapter" data-level="1.5.2" data-path="1-5-Edatos.html"><a href="1-5-Edatos.html#matrices"><i class="fa fa-check"></i><b>1.5.2</b> Matrices</a></li>
-<li class="chapter" data-level="1.5.3" data-path="1-5-Edatos.html"><a href="1-5-Edatos.html#arreglos"><i class="fa fa-check"></i><b>1.5.3</b> Arreglos</a></li>
-<li class="chapter" data-level="1.5.4" data-path="1-5-Edatos.html"><a href="1-5-Edatos.html#data-frames"><i class="fa fa-check"></i><b>1.5.4</b> Data frames</a></li>
-<li class="chapter" data-level="1.5.5" data-path="1-5-Edatos.html"><a href="1-5-Edatos.html#listas"><i class="fa fa-check"></i><b>1.5.5</b> Listas</a></li>
+<li class="chapter" data-level="1.6.1" data-path="1-6-Aritmet.html"><a href="1-6-Aritmet.html#operaciones-aritméticas-en-r"><i class="fa fa-check"></i><b>1.6.1</b> Operaciones aritméticas en R</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="1-6-Progra.html"><a href="1-6-Progra.html"><i class="fa fa-check"></i><b>1.6</b> Programación con R</a>
+<li class="chapter" data-level="1.7" data-path="1-7-Variables.html"><a href="1-7-Variables.html"><i class="fa fa-check"></i><b>1.7</b> Variables</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="1-6-Progra.html"><a href="1-6-Progra.html#if-y-else"><i class="fa fa-check"></i><b>1.6.1</b> if y else</a></li>
-<li class="chapter" data-level="1.6.2" data-path="1-6-Progra.html"><a href="1-6-Progra.html#for"><i class="fa fa-check"></i><b>1.6.2</b> for</a></li>
-<li class="chapter" data-level="1.6.3" data-path="1-6-Progra.html"><a href="1-6-Progra.html#while"><i class="fa fa-check"></i><b>1.6.3</b> while</a></li>
-<li class="chapter" data-level="1.6.4" data-path="1-6-Progra.html"><a href="1-6-Progra.html#break-y-next"><i class="fa fa-check"></i><b>1.6.4</b> break y next</a></li>
-<li class="chapter" data-level="1.6.5" data-path="1-6-Progra.html"><a href="1-6-Progra.html#repeat"><i class="fa fa-check"></i><b>1.6.5</b> repeat</a></li>
-<li class="chapter" data-level="1.6.6" data-path="1-6-Progra.html"><a href="1-6-Progra.html#la-familia-apply"><i class="fa fa-check"></i><b>1.6.6</b> La familia apply</a></li>
+<li class="chapter" data-level="1.7.1" data-path="1-7-Variables.html"><a href="1-7-Variables.html#NombreV"><i class="fa fa-check"></i><b>1.7.1</b> Nombre de variables</a></li>
+<li class="chapter" data-level="1.7.2" data-path="1-7-Variables.html"><a href="1-7-Variables.html#tipos-de-variables"><i class="fa fa-check"></i><b>1.7.2</b> Tipos de variables</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="1-7-Mpracticas.html"><a href="1-7-Mpracticas.html"><i class="fa fa-check"></i><b>1.7</b> Mejores prácticas en R</a></li>
+<li class="chapter" data-level="1.8" data-path="1-8-Elogicas.html"><a href="1-8-Elogicas.html"><i class="fa fa-check"></i><b>1.8</b> Expresiones lógicas</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="1-8-Elogicas.html"><a href="1-8-Elogicas.html#operadores-relacionales"><i class="fa fa-check"></i><b>1.8.1</b> Operadores Relacionales</a></li>
+<li class="chapter" data-level="1.8.2" data-path="1-8-Elogicas.html"><a href="1-8-Elogicas.html#operadores-lógicos"><i class="fa fa-check"></i><b>1.8.2</b> Operadores Lógicos</a></li>
+<li class="chapter" data-level="1.8.3" data-path="1-8-Elogicas.html"><a href="1-8-Elogicas.html#combinando-operadores"><i class="fa fa-check"></i><b>1.8.3</b> Combinando operadores</a></li>
+<li class="chapter" data-level="1.8.4" data-path="1-8-Elogicas.html"><a href="1-8-Elogicas.html#coerción-en-expresiones-lógicas"><i class="fa fa-check"></i><b>1.8.4</b> Coerción en expresiones lógicas</a></li>
 </ul></li>
-<li class="part"><span><b>II Limpieza y Transformación</b></span></li>
+<li class="chapter" data-level="1.9" data-path="1-9-Edatos.html"><a href="1-9-Edatos.html"><i class="fa fa-check"></i><b>1.9</b> Estructuras de datos</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="1-9-Edatos.html"><a href="1-9-Edatos.html#Vectores"><i class="fa fa-check"></i><b>1.9.1</b> Vectores</a></li>
+<li class="chapter" data-level="1.9.2" data-path="1-9-Edatos.html"><a href="1-9-Edatos.html#Matrices"><i class="fa fa-check"></i><b>1.9.2</b> Matrices</a></li>
+<li class="chapter" data-level="1.9.3" data-path="1-9-Edatos.html"><a href="1-9-Edatos.html#DataFrames"><i class="fa fa-check"></i><b>1.9.3</b> Data.frames</a></li>
+<li class="chapter" data-level="1.9.4" data-path="1-9-Edatos.html"><a href="1-9-Edatos.html#Listas"><i class="fa fa-check"></i><b>1.9.4</b> Listas</a></li>
+<li class="chapter" data-level="1.9.5" data-path="1-9-Edatos.html"><a href="1-9-Edatos.html#Factores"><i class="fa fa-check"></i><b>1.9.5</b> Factores</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Limpieza y Transformación</b></span></li>
 <li class="chapter" data-level="2" data-path="2-Trans.html"><a href="2-Trans.html"><i class="fa fa-check"></i><b>2</b> Transformación de datos con R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="2-1-importarexportar-datos.html"><a href="2-1-importarexportar-datos.html"><i class="fa fa-check"></i><b>2.1</b> Importar/exportar datos</a>
+<li class="chapter" data-level="2.1" data-path="2-1-Paquetes.html"><a href="2-1-Paquetes.html"><i class="fa fa-check"></i><b>2.1</b> Paquetes en R</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="2-1-importarexportar-datos.html"><a href="2-1-importarexportar-datos.html#paquetes-en-r"><i class="fa fa-check"></i><b>2.1.1</b> Paquetes en R</a></li>
+<li class="chapter" data-level="2.1.1" data-path="2-1-Paquetes.html"><a href="2-1-Paquetes.html#filosofía-de-un-paquete"><i class="fa fa-check"></i><b>2.1.1</b> Filosofía de un paquete</a></li>
+<li class="chapter" data-level="2.1.2" data-path="2-1-Paquetes.html"><a href="2-1-Paquetes.html#importar-paquetes"><i class="fa fa-check"></i><b>2.1.2</b> Importar paquetes</a></li>
+<li class="chapter" data-level="2.1.3" data-path="2-1-Paquetes.html"><a href="2-1-Paquetes.html#usar-paquetes"><i class="fa fa-check"></i><b>2.1.3</b> Usar paquetes</a></li>
+<li class="chapter" data-level="2.1.4" data-path="2-1-Paquetes.html"><a href="2-1-Paquetes.html#explorar-paquetes"><i class="fa fa-check"></i><b>2.1.4</b> Explorar paquetes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="2-2-tibbles-vs-data-frames.html"><a href="2-2-tibbles-vs-data-frames.html"><i class="fa fa-check"></i><b>2.2</b> Tibbles vs Data Frames</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-importarexportar-datos.html"><a href="2-2-importarexportar-datos.html"><i class="fa fa-check"></i><b>2.2</b> Importar/exportar datos</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="2-2-importarexportar-datos.html"><a href="2-2-importarexportar-datos.html#importar-datos-en-r"><i class="fa fa-check"></i><b>2.2.1</b> Importar datos en R</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-2-importarexportar-datos.html"><a href="2-2-importarexportar-datos.html#exportar-datos-en-r"><i class="fa fa-check"></i><b>2.2.2</b> Exportar datos en R</a></li>
+</ul></li>
 <li class="chapter" data-level="2.3" data-path="2-3-datos-ordenados-tidy-data.html"><a href="2-3-datos-ordenados-tidy-data.html"><i class="fa fa-check"></i><b>2.3</b> Datos ordenados - Tidy Data</a></li>
-<li class="chapter" data-level="2.4" data-path="2-4-verbos-seleccionar-reubicar-mutar-y-filtrar.html"><a href="2-4-verbos-seleccionar-reubicar-mutar-y-filtrar.html"><i class="fa fa-check"></i><b>2.4</b> Verbos: seleccionar, reubicar, mutar y filtrar</a></li>
-<li class="chapter" data-level="2.5" data-path="2-5-verbos-agrupar-ordenar-y-cruzar-.html"><a href="2-5-verbos-agrupar-ordenar-y-cruzar-.html"><i class="fa fa-check"></i><b>2.5</b> Verbos: agrupar, ordenar y cruzar.</a></li>
-</ul></li>
-<li class="part"><span><b>III Visualización</b></span></li>
-<li class="chapter" data-level="3" data-path="3-Vis.html"><a href="3-Vis.html"><i class="fa fa-check"></i><b>3</b> Visualización con R</a>
+<li class="chapter" data-level="2.4" data-path="2-4-gestión-de-datos-con-dplyr.html"><a href="2-4-gestión-de-datos-con-dplyr.html"><i class="fa fa-check"></i><b>2.4</b> Gestión de datos con dplyr</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="3-1-visualización-r-base.html"><a href="3-1-visualización-r-base.html"><i class="fa fa-check"></i><b>3.1</b> Visualización - R base</a></li>
-<li class="chapter" data-level="3.2" data-path="3-2-visualización-ggplot-1.html"><a href="3-2-visualización-ggplot-1.html"><i class="fa fa-check"></i><b>3.2</b> Visualización - Ggplot 1</a></li>
-<li class="chapter" data-level="3.3" data-path="3-3-visualización-ggplot-2.html"><a href="3-3-visualización-ggplot-2.html"><i class="fa fa-check"></i><b>3.3</b> Visualización - Ggplot 2</a></li>
+<li class="chapter" data-level="2.4.1" data-path="2-4-gestión-de-datos-con-dplyr.html"><a href="2-4-gestión-de-datos-con-dplyr.html#verbo-1.-seleccionar"><i class="fa fa-check"></i><b>2.4.1</b> Verbo 1. Seleccionar</a></li>
+<li class="chapter" data-level="2.4.2" data-path="2-4-gestión-de-datos-con-dplyr.html"><a href="2-4-gestión-de-datos-con-dplyr.html#verbo-2.-renombrar"><i class="fa fa-check"></i><b>2.4.2</b> Verbo 2. Renombrar</a></li>
+<li class="chapter" data-level="2.4.3" data-path="2-4-gestión-de-datos-con-dplyr.html"><a href="2-4-gestión-de-datos-con-dplyr.html#verbo-3.-reubicar"><i class="fa fa-check"></i><b>2.4.3</b> Verbo 3. Reubicar</a></li>
+<li class="chapter" data-level="2.4.4" data-path="2-4-gestión-de-datos-con-dplyr.html"><a href="2-4-gestión-de-datos-con-dplyr.html#verbo-4.-adicionar"><i class="fa fa-check"></i><b>2.4.4</b> Verbo 4. Adicionar</a></li>
+<li class="chapter" data-level="2.4.5" data-path="2-4-gestión-de-datos-con-dplyr.html"><a href="2-4-gestión-de-datos-con-dplyr.html#verbo-5.-filtrar"><i class="fa fa-check"></i><b>2.4.5</b> Verbo 5. Filtrar</a></li>
+<li class="chapter" data-level="2.4.6" data-path="2-4-gestión-de-datos-con-dplyr.html"><a href="2-4-gestión-de-datos-con-dplyr.html#verbo-6.-agrupar"><i class="fa fa-check"></i><b>2.4.6</b> Verbo 6. Agrupar</a></li>
+<li class="chapter" data-level="2.4.7" data-path="2-4-gestión-de-datos-con-dplyr.html"><a href="2-4-gestión-de-datos-con-dplyr.html#verbo-7.-resumir"><i class="fa fa-check"></i><b>2.4.7</b> Verbo 7. Resumir</a></li>
+<li class="chapter" data-level="2.4.8" data-path="2-4-gestión-de-datos-con-dplyr.html"><a href="2-4-gestión-de-datos-con-dplyr.html#el-operador-pipe"><i class="fa fa-check"></i><b>2.4.8</b> El operador pipe %&gt;%</a></li>
+<li class="chapter" data-level="2.4.9" data-path="2-4-gestión-de-datos-con-dplyr.html"><a href="2-4-gestión-de-datos-con-dplyr.html#combinar-conjuntos-de-datos"><i class="fa fa-check"></i><b>2.4.9</b> Combinar conjuntos de datos</a></li>
 </ul></li>
-<li class="part"><span><b>IV Modelamiento</b></span></li>
-<li class="chapter" data-level="4" data-path="4-Est.html"><a href="4-Est.html"><i class="fa fa-check"></i><b>4</b> Estadística con R</a>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-Ejercicios.html"><a href="3-Ejercicios.html"><i class="fa fa-check"></i><b>3</b> Ejercicios</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="4-1-estadística-descriptiva.html"><a href="4-1-estadística-descriptiva.html"><i class="fa fa-check"></i><b>4.1</b> Estadística descriptiva</a></li>
-<li class="chapter" data-level="4.2" data-path="4-2-estadística-bivariada.html"><a href="4-2-estadística-bivariada.html"><i class="fa fa-check"></i><b>4.2</b> Estadística bivariada</a></li>
-<li class="chapter" data-level="4.3" data-path="4-3-regresión-lineal.html"><a href="4-3-regresión-lineal.html"><i class="fa fa-check"></i><b>4.3</b> Regresión lineal</a></li>
-<li class="chapter" data-level="4.4" data-path="4-4-regresión-logística.html"><a href="4-4-regresión-logística.html"><i class="fa fa-check"></i><b>4.4</b> Regresión logística</a></li>
+<li class="chapter" data-level="3.1" data-path="3-1-trabajo-1.html"><a href="3-1-trabajo-1.html"><i class="fa fa-check"></i><b>3.1</b> Trabajo 1</a></li>
+<li class="chapter" data-level="3.2" data-path="3-2-trabajo-2.html"><a href="3-2-trabajo-2.html"><i class="fa fa-check"></i><b>3.2</b> Trabajo 2</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-trabajo-3.html"><a href="3-3-trabajo-3.html"><i class="fa fa-check"></i><b>3.3</b> Trabajo 3</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-trabajo-4.html"><a href="3-4-trabajo-4.html"><i class="fa fa-check"></i><b>3.4</b> Trabajo 4</a></li>
 </ul></li>
-<li class="part"><span><b>V Comunicación</b></span></li>
-<li class="chapter" data-level="5" data-path="5-Pub.html"><a href="5-Pub.html"><i class="fa fa-check"></i><b>5</b> Publicación de resultados con R</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="5-1-rmarkdown-1.html"><a href="5-1-rmarkdown-1.html"><i class="fa fa-check"></i><b>5.1</b> Rmarkdown 1</a></li>
-<li class="chapter" data-level="5.2" data-path="5-2-rmarkdown-2.html"><a href="5-2-rmarkdown-2.html"><i class="fa fa-check"></i><b>5.2</b> Rmarkdown 2</a></li>
-<li class="chapter" data-level="5.3" data-path="5-3-pdf-word-y-powerpoint.html"><a href="5-3-pdf-word-y-powerpoint.html"><i class="fa fa-check"></i><b>5.3</b> Pdf, Word y PowerPoint</a></li>
-</ul></li>
-<li class="part"><span><b>VI Tópicos</b></span></li>
-<li class="chapter" data-level="6" data-path="6-Ava.html"><a href="6-Ava.html"><i class="fa fa-check"></i><b>6</b> Tópicos avanzados con R</a></li>
 </ul>
 
       </nav>
@@ -228,6 +228,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="datos-ordenados---tidy-data" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Datos ordenados - Tidy Data</h2>
+<!-- ## Tibbles vs Data Frames -->
+<!-- ## Datos ordenados - Tidy Data -->
+<!-- ## Verbos: seleccionar, reubicar, mutar y filtrar -->
+<!-- ## Verbos: agrupar, ordenar y cruzar. -->
 </div>
 <h2 style="color:#2ca25f;">Comentarios</h2>
 
@@ -251,15 +255,13 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<script src="libs/unal/js/widgets.js"></script>
-<script src="libs/unal/js/full-screen-helper.js"></script>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-2-tibbles-vs-data-frames.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-4-verbos-seleccionar-reubicar-mutar-y-filtrar.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="2-2-importarexportar-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="2-4-gestiÃ³n-de-datos-con-dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -303,26 +305,12 @@ gitbook.start({
 },
 "download": null,
 "toc": {
-"collapse": "subsection"
+"collapse": "none"
 }
 });
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

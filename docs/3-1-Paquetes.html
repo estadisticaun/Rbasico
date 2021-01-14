@@ -197,6 +197,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="3-2-importarexportar-datos.html"><a href="3-2-importarexportar-datos.html#importar-datos-en-r"><i class="fa fa-check"></i><b>3.2.1</b> Importar datos en R</a></li>
 <li class="chapter" data-level="3.2.2" data-path="3-2-importarexportar-datos.html"><a href="3-2-importarexportar-datos.html#exportar-datos-en-r"><i class="fa fa-check"></i><b>3.2.2</b> Exportar datos en R</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="3-3-datos-ordenados-tidy-data.html"><a href="3-3-datos-ordenados-tidy-data.html"><i class="fa fa-check"></i><b>3.3</b> Datos ordenados - Tidy Data</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html"><i class="fa fa-check"></i><b>3.4</b> Gestión de datos con dplyr</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-1.-seleccionar"><i class="fa fa-check"></i><b>3.4.1</b> Verbo 1. Seleccionar</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-2.-renombrar"><i class="fa fa-check"></i><b>3.4.2</b> Verbo 2. Renombrar</a></li>
+<li class="chapter" data-level="3.4.3" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-3.-reubicar"><i class="fa fa-check"></i><b>3.4.3</b> Verbo 3. Reubicar</a></li>
+<li class="chapter" data-level="3.4.4" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-4.-adicionar"><i class="fa fa-check"></i><b>3.4.4</b> Verbo 4. Adicionar</a></li>
+<li class="chapter" data-level="3.4.5" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-5.-filtrar"><i class="fa fa-check"></i><b>3.4.5</b> Verbo 5. Filtrar</a></li>
+<li class="chapter" data-level="3.4.6" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-6.-agrupar"><i class="fa fa-check"></i><b>3.4.6</b> Verbo 6. Agrupar</a></li>
+<li class="chapter" data-level="3.4.7" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-7.-resumir"><i class="fa fa-check"></i><b>3.4.7</b> Verbo 7. Resumir</a></li>
+<li class="chapter" data-level="3.4.8" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#el-operador-pipe"><i class="fa fa-check"></i><b>3.4.8</b> El operador pipe %&gt;%</a></li>
+<li class="chapter" data-level="3.4.9" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#combinar-conjuntos-de-datos"><i class="fa fa-check"></i><b>3.4.9</b> Combinar conjuntos de datos</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-Ejercicios.html"><a href="4-Ejercicios.html"><i class="fa fa-check"></i><b>4</b> Ejercicios</a>
 <ul>
@@ -253,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="Imagenes/CRAN.png" alt="Sitio Oficial de R - https://cran.r-project.org/ - Repositorio CRAN" />
 <br/></p>
 <p>Para instalar un paquete desde CRAN se requieren dos elementos centrales: el nombre del paquete que será instalado y el mecanismo de comunicación. En el ejemplo que se propuso previamente, sabemos que el paquete de interés que deseamos instalar es <strong>dplyr</strong> en razón a que este dispone de la función <code>count()</code> útil para conocer el número de filas de un marco de datos <code>data.frame()</code>; es decir, ya conocemos el nombre del paquete que deseamos descargar/instalar desde CRAN. En segundo lugar, el mecanismo de comunicación requerido para instalar un paquete desde CRAN es la función <code>install.packages()</code><a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a>. Una vez que disponemos del nombre del paquete que será instalado desde CRAN y de la función que nos permite realizar la comunicación con dicho repositorio, se procede a usar estos elementos para poder descargar/instalar dicho paquete en nuestros equipos. Al usar la función <code>install.packages()</code> se recomienda, aunque no es estrictamente necesario, que esta esté acompañada del argumento <code>dependencies = TRUE</code><a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a>. Es decir, la instrucción (línea de comando) requerida en R para instalar desde CRAN el paquete <strong>dplyr</strong> en nuestros computadores es<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>:</p>
-<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="3-1-Paquetes.html#cb872-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb874-1"><a href="3-1-Paquetes.html#cb874-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
 <p>Una vez que hemos compilado la anterior línea de comando y el proceso de instalación del paquete requerido se ha adelantado de manera satisfactoria, el paso a seguir es verificar que este efectivamente se encuentra disponible en nuestros equipos. Para ello, si nos encontramos trabajando desde la IDE de Rstudio<a href="#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a>, procedemos a ir a la pestaña llamada <strong>Packages</strong><a href="#fn54" class="footnote-ref" id="fnref54"><sup>54</sup></a> ubicada generalmente en la parte inferior derecha (<em>entre las pestañas Plots y Help</em>) de esta IDE y verificar que efectivamente este se encuentra disponible. En la imagen que se presenta a continuación, se ilustra que el paquete <strong>dplyr</strong> fue efectivamente instalado en el equipo de trabajo (<em>ver parte final de la flecha roja</em>).</p>
 <p><br/>
 <img src="Imagenes/Paquetes.png" alt="Imagen panel de paquetes instalados en nuestros equipos - sesiones de R" />
@@ -264,11 +277,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Un repositorio alternativo a CRAN de almacenamiento y disposición de paquetes en R es GitHub<a href="#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a>. GitHub es una alternativa a CRAN empleada por un número importante de autores de paquetes la cual se caracteriza por disponer de las últimas versiones disponibles de estos, de guardar copias de paquetes que se encuentran almacenados en CRAN, de paquetes que se encuentran en fase de desarrollo o pruebas o de paquetes que cumplen algunas funcionalidades particulares y que no han sido aún presentados ante CRAN para su disposición en dicho repositorio.</p>
 <p>Los paquetes de R disponibles en GitHub, a diferencia de los disponibles en CRAN, no han sido sometidos a pruebas y controles de calidad por lo que el uso de estos está sujeto a la verificación de este requisito por parte de los usuarios lo cual, en términos generales, se da a través del conocimiento y prestigio de los autores o el expresado por la comunidad. Por norma, se debe acudir a descargar paquetes desde GitHub siempre y cuando estos no estén disponibles en CRAN o cuando allí no se disponga de las versiones más recientes situación que es empleada por usuarios avanzados de estos paquetes o del lenguaje en general.</p>
 <p>Para instalar un paquete desde GitHub, previamente debemos instalar desde CRAN el paquete llamado <strong>devtools</strong>, el cual dispone de la función <code>install_github(" ")</code> la cual cumple el rol de mecanismo de comunicación entre R y GitHub. Para instalar este paquete, procedemos a ejecutar/compilar en R la siguiente línea de comando<a href="#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a>.</p>
-<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="3-1-Paquetes.html#cb873-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="3-1-Paquetes.html#cb875-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p>Una vez se ha instalado el paquete <strong>devtools</strong> en nuestro entorno de trabajo, se debe disponer de este en la memoria de nuestros equipos para que puedan ser usadas sus funciones. Esto se garantiza ejecutando/compilando la siguiente línea de comando<a href="#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>.</p>
-<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb874-1"><a href="3-1-Paquetes.html#cb874-1"></a><span class="kw">library</span>(devtools)</span></code></pre></div>
+<div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb876-1"><a href="3-1-Paquetes.html#cb876-1"></a><span class="kw">library</span>(devtools)</span></code></pre></div>
 <p>Después de haber instalado el paquete <strong>devtools</strong> y de haber dispuesto este en la memoria de nuestro equipos a través del uso de la función <code>library()</code>, estamos preparados para instalar cualquier paquete de R que se encuentre disponible en GitHub. Para ello, retornemos a nuestro ejemplo en donde deseamos hacer uso de la función <code>ds_summary_stats()</code> la cual se encuentra disponible en el paquete <strong>descriptr</strong> almacenado en GitHub<a href="#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a>. La función <code>ds_summary_stats()</code>, como se mencionó previamente, nos permite presentar un resumen con mayor detalle del contenido de una variable disponible en un marco de datos o <code>data.frame</code>. Para poder hacer uso de la función <code>ds_summary_stats()</code> debemos instalar, desde GitHub, el paquete <strong>descriptr</strong> lo cual se logra al compilar en R la siguiente línea de comando.</p>
-<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="3-1-Paquetes.html#cb875-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rsquaredacademy/descriptr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="3-1-Paquetes.html#cb877-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rsquaredacademy/descriptr&quot;</span>)</span></code></pre></div>
 <p>En la anterior línea de comando, el operador <code>::</code> indica que estamos haciendo uso de la función <code>install_github()</code> del paquete <strong>devtools</strong> y el texto <em>rsquaredacademy</em> hace referencia al nombre del usuario en GitHub del autor<a href="#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a> del paquete <strong>descriptr</strong>. Una vez ha finalizado el proceso de instalación desde GitHub del paquete <strong>descriptr</strong> en R, al igual que el caso del paquete <strong>dplyr</strong> instalado desde CRAN, procedemos a verificar, como se muestra en la figura de abajo, que este quedó efectivamente instalado dentro del panel <strong>Packages</strong> de Rstudio.</p>
 <p><br/>
 <img src="Imagenes/Paquetes1.png" alt="Imagen panel de paquetes instalados en nuestros equipos - sesiones de R" />
@@ -279,23 +292,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.1.3</span> Usar paquetes</h3>
 <p>En el apartado anterior aprendimos a importar paquetes desde CRAN y GitHub y a verificar que estos se encuentran disponibles en el panel <strong>Packages</strong> de Rstudio. En esta sesión haremos uso de una de las funciones contenidas en cada uno de estos paquetes para cumplir con los propóitos deseados: extaer el número de filas de un <code>data.frame</code> y explorar con mayor detalle el contenido de sus variables. Para ello, debemos explicar un paso adicional requerido en R para hacer uso de las funciones disponibles dentro de un paquete previamente descargado desde CRAN, GitHub o cualquier otro repositorio.</p>
 <p>Al momento de descargar un paquete en R, como se mostró previamente, este queda almacenado en nuestros equipos (ver pestaña Packages de Rstudio) pero el mismo no queda disponible para ser usado en nuestros Scrips a menos que le digamos a R lo contrario. Para ello, debemos hacer uso de la función <code>library()</code> la cual nos permite dedirle al lenguaje que vamos a cargar en la memoría de nuestros equipos <em>sesiones de trabajo</em> los paquetes que contienen las funciones de interés para nuestros trabajos. A continmuación, se presentan las líneas de código requeridas para cargar los paquetes <strong>dplyr</strong> y <strong>descriptr</strong>.</p>
-<div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb876-1"><a href="3-1-Paquetes.html#cb876-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb876-2"><a href="3-1-Paquetes.html#cb876-2"></a><span class="kw">library</span>(descriptr)</span></code></pre></div>
+<div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb878-1"><a href="3-1-Paquetes.html#cb878-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb878-2"><a href="3-1-Paquetes.html#cb878-2"></a><span class="kw">library</span>(descriptr)</span></code></pre></div>
 <p>Una vez se han compilado/ejecutado las anteriores dos líneas de comando, los paquetes en mención han sido cargados a la memoría de nuestros equipos y sus funciones pueden ser empleadas en los propósitos deseados. Para verificar que estos han sido fectivamente cargados, podemos acudir nuevamente al panel <strong>Packages</strong> de Rstudio y verificar que estos, además de estar allí almacenado, ahora aparecen marcados/seleccionados en el recuadro de su parte izquierda como se ilustra en la siguiente imagen.</p>
 <p><br/>
 <img src="Imagenes/Paquetes2.png" alt="Imagen panel de paquetes instalados en nuestros equipos - sesiones de R" />
 <br/></p>
 <p>Finalmente, después de haber descargado desde CRAN y GitHub los paquetes <strong>dplyr</strong> y <strong>descriptr</strong>, respectivamente y de haberlos cargado en la memoría de nuestros equipos a través de la función <code>library()</code>, podemos proceder a usar las funciones contenidas dentro de dichos paquetes. En primer lugar, procederemos a emplear la función <code>count()</code> del paquete <strong>dplyr</strong> con el fin de determinar el número de filas/individuos del marco de datos <code>iris</code><a href="#fn60" class="footnote-ref" id="fnref60"><sup>60</sup></a>. A continuación, haciendo uso del conjunto de datos <code>iris</code> y de la función <code>count()</code> del paquete <strong>dplyr</strong> , se determina el número de registros (individuos) de dicho conjunto de datos.</p>
 <p style="color:#e6550d";><i>Ejemplo. Haciendo uso de funciones de un paquete en R descargado desde CRAN</i></p>
-<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="3-1-Paquetes.html#cb877-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb877-2"><a href="3-1-Paquetes.html#cb877-2"></a><span class="kw">count</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="3-1-Paquetes.html#cb879-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb879-2"><a href="3-1-Paquetes.html#cb879-2"></a><span class="kw">count</span>(iris)</span></code></pre></div>
 <pre><code>##     n
 ## 1 150</code></pre>
 <p>En número de filas/individuos del conjunto de datos <code>iris</code>, como se sabe y se acaba de presentar, es de 150 y para su cáculo hemos acudido a la función <code>count()</code> del paquete <code>dplyr()</code> cuyo resultado es equivalente a haber empleado la línea de comando <code>nrow(iris)</code> de la base de R.</p>
 <p>Además de conocer el número de registros del marco de datos <code>iris</code>, como se enunció previamente, estamos interesados en conocer con mayor detalle las características de una variable disponible en un marco de datos el cual, para propósitos académicos, hemos decidido que sea la variable <code>Sepal.Length</code> del conjunto de datos <code>iris</code>. A continuación, haciendo uso del conjunto de datos <code>iris</code> y de la función <code>ds_summary_stats()</code> del paquete <strong>descriptr</strong> , se describe con mayor detalle el contenido de la variable <code>Sepal.Length</code><a href="#fn61" class="footnote-ref" id="fnref61"><sup>61</sup></a>.</p>
 <p style="color:#e6550d";><i>Ejemplo. Haciendo uso de funciones de un paquete en R descargado desde GitHub</i></p>
-<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="3-1-Paquetes.html#cb879-1"></a><span class="kw">library</span>(descriptr)</span>
-<span id="cb879-2"><a href="3-1-Paquetes.html#cb879-2"></a><span class="kw">ds_summary_stats</span>(iris, Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="3-1-Paquetes.html#cb881-1"></a><span class="kw">library</span>(descriptr)</span>
+<span id="cb881-2"><a href="3-1-Paquetes.html#cb881-2"></a><span class="kw">ds_summary_stats</span>(iris, Sepal.Length)</span></code></pre></div>
 <pre><code>## ---------------------------- Variable: Sepal.Length ----------------------------
 ## 
 ##                        Univariate Analysis                         
@@ -341,55 +354,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="explorar-paquetes" class="section level3" number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span> Explorar paquetes</h3>
 <p>La gestión de paquetes en R cuenta, en la base del lenguaje, con un número importante de funciones que nos permiten explorar, entre otros aspectos, la lista de paquetes disponibles en CRAN, las rutas de ubicación de los paquetes instalados en nuestros espacios de trabajo, las librerías descargadas y las instaladas en la memoria de las sesiones de trabajo, la descripción de los paquetes instalados, los manuales disponibles en la web para cada uno de los paquetes disponibles, el versionamiento de los paquetes disponibles así como las funciones contenidas en cada uno de los paquetes instalados en los espacios de trabajo. A continuación, se presenta un listado preliminar y ligero de funciones útiles para la exploración de paquetes en R. Invitamos a los lectores a compilar estas líneas de comando y a explorar, analizar y realizar un ejercicio de entendimiento de los resultados derivados de la implementación de cada una de estas funciones <em>líneas de comando</em>.</p>
-<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="3-1-Paquetes.html#cb881-1"></a><span class="co"># Total de paquetes disponibles en CRAN</span></span>
-<span id="cb881-2"><a href="3-1-Paquetes.html#cb881-2"></a><span class="kw">available.packages</span>()</span>
-<span id="cb881-3"><a href="3-1-Paquetes.html#cb881-3"></a></span>
-<span id="cb881-4"><a href="3-1-Paquetes.html#cb881-4"></a><span class="co"># Vista de tabla con la totalidad de paquetes disponibles en CRAN</span></span>
-<span id="cb881-5"><a href="3-1-Paquetes.html#cb881-5"></a><span class="kw">View</span>(<span class="kw">available.packages</span>())</span>
-<span id="cb881-6"><a href="3-1-Paquetes.html#cb881-6"></a></span>
-<span id="cb881-7"><a href="3-1-Paquetes.html#cb881-7"></a><span class="co"># Total de paquetes disponibles en CRAN</span></span>
-<span id="cb881-8"><a href="3-1-Paquetes.html#cb881-8"></a><span class="kw">nrow</span>(<span class="kw">available.packages</span>())</span></code></pre></div>
-<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="3-1-Paquetes.html#cb882-1"></a><span class="co"># Rutas de ubicación de los paquetes disponibles en el equipo</span></span>
-<span id="cb882-2"><a href="3-1-Paquetes.html#cb882-2"></a><span class="kw">.libPaths</span>() </span></code></pre></div>
-<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="3-1-Paquetes.html#cb883-1"></a><span class="co"># Librerías descargadas y disponibles para ser empleadas</span></span>
-<span id="cb883-2"><a href="3-1-Paquetes.html#cb883-2"></a><span class="kw">library</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="3-1-Paquetes.html#cb884-1"></a><span class="co"># Librerías en memoria - instaladas mediante library()</span></span>
-<span id="cb884-2"><a href="3-1-Paquetes.html#cb884-2"></a><span class="kw">search</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="3-1-Paquetes.html#cb885-1"></a><span class="co"># Descripción de librerías instaladas en el equipo</span></span>
-<span id="cb885-2"><a href="3-1-Paquetes.html#cb885-2"></a><span class="kw">installed.packages</span>()</span>
-<span id="cb885-3"><a href="3-1-Paquetes.html#cb885-3"></a></span>
-<span id="cb885-4"><a href="3-1-Paquetes.html#cb885-4"></a><span class="co"># Total de librerías instaladas en el equipo</span></span>
-<span id="cb885-5"><a href="3-1-Paquetes.html#cb885-5"></a><span class="kw">nrow</span>(<span class="kw">installed.packages</span>())</span>
-<span id="cb885-6"><a href="3-1-Paquetes.html#cb885-6"></a></span>
-<span id="cb885-7"><a href="3-1-Paquetes.html#cb885-7"></a><span class="co"># Primeras 5 librerías instaladas en el equipo</span></span>
-<span id="cb885-8"><a href="3-1-Paquetes.html#cb885-8"></a><span class="kw">head</span>(<span class="kw">installed.packages</span>())</span>
-<span id="cb885-9"><a href="3-1-Paquetes.html#cb885-9"></a></span>
-<span id="cb885-10"><a href="3-1-Paquetes.html#cb885-10"></a><span class="co"># Últimas 5 librerías instaladas en el equipo</span></span>
-<span id="cb885-11"><a href="3-1-Paquetes.html#cb885-11"></a><span class="kw">tail</span>(<span class="kw">installed.packages</span>())</span>
-<span id="cb885-12"><a href="3-1-Paquetes.html#cb885-12"></a></span>
-<span id="cb885-13"><a href="3-1-Paquetes.html#cb885-13"></a><span class="co"># Vista de tabla con librerías instaladas en el equipo</span></span>
-<span id="cb885-14"><a href="3-1-Paquetes.html#cb885-14"></a><span class="kw">View</span>(<span class="kw">installed.packages</span>())</span></code></pre></div>
-<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="3-1-Paquetes.html#cb886-1"></a><span class="co"># Viñetas disponibles - tutoriales </span></span>
-<span id="cb886-2"><a href="3-1-Paquetes.html#cb886-2"></a><span class="kw">vignette</span>()</span>
-<span id="cb886-3"><a href="3-1-Paquetes.html#cb886-3"></a></span>
-<span id="cb886-4"><a href="3-1-Paquetes.html#cb886-4"></a><span class="co"># Tutoriales disponibles en la web para los paquetes descargados en el equipo</span></span>
-<span id="cb886-5"><a href="3-1-Paquetes.html#cb886-5"></a><span class="kw">browseVignettes</span>() </span>
-<span id="cb886-6"><a href="3-1-Paquetes.html#cb886-6"></a></span>
-<span id="cb886-7"><a href="3-1-Paquetes.html#cb886-7"></a><span class="co"># Tutoriales web disponibles para un paquete </span></span>
-<span id="cb886-8"><a href="3-1-Paquetes.html#cb886-8"></a><span class="co"># Ejemplo. Paquete dplyr</span></span>
-<span id="cb886-9"><a href="3-1-Paquetes.html#cb886-9"></a><span class="kw">browseVignettes</span>(<span class="dt">package =</span> <span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="3-1-Paquetes.html#cb887-1"></a><span class="co"># Descripción detallada de un paquete</span></span>
-<span id="cb887-2"><a href="3-1-Paquetes.html#cb887-2"></a><span class="co"># Ejemplo. Paquete dplyr</span></span>
-<span id="cb887-3"><a href="3-1-Paquetes.html#cb887-3"></a><span class="kw">packageDescription</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb888-1"><a href="3-1-Paquetes.html#cb888-1"></a><span class="co"># Versiones descargadas vs disponibles en CRAN para nuestros paquetes</span></span>
-<span id="cb888-2"><a href="3-1-Paquetes.html#cb888-2"></a><span class="kw">old.packages</span>()</span>
-<span id="cb888-3"><a href="3-1-Paquetes.html#cb888-3"></a><span class="kw">View</span>(<span class="kw">old.packages</span>())</span></code></pre></div>
-<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="3-1-Paquetes.html#cb889-1"></a><span class="co"># Listado de funciones que hacen parte de un paquete de R</span></span>
+<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="3-1-Paquetes.html#cb883-1"></a><span class="co"># Total de paquetes disponibles en CRAN</span></span>
+<span id="cb883-2"><a href="3-1-Paquetes.html#cb883-2"></a><span class="kw">available.packages</span>()</span>
+<span id="cb883-3"><a href="3-1-Paquetes.html#cb883-3"></a></span>
+<span id="cb883-4"><a href="3-1-Paquetes.html#cb883-4"></a><span class="co"># Vista de tabla con la totalidad de paquetes disponibles en CRAN</span></span>
+<span id="cb883-5"><a href="3-1-Paquetes.html#cb883-5"></a><span class="kw">View</span>(<span class="kw">available.packages</span>())</span>
+<span id="cb883-6"><a href="3-1-Paquetes.html#cb883-6"></a></span>
+<span id="cb883-7"><a href="3-1-Paquetes.html#cb883-7"></a><span class="co"># Total de paquetes disponibles en CRAN</span></span>
+<span id="cb883-8"><a href="3-1-Paquetes.html#cb883-8"></a><span class="kw">nrow</span>(<span class="kw">available.packages</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="3-1-Paquetes.html#cb884-1"></a><span class="co"># Rutas de ubicación de los paquetes disponibles en el equipo</span></span>
+<span id="cb884-2"><a href="3-1-Paquetes.html#cb884-2"></a><span class="kw">.libPaths</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="3-1-Paquetes.html#cb885-1"></a><span class="co"># Librerías descargadas y disponibles para ser empleadas</span></span>
+<span id="cb885-2"><a href="3-1-Paquetes.html#cb885-2"></a><span class="kw">library</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="3-1-Paquetes.html#cb886-1"></a><span class="co"># Librerías en memoria - instaladas mediante library()</span></span>
+<span id="cb886-2"><a href="3-1-Paquetes.html#cb886-2"></a><span class="kw">search</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="3-1-Paquetes.html#cb887-1"></a><span class="co"># Descripción de librerías instaladas en el equipo</span></span>
+<span id="cb887-2"><a href="3-1-Paquetes.html#cb887-2"></a><span class="kw">installed.packages</span>()</span>
+<span id="cb887-3"><a href="3-1-Paquetes.html#cb887-3"></a></span>
+<span id="cb887-4"><a href="3-1-Paquetes.html#cb887-4"></a><span class="co"># Total de librerías instaladas en el equipo</span></span>
+<span id="cb887-5"><a href="3-1-Paquetes.html#cb887-5"></a><span class="kw">nrow</span>(<span class="kw">installed.packages</span>())</span>
+<span id="cb887-6"><a href="3-1-Paquetes.html#cb887-6"></a></span>
+<span id="cb887-7"><a href="3-1-Paquetes.html#cb887-7"></a><span class="co"># Primeras 5 librerías instaladas en el equipo</span></span>
+<span id="cb887-8"><a href="3-1-Paquetes.html#cb887-8"></a><span class="kw">head</span>(<span class="kw">installed.packages</span>())</span>
+<span id="cb887-9"><a href="3-1-Paquetes.html#cb887-9"></a></span>
+<span id="cb887-10"><a href="3-1-Paquetes.html#cb887-10"></a><span class="co"># Últimas 5 librerías instaladas en el equipo</span></span>
+<span id="cb887-11"><a href="3-1-Paquetes.html#cb887-11"></a><span class="kw">tail</span>(<span class="kw">installed.packages</span>())</span>
+<span id="cb887-12"><a href="3-1-Paquetes.html#cb887-12"></a></span>
+<span id="cb887-13"><a href="3-1-Paquetes.html#cb887-13"></a><span class="co"># Vista de tabla con librerías instaladas en el equipo</span></span>
+<span id="cb887-14"><a href="3-1-Paquetes.html#cb887-14"></a><span class="kw">View</span>(<span class="kw">installed.packages</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb888-1"><a href="3-1-Paquetes.html#cb888-1"></a><span class="co"># Viñetas disponibles - tutoriales </span></span>
+<span id="cb888-2"><a href="3-1-Paquetes.html#cb888-2"></a><span class="kw">vignette</span>()</span>
+<span id="cb888-3"><a href="3-1-Paquetes.html#cb888-3"></a></span>
+<span id="cb888-4"><a href="3-1-Paquetes.html#cb888-4"></a><span class="co"># Tutoriales disponibles en la web para los paquetes descargados en el equipo</span></span>
+<span id="cb888-5"><a href="3-1-Paquetes.html#cb888-5"></a><span class="kw">browseVignettes</span>() </span>
+<span id="cb888-6"><a href="3-1-Paquetes.html#cb888-6"></a></span>
+<span id="cb888-7"><a href="3-1-Paquetes.html#cb888-7"></a><span class="co"># Tutoriales web disponibles para un paquete </span></span>
+<span id="cb888-8"><a href="3-1-Paquetes.html#cb888-8"></a><span class="co"># Ejemplo. Paquete dplyr</span></span>
+<span id="cb888-9"><a href="3-1-Paquetes.html#cb888-9"></a><span class="kw">browseVignettes</span>(<span class="dt">package =</span> <span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="3-1-Paquetes.html#cb889-1"></a><span class="co"># Descripción detallada de un paquete</span></span>
 <span id="cb889-2"><a href="3-1-Paquetes.html#cb889-2"></a><span class="co"># Ejemplo. Paquete dplyr</span></span>
-<span id="cb889-3"><a href="3-1-Paquetes.html#cb889-3"></a><span class="kw">lsf.str</span>(<span class="st">&quot;package:dplyr&quot;</span>)</span>
-<span id="cb889-4"><a href="3-1-Paquetes.html#cb889-4"></a><span class="co"># Total de funciones que hacen parte de un paquete de R</span></span>
-<span id="cb889-5"><a href="3-1-Paquetes.html#cb889-5"></a><span class="co"># Ejemplo. Paquete dplyr</span></span>
-<span id="cb889-6"><a href="3-1-Paquetes.html#cb889-6"></a><span class="kw">length</span>(<span class="kw">lsf.str</span>(<span class="st">&quot;package:dplyr&quot;</span>))</span></code></pre></div>
+<span id="cb889-3"><a href="3-1-Paquetes.html#cb889-3"></a><span class="kw">packageDescription</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb890-1"><a href="3-1-Paquetes.html#cb890-1"></a><span class="co"># Versiones descargadas vs disponibles en CRAN para nuestros paquetes</span></span>
+<span id="cb890-2"><a href="3-1-Paquetes.html#cb890-2"></a><span class="kw">old.packages</span>()</span>
+<span id="cb890-3"><a href="3-1-Paquetes.html#cb890-3"></a><span class="kw">View</span>(<span class="kw">old.packages</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb891-1"><a href="3-1-Paquetes.html#cb891-1"></a><span class="co"># Listado de funciones que hacen parte de un paquete de R</span></span>
+<span id="cb891-2"><a href="3-1-Paquetes.html#cb891-2"></a><span class="co"># Ejemplo. Paquete dplyr</span></span>
+<span id="cb891-3"><a href="3-1-Paquetes.html#cb891-3"></a><span class="kw">lsf.str</span>(<span class="st">&quot;package:dplyr&quot;</span>)</span>
+<span id="cb891-4"><a href="3-1-Paquetes.html#cb891-4"></a><span class="co"># Total de funciones que hacen parte de un paquete de R</span></span>
+<span id="cb891-5"><a href="3-1-Paquetes.html#cb891-5"></a><span class="co"># Ejemplo. Paquete dplyr</span></span>
+<span id="cb891-6"><a href="3-1-Paquetes.html#cb891-6"></a><span class="kw">length</span>(<span class="kw">lsf.str</span>(<span class="st">&quot;package:dplyr&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 <div class="footnotes">

@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="3-1-Paquetes.html"/>
-<link rel="next" href="4-Ejercicios.html"/>
+<link rel="next" href="3-3-datos-ordenados-tidy-data.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -197,6 +197,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="3-2-importarexportar-datos.html"><a href="3-2-importarexportar-datos.html#importar-datos-en-r"><i class="fa fa-check"></i><b>3.2.1</b> Importar datos en R</a></li>
 <li class="chapter" data-level="3.2.2" data-path="3-2-importarexportar-datos.html"><a href="3-2-importarexportar-datos.html#exportar-datos-en-r"><i class="fa fa-check"></i><b>3.2.2</b> Exportar datos en R</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="3-3-datos-ordenados-tidy-data.html"><a href="3-3-datos-ordenados-tidy-data.html"><i class="fa fa-check"></i><b>3.3</b> Datos ordenados - Tidy Data</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html"><i class="fa fa-check"></i><b>3.4</b> Gestión de datos con dplyr</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-1.-seleccionar"><i class="fa fa-check"></i><b>3.4.1</b> Verbo 1. Seleccionar</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-2.-renombrar"><i class="fa fa-check"></i><b>3.4.2</b> Verbo 2. Renombrar</a></li>
+<li class="chapter" data-level="3.4.3" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-3.-reubicar"><i class="fa fa-check"></i><b>3.4.3</b> Verbo 3. Reubicar</a></li>
+<li class="chapter" data-level="3.4.4" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-4.-adicionar"><i class="fa fa-check"></i><b>3.4.4</b> Verbo 4. Adicionar</a></li>
+<li class="chapter" data-level="3.4.5" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-5.-filtrar"><i class="fa fa-check"></i><b>3.4.5</b> Verbo 5. Filtrar</a></li>
+<li class="chapter" data-level="3.4.6" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-6.-agrupar"><i class="fa fa-check"></i><b>3.4.6</b> Verbo 6. Agrupar</a></li>
+<li class="chapter" data-level="3.4.7" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#verbo-7.-resumir"><i class="fa fa-check"></i><b>3.4.7</b> Verbo 7. Resumir</a></li>
+<li class="chapter" data-level="3.4.8" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#el-operador-pipe"><i class="fa fa-check"></i><b>3.4.8</b> El operador pipe %&gt;%</a></li>
+<li class="chapter" data-level="3.4.9" data-path="3-4-gestión-de-datos-con-dplyr.html"><a href="3-4-gestión-de-datos-con-dplyr.html#combinar-conjuntos-de-datos"><i class="fa fa-check"></i><b>3.4.9</b> Combinar conjuntos de datos</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-Ejercicios.html"><a href="4-Ejercicios.html"><i class="fa fa-check"></i><b>4</b> Ejercicios</a>
 <ul>
@@ -234,9 +247,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Una de las fuentes de datos más básica es aquella en donde los datos son almacenados o se encuentran disponibles en archivos de texto simple. “Un archivo de texto simple, texto sencillo o texto sin formato (también llamado texto llano o texto simple; en inglés «plain text»), es un archivo informático que contiene únicamente texto formado solo por caracteres que son legibles por humanos, careciendo de cualquier tipo de formato tipográfico.”<a href="#fn63" class="footnote-ref" id="fnref63"><sup>63</sup></a>. Los datos almacenados en formatos de texto simple, en la práctica, se almacenan generalmente en archivos con formato *.txt. Para importar datos a R desde archivos en formato <em>txt</em> podemos acudir al uso de la función <code>read.table()</code> contenida en la base de R. A continuación, se presenta a través de un ejemplo, la forma como R permite importar datos contenidos en archivos de texto simple.</p>
 <p>Para ello, supongamos que contamos con la información de 5 individuos para los cuales se cuenta con la información de 3 variables <code>ID</code>, <code>X</code> e <code>Y</code> separadas por espacios y que se encuentra contenida en un archivo llamado <code>Archivo1.txt</code><a href="#fn64" class="footnote-ref" id="fnref64"><sup>64</sup></a>. Este archivo, por ejemplo, puede estar almacenado en un repositorio en la web o en alguna carpeta dentro de cada uno de nuestros equipos. Para el presente documento, supongamos que este archivo se encuentra almacenado en una carpeta llamada <strong>Datos</strong> la cual hace parte integral del proyecto de Rstudio que contiene este libro web<a href="#fn65" class="footnote-ref" id="fnref65"><sup>65</sup></a>. A continuación, se presenta la forma como R permite importar el archivo <code>Archivo1.txt</code> haciendo uso de la función <code>read.table()</code>.</p>
 <p style="color:#e6550d";><i>Ejemplo. Importación de archivos de texto simple (*.txt) en R</i></p>
-<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb890-1"><a href="3-2-importarexportar-datos.html#cb890-1"></a><span class="co"># Importar archivos txt</span></span>
-<span id="cb890-2"><a href="3-2-importarexportar-datos.html#cb890-2"></a>file_txt &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;Datos/Archivo1.txt&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb890-3"><a href="3-2-importarexportar-datos.html#cb890-3"></a>file_txt</span></code></pre></div>
+<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="3-2-importarexportar-datos.html#cb892-1"></a><span class="co"># Importar archivos txt</span></span>
+<span id="cb892-2"><a href="3-2-importarexportar-datos.html#cb892-2"></a>file_txt &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;Datos/Archivo1.txt&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb892-3"><a href="3-2-importarexportar-datos.html#cb892-3"></a>file_txt</span></code></pre></div>
 <pre><code>##   ID  X Y
 ## 1  1  6 a
 ## 2  2  7 b
@@ -249,10 +262,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">3.2.1.2</span> Texto separado por comas (CSV)</h4>
 <p>Uno de las tipologías de archivos empleada para el almacenamiento/disposición de datos y de amplio uso en el contexto de la investigación, por ejemplo, son los archivos de texto separados por comas (CSV)<a href="#fn67" class="footnote-ref" id="fnref67"><sup>67</sup></a>. A continuación, se presenta la alternativa general que emplea R para la importación de datos provenientes de archivos de tipo CSV haciendo uso de la función <code>read.table()</code> la cual se presentó y empleó previamente. Para ello, supondremos que el archivo a importar contiene la información del conjunto de datos <code>iris</code> el cual se trabajó de manera frecuente en el capítulo anterior de este documento. Así mismo, supondrémos que este archivo se encuentra almacenado en algún lugar de la web; es decir, fuera de nuestros ordenadores/computadores.</p>
 <p style="color:#e6550d";><i>Ejemplo. Importación de archivos de texto con valores separados por comas (CSV) en R - función read.table()</i></p>
-<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="3-2-importarexportar-datos.html#cb892-1"></a><span class="co"># Importar archivos csv</span></span>
-<span id="cb892-2"><a href="3-2-importarexportar-datos.html#cb892-2"></a><span class="co"># Forma general </span></span>
-<span id="cb892-3"><a href="3-2-importarexportar-datos.html#cb892-3"></a>file1_csv &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/Archivo2.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb892-4"><a href="3-2-importarexportar-datos.html#cb892-4"></a><span class="kw">head</span>(file1_csv)</span></code></pre></div>
+<div class="sourceCode" id="cb894"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb894-1"><a href="3-2-importarexportar-datos.html#cb894-1"></a><span class="co"># Importar archivos csv</span></span>
+<span id="cb894-2"><a href="3-2-importarexportar-datos.html#cb894-2"></a><span class="co"># Forma general </span></span>
+<span id="cb894-3"><a href="3-2-importarexportar-datos.html#cb894-3"></a>file1_csv &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/Archivo2.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb894-4"><a href="3-2-importarexportar-datos.html#cb894-4"></a><span class="kw">head</span>(file1_csv)</span></code></pre></div>
 <pre><code>##   sepal_length sepal_width petal_length petal_width species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -264,10 +277,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>la función <code>read.table()</code>, como se acaba de mostrar, exige el uso de los argumentos <code>header</code> y <code>sep</code>. No obatante, en la base de R existe una función alternativa de amplio uso para los procesos de importación de datos almacenados en archivos de tipo CSV llamada <code>read.csv</code> la cual permite omitir los anteriores dos argumentos y sólo exige que se le indique al lenguaje la ruta en donde se encuentra almacenado el archivo que deseamos importar. A continuación, se presenta un ejemplo de importación de datos almacenados en un archivo CSV el cual, al igual que en el ejemplo anterior, contiene la información del conjunto de datos <code>iris</code>; no obstante, esta vez, este conjunto de datos no se encuentra almacenado en la web sino en la carpeta llamada Datos la cual, como se ilustró al inicio de este apartado, hace parte integral del repositorio/proyecto de Rstudio que contiene la información que sirve de base para la construcción del presente documento.</p>
 <p>El resultado del proceso de importación del conjunto de datos <code>iris</code> haciendo uso de la función <code>read.csv()</code>, como se muestra en este ejemplo, es almacenado en un objeto llamado <code>file2_csv</code> el cual se encontrará disponible en el Environment de Rstudio una vez se compilen las siguientes líneas de código en nuestros computadores. Una vez importados los datos a R, como se muestra en el ejemplo, podemos hacer uso de las funciones hasta ahora conocidas para explorar y conocer el contenido de los datos importados; en el ejemplo, se presentan las primeras 6 líneas del conjunto de datos importado desde un archivo CSV haciendo uso de la función <code>head()</code>.</p>
 <p style="color:#e6550d";><i>Ejemplo. Importación de archivos de texto con valores separados por comas (CSV) en R - función read.csv()</i></p>
-<div class="sourceCode" id="cb894"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb894-1"><a href="3-2-importarexportar-datos.html#cb894-1"></a><span class="co"># Importar archivos csv</span></span>
-<span id="cb894-2"><a href="3-2-importarexportar-datos.html#cb894-2"></a><span class="co"># Haciendo uso de la función csv</span></span>
-<span id="cb894-3"><a href="3-2-importarexportar-datos.html#cb894-3"></a>file2_csv &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;Datos/Archivo2.csv&quot;</span>)</span>
-<span id="cb894-4"><a href="3-2-importarexportar-datos.html#cb894-4"></a><span class="kw">tail</span>(file2_csv)</span></code></pre></div>
+<div class="sourceCode" id="cb896"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb896-1"><a href="3-2-importarexportar-datos.html#cb896-1"></a><span class="co"># Importar archivos csv</span></span>
+<span id="cb896-2"><a href="3-2-importarexportar-datos.html#cb896-2"></a><span class="co"># Haciendo uso de la función csv</span></span>
+<span id="cb896-3"><a href="3-2-importarexportar-datos.html#cb896-3"></a>file2_csv &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;Datos/Archivo2.csv&quot;</span>)</span>
+<span id="cb896-4"><a href="3-2-importarexportar-datos.html#cb896-4"></a><span class="kw">tail</span>(file2_csv)</span></code></pre></div>
 <pre><code>##     sepal_length sepal_width petal_length petal_width   species
 ## 145          6.7         3.3          5.7         2.5 virginica
 ## 146          6.7         3.0          5.2         2.3 virginica
@@ -278,9 +291,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>La característica central de un archivo tipo CSV, como lo indican sus siglas en inglés -<em>Comma Separated Values</em>-, es que las variables se encuentran separadas por comas y los números decimales por puntos, característica/estándar empleada por los países de habla inglesa. No obstante, en los países de habla hispana los softwares están configurados de tal manera que las cifras de los números que contienen decimales, a diferencia de los americanos, están separadas por comas y no por puntos<a href="#fn69" class="footnote-ref" id="fnref69"><sup>69</sup></a>. Esta característica, propia de la cultura latina, impide que pueda ser usada la función <code>read.csv()</code> a menos que configuremos nuestras fuentes de datos o que las mismas no contengan variables que hagan uso de cifras decimales. Ante esta situación, existe en R una función llamada <code>read.csv2()</code> la cual permite importar archivos de tipo CSV los cuales, en el contexto latino, se caracterizan porque las cifras decimales se encuentran separadas por comas (,) y las variables por punto y coma (;)<a href="#fn70" class="footnote-ref" id="fnref70"><sup>70</sup></a>.</p>
 <p>A continuación, se persenta un ejemplo de importación de un archivo de tipo CSV haciendo uso de la función <code>read.csv2()</code>. Este archivo, además de almacenarse en un objeto llamado <code>file3_csv</code>, se encuentra disponible en una fuente externa ubicada en la web la cual puede ser explorada copiando la URL del ejemplo e ingresando la misma de manera directa en nuestros navegadores de internet.</p>
 <p style="color:#e6550d";><i>Ejemplo. Importación de archivos de texto con valores separados por comas (CSV) en R - función read.csv2()</i></p>
-<div class="sourceCode" id="cb896"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb896-1"><a href="3-2-importarexportar-datos.html#cb896-1"></a><span class="co"># Haciendo uso de la función csv2</span></span>
-<span id="cb896-2"><a href="3-2-importarexportar-datos.html#cb896-2"></a>file3_csv &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="dt">file =</span> <span class="st">&quot;https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/Archivo3.csv&quot;</span>)</span>
-<span id="cb896-3"><a href="3-2-importarexportar-datos.html#cb896-3"></a><span class="kw">head</span>(file3_csv)</span></code></pre></div>
+<div class="sourceCode" id="cb898"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb898-1"><a href="3-2-importarexportar-datos.html#cb898-1"></a><span class="co"># Haciendo uso de la función csv2</span></span>
+<span id="cb898-2"><a href="3-2-importarexportar-datos.html#cb898-2"></a>file3_csv &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="dt">file =</span> <span class="st">&quot;https://raw.githubusercontent.com/estadisticaun/Rbasico/master/Datos/Archivo3.csv&quot;</span>)</span>
+<span id="cb898-3"><a href="3-2-importarexportar-datos.html#cb898-3"></a><span class="kw">head</span>(file3_csv)</span></code></pre></div>
 <pre><code>##   sepal_length sepal_width petal_length petal_width species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -295,10 +308,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Para ello, como se presentó en la sección de <a href="3-1-Paquetes.html#Paquetes">Paquetes</a>, el primer paso que debemos garantizar/realizar es el proceso de importación del paquete desde CRAN a nuestros equipos haciendo uso de la función o línea de comando <code>install.packages("readxl", dependencies = TRUE)</code>. Una vez el paquete es importado a nuestros computadores, el mismo debe ser cargado a nuestros entornos de trabajo a través de la línea de comando <code>library(readxl)</code> para que podamos usar las fucniones que este contiene y que resultan de interés para los propósitos deseados: en nuestro caso, importar un archivo de Excel a R.</p>
 <p>A continuación, se presenta un ejemplo de importación de un conjunto de datos contenido en un archivo de Excel llamado <code>Archivo4.xlsx</code><a href="#fn71" class="footnote-ref" id="fnref71"><sup>71</sup></a> el cual se encuentra disponible en la carpera Datos del repositorio que contiene este documento web<a href="#fn72" class="footnote-ref" id="fnref72"><sup>72</sup></a>.</p>
 <p style="color:#e6550d";><i>Ejemplo. Importación de archivos de Excel en R - función read_excel() del paquete readxl</i></p>
-<div class="sourceCode" id="cb898"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb898-1"><a href="3-2-importarexportar-datos.html#cb898-1"></a><span class="co"># Importar archivos desde Excel</span></span>
-<span id="cb898-2"><a href="3-2-importarexportar-datos.html#cb898-2"></a><span class="kw">library</span>(readxl)</span>
-<span id="cb898-3"><a href="3-2-importarexportar-datos.html#cb898-3"></a>file_xlsx &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="dt">path =</span><span class="st">&quot;Datos/Archivo4.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Archivo&quot;</span>)</span>
-<span id="cb898-4"><a href="3-2-importarexportar-datos.html#cb898-4"></a>file_xlsx</span></code></pre></div>
+<div class="sourceCode" id="cb900"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb900-1"><a href="3-2-importarexportar-datos.html#cb900-1"></a><span class="co"># Importar archivos desde Excel</span></span>
+<span id="cb900-2"><a href="3-2-importarexportar-datos.html#cb900-2"></a><span class="kw">library</span>(readxl)</span>
+<span id="cb900-3"><a href="3-2-importarexportar-datos.html#cb900-3"></a>file_xlsx &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="dt">path =</span><span class="st">&quot;Datos/Archivo4.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Archivo&quot;</span>)</span>
+<span id="cb900-4"><a href="3-2-importarexportar-datos.html#cb900-4"></a>file_xlsx</span></code></pre></div>
 <pre><code>## # A tibble: 15 x 5
 ##    sepal_length sepal_width petal_length petal_width species   
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;     
@@ -325,11 +338,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Una tarea frecuente a la hora de gestionar datos y realizar análisis a través de R es la necesidad de exportar los resultados de nuestros trabajos a formatos externos para su posterior gestión. Aunque R ofrece una importante diversidad/ecosistema de herramientas e instrumentos orientados a la entregra/divulgación de los resultados de nuestros trabajos (presentaciones, documentos pdf, documentos en word, documentos en html, libros web, aplicaciones, sitios web, etc.) y que ho hacen parte del contenido de este documento, una demanda frecuente es la necesidad de exportar parte de nuestros resultados en textos con formatos planos. Para ello, a continuación se presentan dos funciones (<code>write.csv</code> y <code>write.csv2</code>) que resultan de alta utilidad a la hora de exportar datos/resultados obtenidos en R a archivos externos para su posterior gestión.</p>
 <p>El ejemplo que se presenta a continuación y que hace uso de la función <code>write.csv</code>, nos permite exportar los datos ubicados en las lineas/filas 100 a 109 del conjunto de datos <code>iris</code> a un archivo externo de tipo CSV el cual será almacenado en la carpera Datos del repositorio/proyecto de trabajo de este curso. La función <code>write.csv</code>, como se ilustra en el ejemplo, hace uso de dos argumentos: <code>x</code> para indicar el nombre del objeto que será exportado y <code>file</code> con la ruta del lugar en donde será almacenado el archivo de tipo CSV. Finalmente, al exportar un objeto de R haciendo uso de la función <code>write.csv</code>, el objeto resultante/exportado cumple con el estandar inglés: variables/valores separadas por comas y puntos para trabajar con números que presentan decimales. Invitamos a los lectores a explorar el contenido y las características del archivo resultante al hacer uso de la función <code>write.csv</code>.</p>
 <p style="color:#e6550d";><i>Ejemplo. Exportación de objetos de R haciendo uso de la función write.csv</i></p>
-<div class="sourceCode" id="cb900"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb900-1"><a href="3-2-importarexportar-datos.html#cb900-1"></a><span class="co"># Exportar datos a formato csv haciendo uso de la función write.csv</span></span>
-<span id="cb900-2"><a href="3-2-importarexportar-datos.html#cb900-2"></a><span class="co"># Separado por comas y con puntos para separar decimales</span></span>
-<span id="cb900-3"><a href="3-2-importarexportar-datos.html#cb900-3"></a>iris_exp &lt;-<span class="st"> </span>iris[<span class="dv">100</span><span class="op">:</span><span class="dv">109</span>, ]</span>
-<span id="cb900-4"><a href="3-2-importarexportar-datos.html#cb900-4"></a><span class="kw">write.csv</span>(<span class="dt">x =</span> iris_exp, <span class="dt">file =</span> <span class="st">&quot;Datos/iris_exp.csv&quot;</span>)</span>
-<span id="cb900-5"><a href="3-2-importarexportar-datos.html#cb900-5"></a>iris_exp</span></code></pre></div>
+<div class="sourceCode" id="cb902"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb902-1"><a href="3-2-importarexportar-datos.html#cb902-1"></a><span class="co"># Exportar datos a formato csv haciendo uso de la función write.csv</span></span>
+<span id="cb902-2"><a href="3-2-importarexportar-datos.html#cb902-2"></a><span class="co"># Separado por comas y con puntos para separar decimales</span></span>
+<span id="cb902-3"><a href="3-2-importarexportar-datos.html#cb902-3"></a>iris_exp &lt;-<span class="st"> </span>iris[<span class="dv">100</span><span class="op">:</span><span class="dv">109</span>, ]</span>
+<span id="cb902-4"><a href="3-2-importarexportar-datos.html#cb902-4"></a><span class="kw">write.csv</span>(<span class="dt">x =</span> iris_exp, <span class="dt">file =</span> <span class="st">&quot;Datos/iris_exp.csv&quot;</span>)</span>
+<span id="cb902-5"><a href="3-2-importarexportar-datos.html#cb902-5"></a>iris_exp</span></code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ## 100          5.7         2.8          4.1         1.3 versicolor
 ## 101          6.3         3.3          6.0         2.5  virginica
@@ -343,11 +356,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 109          6.7         2.5          5.8         1.8  virginica</code></pre>
 <p>Finalmente, dado que el contexto de aplicación del presente texto se ubica en el ámbito de latinoamérica, resulta útil que los archivos exportados cumplan con los requisitos definidos en los softwares de uso en esta región. Para ello, R nos ofrece la función <code>write.csv2</code> la cual, además de hacer uso de los mismos argumentos de la función <code>write.csv</code>, nos permite generar un archivo externo de tipo plano con extensión CSV el cual cumple con los estándares de nuestra región: variables/valores separados por puntos y comas y número decimales separados por comas. Invitamos a los lectores a explorar el contenido y las características del archivo resultante al hacer uso de la función <code>write.csv2</code> y a contrastarlo contra el archivo generado al hacer uso de la función <code>write.csv</code>.</p>
 <p style="color:#e6550d";><i>Ejemplo. Exportación de objetos de R haciendo uso de la función write.csv2</i></p>
-<div class="sourceCode" id="cb902"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb902-1"><a href="3-2-importarexportar-datos.html#cb902-1"></a><span class="co"># Exportar datos a formato csv haciendo uso de la función write.csv2</span></span>
-<span id="cb902-2"><a href="3-2-importarexportar-datos.html#cb902-2"></a><span class="co"># Separado por puntos y comas y con comas para separar decimales</span></span>
-<span id="cb902-3"><a href="3-2-importarexportar-datos.html#cb902-3"></a>iris_exp1 &lt;-<span class="st"> </span>iris[<span class="dv">50</span><span class="op">:</span><span class="dv">55</span>, ]</span>
-<span id="cb902-4"><a href="3-2-importarexportar-datos.html#cb902-4"></a><span class="kw">write.csv2</span>(<span class="dt">x =</span> iris_exp, <span class="dt">file =</span> <span class="st">&quot;Datos/iris_exp1.csv&quot;</span>)</span>
-<span id="cb902-5"><a href="3-2-importarexportar-datos.html#cb902-5"></a>iris_exp1</span></code></pre></div>
+<div class="sourceCode" id="cb904"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb904-1"><a href="3-2-importarexportar-datos.html#cb904-1"></a><span class="co"># Exportar datos a formato csv haciendo uso de la función write.csv2</span></span>
+<span id="cb904-2"><a href="3-2-importarexportar-datos.html#cb904-2"></a><span class="co"># Separado por puntos y comas y con comas para separar decimales</span></span>
+<span id="cb904-3"><a href="3-2-importarexportar-datos.html#cb904-3"></a>iris_exp1 &lt;-<span class="st"> </span>iris[<span class="dv">50</span><span class="op">:</span><span class="dv">55</span>, ]</span>
+<span id="cb904-4"><a href="3-2-importarexportar-datos.html#cb904-4"></a><span class="kw">write.csv2</span>(<span class="dt">x =</span> iris_exp, <span class="dt">file =</span> <span class="st">&quot;Datos/iris_exp1.csv&quot;</span>)</span>
+<span id="cb904-5"><a href="3-2-importarexportar-datos.html#cb904-5"></a>iris_exp1</span></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ## 50          5.0         3.3          1.4         0.2     setosa
 ## 51          7.0         3.2          4.7         1.4 versicolor
@@ -355,14 +368,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 53          6.9         3.1          4.9         1.5 versicolor
 ## 54          5.5         2.3          4.0         1.3 versicolor
 ## 55          6.5         2.8          4.6         1.5 versicolor</code></pre>
-<!-- ## Tibbles vs Data Frames -->
-<!-- ## Datos ordenados - Tidy Data -->
-<!-- ## Verbos: seleccionar, reubicar, mutar y filtrar -->
-<!-- ## Verbos: agrupar, ordenar y cruzar. -->
-
 </div>
 </div>
-<!-- </div> -->
 <div class="footnotes">
 <hr />
 <ol start="62">
@@ -408,7 +415,7 @@ s.setAttribute('data-timestamp', +new Date());
         </div>
       </div>
 <a href="3-1-Paquetes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="4-Ejercicios.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3-3-datos-ordenados-tidy-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -328,9 +328,104 @@ write.csv2(x = iris_exp, file = "Datos/iris_exp1.csv")
 iris_exp1
 ```
 
+## Datos ordenados - Tidy Data
+
 <!-- ## Tibbles vs Data Frames -->
 <!-- ## Datos ordenados - Tidy Data -->
 <!-- ## Verbos: seleccionar, reubicar, mutar y filtrar -->
 <!-- ## Verbos: agrupar, ordenar y cruzar. -->
+
+## Gestión de datos con dplyr
+
+En la primera parte de este documento se presentaron diversas formas para la manipulación de objetos en R a partir de la base que nos ofrece el lenguaje. En la segunda parte de este texto, hemos incursionado en el escenario de la gestión de paquetes en R y para ello nos hemos concentrado en un subconjunto de estos los cuales, además de encontrarsen interrelacioandos, nos facilitan el trabajo con este lenguaje: paquetes y funciones orientados a la importación de datos así como al ordenamiento de estos han sido parte del trabajo/estudio en las últimas semanas. En este apartado, se presenta un conjunto de funciones contenidas en el paquete `dplyr` las cuales están orientadas a la gestión moderna y eficiente de datos en R. 
+
+
+El paquete `dplyr`, en términos generales, no proporciona ninguna nueva funcionalidad a R por sí mismo, en el sentido que todo aquello que podemos hacer con este paquete lo podríamos hacer con la sintaxis básica de R y que se trabajo en la primera parte de este curso. No obstante, este proporciona una gramática para la gestión de datos que facilita el trabajo con este lenguaje: indexación de datos, transformación de variables, filtrado de registros, agrupamiento de resultados, resúmenes estadísticos, etc. hacen parte de las funcionalidades que nos ofrece `dplyr` y, lo mejor, de una manera integrada.
+
+El conjunto de funciones que conforman `dplyr`, además de encontrarse entre las más usadas a nivel mundial, se corresponden a través de lo que los autores han llamado verbos. En este sentido, `dplyr` nos ofrece 7 verbos/funciones que resultan trascendentales para la gestión moderna de los datos desde R: _seleccionar_, _renombrar_, _reubicar_, _adicionar_, _filtrar_, _agrupar_ y _resumir_. Cualquier ejercicio de gestión de datos en R implica, por ejemplo, seleccionar variables, renombrar variables, cambiar las posiciones de ciertas variables, adicionar o transformar variables, filtrar los resultados de acuerdo a ciertas características de interés de los individuos bajo estudio, agrupar los resultados según características de interés así como presentar cifras agragedas derivadas de conteos o del uso de funciones de naturaleza matemática o estadística, por ejemplo. En este contexto, y en otros escenarios, es donde las funciones que nos ofrece este paquete resultan de alta utilidad para la gestión de datos. A continuación, se presentan las 7 funciones/verbos que en mi criterio son las principales funciones disponibles dentro del paquete `dplyr` de R.
+
+Para ello, en primer lugar, debemos instalar el paquete `dplyr` en nuestros entornos de trabajo haciendo uso de la línea de comando `install.packages("dplyr", dependencies = TRUE)` y, una vez este ha sido instalado, invocandolo a través de la función `library(dplyr)`.
+
+### Verbo 1. Seleccionar
+
+La primera función/verbo que estudiaremos del paquete `dplyr` es la función orientada a la selección o indexación de variable contenidas en un marco de datos `data.frame` o `tibble()` de R; es decir, cómo seleccionar variables de un conjunto de datos de una manera rápida y alterna a las formas de selección que aprendimos en la primera parte de este curso acudiento a los operadores `[ ]`, `[[ ]]` y `$`. 
+
+La selección de variables a través de `dplyr` se hace a través de la función `select()` la cual requiere/exige, como argumentos, la definición del objeto del cuál serán extraídas las variables de interés y las variables que serán seleccionadas las cuales pueden ser definidas según sus nombres, con o sin commillas, o de acuerdo a la posición en la que estas se encuentran ubicadas^[En `dplyr`, a diferencia de la base del lenguaje, no es posible seleccionar/indexar variables acudiendo al uso de vectores lógicos, así mismo, la selección de variables a partir de enteros exige que estos sean entéros en sentido estricto -no acepta decimales-]. Por ejemplo, supongamos que estamos interesados en la selección de las variables **Petal.Length** y **Species** del conjunto de datos `iris` y que los resultados de esta selección sean almacenados el un objeto llamado `sel_iris`. Para ello, bastará con hacer uso de la función `select()` y definir dentro de esta los argumentos requeridos de acuerdo a la línea de comando que se presenta a continuación.
+
+```{r}
+library(dplyr)
+sel_iris <- select(iris, Petal.Length, Species)
+sel_iris
+```
+
+En el ejemplo anterior, se ha invocado la librería llamada `dplyr` y hemos hecho uso de la función `select()` para indicar que deseamos seleccionar las variables **Petal.Length** y **Species** del conjunto de datos `iris()`. Como se puede observar, dentro de la función `select()` se ha definido, en primer lugar, el nombre del objeto del cual se desean seleccionar las variables de interés; en nuestro caso, el conjunto de datos `iris()`. Paso seguido, se han definido las variables que deseamos seleccionar: **Petal.Length** y **Species**. Como se puede observar, a diferencia de lo que ocurre en los ejercicios de indexación/selección estudiados a partir de la base del lenguaje, la función `select()` no exige que las variables estén contenidas dentro de un vector `c()` o que estas estén entre comillas sencillas o dobles, aunque podrían estarlo. Es decir, el uso de la función `select()` para la selección de variables contenidas en un `data.frame` o `tibble` es menos restrictiva que sus contrapartes ubicadas en la base del lenguaje R y estudiadas en la primera parte de este curso. A continuación, se presentan algunos ejemplos para la selección de variables por nombre en R haciendo uso de la función `select()` en donde, los tres primeros ejemplos, son equivalentes al ejemplo presentado previamente.
+
+```{r}
+library(dplyr)
+
+# Selección de variables por nombres
+
+# Ejemplo 1 
+# Selección de variables Petal.Length y Species.
+# Variables entre commillas sin vector
+sel_1 <- select(iris, "Petal.Length", "Species")
+head(sel_1)
+
+# Ejemplo 2 
+# Selección de variables Petal.Length y Species.
+# Variables entre commillas con vector
+sel_2 <- select(iris, c("Petal.Length", "Species"))
+head(sel_2)
+
+# Ejemplo 3
+# Selección de variables Petal.Length y Species.
+# Variables sin commillas con vector
+sel_3 <- select(iris, c(Petal.Length, Species))
+head(sel_3)
+
+# Ejemplo 4
+# Selección de variables diferentes de Petal.Length y Species.
+# Variables con vector y sin comillas
+# Opción 1 (operador -)
+sel_4 <- select(iris, -c(Petal.Length, Species))
+head(sel_4)
+
+# Ejemplo 5
+# Selección de variables diferentes de Petal.Length y Species.
+# Variables con vector y sin comillas
+# Opción 2 (operador !)
+sel_5 <- select(iris, !c(Petal.Length, Species))
+head(sel_5)
+
+
+# Ejemplo 5
+# Selección de variables - desde Petal.Length hasta Species.
+# Variables con vector y sin comillas
+sel_6 <- select(iris, Petal.Length:Species)
+head(sel_6)
+```
+
+
+
++ starts_with()
++ ends_with()
++ contains()
++ matches()
++ any_of()
++ num_range()
++ everything()
+
+### Verbo 2. Renombrar
+### Verbo 3. Reubicar
+### Verbo 4. Adicionar
+<!-- case_when() -->
+### Verbo 5. Filtrar
+### Verbo 6. Agrupar
+### Verbo 7. Resumir
+### El operador pipe %>%
+
+### Combinar conjuntos de datos
+
+
 
 
